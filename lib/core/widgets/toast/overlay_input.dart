@@ -1,0 +1,340 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:BGP_Retail/core/constants/typography.dart';
+import 'package:BGP_Retail/core/extension/init_ext.dart';
+
+import '../../constants/colors.dart';
+import '../../utilities/debouncer.dart';
+
+typedef ItemOverlayBuilder<ItemType> = Widget Function(
+  BuildContext context,
+  ItemType item,
+  int index,
+);
+typedef LoadDataOverlay<ItemType> = Future<List<ItemType>> Function(
+  bool isMore,
+);
+
+class OverlayInput<T> extends StatefulWidget {
+  final Function(T)? onChanged;
+  final ItemOverlayBuilder<T> itemBuilder;
+  final Widget? separator;
+  final Widget? buttonSeeMore;
+  final EdgeInsets? padding;
+  final EdgeInsets? contentPadding;
+  final double elevation;
+  final Color backgroundColor;
+  final double borderRadius;
+  final Color enabledBorderColor;
+  final Color focusedBorderColor;
+  final String? hintText;
+  final String? label;
+  final bool isRequired;
+  final double itemHeight;
+  final LoadDataOverlay<T>? lazyLoad;
+  final TextEditingController? controller;
+  final VoidCallback? itemBuilderOnTap;
+  final FocusNode? focusNode;
+  final Widget? suffix;
+  const OverlayInput({
+    super.key,
+    required this.itemBuilder,
+    this.separator,
+    this.onChanged,
+    this.padding,
+    this.contentPadding,
+    this.backgroundColor = Colors.white,
+    this.borderRadius = 5,
+    this.elevation = 5,
+    this.focusedBorderColor = Colors.grey,
+    this.enabledBorderColor = Colors.green,
+    this.hintText,
+    this.label,
+    this.isRequired = false,
+    this.itemHeight = 60,
+    this.lazyLoad,
+    this.controller,
+    this.itemBuilderOnTap,
+    this.focusNode,
+    this.buttonSeeMore,
+    this.suffix,
+  });
+
+  @override
+  State<OverlayInput<T>> createState() => _OverlayInputState<T>();
+}
+
+class _OverlayInputState<T> extends State<OverlayInput<T>> {
+  OverlayEntry? overlayEntry;
+  final _layerLink = LayerLink();
+  final _scroll = ScrollController();
+  // final _focusNode = FocusNode();
+  final StreamController<OverlayItemsValue<T>> _streamController =
+      StreamController.broadcast();
+  final value = OverlayItemsValue<T>(items: []);
+  final _debouncer = Debouncer();
+  @override
+  void initState() {
+    super.initState();
+    _scroll.addListener(onMore);
+
+    widget.focusNode?.addListener(
+      () {
+        if (widget.focusNode?.hasFocus == true) {
+          _insertOverlay();
+        } else {
+          _closeOverlay();
+        }
+      },
+    );
+  }
+
+  void newData() async {
+    value.isLoad = true;
+    value.isMore = false;
+    value.items.clear();
+    _streamController.sink.add(value);
+    final list = await widget.lazyLoad?.call(false);
+    value.items = list ?? [];
+    value.isLoad = false;
+    value.isMore = false;
+    _streamController.sink.add(value);
+  }
+
+  void getData() async {
+    if (value.items.isNotEmpty) {
+      value.isLoad = false;
+      value.isMore = true;
+    } else {
+      value.isLoad = true;
+      value.isMore = false;
+    }
+
+    _streamController.sink.add(value);
+    final list = await widget.lazyLoad?.call(true);
+    value.items.addAll(list ?? []);
+    value.isLoad = false;
+    value.isMore = false;
+    _streamController.sink.add(value);
+  }
+
+  void onMore() async {
+    if (_scroll.position.pixels == _scroll.position.maxScrollExtent) {
+      getData();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CompositedTransformTarget(
+      link: _layerLink,
+      child: TextField(
+        decoration: theme,
+        controller: widget.controller,
+        focusNode: widget.focusNode,
+        onChanged: (value) => newData(),
+      ),
+    );
+  }
+
+  double get heightOverlay {
+    final Size screenSize = MediaQuery.of(context).size;
+    final hightDefault =
+        screenSize.height * 0.3 - MediaQuery.of(context).viewInsets.bottom;
+    final heightOverlay = value.items.isEmpty
+        ? hightDefault
+        : widget.itemHeight * value.items.length > hightDefault
+            ? hightDefault
+            : widget.itemHeight * value.items.length;
+    return heightOverlay;
+  }
+
+  RenderBox get box => context.findRenderObject() as RenderBox;
+
+  void _closeOverlay() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+    return;
+  }
+
+  bool get shouldDisplayAbove {
+    final offset = box.localToGlobal(Offset.zero);
+    final Size screenSize = MediaQuery.of(context).size;
+    return (offset.dy + box.size.height) >
+        (screenSize.height - screenSize.height * 0.3);
+  }
+
+  void _insertOverlay() {
+    _closeOverlay();
+
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return StreamBuilder<OverlayItemsValue<T>>(
+          stream: _streamController.stream,
+          initialData: value,
+          builder: (context, AsyncSnapshot snapshot) {
+            return Positioned(
+              width: box.size.width,
+              child: CompositedTransformFollower(
+                link: _layerLink,
+                showWhenUnlinked: false,
+                offset: Offset(
+                  0,
+                  shouldDisplayAbove
+                      ? -heightOverlay - 10
+                      : box.size.height + 5,
+                ),
+                child: Material(
+                  elevation: widget.elevation,
+                  color: widget.backgroundColor,
+                  borderRadius: BorderRadius.circular(widget.borderRadius),
+                  child: _buildOverlay(heightOverlay),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+    return Overlay.of(context).insert(overlayEntry!);
+  }
+
+  Widget _buildOverlay(double height) {
+    if (value.isLoad == true) {
+      return SizedBox(
+        height: height,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    return _buildList();
+    // if (value.items.length <= 5) {
+    //   return _buildList();
+    // }
+    // return SizedBox(
+    //   height: height,
+    //   child: SingleChildScrollView(
+    //     padding: widget.padding ?? EdgeInsets.zero,
+    //     controller: _scroll,
+    //     physics: value.items.length > 3
+    //         ? const ScrollPhysics()
+    //         : const NeverScrollableScrollPhysics(),
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.stretch,
+    //       children: [
+    //         _buildList(),
+    //         if (value.items.length > 5)
+    //           Padding(
+    //             padding: const EdgeInsets.all(4.0),
+    //             child: value.isMore != true
+    //                 ? const SizedBox(
+    //                     height: 20,
+    //                   )
+    //                 : const Row(
+    //                     mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: [
+    //                       SizedBox(
+    //                         width: 20,
+    //                         height: 20,
+    //                         child: CircularProgressIndicator(
+    //                           strokeWidth: 1,
+    //                         ),
+    //                       ),
+    //                       SizedBox(width: 5),
+    //                       Text(
+    //                         "Đang tải",
+    //                         style: TextStyle(fontSize: 12),
+    //                       )
+    //                     ],
+    //                   ),
+    //           ),
+    //       ],
+    //     ),
+    //   ),
+    // );
+  }
+
+  Widget _buildList() {
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      itemCount: value.items.length > 5 ? 6 : value.items.length,
+      separatorBuilder: (context, index) =>
+          widget.separator ?? const Divider(height: 1),
+      itemBuilder: (context, index) {
+        if (index >= 5) {
+          return widget.buttonSeeMore;
+        }
+        return SizedBox(
+          height: widget.itemHeight,
+          child: InkWell(
+            onTap: () {
+              widget.onChanged?.call(value.items[index]);
+              _closeOverlay();
+            },
+            child: widget.itemBuilder(context, value.items[index], index),
+          ),
+        );
+      },
+    );
+  }
+
+  InputDecoration get theme {
+    return InputDecoration(
+      label: widget.label == null
+          ? null
+          : RichText(
+              text: TextSpan(
+                text: widget.label,
+                style: const TextStyle(color: Colors.black),
+                children: [
+                  if (widget.isRequired)
+                    const TextSpan(
+                      text: "*",
+                    ),
+                ],
+              ),
+            ),
+      hintText: widget.hintText ?? "Nhập từ khoá",
+      hintStyle: s14w400.copyWith(
+        color: AppColors.grey79,
+      ),
+      contentPadding:
+          widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 16),
+      border: border,
+      filled: true,
+      fillColor: AppColors.white,
+      focusedBorder: border.copyWith(
+        borderSide: BorderSide(color: widget.focusedBorderColor),
+      ),
+      focusedErrorBorder: border.copyWith(
+        borderSide: BorderSide(
+          color: widget.focusedBorderColor,
+        ),
+      ),
+      errorBorder: border.copyWith(
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      suffixIcon: widget.suffix,
+    );
+  }
+
+  OutlineInputBorder get border => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(widget.borderRadius),
+        borderSide: BorderSide(color: widget.enabledBorderColor),
+      );
+}
+
+class OverlayItemsValue<T> {
+  List<T> items;
+  bool isLoad;
+  bool isMore;
+  OverlayItemsValue({
+    required this.items,
+    this.isLoad = false,
+    this.isMore = false,
+  });
+}

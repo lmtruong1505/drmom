@@ -1,0 +1,162 @@
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:image/image.dart' as img;
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:BGP_Retail/core/extension/init_ext.dart';
+import 'package:BGP_Retail/core/utilities/dialog_utils.dart';
+import 'package:BGP_Retail/core/widgets/toast/toast.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+class ImageUtils {
+  static Future<String?> pickerSingleImage(
+    ImageSource source, {
+    bool isCrop = true,
+    CropStyle cropStyle = CropStyle.rectangle,
+  }) async {
+    final picker = ImagePicker();
+    final XFile? photo = await picker.pickImage(source: source);
+    if (photo != null) {
+      if (!isCrop) return photo.path;
+      final cropData = await cropImage(path: photo.path, cropStyle: cropStyle);
+      return cropData?.path;
+    }
+    return null;
+  }
+
+  static Future<String?> pickerSingleVideo(ImageSource source) async {
+    final picker = ImagePicker();
+    final XFile? photo = await picker.pickVideo(
+      source: source,
+    );
+    return photo?.path;
+  }
+
+  static Future<CroppedFile?> cropImage({
+    required String path,
+    CropStyle cropStyle = CropStyle.rectangle,
+  }) async {
+    final CroppedFile? croppedFile = await ImageCropper().cropImage(
+      sourcePath: path,
+      cropStyle: cropStyle,
+      aspectRatio: cropStyle == CropStyle.circle
+          ? null
+          : const CropAspectRatio(ratioX: 16, ratioY: 9),
+      aspectRatioPresets: [
+        CropAspectRatioPreset.ratio16x9,
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Chỉnh sửa',
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false,
+        ),
+        IOSUiSettings(
+          title: 'Chỉnh sửa',
+        ),
+      ],
+    );
+    return croppedFile;
+  }
+
+  static String cropIdentityImage({
+    required BuildContext context,
+    required XFile file,
+  }) {
+    final File imageFile = File(file.path);
+
+    final img.Image? image = img.decodeImage(imageFile.readAsBytesSync());
+    final img.Image croppedImage = img.copyCrop(
+      image!,
+      x: (context.width - kycIdentityOffsetX(context.width.toInt())) ~/ 2,
+      y: (context.height - kycIdentityOffsetY(context.height.toInt())) ~/ 2,
+      width: kycIdentityWidth(context.width.toInt()),
+      height: kycIdentityHeight(context.width.toInt()),
+    );
+
+    final String uniqueFileName =
+        'cropped_image_${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+    // Lưu ảnh đã cắt
+    final String croppedImagePath = '${imageFile.parent.path}/$uniqueFileName';
+
+    File(croppedImagePath).writeAsBytesSync(img.encodeJpg(croppedImage));
+    return croppedImagePath;
+  }
+
+  static int kycIdentityOffsetY(int height) => (height * 0.27).toInt();
+
+  static int kycIdentityOffsetX(int width) => (width * 0.1).toInt();
+
+  static int kycIdentityWidth(int width) =>
+      width - (2 * kycIdentityOffsetX(width));
+
+  static int kycIdentityHeight(int width) => kycIdentityWidth(width) ~/ 1.5;
+
+  static int kycPortraitRadius(int width) => (width * 0.7).toInt();
+
+  static int kycPortraitSize(int width) => (width * 0.9).toInt();
+
+  static int kycPortraitOffsetX(int width) => (width * 0.05).toInt();
+
+  static int kycPortraitOffsetY(int height) => (height * 0.2).toInt();
+
+  static Future<bool> saveImage(String? url, BuildContext context) async {
+    try {
+      print(url);
+      const link =
+          'https://img.vietqr.io/image/mbbank-6218189999-qr_only.jpg?amount=10000000&addInfo=3.250215171930+LOC+NGUYEN+DUC&accountName=CTCP+TV+PHAT+TRIEN+KD+DONG+NAM+A';
+      // 1. Yêu cầu quyền lưu trữ
+      PermissionStatus? status;
+      if (Platform.isAndroid) {
+        final androidInfo = await DeviceInfoPlugin().androidInfo;
+        if (androidInfo.version.sdkInt <= 32) {
+          status = await Permission.storage.request();
+        } else {
+          status = await Permission.photos.request();
+        }
+      } else {
+        status = await Permission.photos.request();
+      }
+
+      if (!status.isGranted) {
+        DialogUtils.showConfirmDialog(
+          context,
+          description:
+              'Quyền bị truy cập ảnh bị từ chối! .Mở lại vui lòng cấp quyền để lưu ảnh',
+          rightTitle: "Mở AppSetting",
+          ontap: () => openAppSettings(),
+        );
+        // Toast.showToast(
+        //     'Quyền bị truy cập ảnh bị từ chối! .Mở lại vui lòng cấp quyền để lưu ảnh',
+        //     context);
+
+        return false;
+      }
+
+      // 2. Tải ảnh từ URL bằng Dio
+      final Dio dio = Dio();
+      final response = await dio.get(
+        url ?? '',
+        options: Options(responseType: ResponseType.bytes),
+      );
+
+      // 3. Chuyển dữ liệu ảnh thành Uint8List
+      final Uint8List imageData = Uint8List.fromList(response.data);
+
+      // 4. Lưu ảnh vào thư viện ảnh
+      await ImageGallerySaver.saveImage(imageData);
+      Toast.showToast('Ảnh đã được lưu', context);
+
+      return true;
+    } catch (e) {
+      Toast.showToast('Lỗi khi lưu ảnh: $e', context);
+      return false;
+    }
+  }
+}

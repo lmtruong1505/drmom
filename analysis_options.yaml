@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    sized_box_for_whitespace: false
+    use_key_in_widget_constructors: false
+    always_declare_return_types: false
+    cancel_subscriptions: true
+    require_trailing_commas: true
+    empty_catches: false
+    unnecessary_await_in_return: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    constant_identifier_names: false
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore
+    mixin_inherits_from_not_object: ignore
