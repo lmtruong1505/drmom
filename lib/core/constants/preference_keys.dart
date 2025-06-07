@@ -13,4 +13,5 @@ class PrefKeys {
   static const String cart = 'cart';
   static const String accountDisabled = 'accountDisabled';
   static const String viewedBooths = 'viewedBooths';
+  static const String language = 'language';
 }

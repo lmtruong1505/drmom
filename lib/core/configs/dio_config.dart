@@ -35,8 +35,8 @@ class BaseDio {
   //   ),
   // );
 
-  final isLog = kReleaseMode ? false : true;
-  // final isLog = false;
+  // final isLog = kReleaseMode ? false : true;
+  final isLog = false;
 
   final preferences = getIt.get<Preferences>();
   final navigator = getIt.get<AppNavigator>();
@@ -131,7 +131,7 @@ class BaseDio {
           requestHeader: isLog,
         ),
         CurlLoggerDioInterceptor(
-          printOnSuccess: isLog,
+          printOnSuccess: true,
         ),
       ],
     );

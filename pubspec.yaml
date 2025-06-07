@@ -3,7 +3,7 @@ description: bpg_retail
 
 publish_to: 'none'
 
-version: 1.0.0+4
+version: 1.0.1+7
 
 environment:
   sdk: '>=3.3.0 <4.0.0'

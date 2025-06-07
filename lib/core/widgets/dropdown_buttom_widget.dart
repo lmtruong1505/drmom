@@ -13,12 +13,14 @@ class DropdownButtonWidget<T> extends StatelessWidget {
     this.radius = 8,
     this.value,
     this.maxHeightDropdown,
+    this.maxWidthDropdown,
   });
 
   final String hintText;
   final String? text;
   final double radius;
   final double? maxHeightDropdown;
+  final double? maxWidthDropdown;
   final T? value;
   final void Function(T?)? onChanged;
   final List<DropdownMenuItem<T>>? items;
@@ -88,6 +90,7 @@ class DropdownButtonWidget<T> extends StatelessWidget {
         ),
         dropdownStyleData: DropdownStyleData(
           maxHeight: maxHeightDropdown,
+          width: maxWidthDropdown,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
           ),

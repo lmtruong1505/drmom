@@ -11,10 +11,12 @@ class ReportRepository {
     String? start,
     String? end,
     int id,
+    int? warehouseId,
   ) async {
     final data = {
       'recorded_at__gte': start,
       'recorded_at__lte': end,
+      'warehouse_id': warehouseId,
     };
     data.removeWhere((key, value) => value == null);
     final List<ReportHomeModel> list = [];

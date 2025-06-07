@@ -167,7 +167,7 @@ class UserModelV3 {
     this.isSuperuser,
     this.state,
     this.note,
-    // this.warehouses,
+    this.warehouses,
     this.createdAt,
     this.datePeriod,
     this.avatar,
@@ -205,7 +205,7 @@ class UserModelV3 {
   final bool? isSuperuser;
   final String? state;
   final String? note;
-  // final List<Warehouse>? warehouses;
+  final List<WarehouseModel>? warehouses;
 
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;

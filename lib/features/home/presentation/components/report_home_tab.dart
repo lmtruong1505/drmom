@@ -3,12 +3,10 @@ import 'package:bpg_retail/core/utilities/enum.dart';
 import 'package:bpg_retail/core/utilities/localization_helper.dart';
 import 'package:bpg_retail/features/home/data/bloc/report_home_bloc.dart';
 import 'package:bpg_retail/features/home/data/model/home_report_model.dart';
-import 'package:bpg_retail/features/home/presentation/components/filter_transection_widget.dart';
 import 'package:bpg_retail/features/home/presentation/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class ReportHomeTab extends StatefulWidget {
   const ReportHomeTab({
@@ -21,7 +19,8 @@ class ReportHomeTab extends StatefulWidget {
   State<ReportHomeTab> createState() => _ReportHomeTabState();
 }
 
-class _ReportHomeTabState extends State<ReportHomeTab> {
+class _ReportHomeTabState extends State<ReportHomeTab>
+    with AutomaticKeepAliveClientMixin {
   final navigator = getIt<AppNavigator>();
   @override
   void initState() {
@@ -29,7 +28,13 @@ class _ReportHomeTabState extends State<ReportHomeTab> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final trans = AppLocalizations.of(context);
     final bloc = widget.bloc;
     return BlocBuilder<HomeReportBloc, CubitState>(
@@ -45,7 +50,11 @@ class _ReportHomeTabState extends State<ReportHomeTab> {
                   .map(
                     (e) => DropdownMenuItem(
                       value: e,
-                      child: Text(e.name ?? ''),
+                      child: Text(
+                        e.name ?? '',
+                        style: s14w400,
+                        maxLines: 1,
+                      ),
                     ),
                   )
                   .toList(),
@@ -66,6 +75,7 @@ class _ReportHomeTabState extends State<ReportHomeTab> {
                         '${e.openingDate.toTextDefaulft}-${e.closingDate.toTextDefaulft}',
                         maxLines: 2,
                         style: s14w400,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   )
@@ -95,6 +105,9 @@ class _ReportHomeTabState extends State<ReportHomeTab> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 // Sinh list các ngày từ start đến end
@@ -178,7 +191,7 @@ class _WarehouseTableState extends State<WarehouseTable> {
     }
 
     final detailKeys = widget.data.first.details?.keys.toList();
-    final now = DateTime.now();
+
     return Scrollbar(
       thumbVisibility: true,
       trackVisibility: true,
@@ -213,130 +226,22 @@ class _WarehouseTableState extends State<WarehouseTable> {
                           color: AppColors.greyAA,
                         ),
                       ),
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            _headerColum(row),
-                            for (final key in detailKeys ?? [])
-                              GestureDetector(
-                                behavior: HitTestBehavior.opaque,
-                                onTap: () {
-                                  final detail = row.details?[key];
-                                  final today = now.add(Duration(days: index));
-                                  context.dialog(
-                                    child: Dialog(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: 16.radius,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                today.toTextDefaulft,
-                                                style: s16w500,
-                                              ),
-                                              const Spacer(),
-                                              GestureDetector(
-                                                onTap: () => navigator.pop(),
-                                                child: const Icon(
-                                                  Icons.cancel,
-                                                  size: 20,
-                                                  color: AppColors.greyE2,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          const Divider(),
-                                          Visibility(
-                                            visible:
-                                                detail?.productData != null,
-                                            child: Row(
-                                              children: [
-                                                CacheNetworkImageWidget(
-                                                  width: 56,
-                                                  height: 56,
-                                                  borderRadius: 8,
-                                                  url: detail?.productData
-                                                      ?.productFile?.imageData,
-                                                ),
-                                                12.width,
-                                                Column(
-                                                  children: [
-                                                    Text(
-                                                      detail?.productData
-                                                              ?.productName ??
-                                                          '',
-                                                      style: s12w400,
-                                                    ),
-                                                    Text(
-                                                      detail?.productData
-                                                              ?.productCode ??
-                                                          '',
-                                                      style: s10w400.copyWith(
-                                                        color: AppColors.grey79,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ).expanded(),
-                                                Text(
-                                                  'x ${formatNumberV2(detail?.stock)}',
-                                                  style: s10w400.copyWith(
-                                                    color: AppColors.grey79,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Text(
-                                            row.warehouse ?? '',
-                                            style: s14w500,
-                                            textAlign: TextAlign.left,
-                                          ),
-                                          _rowInfor(
-                                            trans.translate('stock'),
-                                            formatNumberV2(
-                                              detail?.stock,
-                                            ),
-                                          ),
-                                          _rowInfor(
-                                            '${trans.translate('bill_of')} ${today.toTextDefaulft}',
-                                            formatNumberV2(
-                                              detail?.price,
-                                            ),
-                                          ),
-                                          _rowInfor(
-                                            '${trans.translate('total_bill_from')}  ${now.toTextDefaulft} ${trans.translate('to')} ${today.toTextDefaulft}',
-                                            formatNumberV2(
-                                              detail?.totalPrice,
-                                            ),
-                                          ),
-                                          16.height,
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: MainButton(
-                                              title: trans.translate('close'),
-                                              onTap: () => navigator.pop(),
-                                            ),
-                                          ),
-                                        ],
-                                      ).padding(16.pading),
-                                    ),
-                                  );
-                                },
-                                child: _buildCell(
-                                  stock: row.details?[key]?.stock,
-                                  totalPrice: row.details?[key]?.totalPrice,
-                                  price: row.details?[key]?.price,
-                                ),
+                      child: Row(
+                        children: [
+                          _headerColum(row),
+                          for (final key in detailKeys ?? [])
+                            GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
+                                showDetailDialog(row, index, key, trans);
+                              },
+                              child: _buildCell(
+                                stock: row.details?[key]?.stock,
+                                totalPrice: row.details?[key]?.totalPrice,
+                                price: row.details?[key]?.price,
                               ),
-                          ],
-                        ),
+                            ),
+                        ],
                       ),
                     );
                   },
@@ -455,6 +360,114 @@ class _WarehouseTableState extends State<WarehouseTable> {
             style: s10w400.copyWith(color: AppColors.greyAA),
           ),
         ],
+      ),
+    );
+  }
+
+  void showDetailDialog(
+    ReportHomeModel row,
+    int index,
+    dynamic key,
+    AppLocalizations trans,
+  ) {
+    final detail = row.details?[key];
+    final now = DateTime.now();
+    final today = now.add(Duration(days: index));
+    context.dialog(
+      child: Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: 16.radius,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  today.toTextDefaulft,
+                  style: s16w500,
+                ),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () => navigator.pop(),
+                  child: const Icon(
+                    Icons.cancel,
+                    size: 20,
+                    color: AppColors.greyE2,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(),
+            Visibility(
+              visible: detail?.productData != null,
+              child: Row(
+                children: [
+                  CacheNetworkImageV2(
+                    width: 56,
+                    height: 56,
+                    borderRadius: 8,
+                    url: detail?.productData?.productFile?.imageData,
+                    fit: BoxFit.contain,
+                  ),
+                  12.width,
+                  Column(
+                    children: [
+                      Text(
+                        detail?.productData?.productName ?? '',
+                        style: s12w400,
+                      ),
+                      Text(
+                        detail?.productData?.productCode ?? '',
+                        style: s10w400.copyWith(
+                          color: AppColors.grey79,
+                        ),
+                      ),
+                    ],
+                  ).expanded(),
+                  Text(
+                    'x ${formatNumberV2(detail?.stock)}',
+                    style: s10w400.copyWith(
+                      color: AppColors.grey79,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              row.warehouse ?? '',
+              style: s14w500,
+              textAlign: TextAlign.left,
+            ),
+            _rowInfor(
+              trans.translate('stock'),
+              formatNumberV2(
+                detail?.stock,
+              ),
+            ),
+            _rowInfor(
+              '${trans.translate('bill_of')} ${today.toTextDefaulft}',
+              formatNumberV2(
+                detail?.price,
+              ),
+            ),
+            _rowInfor(
+              '${trans.translate('total_bill_from')}  ${now.toTextDefaulft} ${trans.translate('to')} ${today.toTextDefaulft}',
+              formatNumberV2(
+                detail?.totalPrice,
+              ),
+            ),
+            16.height,
+            Align(
+              alignment: Alignment.center,
+              child: MainButton(
+                title: trans.translate('close'),
+                onTap: () => navigator.pop(),
+              ),
+            ),
+          ],
+        ).padding(16.pading),
       ),
     );
   }

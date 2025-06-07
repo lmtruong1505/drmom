@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage>
   final homeReportBloc = HomeReportBloc();
   final authBloc = getIt.get<AuthenticationCubit>();
   late TabController _tabController;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final indexCubit = IndexCubit();
 
   @override
@@ -44,10 +45,10 @@ class _HomePageState extends State<HomePage>
   void initializeData() {
     transectionBloc
       ..initData()
-      ..getListWarehouse();
+      ..getTransaction();
     homeReportBloc
       ..initData()
-      ..getListWarehouse();
+      ..getReports();
   }
 
   // void initFirebase() async {
@@ -55,8 +56,13 @@ class _HomePageState extends State<HomePage>
   //   // await FirebaseMessageConfig().initNotification(context);
   //   // await FirebaseMessaging.instance.subscribeToTopic('ACCOUNT_${1}');
   // }
+  @override
+  void dispose() {
+    scroll.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
 
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final trans = AppLocalizations.of(context);
@@ -75,13 +81,12 @@ class _HomePageState extends State<HomePage>
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
+          backgroundColor: AppColors.white,
           centerTitle: false,
           title: Assets.images.logo.image(height: 41, width: 79),
           actions: [
             GestureDetector(
               onTap: () {
-                // final authBloc = getIt.get<AuthenticationCubit>();
-                // authBloc.logOut();
                 _scaffoldKey.currentState?.openEndDrawer();
               },
               child: const Icon(
@@ -213,6 +218,7 @@ class AppDrawer extends StatelessWidget {
     final user = preferences.currentUser;
     final profile = preferences.getUserDataV3;
     return Drawer(
+      backgroundColor: AppColors.bg_6,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       width: widthDevice(context) * 3 / 4,
       child: Column(
@@ -272,23 +278,26 @@ class AppDrawer extends StatelessWidget {
             data: user.fullAddress,
           ),
           const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const LanguageSelector(),
-              16.width,
-              BtnIcon(
-                color: AppColors.redC7,
-                icon: const Icon(
-                  Icons.logout,
-                  color: AppColors.white,
-                  size: 20,
+          Container(
+            color: AppColors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const LanguageSelector(),
+                16.width,
+                BtnIcon(
+                  color: AppColors.redC7,
+                  icon: const Icon(
+                    Icons.logout,
+                    color: AppColors.white,
+                    size: 20,
+                  ),
+                  size: const Size(48, 48),
+                  onTap: () => authBloc.logOut(),
                 ),
-                size: const Size(48, 48),
-                onTap: () => authBloc.logOut(),
-              ),
-            ],
-          ).padding(paddingBottom.padingBottom + 16.padingHor),
+              ],
+            ).padding(paddingBottom.padingBottom + 16.padingHor + 16.padingTop),
+          ),
         ],
       ),
     );

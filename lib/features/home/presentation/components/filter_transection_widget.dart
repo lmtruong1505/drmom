@@ -31,7 +31,8 @@ class FilterTransactionWidget extends StatelessWidget {
                       value: e,
                       child: Text(
                         trans.translate(e.name),
-                        maxLines: 2,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: s14w400,
                       ),
                     ),
@@ -44,6 +45,7 @@ class FilterTransactionWidget extends StatelessWidget {
             ).expanded(),
             12.width,
             DropdownButtonWidget(
+              maxWidthDropdown: context.width,
               maxHeightDropdown: 400,
               value: bloc.warehouse,
               hintText: trans.translate('select_warehouse'),
@@ -53,7 +55,7 @@ class FilterTransactionWidget extends StatelessWidget {
                       value: e,
                       child: Text(
                         e.name ?? '',
-                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: s14w400,
                       ),
                     ),

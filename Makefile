@@ -15,7 +15,7 @@ aab:
 	flutter build appbundle --no-shrink --dart-define=DART_DEFINES_ENV="prod" --dart-define=DART_DEFINES_URL=""
 
 ipa:
-	flutter build ios --release --dart-define=DART_DEFINES_ENV="prod" --dart-define=DART_DEFINES_URL=""
+	flutter build ipa --release --dart-define=DART_DEFINES_ENV="prod" --dart-define=DART_DEFINES_URL=""
 
 run:
 	dart run build_runner build --delete-conflicting-outputs 

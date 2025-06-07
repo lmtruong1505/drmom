@@ -7,7 +7,6 @@ import 'package:bpg_retail/features/home/data/model/warehouse_model.dart';
 import 'package:bpg_retail/features/home/data/repositories/report_repository.dart';
 import 'package:bpg_retail/features/home/data/repositories/warehouse_repository.dart';
 import 'package:dartx/dartx.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bpg_retail/core/base/cubit_state.dart';
 import 'package:bpg_retail/core/utilities/enum.dart';
@@ -28,26 +27,25 @@ class HomeReportBloc extends Cubit<CubitState> {
   DatePeriod? datePeriodSelect;
 
   WarehouseModel? warehouse;
-  void getListWarehouse({
-    String? search,
-    bool? isMore,
-  }) async {
-    emit(state.copyWith(status: CubitStatus.loading));
-    final id = share.currentUser.id ?? 0;
-    isMore == true ? _page++ : _page = 1;
-    final res = await _warehouseRepo.getWarehouses(search, _page, id);
-    if (res.code == 200) {
-      listWarehouse = res.data ?? [];
-      warehouse = listWarehouse.firstOrNull;
-      getReports();
-    }
-    emit(state.copyWith(status: CubitStatus.success));
-  }
+  // void getListWarehouse({
+  //   String? search,
+  //   bool? isMore,
+  // }) async {
+  //   emit(state.copyWith(status: CubitStatus.loading));
+  //   final id = share.currentUser.id ?? 0;
+  //   isMore == true ? _page++ : _page = 1;
+  //   final res = await _warehouseRepo.getWarehouses(search, _page, id);
+  //   if (res.code == 200) {
+  //     listWarehouse = [WarehouseModel(name: 'Tất cả kho'), ...?res.data];
+  //     warehouse = listWarehouse.firstOrNull;
+  //     getReports();
+  //   }
+  //   emit(state.copyWith(status: CubitStatus.success));
+  // }
 
   void selectWareHouse(WarehouseModel? value) {
     warehouse = value;
     getReports();
-    // emit(state.copyWith(status: CubitStatus.success));
   }
 
   void getReports() async {
@@ -56,7 +54,7 @@ class HomeReportBloc extends Cubit<CubitState> {
     final start = datePeriodSelect?.openingDate.toText(fomat: 'yyyy-MM-dd');
     final end = (datePeriodSelect?.closingDate ?? DateTime.now())
         .toText(fomat: 'yyyy-MM-dd');
-    final res = await _repo.getReports(start, end, id);
+    final res = await _repo.getReports(start, end, id, warehouse?.id);
     if (res.data != null) {
       list = res.data ?? [];
     }
@@ -66,7 +64,6 @@ class HomeReportBloc extends Cubit<CubitState> {
   void selectDateRange(PickerDateRange result) {
     range = result;
     getReports();
-    // emit(state.copyWith(status: CubitStatus.update));
   }
 
   void selectDate(DateTime day) {
@@ -85,6 +82,12 @@ class HomeReportBloc extends Cubit<CubitState> {
       ...?userDatePeriod,
     ];
     datePeriodSelect = listDatePeriod?.firstOrNull;
+
+    listWarehouse = [
+      WarehouseModel(name: 'Tất cả kho'),
+      ...?share.getUserDataV3.warehouses,
+    ];
+    warehouse = listWarehouse.firstOrNull;
   }
 
   void filterDatePeriod(DatePeriod? p0) {

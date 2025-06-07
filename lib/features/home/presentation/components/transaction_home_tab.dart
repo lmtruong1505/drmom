@@ -1,5 +1,4 @@
 import 'package:bpg_retail/app/routes/router.gr.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/utilities/converts.dart';
 import 'package:bpg_retail/core/utilities/enum.dart';
 import 'package:bpg_retail/core/utilities/localization_helper.dart';
@@ -22,13 +21,15 @@ class TransectionHomeTab extends StatefulWidget {
   State<TransectionHomeTab> createState() => _TransectionHomeTabState();
 }
 
-class _TransectionHomeTabState extends State<TransectionHomeTab> {
+class _TransectionHomeTabState extends State<TransectionHomeTab>
+    with AutomaticKeepAliveClientMixin {
   final navigator = getIt<AppNavigator>();
 
   final searchCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final bloc = widget.bloc;
     final trans = AppLocalizations.of(context);
     return BlocBuilder<TransactionBloc, CubitState>(
@@ -195,6 +196,9 @@ class _TransectionHomeTabState extends State<TransectionHomeTab> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class TotalBalanceWidget extends StatelessWidget {

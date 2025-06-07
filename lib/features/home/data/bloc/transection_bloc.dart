@@ -69,21 +69,21 @@ class TransactionBloc extends Cubit<CubitState> {
   FilterModel? filterSelect;
 
   WarehouseModel? warehouse;
-  void getListWarehouse({
-    String? search,
-    bool? isMore,
-  }) async {
-    emit(state.copyWith(status: CubitStatus.loading));
-    final id = share.currentUser.id ?? 0;
-    isMore == true ? _page++ : _page = 1;
-    final res = await _warehouseRepo.getWarehouses(search, _page, id);
-    if (res.code == 200) {
-      listWarehouse = res.data ?? [];
-      warehouse = listWarehouse.firstOrNull;
-      getTransaction();
-    }
-    emit(state.copyWith(status: CubitStatus.success));
-  }
+  // void getListWarehouse({
+  //   String? search,
+  //   bool? isMore,
+  // }) async {
+  //   emit(state.copyWith(status: CubitStatus.loading));
+  //   final id = share.currentUser.id ?? 0;
+  //   isMore == true ? _page++ : _page = 1;
+  //   final res = await _warehouseRepo.getWarehouses(search, _page, id);
+  //   if (res.code == 200) {
+  //     listWarehouse = res.data ?? [];
+  //     warehouse = listWarehouse.firstOrNull;
+  //     getTransaction();
+  //   }
+  //   emit(state.copyWith(status: CubitStatus.success));
+  // }
 
   void selectWareHouse(WarehouseModel? value) {
     warehouse = value;
@@ -125,6 +125,8 @@ class TransactionBloc extends Cubit<CubitState> {
     ];
     datePeriodSelect = listDatePeriod?.firstOrNull;
     selectedEndDate = datePeriodSelect?.closingDate;
+    listWarehouse = share.getUserDataV3.warehouses ?? [];
+    warehouse = listWarehouse.firstOrNull;
   }
 
   void selectDateRange(PickerDateRange p0) {

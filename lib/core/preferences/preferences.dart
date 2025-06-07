@@ -26,6 +26,10 @@ class Preferences {
     return _preferences.getString(PrefKeys.refreshToken);
   }
 
+  String? get language {
+    return _preferences.getString(PrefKeys.language);
+  }
+
   RememberAccount? get rememberAccount {
     final user = _preferences.getString(PrefKeys.rememberAccount) ?? '';
     return user.isNotEmpty ? RememberAccount.fromJson(jsonDecode(user)) : null;
@@ -218,6 +222,14 @@ class Preferences {
     final success = await _preferences.setString(
       PrefKeys.accountDisabled,
       accountDisabled,
+    );
+    return success;
+  }
+
+  Future<bool> saveLanguage(String value) async {
+    final success = await _preferences.setString(
+      PrefKeys.language,
+      value,
     );
     return success;
   }
