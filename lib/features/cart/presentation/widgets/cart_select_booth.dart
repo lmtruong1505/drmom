@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/configs/firebase_analytics_config.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/utilities/screens.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_cubit_v2.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/utilities/screens.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_cubit_v2.dart';
 
 class CartSelectBooth extends StatefulWidget {
   const CartSelectBooth({super.key, this.selectedBooth, this.booths});

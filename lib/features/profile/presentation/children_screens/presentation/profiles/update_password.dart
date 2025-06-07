@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/common/title_required.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/profile_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/profile_state.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/common/title_required.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/profile/data/bloc/profile_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

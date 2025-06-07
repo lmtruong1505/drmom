@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
 
 class CustomSwitch extends StatefulWidget {
   final bool value;

@@ -1,19 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/data/bloc/app_state.dart';
-import 'package:BGP_Retail/app/routes/router.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/features/root_page.dart/root_page.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/data/bloc/localization_cubit.dart';
+import 'package:bpg_retail/app/routes/router.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/utilities/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-import '../../features/card/data/cubits/card_bloc.dart';
-import '../../features/cart/data/bloc/cart_bloc.dart';
-import '../../features/wallet/data/cubits/wallet_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatefulWidget {
@@ -41,18 +38,12 @@ class _MyAppState extends BaseState<MyApp, AppCubit>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        getData();
-      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {});
     } else if (state == AppLifecycleState.paused) {}
   }
 
-  void getData() {
-    context.read<WalletCubit>().getWallets();
-    context.read<CardBloc>().getMyCard();
-  }
-
   final appRouter = getIt.get<AppRouter>();
+  final localizationBloc = LocalizationCubit();
 
   @override
   Widget buildPage(BuildContext context) {
@@ -60,57 +51,53 @@ class _MyAppState extends BaseState<MyApp, AppCubit>
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => WalletCubit(),
-          ),
-          BlocProvider(
-            create: (context) => CardBloc(),
-          ),
-          BlocProvider(
-            create: (context) => CartBloc()..getCart(),
+            create: (context) => localizationBloc,
           ),
         ],
-        child: MaterialApp.router(
-          builder: EasyLoading.init(
-            builder: (context, child) {
-              final mediaQueryData = MediaQuery.of(context);
-              final scale = mediaQueryData.textScaler
-                  .clamp(minScaleFactor: 1.0, maxScaleFactor: 1.0);
-              return MediaQuery(
-                data: MediaQuery.of(context).copyWith(
-                  textScaler: scale,
-                ),
-                child: child!,
-              );
-            },
-          ),
-          routerDelegate: appRouter.delegate(
-            // initialRoutes: [const HomePage()],
-            deepLinkBuilder: (_) => DeepLink(_mapRouteToPageRouteInfo()),
-            // navigatorObservers: () => [AppNavigatorObserver()],
-          ),
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en', 'US'),
-            Locale('vi', 'VN'),
-          ],
-          routeInformationParser: appRouter.defaultRouteParser(),
-          debugShowCheckedModeBanner: false,
+        child: BlocBuilder<LocalizationCubit, Locale>(
+          builder: (context, state) {
+            return MaterialApp.router(
+              builder: EasyLoading.init(
+                builder: (context, child) {
+                  final mediaQueryData = MediaQuery.of(context);
+                  final scale = mediaQueryData.textScaler
+                      .clamp(minScaleFactor: 1.0, maxScaleFactor: 1.0);
+                  return MediaQuery(
+                    data: MediaQuery.of(context).copyWith(textScaler: scale),
+                    child: child!,
+                  );
+                },
+              ),
+              routerDelegate: appRouter.delegate(
+                deepLinkBuilder: (_) => DeepLink(_mapRouteToPageRouteInfo()),
+              ),
+              locale: state,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en'), Locale('vi'),
+                // Locale('en', 'US'),
+                // Locale('vi', 'VN'),
+              ],
+              routeInformationParser: appRouter.defaultRouteParser(),
+              debugShowCheckedModeBanner: false,
+            );
+          },
         ),
       ),
     );
   }
 
   List<PageRouteInfo> _mapRouteToPageRouteInfo() {
-    // final token = preferences.accessToken;
-    // if (token == null || token.isEmpty) {
-    //   return [LoginPage()];
-    // } else {
-    //   return [const RootRoute()];
-    // }
-    return [LoginPage()];
+    final token = preferences.accessToken;
+    if (token == null || token.isEmpty) {
+      return [const LoginPage()];
+    } else {
+      return [const HomeRoute()];
+    }
   }
 }

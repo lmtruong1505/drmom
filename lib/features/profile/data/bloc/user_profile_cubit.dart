@@ -7,21 +7,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/core/widgets/identity_card_widget.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v2.dart';
-import 'package:BGP_Retail/features/authentication/data/repositories/authentication_repository.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 @Injectable()
 class UserProfileCubit extends Cubit<CubitState> {
@@ -50,9 +50,9 @@ class UserProfileCubit extends Cubit<CubitState> {
     return preferences.getUserData;
   }
 
-  UserModel get currentUser {
-    return preferences.currentUser.user ?? UserModel();
-  }
+  // UserModel get currentUser {
+  //   return preferences.currentUser.user ?? UserModel();
+  // }
 
   void onChangeAddress(Map<String, dynamic> address) {
     emit(state.copyWith(status: CubitStatus.loading));
@@ -148,7 +148,7 @@ class UserProfileCubit extends Cubit<CubitState> {
           final image = await MultipartFile.fromFile(backUrl ?? "");
           formData.files.add(MapEntry("image_back", image));
         }
-        final id = preferences.currentUser.user?.id ?? 0;
+        final id = preferences.currentUser.id ?? 0;
 
         final res = await _repo.onAsbcUpdate(formData, id);
         EasyLoading.dismiss();
@@ -205,7 +205,8 @@ class UserProfileCubit extends Cubit<CubitState> {
 
   void confirmDeactive() async {
     navigator.back();
-    final res = await _repo.deactive(currentUser.id);
+    final id = preferences.currentUser.id ?? 0;
+    final res = await _repo.deactive(id);
     if (res.code == 200) {
       emit(state.copyWith(status: CubitStatus.sendSuccess));
     } else {

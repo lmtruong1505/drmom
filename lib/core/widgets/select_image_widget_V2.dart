@@ -3,11 +3,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/image_utils.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/image_utils.dart';
 
 class SelectImageWidgetV2 extends StatelessWidget {
   final bool isVideo;

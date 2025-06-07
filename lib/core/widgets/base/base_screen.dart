@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/widgets/text_title.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/widgets/text_title.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 import '../../constants/colors.dart';
 import '../buttons/extra_button.dart';

@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/profile_cubit.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/features/profile/data/bloc/profile_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/tabs/profile_info.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/tabs/profile_info.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 import '../../../core/widgets/base/base_screen.dart';
 

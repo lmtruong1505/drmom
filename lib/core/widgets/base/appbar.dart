@@ -1,8 +1,8 @@
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:flutter/material.dart';
 
-class BaseAppBar extends StatelessWidget {
+class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar({
     Key? key,
     this.backgroundColor,
@@ -69,4 +69,7 @@ class BaseAppBar extends StatelessWidget {
       actions: trailingIcons,
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

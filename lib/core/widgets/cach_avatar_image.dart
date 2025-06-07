@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 class CacheAvatarImage extends StatelessWidget {
   final String? url;

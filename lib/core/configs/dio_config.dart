@@ -4,14 +4,14 @@
 // import 'package:alice/model/alice_http_request.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/configs/logger.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/core/env/env.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/configs/logger.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/core/env/env.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -36,6 +36,7 @@ class BaseDio {
   // );
 
   final isLog = kReleaseMode ? false : true;
+  // final isLog = false;
 
   final preferences = getIt.get<Preferences>();
   final navigator = getIt.get<AppNavigator>();
@@ -77,7 +78,7 @@ class BaseDio {
           onRequest: (options, handler) {
             return handler.next(options);
           },
-          onResponse: (response, handler) {
+          onResponse: (response, handler) async {
             // logApi(
             //   response.requestOptions.uri.toString(),
             //   response.requestOptions.method,
@@ -93,7 +94,10 @@ class BaseDio {
             //     // stackTrace: stacktrace,
             //   ),
             // );
-
+            final statusCode = response.data['status'];
+            if (statusCode == 401 || statusCode == 403) {
+              await appCubit.onForceLogout(isMessage: false);
+            }
             return handler.next(response);
           },
           onError: (error, handler) async {

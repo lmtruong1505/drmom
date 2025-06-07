@@ -1,15 +1,15 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/features/booth/data/bloc/asbc_both_state.dart';
-import 'package:BGP_Retail/features/booth/data/repositories/booth_repository.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/features/booth/data/bloc/asbc_both_state.dart';
+import 'package:bpg_retail/features/booth/data/repositories/booth_repository.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
 
 @LazySingleton()
 class AsbcBothCubit extends Cubit<AsbcBothState> {

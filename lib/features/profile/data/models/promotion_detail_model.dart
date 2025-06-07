@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model_v2.dart';
-import 'package:BGP_Retail/features/profile/data/models/promotion_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_model_v2.dart';
+import 'package:bpg_retail/features/profile/data/models/promotion_model.dart';
 
 part 'promotion_detail_model.g.dart';
 part 'promotion_detail_model.freezed.dart';

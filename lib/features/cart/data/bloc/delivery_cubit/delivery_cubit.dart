@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
-import 'package:BGP_Retail/features/cart/data/repositories/delivery_repository.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/repositories/delivery_repository.dart';
 
 import '../../models/delivery_price_model.dart';
 import 'delivery_state.dart';

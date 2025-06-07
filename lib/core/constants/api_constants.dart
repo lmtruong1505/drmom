@@ -1,12 +1,12 @@
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/env/env.dart';
+import 'package:bpg_retail/core/env/env.dart';
 
 @injectable
 class Api {
   static String env = EnvironmentConfig.ENV;
   // static String env = "prod";
   // static String domain = EnvironmentConfig.BASE_URL;
-  static String domain = "https://pharmago-cms.too.onl";
+  static String domain = "https://api.trangoo.com";
 
   static String baseURL = "https://api.thachlonghai.co";
   static String baseURLV2 = domain;
@@ -189,8 +189,11 @@ class Api {
   static String register = '$baseURLV2/api/v1/auth/send-otp-code';
   static String verifyOtpPhone = '$baseURLV2/api/v1/auth/patient-register';
   static String healthcare = '$baseURLV2/api/v1/healthcare-entity';
-  static String getDoctors =
-      '$baseURLV2/api/v1/healthcare-entity/random-doctors';
-  static String getUser = '$baseURLV2/api/v1/user';
+  static String getTransaction(int id) =>
+      '$baseURLV2/api/v1/user/$id/transaction_v2';
+  static String transactionDetail = '$baseURLV2/api/v1/transaction';
+  static String getReports(int id) => '$baseURLV2/api/v1/user/$id/report';
+  static String getWarehouses = '$baseURLV2/api/v1/warehouse';
+  static String getUser = '$baseURLV2/api/v1/auth/profile';
   static String logOut = '$baseURLV2/api/v1/auth/logout';
 }

@@ -174,3 +174,12 @@ const TextStyle s8w400 = TextStyle(
   fontSize: 8,
   fontWeight: DEFAULT,
 );
+
+const TextStyle s10w400 = TextStyle(
+  fontSize: 10,
+  fontWeight: DEFAULT,
+);
+const TextStyle s10w500 = TextStyle(
+  fontSize: 10,
+  fontWeight: MEDIUM,
+);

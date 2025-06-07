@@ -1,40 +1,40 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/dialog_utils.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/screens.dart';
-import 'package:BGP_Retail/core/widgets/appbar_back_button.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/buttons/main_button.dart';
-import 'package:BGP_Retail/core/widgets/cache_image_network_widget.dart';
-import 'package:BGP_Retail/core/widgets/image_default.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/dialog_utils.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/screens.dart';
+import 'package:bpg_retail/core/widgets/appbar_back_button.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
+import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
+import 'package:bpg_retail/core/widgets/image_default.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/row_item.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_cubit_v2.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_qr_buy_cubit.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_qr_buy_state.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_state_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/payment_success_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/cart/presentation/asbc_cart_buy_v2.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/deposit_withdrawal_screen.dart';
+import 'package:bpg_retail/core/widgets/row_item.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_cubit_v2.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_qr_buy_cubit.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_qr_buy_state.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_state_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/models/payment_success_model.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/cart/presentation/asbc_cart_buy_v2.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/deposit_withdrawal_screen.dart';
 
 @RoutePage()
 class CartQRBuyPage extends StatefulWidget {
@@ -156,15 +156,15 @@ class _CartQRBuyPageState extends State<CartQRBuyPage> {
                   ),
                 ),
                 16.height,
-                const RowItem(
+                const BaseRowItem(
                   title: "Ví giao dịch:",
                   subtitle: "Ví mua hàng",
                 ),
-                RowItem(
+                BaseRowItem(
                   title: "Mã giao dịch:",
                   subtitle: payment?.referenceOrderCode ?? "",
                 ),
-                RowItem(
+                BaseRowItem(
                   title: "Thời gian giao dịch:",
                   subtitle: convertDateFormatTime(
                     payment?.createdAt ?? "",
@@ -563,19 +563,19 @@ class NoteItem extends StatelessWidget {
       padding: 16.pading,
       child: Column(
         children: [
-          const RowItem(
+          const BaseRowItem(
             title: "Ghi chú",
             subtitle: "Giao hàng vào giờ hành chính",
           ),
           8.height,
-          RowItem(
+          BaseRowItem(
             title: "Thời gian tạo đơn",
             subtitle: convertDateFormatTime(
               detail?.createdAt ?? "",
             ),
           ),
           8.height,
-          RowItem(
+          BaseRowItem(
             title: "Thời gian cập nhật",
             subtitle: convertDateFormatTime(
               detail?.updatedAt ?? "",

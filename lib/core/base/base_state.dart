@@ -1,7 +1,7 @@
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +31,7 @@ abstract class BaseStateDelegate<T extends StatefulWidget, B extends BaseCubit>
         providers: [
           BlocProvider(
             create: (_) {
-              appCubit.getCurrentLocation();
+              // appCubit.getCurrentLocation();
               return bloc..initState();
             },
           ),

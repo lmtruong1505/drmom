@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 import 'base/base_loading.dart';
 

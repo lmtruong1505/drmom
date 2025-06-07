@@ -1,7 +1,7 @@
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
 
 import '../../../../core/constants/api_constants.dart';
 import '../model/category_mode_v2.dart';

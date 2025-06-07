@@ -1,4 +1,4 @@
-import 'package:BGP_Retail/core/utilities/log_utils.dart';
+import 'package:bpg_retail/core/utilities/log_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

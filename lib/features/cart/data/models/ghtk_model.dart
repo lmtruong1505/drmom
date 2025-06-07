@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
 
 part 'ghtk_model.g.dart';
 

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/profile/data/models/referall_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
 
 part 'authentication_state.freezed.dart';
 

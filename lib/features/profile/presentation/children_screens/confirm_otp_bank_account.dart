@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/buttons/main_button.dart';
-import 'package:BGP_Retail/core/widgets/buttons/tab_button.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/core/widgets/toast/toast.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/confirm_account_opt_cubit.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/payment_detail_sreen.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
+import 'package:bpg_retail/core/widgets/buttons/tab_button.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/core/widgets/toast/toast.dart';
+import 'package:bpg_retail/features/profile/data/bloc/confirm_account_opt_cubit.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/payment_detail_sreen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ConfirmOtpBankAccount extends StatefulWidget {

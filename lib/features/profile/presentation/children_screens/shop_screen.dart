@@ -1,16 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/row_item.dart';
-import 'package:BGP_Retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/row_item.dart';
+import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
 
 @RoutePage()
 class ShopPage extends StatefulWidget {
@@ -66,7 +65,7 @@ class _ShopPageState extends State<ShopPage> {
                 24.height,
                 const Text("Thông tin shop", style: s16w500),
                 16.height,
-                RowItem(
+                BaseRowItem(
                   title: "Tên shop:",
                   subtitle: widget.data?.title ?? "",
                   titleStyle: s16w400.copyWith(
@@ -75,7 +74,7 @@ class _ShopPageState extends State<ShopPage> {
                   subStyle: s16w400,
                 ),
                 16.height,
-                RowItem(
+                BaseRowItem(
                   title: "Mã số thuế:",
                   subtitle: "-",
                   titleStyle: s16w400.copyWith(
@@ -86,7 +85,7 @@ class _ShopPageState extends State<ShopPage> {
                 24.height,
                 const Text("Thông tin kho hàng", style: s16w500),
                 16.height,
-                RowItem(
+                BaseRowItem(
                   title: "Tên quản lý kho:",
                   subtitle: addressData?.manager ?? "-",
                   titleStyle: s16w400.copyWith(
@@ -95,7 +94,7 @@ class _ShopPageState extends State<ShopPage> {
                   subStyle: s16w400,
                 ),
                 8.height,
-                RowItem(
+                BaseRowItem(
                   title: "Số điện thoại:",
                   subtitle: addressData?.phone ?? "",
                   titleStyle: s16w400.copyWith(
@@ -104,7 +103,7 @@ class _ShopPageState extends State<ShopPage> {
                   subStyle: s16w400,
                 ),
                 8.height,
-                RowItem(
+                BaseRowItem(
                   title: "Địa chỉ kho:",
                   subtitle: addressData?.addressData?.addressFull ?? "",
                   titleStyle: s16w400.copyWith(

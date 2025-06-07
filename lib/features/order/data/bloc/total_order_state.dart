@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/order/data/models/order_count_asbc_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/order/data/models/order_count_asbc_model.dart';
 
 part 'total_order_state.freezed.dart';
 

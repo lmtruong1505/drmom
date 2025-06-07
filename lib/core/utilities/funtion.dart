@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/rendering.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
 
 List<UnitModel> sortUnitPrice(List<UnitModel>? unitPrice) {
   final validUnits =

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/order/data/bloc/total_order_state.dart';
-import 'package:BGP_Retail/features/order/data/repositories/order_repository.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/order/data/bloc/total_order_state.dart';
+import 'package:bpg_retail/features/order/data/repositories/order_repository.dart';
 
 @injectable
 class TotalOrderCubit extends Cubit<TotalOrderState> {

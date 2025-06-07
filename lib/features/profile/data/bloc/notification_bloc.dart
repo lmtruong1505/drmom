@@ -1,13 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/env/env.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/notification_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/noti_repository.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/env/env.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_state.dart';
+import 'package:bpg_retail/features/profile/data/models/notification_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/noti_repository.dart';
 
 @Injectable()
 class NotificationCubit extends BaseCubit<NotificationState> {
@@ -269,7 +269,7 @@ class NotificationCubit extends BaseCubit<NotificationState> {
     final Map<String, dynamic> payload = {
       "page": page,
       "page_size": 10,
-      "id": preferences.currentUser.user?.id ?? 0,
+      "id": preferences.currentUser.id ?? 0,
       "system": "TMDT",
       "status": state.filter,
     };

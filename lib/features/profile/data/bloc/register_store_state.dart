@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 part 'register_store_state.freezed.dart';
 
 @freezed

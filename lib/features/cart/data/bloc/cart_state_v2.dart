@@ -1,16 +1,16 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/dropdown_button.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/first_gift_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/account_bank_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/cart_model_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/dropdown_button.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/booth/data/models/first_gift_model.dart';
+import 'package:bpg_retail/features/cart/data/models/account_bank_model.dart';
+import 'package:bpg_retail/features/cart/data/models/cart_model_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 import '../models/delivery_price_model.dart';
 

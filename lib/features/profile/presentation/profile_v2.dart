@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/core.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/features/authentication/data/bloc/authentication_cubit.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/core.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/features/authentication/data/bloc/authentication_cubit.dart';
 import 'package:flutter/widgets.dart';
 
 @RoutePage()
@@ -50,12 +50,12 @@ class _ProfileV2ScreenState extends State<ProfileV2Screen> {
                 ),
                 8.height,
                 Text(
-                  user.fullName ?? '',
+                  user.fullname ?? '',
                   style: s18w700,
                 ),
                 4.height,
                 Text(
-                  '${user.gender?.label ?? 'Chưa có thông tin'} - ${user.dateOfBirth ?? 'Chưa có thông tin'}',
+                  '${user.fullAddress ?? 'Chưa có thông tin'} - ${user.datePeriod ?? 'Chưa có thông tin'}',
                   style: s14w700.copyWith(color: AppColors.grey80),
                 ),
                 16.height,
@@ -70,8 +70,7 @@ class _ProfileV2ScreenState extends State<ProfileV2Screen> {
                         style: s12w400.copyWith(color: AppColors.grey80),
                       ),
                       Text(
-                        user.citizenIdentity?.identityNumber ??
-                            'Chưa có thông tin',
+                        user.fullAddress ?? 'Chưa có thông tin',
                         style: s14w500,
                       ),
                     ],
@@ -80,9 +79,9 @@ class _ProfileV2ScreenState extends State<ProfileV2Screen> {
                 16.height,
                 Row(
                   children: [
-                    _columnInfor('Ngày tháng năm sinh', user.dateOfBirth)
+                    _columnInfor('Ngày tháng năm sinh', user.fullAddress)
                         .expanded(),
-                    _columnInfor('Giới tính', user.gender?.label).expanded(),
+                    _columnInfor('Giới tính', user.fullAddress).expanded(),
                   ],
                 ),
                 16.height,
@@ -90,13 +89,13 @@ class _ProfileV2ScreenState extends State<ProfileV2Screen> {
                   children: [
                     _columnInfor(
                       'Căn cước công dân',
-                      user.citizenIdentity?.identityNumber,
+                      user.email,
                     ).expanded(),
                     _columnInfor('Số điện thoại', user.phoneNumber).expanded(),
                   ],
                 ),
                 16.height,
-                _columnInfor('Địa chỉ', user.citizenIdentity?.currentAddress),
+                _columnInfor('Địa chỉ', user.avatar),
                 16.height,
                 SizedBox(
                   width: double.infinity,

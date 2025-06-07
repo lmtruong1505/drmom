@@ -1,20 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/configs/firebase_analytics_config.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/widgets/appbar_back_button.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/widgets/appbar_back_button.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/favorite_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/favorite_state.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/features/profile/data/bloc/favorite_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/favorite_state.dart';
 
 @RoutePage(name: "FavoritePage")
 class FavoritePage extends StatefulWidget {
@@ -327,7 +326,7 @@ class _FavoritePageState extends BaseState<FavoritePage, FavoriteCubit>
                                     ),
                                     child: Text(
                                       booth.distance != null
-                                          ? "${formatNumber(booth.distance ?? 0, 2)}km"
+                                          ? "${formatNumberV2(booth.distance ?? 0, decimalDigits: 2)}km"
                                           : '...',
                                       textAlign: TextAlign.center,
                                       style: AppTypography.p6,

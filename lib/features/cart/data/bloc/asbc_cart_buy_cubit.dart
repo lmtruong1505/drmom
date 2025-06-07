@@ -2,28 +2,28 @@ import 'package:dartx/dartx.dart';
 import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:BGP_Retail/core/utilities/funtion.dart';
+import 'package:bpg_retail/core/utilities/funtion.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/card/data/models/bank_model.dart';
-import 'package:BGP_Retail/features/card/data/models/bank_model.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_bloc_V2.dart';
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
-import 'package:BGP_Retail/features/cart/data/repositories/cart_repository.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model_v2.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/deposit_qr_code_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/payment_repository.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/card/data/models/bank_model.dart';
+import 'package:bpg_retail/features/card/data/models/bank_model.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_bloc_V2.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/cart/data/repositories/cart_repository.dart';
+import 'package:bpg_retail/features/home/data/model/product_model_v2.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/features/profile/data/repositories/payment_repository.dart';
 
-import 'package:BGP_Retail/features/wallet/data/models/card_wallet_model.dart';
+import 'package:bpg_retail/features/wallet/data/models/card_wallet_model.dart';
 
 @Injectable()
 class AsbcCartBuyCubit extends Cubit<CubitState> {
@@ -77,7 +77,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
   DepositQrCodeModel? orderQrCode;
   final navigator = getIt.get<AppNavigator>();
   final cartBloc = getIt.get<CartV2Bloc>();
-  final id = getIt.get<Preferences>().currentUser.user?.id;
+  // final id = getIt.get<Preferences>().currentUser.user?.id;
 
   BankModel? asbcBank;
 
@@ -193,7 +193,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
           "title": "don test",
           "total": totalPrice,
           "company": products?.firstOrNull?.companyData?.id,
-          "customer": id,
+          "customer": "id",
           "receiver_address": addressSelected?.addressData?.id,
         },
         "order_item": products!.map(
@@ -269,7 +269,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
     try {
       final isPickUp = deliveryTypeSelected == DeliveryMethodEnum.pickUp;
       EasyLoading.show(dismissOnTap: false);
-      final id = getIt.get<Preferences>().currentUser.user?.id;
+      // final id = getIt.get<Preferences>().currentUser.user?.id;
       emit(state.copyWith(status: CubitStatus.loading));
 
       final orderPayload = {
@@ -278,7 +278,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
           "title": "don test",
           "total": totalPrice,
           "company": products?.firstOrNull?.companyData?.id,
-          "customer": id,
+          "customer": 1,
           "receiver_address": addressSelected?.accountData?.id,
         },
         "order_item": [

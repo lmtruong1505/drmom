@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:BGP_Retail/core/constants/preference_keys.dart';
-import 'package:BGP_Retail/features/authentication/data/models/login_model.dart';
-import 'package:BGP_Retail/features/authentication/data/models/remember_account.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v2.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v3.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/cart_model.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
-import 'package:BGP_Retail/features/product/data/models/formula_model.dart';
+import 'package:bpg_retail/core/constants/preference_keys.dart';
+import 'package:bpg_retail/features/authentication/data/models/login_model.dart';
+import 'package:bpg_retail/features/authentication/data/models/remember_account.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/cart/data/models/cart_model.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:injectable/injectable.dart';
 
@@ -42,9 +42,14 @@ class Preferences {
   }
 
   UserModelV3 get getUserDataV3 {
-    final user =
-        _preferences.getString(PrefKeys.userData) ?? UserModelV3().toString();
-    return UserModelV3.fromJson(jsonDecode(user));
+    try {
+      final user =
+          _preferences.getString(PrefKeys.userData) ?? UserModelV3().toString();
+      return UserModelV3.fromJson(jsonDecode(user));
+    } catch (e) {
+      print(e);
+      return UserModelV3();
+    }
   }
 
   List<FormulaModel> get productFavorite {

@@ -3,21 +3,19 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/authentication/data/models/remember_account.dart';
-import 'package:BGP_Retail/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/authentication/data/models/remember_account.dart';
+import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/features/wallet/data/cubits/wallet_cubit.dart';
 
 import 'authentication_state.dart';
 
@@ -35,21 +33,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthenticationRepository _authenticationRepository;
   final navigator = getIt.get<AppNavigator>();
   final preferences = getIt.get<Preferences>();
-  final appCubit = getIt.get<AppCubit>();
+  // final appCubit = getIt.get<AppCubit>();
   final formKey = GlobalKey<FormState>();
   Timer? _timer;
   int countTime = 120;
-
-  // @override
-  // void initState() {
-  //   if (preferences.rememberAccount != null) {
-  //     onChangePhoneNumber(preferences.rememberAccount!.phoneNumber!);
-  //     onChangePassword(preferences.rememberAccount!.password!);
-  //   }
-  //   onRememberAccount(preferences.rememberAccount != null);
-
-  //   super.initState();
-  // }
 
   void onChangeEmail(String email) {
     emit(state.copyWith(email: email));
@@ -62,10 +49,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void onChangeTypeOTP(ForgotPasswordType type) {
     emit(state.copyWith(type: type));
-  }
-
-  void checkHasAGift(bool? hasAGift) {
-    emit(state.copyWith(toPromotionScreen: hasAGift ?? false));
   }
 
   void onChangeFullname(String fullname) {
@@ -133,30 +116,51 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     );
   }
 
-  List mapProfile(List? profiles) {
-    profiles = profiles ?? [];
-    final List defaultProfiles = [
-      {
-        "field": "sex",
-        "value": "",
-      },
-      {
-        "field": "date_of_birth",
-        "value": "",
-      },
-    ];
+  FutureOr onLogin(BuildContext context) async {
+    if (!formKey.currentState!.validate()) return;
 
-    for (final defaultProfile in defaultProfiles) {
-      final bool isProfileExist = profiles.any(
-        (profile) => profile["field"] == defaultProfile["field"],
+    if (state.isRemember) {
+      preferences.saveRememberAccount(
+        RememberAccount(
+          phoneNumber: state.phoneNumber,
+          password: state.password,
+        ),
       );
-
-      if (!isProfileExist) {
-        profiles.add(defaultProfile);
-      }
+    } else {
+      preferences.removeRememberAccount();
     }
 
-    return profiles;
+    try {
+      showLoading();
+      final res = await _authenticationRepository.login(
+        state.phoneNumber,
+        state.password,
+      );
+
+      if (res.code == 200) {
+        navigator.showSuccessSnackBar(
+          'Đăng nhập thành công',
+          duration: const Duration(seconds: 2),
+        );
+        EasyLoading.dismiss();
+
+        final user = res.data['data']['user'];
+        preferences.saveAccessToken(res.data['data']['access_token'] ?? '');
+        preferences.saveCurrentUser(jsonEncode(user));
+        getUserData(user['id']);
+
+        // appCubit.onAppInitialized();
+      } else {
+        navigator.showAppTopSnackBar(
+          res.message ?? "Tài khoản hoặc mật khẩu không chính xác",
+          type: 'error',
+        );
+        EasyLoading.dismiss();
+      }
+    } catch (e) {
+      print('======$e');
+      EasyLoading.dismiss();
+    }
   }
 
   FutureOr onLoginAsbc(BuildContext context) async {
@@ -203,7 +207,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         preferences.saveAccessToken(res.data['data']['access_token'] ?? '');
         preferences.saveCurrentUser(jsonEncode(loginData));
         getUserData(user['id']);
-        appCubit.onAppInitialized();
+        // appCubit.onAppInitialized();
       } else {
         navigator.showAppTopSnackBar(
           res.message ?? "Tài khoản hoặc mật khẩu không chính xác",
@@ -363,7 +367,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           accept: () {
             emit(state.copyWith(countTime: 0));
             navigator.popUntilRoot(useRootNavigator: true);
-            navigator.push(LoginPage(hasAGift: false));
+            navigator.push(const LoginPage());
           },
         );
       } else {
@@ -453,7 +457,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
             hasButtonBack: false,
             accept: () {
               navigator.popUntilRoot(useRootNavigator: true);
-              navigator.push(LoginPage(hasAGift: false));
+              navigator.push(const LoginPage());
             },
           );
         },
@@ -564,14 +568,21 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void getUserData(int id) async {
     try {
+      navigator.showLoadingDialog('Đang tải dữ liệu');
       final res = await _authenticationRepository.getUserData(id);
       if (res.code == 200) {
+        navigator.pop();
         await preferences.saveUserData(jsonEncode(res.data));
-        navigator.replaceAll([const RootRoute()]);
+        navigator.replaceAll([const HomeRoute()]);
+      } else {
+        navigator.pop();
+        navigator.showErrorDialog('Đã có lỗi xảy ra');
       }
     } catch (e) {
-      EasyLoading.dismiss();
-      navigator.replaceAll([const RootRoute()]);
+      print('=====getUserData=====$e');
+      navigator.pop();
+
+      navigator.replaceAll([const HomeRoute()]);
     }
   }
 
@@ -591,15 +602,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void logOut() async {
     try {
-      final res = await _authenticationRepository.logOut();
-      appCubit.onForceLogout();
-
-      if (res.code == 200) {
-        print('=====logOut');
-      }
+      navigator.showSuccessSnackBar(
+        'Đăng xuất thành công',
+        duration: const Duration(seconds: 1),
+      );
+      navigator.replaceAll([const LoginPage()]);
     } catch (e) {
       EasyLoading.dismiss();
-      navigator.replaceAll([const RootRoute()]);
+      navigator.replaceAll([const LoginPage()]);
     }
   }
 }

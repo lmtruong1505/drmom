@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/configs/logger.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/widgets/appbar_back_button.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/configs/logger.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/widgets/appbar_back_button.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
 
 @RoutePage()
 class DevModeScreen extends StatefulWidget {

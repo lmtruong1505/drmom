@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/cache_image_network_widget.dart';
-import 'package:BGP_Retail/features/card/data/cubits/card_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/profile_state.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
+import 'package:bpg_retail/features/card/data/cubits/card_bloc.dart';
+import 'package:bpg_retail/features/profile/data/bloc/profile_state.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../../../../wallet/data/cubits/wallet_cubit.dart';
 import '../../../data/bloc/profile_cubit.dart';
@@ -185,9 +185,7 @@ class _ProfileInfoTabState extends State<ProfileInfoTab> {
               _profileInfor(
                 icon: Assets.icons.icPeopleGroup.svg(),
                 titile: "Đội nhóm của tôi",
-                onTap: () {
-                  nav.push(MyGroupScreen());
-                },
+                onTap: () {},
               ),
               32.height,
               _profileInfor(
@@ -528,34 +526,34 @@ class _ProfileInfoTabState extends State<ProfileInfoTab> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text(
-                              widget.bloc.currentUser.fullname ?? "",
-                              overflow: TextOverflow.ellipsis,
-                              style: s18w500,
-                            ),
-                            8.height,
-                            Text(
-                              widget.bloc.currentUser.phoneNumber ?? "",
-                              overflow: TextOverflow.ellipsis,
-                              style: s14w400,
-                            ),
+                            // Text(
+                            //   widget.bloc.currentUser.fullname ?? "",
+                            //   overflow: TextOverflow.ellipsis,
+                            //   style: s18w500,
+                            // ),
+                            // 8.height,
+                            // Text(
+                            //   widget.bloc.currentUser.phoneNumber ?? "",
+                            //   overflow: TextOverflow.ellipsis,
+                            //   style: s14w400,
+                            // ),
                           ],
                         ).expanded(),
                       ],
                     ),
                   ),
                   24.height,
-                  Container(
-                    width: 270,
-                    height: 270,
-                    child: BaseContainer(
-                      borderRadius: 16,
-                      padding: 24.pading,
-                      child: QrImageView(
-                        data: widget.bloc.currentUser.phoneNumber ?? "",
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   width: 270,
+                  //   height: 270,
+                  //   child: BaseContainer(
+                  //     borderRadius: 16,
+                  //     padding: 24.pading,
+                  //     child: QrImageView(
+                  //       data: widget.bloc.currentUser.phoneNumber ?? "",
+                  //     ),
+                  //   ),
+                  // ),
                   24.height,
                   ExtraButton(
                     padding: 8.padingVer + 64.padingHor,

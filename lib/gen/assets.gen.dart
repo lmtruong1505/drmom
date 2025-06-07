@@ -124,6 +124,14 @@ class $AssetsIconsGen {
   SvgGenImage get icCartActive =>
       const SvgGenImage('assets/icons/ic_cart_active.svg');
 
+  /// File path: assets/icons/ic_circle_arrow_up_left.svg
+  SvgGenImage get icCircleArrowUpLeft =>
+      const SvgGenImage('assets/icons/ic_circle_arrow_up_left.svg');
+
+  /// File path: assets/icons/ic_circle_arrow_up_right.svg
+  SvgGenImage get icCircleArrowUpRight =>
+      const SvgGenImage('assets/icons/ic_circle_arrow_up_right.svg');
+
   /// File path: assets/icons/ic_close.svg
   SvgGenImage get icClose => const SvgGenImage('assets/icons/ic_close.svg');
 
@@ -203,6 +211,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/ic_lichsu.svg
   SvgGenImage get icLichsu => const SvgGenImage('assets/icons/ic_lichsu.svg');
+
+  /// File path: assets/icons/ic_line_arrow.svg
+  SvgGenImage get icLineArrow =>
+      const SvgGenImage('assets/icons/ic_line_arrow.svg');
 
   /// File path: assets/icons/ic_location.svg
   SvgGenImage get icLocation =>
@@ -508,6 +520,8 @@ class $AssetsIconsGen {
         icCalendarTable,
         icCart,
         icCartActive,
+        icCircleArrowUpLeft,
+        icCircleArrowUpRight,
         icClose,
         icCopy,
         icCreditCardActive,
@@ -531,6 +545,7 @@ class $AssetsIconsGen {
         icLh,
         icLichkhamdinhki,
         icLichsu,
+        icLineArrow,
         icLocation,
         icMap,
         icMapPin,
@@ -948,12 +963,26 @@ class $AssetsJsonsGen {
   List<String> get values => [privacy, terms];
 }
 
+class $AssetsLangGen {
+  const $AssetsLangGen();
+
+  /// File path: assets/lang/en.json
+  String get en => 'assets/lang/en.json';
+
+  /// File path: assets/lang/vi.json
+  String get vi => 'assets/lang/vi.json';
+
+  /// List of all assets
+  List<String> get values => [en, vi];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
+  static const $AssetsLangGen lang = $AssetsLangGen();
 }
 
 class AssetGenImage {

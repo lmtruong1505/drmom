@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/card/data/repositories/card_repository.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/card/data/repositories/card_repository.dart';
 
 import '../../../../core/base/cubit_state.dart';
 import '../models/card_order_model.dart';

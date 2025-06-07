@@ -1,12 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_bloc.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_state.dart';
 
 class SearchHeader extends StatelessWidget {
   SearchHeader({

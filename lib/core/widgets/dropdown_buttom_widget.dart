@@ -1,7 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
 
 class DropdownButtonWidget<T> extends StatelessWidget {
   const DropdownButtonWidget({
@@ -10,17 +10,45 @@ class DropdownButtonWidget<T> extends StatelessWidget {
     required this.text,
     required this.onChanged,
     required this.items,
+    this.radius = 8,
+    this.value,
+    this.maxHeightDropdown,
   });
 
   final String hintText;
   final String? text;
+  final double radius;
+  final double? maxHeightDropdown;
+  final T? value;
   final void Function(T?)? onChanged;
   final List<DropdownMenuItem<T>>? items;
 
   @override
   Widget build(BuildContext context) {
+    final itemsWithDividers = <DropdownMenuItem<T>>[];
+    for (var i = 0; i < (items?.length ?? 0); i++) {
+      final item = items?[i];
+      itemsWithDividers.add(
+        DropdownMenuItem<T>(
+          value: item?.value,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              item!.child,
+              // chỉ hiển divider nếu không phải là mục cuối cùng
+              if (i < (items?.length ?? 0) - 1)
+                const Padding(
+                  padding: EdgeInsets.only(top: 4, bottom: 4),
+                  child: Divider(height: 1, thickness: 1),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
     return DropdownButtonHideUnderline(
       child: DropdownButton2<T>(
+        value: value,
         isExpanded: true,
         hint: Text(
           text != null ? text! : hintText,
@@ -42,7 +70,7 @@ class DropdownButtonWidget<T> extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             color: AppColors.white,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(radius),
             border: Border.all(
               color: AppColors.border_2,
               width: 1.2,
@@ -59,12 +87,13 @@ class DropdownButtonWidget<T> extends StatelessWidget {
           height: 45,
         ),
         dropdownStyleData: DropdownStyleData(
+          maxHeight: maxHeightDropdown,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
           ),
           offset: const Offset(0, -2),
           scrollbarTheme: ScrollbarThemeData(
-            radius: const Radius.circular(40),
+            radius: Radius.circular(radius),
             thickness: WidgetStateProperty.all(6),
             thumbVisibility: WidgetStateProperty.all(true),
           ),

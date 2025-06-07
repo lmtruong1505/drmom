@@ -4,30 +4,30 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/funtion.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/buttons/main_button.dart';
-import 'package:BGP_Retail/core/widgets/cache_image_network_widget.dart';
-import 'package:BGP_Retail/core/widgets/row_item.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/asbc_cart_buy_cubit.dart';
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
-import 'package:BGP_Retail/features/cart/presentation/widgets/components/select_address_bottom_sheet.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model_v2.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
-import 'package:BGP_Retail/features/wallet/data/cubits/wallet_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/funtion.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
+import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
+import 'package:bpg_retail/core/widgets/row_item.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/cart/data/bloc/asbc_cart_buy_cubit.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/cart/presentation/widgets/components/select_address_bottom_sheet.dart';
+import 'package:bpg_retail/features/home/data/model/product_model_v2.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/wallet/data/cubits/wallet_cubit.dart';
 
 import '../../../gen/assets.gen.dart';
 
@@ -464,19 +464,19 @@ class _AsbcCartBuyV2State extends State<AsbcCartBuyV2> {
                     : _deliveryItem(delivery),
           ),
           const Divider(height: 1).padding(16.padingVer),
-          RowItem(
+          BaseRowItem(
             title: "Tổng tiền hàng (1 sản phẩm)",
             subtitle: formatCurrency(bloc.totalPrice),
           ),
           8.height,
-          RowItem(
+          BaseRowItem(
             title: "Phí vận chuyển",
             subtitle: formatCurrency(
               isPickUp ? 0 : delivery?.giaCuoc,
             ),
           ),
           const Divider(height: 1).padding(16.padingVer),
-          RowItem(
+          BaseRowItem(
             title: "Tổng thanh toán",
             subtitle: formatCurrency(
                 bloc.totalPrice + (isPickUp ? 0 : delivery?.giaCuoc ?? 0)),

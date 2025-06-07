@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/core/widgets/common/base_check_box.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/core/widgets/common/base_check_box.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_bloc.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_state.dart';
 
 class NotificationSelectAll extends StatelessWidget {
   NotificationSelectAll({

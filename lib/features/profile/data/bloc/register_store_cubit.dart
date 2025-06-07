@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/register_store_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/profile/data/bloc/register_store_state.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
 
 @Injectable()
 class RegisterStoreCubit extends Cubit<RegisterStoreState> {

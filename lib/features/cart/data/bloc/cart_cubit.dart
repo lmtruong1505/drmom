@@ -1,16 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/booth/data/repositories/booth_repository.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model.dart';
-import 'package:BGP_Retail/features/order/data/repositories/order_repository.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/booth/data/repositories/booth_repository.dart';
+import 'package:bpg_retail/features/order/data/models/order_model.dart';
+import 'package:bpg_retail/features/order/data/repositories/order_repository.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_bloc.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
 
 import '../models/delivery_price_model.dart';
 import 'cart_state.dart';

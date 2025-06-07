@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
 
-class RowItem extends StatelessWidget {
-  const RowItem({
+class BaseRowItem extends StatelessWidget {
+  const BaseRowItem({
     super.key,
     required this.title,
     required this.subtitle,

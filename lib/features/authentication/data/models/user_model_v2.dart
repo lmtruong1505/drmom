@@ -1,4 +1,4 @@
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
 
 class UserModelV2 {
   String? referralCode;

@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/dropdown_button.dart';
-import 'package:BGP_Retail/features/booth/data/repositories/booth_repository.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/dropdown_button.dart';
+import 'package:bpg_retail/features/booth/data/repositories/booth_repository.dart';
 
 @Injectable()
 class BothCategoryCubit extends Cubit<CubitState> {

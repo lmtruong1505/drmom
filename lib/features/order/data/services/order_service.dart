@@ -1,9 +1,9 @@
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/order/data/models/order_asbc_model.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/order/data/models/order_asbc_model.dart';
 
 @injectable
 class OrderService {

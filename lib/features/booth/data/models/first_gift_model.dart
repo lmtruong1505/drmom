@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:BGP_Retail/features/profile/data/models/promotion_model.dart';
+import 'package:bpg_retail/features/profile/data/models/promotion_model.dart';
 
 part 'first_gift_model.g.dart';
 

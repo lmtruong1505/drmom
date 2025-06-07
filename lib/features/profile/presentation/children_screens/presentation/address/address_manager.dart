@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/features/booth/data/bloc/asbc_both_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/features/booth/data/bloc/asbc_both_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_state.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -139,16 +139,16 @@ class _AddressManagerPageState extends State<AddressManagerPage> {
                     Expanded(
                       child: Row(
                         children: [
-                          Flexible(
-                            child: Text(
-                              address.fullname!.isEmpty
-                                  ? bloc.currentUser.fullname ?? ''
-                                  : address.fullname ?? '',
-                              style: s14w500,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
+                          // Flexible(
+                          //   child: Text(
+                          //     address.fullname!.isEmpty
+                          //         ? bloc.currentUser.fullname ?? ''
+                          //         : address.fullname ?? '',
+                          //     style: s14w500,
+                          //     maxLines: 1,
+                          //     overflow: TextOverflow.ellipsis,
+                          //   ),
+                          // ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 4),
                             child: Container(
@@ -157,12 +157,12 @@ class _AddressManagerPageState extends State<AddressManagerPage> {
                               height: 18,
                             ),
                           ),
-                          Text(
-                            address.phone!.isEmpty
-                                ? bloc.currentUser.phoneNumber ?? ''
-                                : address.phone ?? '',
-                            style: s14w400.copyWith(color: AppColors.grey_1),
-                          ),
+                          // Text(
+                          //   address.phone!.isEmpty
+                          //       ? bloc.currentUser.phoneNumber ?? ''
+                          //       : address.phone ?? '',
+                          //   style: s14w400.copyWith(color: AppColors.grey_1),
+                          // ),
                         ],
                       ),
                     ),

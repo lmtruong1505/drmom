@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 OverlaySupportEntry showOverlayToast({

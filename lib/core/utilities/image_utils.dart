@@ -6,11 +6,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_cropper/image_cropper.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+// import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/utilities/dialog_utils.dart';
-import 'package:BGP_Retail/core/widgets/toast/toast.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/utilities/dialog_utils.dart';
+import 'package:bpg_retail/core/widgets/toast/toast.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ImageUtils {
@@ -150,7 +150,7 @@ class ImageUtils {
       final Uint8List imageData = Uint8List.fromList(response.data);
 
       // 4. Lưu ảnh vào thư viện ảnh
-      await ImageGallerySaver.saveImage(imageData);
+      // await ImageGallerySaver.saveImage(imageData);
       Toast.showToast('Ảnh đã được lưu', context);
 
       return true;

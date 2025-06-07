@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
 
 part 'notification_model.g.dart';
 

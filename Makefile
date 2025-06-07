@@ -5,10 +5,10 @@ watch:
 get:
 	flutter clean && flutter pub get
 
-apk:
+apk_dev:
 	flutter build apk --no-shrink
 
-apk_pro:
+apk:
 	flutter build apk --no-shrink --dart-define=DART_DEFINES_ENV="prod" --dart-define=DART_DEFINES_URL=""
 
 aab:

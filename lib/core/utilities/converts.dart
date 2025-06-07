@@ -73,16 +73,7 @@ String formatCurrency(num? amount) {
   return formatter.format(amount);
 }
 
-String formatNumber(double number, int decimalDigits) {
-  final formatter = NumberFormat.currency(
-    locale: 'vi_VN',
-    symbol: '',
-    decimalDigits: decimalDigits,
-  );
-  return formatter.format(number);
-}
-
-String formatNumberV2(num number, {int decimalDigits = 0}) {
+String formatNumberV2(num? number, {int decimalDigits = 0}) {
   final formatter = NumberFormat.currency(
     locale: 'vi_VN',
     symbol: '',

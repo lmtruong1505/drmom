@@ -1,34 +1,29 @@
 import 'dart:async';
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:BGP_Retail/app/data/bloc/app_state.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/base/index_cubit.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/address_selection/bloc/address_selection_cubit.dart';
-import 'package:BGP_Retail/features/authentication/data/models/profile_model.dart';
+import 'package:bpg_retail/core/core.dart';
+import 'package:bpg_retail/app/data/bloc/app_state.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/address_selection/bloc/address_selection_cubit.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
-import 'package:location/location.dart' as pub_location;
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 @LazySingleton()
 class AppCubit extends BaseCubit<AppState> {
   AppCubit() : super(const AppState());
 
-  pub_location.Location location = pub_location.Location();
+  // pub_location.Location location = pub_location.Location();
 
-  ProfileModel? get currentAvatar {
-    return preferences.currentUser.user!.profiles!.firstWhere(
-      (e) => e.field == 'avatar',
-      orElse: () => ProfileModel(),
-    );
-  }
+  final preferences = getIt.get<Preferences>();
+  final navigator = getIt.get<AppNavigator>();
+  // ProfileModel? get currentAvatar {
+  //   return preferences.currentUser.user!.profiles!.firstWhere(
+  //     (e) => e.field == 'avatar',
+  //     orElse: () => ProfileModel(),
+  //   );
+  // }
 
   @override
   void initState() async {
@@ -225,55 +220,55 @@ class AppCubit extends BaseCubit<AppState> {
   //   emit(state.copyWith(orderChange: orderChange));
   // }
 
-  Future<void> checkLocationPermission() async {
-    emit(state.copyWith(serviceEnabled: await location.serviceEnabled()));
-    if (!state.serviceEnabled) {
-      emit(state.copyWith(serviceEnabled: await location.requestService()));
-      if (!state.serviceEnabled) {
-        return;
-      }
-    }
+  // Future<void> checkLocationPermission() async {
+  //   emit(state.copyWith(serviceEnabled: await location.serviceEnabled()));
+  //   if (!state.serviceEnabled) {
+  //     emit(state.copyWith(serviceEnabled: await location.requestService()));
+  //     if (!state.serviceEnabled) {
+  //       return;
+  //     }
+  //   }
 
-    emit(
-      state.copyWith(permissionGranted: await location.hasPermission()),
-    );
-    if (state.permissionGranted == pub_location.PermissionStatus.denied) {
-      emit(
-        state.copyWith(permissionGranted: await location.requestPermission()),
-      );
-      if (state.permissionGranted != pub_location.PermissionStatus.granted) {
-        return;
-      }
-    }
+  //   emit(
+  //     state.copyWith(permissionGranted: await location.hasPermission()),
+  //   );
+  //   if (state.permissionGranted == pub_location.PermissionStatus.denied) {
+  //     emit(
+  //       state.copyWith(permissionGranted: await location.requestPermission()),
+  //     );
+  //     if (state.permissionGranted != pub_location.PermissionStatus.granted) {
+  //       return;
+  //     }
+  //   }
 
-    // getCurrentLocation();
-  }
+  //   // getCurrentLocation();
+  // }
 
-  void getCurrentLocation() async {
-    try {
-      // final LocationData currentLocation = await location.getLocation();
-      final Position currentLocation = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-      final latitude = currentLocation.latitude;
-      final longitude = currentLocation.longitude;
-      final prefLocation = preferences.locations;
-      final ok = prefLocation.length > 1;
-      if (ok && (prefLocation[0] != latitude || prefLocation[1] != longitude)) {
-        setBooth([]);
-      }
-      preferences.saveLocation(
-        jsonEncode([
-          currentLocation.latitude,
-          currentLocation.longitude,
-        ]),
-      );
-    } catch (e) {
-      if (kDebugMode) {
-        print("Failed to get the location: $e");
-      }
-    }
-  }
+  // void getCurrentLocation() async {
+  //   try {
+  //     // final LocationData currentLocation = await location.getLocation();
+  //     final Position currentLocation = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high,
+  //     );
+  //     final latitude = currentLocation.latitude;
+  //     final longitude = currentLocation.longitude;
+  //     final prefLocation = preferences.locations;
+  //     final ok = prefLocation.length > 1;
+  //     if (ok && (prefLocation[0] != latitude || prefLocation[1] != longitude)) {
+  //       setBooth([]);
+  //     }
+  //     preferences.saveLocation(
+  //       jsonEncode([
+  //         currentLocation.latitude,
+  //         currentLocation.longitude,
+  //       ]),
+  //     );
+  //   } catch (e) {
+  //     if (kDebugMode) {
+  //       print("Failed to get the location: $e");
+  //     }
+  //   }
+  // }
 
   // void onChangeAvatar(String avatar) {
   //   emit(state.copyWith(avatar: avatar));
@@ -284,52 +279,45 @@ class AppCubit extends BaseCubit<AppState> {
   // }
 
   void onAppInitialized() {
-    // print(preferences.accessToken);
     if (preferences.accessToken != null) {
       emit(
         state.copyWith(
           isLoggedIn: true,
         ),
       );
-      // if (currentAvatar?.value != null) {
-      //   emit(state.copyWith(avatar: currentAvatar?.value));
-      // }
-      // getNotiFromFirebase(isLoginCallNotify: false);
-      // getNotiFromFirebase();
-      // getCurrentLocation();
     } else {
       emit(state.copyWith(isLoggedIn: false));
       emit(state.copyWith(avatar: null));
     }
-    getCurrentLocation();
   }
 
   FutureOr onForceLogout({bool? isMessage = true}) async {
     try {
       showLoading();
-      await preferences.removeCurrentUser();
+      // await preferences.removeCurrentUser();
       EasyLoading.dismiss();
-      onAppInitialized();
+      // onAppInitialized();
       if (isMessage == true) {
         navigator.showSuccessSnackBar(
           'Đăng xuất thành công',
           duration: const Duration(seconds: 1),
         );
-        final indexCubit = IndexCubit();
-        indexCubit.set(1);
-        navigator.replaceAll([LoginPage()]);
+        navigator.replaceAll([const LoginPage()]);
       }
-      emit(
-        state.copyWith(
-          notifyList: [],
-          callNoti: false,
-          booths: [],
-          boothSelected: null,
-          addressList: [],
-        ),
-      );
-      navigator.popUntilRoot();
+      // emit(
+      //   state.copyWith(
+      //     notifyList: [],
+      //     callNoti: false,
+      //     booths: [],
+      //     boothSelected: null,
+      //     addressList: [],
+      //   ),
+      // );
+      navigator.replaceAll([const LoginPage()]);
+      // navigator.popUntilRoot();
     } catch (e) {
+      print(e);
+      navigator.replaceAll([const LoginPage()]);
       EasyLoading.dismiss();
     }
   }
@@ -376,9 +364,9 @@ class AppCubit extends BaseCubit<AppState> {
   //   return isFavorite;
   // }
 
-  UserModel? get currentUser {
-    return preferences.currentUser.user;
-  }
+  // UserModel? get currentUser {
+  //   return preferences.currentUser.user;
+  // }
 
   void setCustomId(String customId) {
     emit(state.copyWith(customId: customId));

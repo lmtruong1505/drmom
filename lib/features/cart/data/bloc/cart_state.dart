@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 import '../models/delivery_price_model.dart';
 

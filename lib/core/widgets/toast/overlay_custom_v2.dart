@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
 
 typedef ItemOverlayBuilder<ItemType> = Widget Function(
   BuildContext context,

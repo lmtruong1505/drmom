@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/constants/preference_keys.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/constants/preference_keys.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/base/cubit_state.dart';

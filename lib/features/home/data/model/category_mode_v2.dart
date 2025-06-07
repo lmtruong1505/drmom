@@ -1,4 +1,4 @@
-import 'package:BGP_Retail/features/home/data/model/product_model_v2.dart';
+import 'package:bpg_retail/features/home/data/model/product_model_v2.dart';
 
 class CategoryModelV2 {
   int? id;

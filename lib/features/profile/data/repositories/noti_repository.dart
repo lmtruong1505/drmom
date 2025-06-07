@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/features/profile/data/services/noti_service.dart';
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/features/profile/data/services/noti_service.dart';
 
 @LazySingleton()
 class NotiRepository {

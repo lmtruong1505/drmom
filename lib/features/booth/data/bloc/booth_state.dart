@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/widgets/address_selection/models/address_selection_model.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/product/data/models/category_model.dart';
-import 'package:BGP_Retail/features/product/data/models/formula_model.dart';
+import 'package:bpg_retail/core/widgets/address_selection/models/address_selection_model.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/product/data/models/category_model.dart';
+import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 
 part 'booth_state.freezed.dart';
 

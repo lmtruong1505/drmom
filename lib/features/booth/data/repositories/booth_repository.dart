@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
-import 'package:BGP_Retail/features/booth/data/models/healthy_care_model.dart';
+import 'package:bpg_retail/features/booth/data/models/healthy_care_model.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/features/booth/data/models/asbc_both_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/category_model.dart';
-import 'package:BGP_Retail/features/booth/data/models/first_gift_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/features/booth/data/models/asbc_both_model.dart';
+import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/booth/data/models/category_model.dart';
+import 'package:bpg_retail/features/booth/data/models/first_gift_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
 
 @injectable
 class BoothRepository {

@@ -1,28 +1,28 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/utilities/dialog_utils.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/cache_image_network_widget.dart';
-import 'package:BGP_Retail/core/widgets/common/custom_switch.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom_v2.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/deposit_withdraw_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/deposit_withdraw_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/utilities/dialog_utils.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
+import 'package:bpg_retail/core/widgets/common/custom_switch.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom_v2.dart';
+import 'package:bpg_retail/features/profile/data/bloc/deposit_withdraw_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/deposit_withdraw_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/models/bank_model.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/confirm_otp_bank_account.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/payment_detail_sreen.dart';
+import 'package:bpg_retail/features/profile/data/models/bank_model.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/confirm_otp_bank_account.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/payment_detail_sreen.dart';
 
 import '../../../../gen/assets.gen.dart';
 
@@ -223,7 +223,7 @@ class _CreateAccountBankScreenState extends State<CreateAccountBankScreen> {
                         16.width,
                         Expanded(
                           child: Text(
-                            "Mọi thông tin của bạn đều được bảo mật trên hệ thống của BGP_Retail",
+                            "Mọi thông tin của bạn đều được bảo mật trên hệ thống của bpg_retail",
                             style:
                                 s14w400.copyWith(fontStyle: FontStyle.italic),
                             maxLines: 2,

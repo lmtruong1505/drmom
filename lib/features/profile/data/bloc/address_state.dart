@@ -1,5 +1,5 @@
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'address_state.freezed.dart';

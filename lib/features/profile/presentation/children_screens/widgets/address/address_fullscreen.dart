@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/screens.dart';
-import 'package:BGP_Retail/core/widgets/base/appbar.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/screens.dart';
+import 'package:bpg_retail/core/widgets/base/appbar.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_state.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 class AddressFullScreen extends StatefulWidget {
   const AddressFullScreen({super.key, required this.address});
@@ -84,7 +84,7 @@ class _AddressFullScreenState
                       children: [
                         TileLayer(
                           urlTemplate: temp,
-                          userAgentPackageName: 'com.lhe.BGP_Retail',
+                          userAgentPackageName: 'com.lhe.bpg_retail',
                           subdomains: const [
                             'mt0',
                             'mt1',

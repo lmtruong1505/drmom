@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/user_profile_cubit.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/widgets/profiles/build_edit_profile.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/widgets/profiles/build_preview_profile.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/features/profile/data/bloc/user_profile_cubit.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/widgets/profiles/build_edit_profile.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/widgets/profiles/build_preview_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

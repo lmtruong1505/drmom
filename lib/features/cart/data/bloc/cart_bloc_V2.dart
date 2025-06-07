@@ -1,9 +1,9 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/cart/data/models/product_warehouse_model.dart';
-import 'package:BGP_Retail/features/cart/data/repositories/cart_repository.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/cart/data/models/product_warehouse_model.dart';
+import 'package:bpg_retail/features/cart/data/repositories/cart_repository.dart';
 
 import '../../../../core/base/cubit_state.dart';
 import '../../../home/data/model/product_model_v2.dart';

@@ -6,22 +6,22 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/core/widgets/identity_card_widget.dart';
-import 'package:BGP_Retail/features/authentication/data/models/profile_model.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v2.dart';
-import 'package:BGP_Retail/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
+import 'package:bpg_retail/features/authentication/data/models/profile_model.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 import 'profile_state.dart';
 
@@ -39,20 +39,20 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   String? frontUrl;
   String? image;
 
-  UserModel get currentUser {
-    return preferences.currentUser.user ?? UserModel();
-  }
+  // UserModel get currentUser {
+  //   return preferences.currentUser.user ?? UserModel();
+  // }
 
   UserModelV2 get userData {
     return preferences.getUserData;
   }
 
-  ProfileModel? get avatar {
-    return currentUser.profiles?.firstWhere(
-      (e) => e.field == 'avatar',
-      orElse: () => ProfileModel(),
-    );
-  }
+  // ProfileModel? get avatar {
+  //   return currentUser.profiles?.firstWhere(
+  //     (e) => e.field == 'avatar',
+  //     orElse: () => ProfileModel(),
+  //   );
+  // }
 
   List<FilterButtonModel> genders = [
     const FilterButtonModel(title: "Nam", value: 1),
@@ -63,11 +63,11 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   @override
   void initState() {
     EasyLoading.dismiss();
-    emit(
-      state.copyWith(
-        userEdit: currentUser,
-      ),
-    );
+    // emit(
+    //   state.copyWith(
+    //     userEdit: currentUser,
+    //   ),
+    // );
 
     super.initState();
   }
@@ -93,12 +93,12 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   }
 
   void onChangeEdit() {
-    emit(state.copyWith(userEdit: currentUser, image: null));
+    // emit(state.copyWith(userEdit: currentUser, image: null));
     emit(state.copyWith(isEdit: true));
   }
 
   void onCancelEdit() {
-    emit(state.copyWith(userEdit: currentUser));
+    // emit(state.copyWith(userEdit: currentUser));
     emit(state.copyWith(isEdit: false));
   }
 
@@ -431,7 +431,7 @@ class ProfileCubit extends BaseCubit<ProfileState> {
       ),
       accept: () async {
         navigator.back();
-        final res = await _authenticationRepository.deactive(currentUser.id);
+        final res = await _authenticationRepository.deactive(1);
         if (res.code == 200) {
           try {
             showLoading();

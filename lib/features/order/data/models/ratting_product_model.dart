@@ -1,6 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/order/data/models/order_detail_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_detail_model.dart';
 
 part 'ratting_product_model.g.dart';
 part 'ratting_product_model.freezed.dart';

@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_cubit.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/address_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/widgets/address/build_form_address.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_cubit.dart';
+import 'package:bpg_retail/features/profile/data/bloc/address_state.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/widgets/address/build_form_address.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage(name: "DetailAddressPage")

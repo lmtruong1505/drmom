@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:BGP_Retail/core/core.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/core/core.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 class HeaderHomeCategory extends StatefulWidget {
   const HeaderHomeCategory({super.key});
@@ -58,7 +58,7 @@ class _HeaderHomeCategoryState extends State<HeaderHomeCategory> {
                       style: s12w400.copyWith(color: AppColors.white),
                     ),
                     Text(
-                      preferences.getUserDataV3.fullName ?? '',
+                      preferences.getUserDataV3.fullname ?? '',
                       style: s20w700.copyWith(color: AppColors.white),
                     ),
                   ],

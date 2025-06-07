@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'update_app_dialog.dart';
@@ -15,7 +15,7 @@ class CheckVersion {
   static checkAndPush(BuildContext context) {
     check(
       ios: 'com.idtinc.ecommerceAsbc',
-      android: 'com.asbc.asbc_ecommerce',
+      android: 'co.idtinc.bpg_retail',
     ).then(
       (value) {
         if (value.isUpdate) {

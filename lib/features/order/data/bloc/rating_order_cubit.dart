@@ -1,13 +1,13 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/order/data/bloc/ratting_order_state.dart';
-import 'package:BGP_Retail/features/order/data/models/order_detail_model.dart';
-import 'package:BGP_Retail/features/order/data/repositories/order_repository.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/order/data/bloc/ratting_order_state.dart';
+import 'package:bpg_retail/features/order/data/models/order_detail_model.dart';
+import 'package:bpg_retail/features/order/data/repositories/order_repository.dart';
 
 @injectable
 class RattingOrderCubit extends Cubit<RattingOrderState> {

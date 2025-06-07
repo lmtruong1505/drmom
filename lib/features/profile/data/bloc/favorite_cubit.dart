@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/favorite_state.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/features/profile/data/bloc/favorite_state.dart';
 
 @Injectable()
 class FavoriteCubit extends BaseCubit<FavoriteState> {

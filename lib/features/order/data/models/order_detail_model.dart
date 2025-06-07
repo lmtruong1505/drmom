@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/booth/data/models/first_gift_model.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model_v2.dart';
-import 'package:BGP_Retail/features/product/data/models/category_model.dart';
+import 'package:bpg_retail/features/booth/data/models/first_gift_model.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_model_v2.dart';
+import 'package:bpg_retail/features/product/data/models/category_model.dart';
 
 part 'order_detail_model.g.dart';
 part 'order_detail_model.freezed.dart';

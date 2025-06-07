@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
 
 import '../../gen/assets.gen.dart';
 

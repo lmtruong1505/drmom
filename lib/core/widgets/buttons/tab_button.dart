@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/typography.dart';
@@ -15,8 +15,8 @@ Widget TabButton({
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: 99.radius,
-        color: isActive ? AppColors.main.withOpacity(0.1) : AppColors.white,
-        border: Border.all(color: AppColors.border_3),
+        color: isActive ? AppColors.white : null,
+        // border: Border.all(color: AppColors.border_3),
       ),
       child: Text(
         title,

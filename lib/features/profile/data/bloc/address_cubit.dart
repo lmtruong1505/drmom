@@ -2,19 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:BGP_Retail/core/base/base_cubit.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_cubit_v2.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_asbc_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_map_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/core/base/base_cubit.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_cubit_v2.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_map_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
 
 import 'address_state.dart';
 
@@ -26,9 +26,9 @@ class AddressCubit extends BaseCubit<AddressState> {
 
   final formKey = GlobalKey<FormState>();
 
-  UserModel get currentUser {
-    return preferences.currentUser.user!;
-  }
+  // UserModel get currentUser {
+  //   return preferences.currentUser.user!;
+  // }
 
   final cartCubit = getIt.get<CartCubitV2>();
 

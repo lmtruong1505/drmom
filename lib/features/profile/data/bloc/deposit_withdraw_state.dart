@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/profile/data/models/bank_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/deposit_history_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/deposit_qr_code_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/profile/data/models/bank_model.dart';
+import 'package:bpg_retail/features/profile/data/models/deposit_history_model.dart';
+import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.dart';
 
 part 'deposit_withdraw_state.freezed.dart';
 

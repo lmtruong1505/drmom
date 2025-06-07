@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
 
 class MainButton extends StatefulWidget {
   final String? title;
@@ -21,7 +21,7 @@ class MainButton extends StatefulWidget {
     this.largeButton = true,
     this.icon,
     this.padding,
-    this.radius = 30,
+    this.radius = 8,
     this.isDisable = false,
     this.isLoad = false,
     this.loadColor,
@@ -54,7 +54,6 @@ class _MainButtonState extends State<MainButton> {
           ? null
           : () {
               canPress = false;
-              print('======onTap');
               widget.onTap?.call();
               Future.delayed(300.milliseconds, () => canPress = true);
             },

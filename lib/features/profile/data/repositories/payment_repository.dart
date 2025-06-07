@@ -1,14 +1,14 @@
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/features/profile/data/models/bank_model.dart';
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/features/profile/data/models/bank_model.dart';
 
-import 'package:BGP_Retail/features/profile/data/models/deposit_history_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/deposit_qr_code_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/payment_detail_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/payment_model.dart';
-import 'package:BGP_Retail/features/card/data/models/bank_model.dart' as v2;
+import 'package:bpg_retail/features/profile/data/models/deposit_history_model.dart';
+import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.dart';
+import 'package:bpg_retail/features/profile/data/models/payment_detail_model.dart';
+import 'package:bpg_retail/features/profile/data/models/payment_model.dart';
+import 'package:bpg_retail/features/card/data/models/bank_model.dart' as v2;
 
 @Injectable()
 class PaymentRepository {

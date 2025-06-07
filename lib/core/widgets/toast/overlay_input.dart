@@ -1,8 +1,9 @@
 import 'dart:async';
 
+import 'package:bpg_retail/core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
 
 import '../../constants/colors.dart';
 import '../../utilities/debouncer.dart';
@@ -78,7 +79,7 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
   void initState() {
     super.initState();
     _scroll.addListener(onMore);
-
+    newData();
     widget.focusNode?.addListener(
       () {
         if (widget.focusNode?.hasFocus == true) {
@@ -209,54 +210,57 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
         ),
       );
     }
-    return _buildList();
-    // if (value.items.length <= 5) {
-    //   return _buildList();
-    // }
-    // return SizedBox(
-    //   height: height,
-    //   child: SingleChildScrollView(
-    //     padding: widget.padding ?? EdgeInsets.zero,
-    //     controller: _scroll,
-    //     physics: value.items.length > 3
-    //         ? const ScrollPhysics()
-    //         : const NeverScrollableScrollPhysics(),
-    //     child: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.stretch,
-    //       children: [
-    //         _buildList(),
-    //         if (value.items.length > 5)
-    //           Padding(
-    //             padding: const EdgeInsets.all(4.0),
-    //             child: value.isMore != true
-    //                 ? const SizedBox(
-    //                     height: 20,
-    //                   )
-    //                 : const Row(
-    //                     mainAxisAlignment: MainAxisAlignment.center,
-    //                     children: [
-    //                       SizedBox(
-    //                         width: 20,
-    //                         height: 20,
-    //                         child: CircularProgressIndicator(
-    //                           strokeWidth: 1,
-    //                         ),
-    //                       ),
-    //                       SizedBox(width: 5),
-    //                       Text(
-    //                         "Đang tải",
-    //                         style: TextStyle(fontSize: 12),
-    //                       )
-    //                     ],
-    //                   ),
-    //           ),
-    //       ],
-    //     ),
-    //   ),
-    // );
+    // return _buildList();
+    if (value.items.length <= 5) {
+      return _buildList();
+    }
+    return SizedBox(
+      height: height,
+      child: SingleChildScrollView(
+        padding: widget.padding ?? EdgeInsets.zero,
+        controller: _scroll,
+        physics: value.items.length > 3
+            ? const ScrollPhysics()
+            : const NeverScrollableScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildList(),
+            if (value.items.length > 5)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: value.isMore != true
+                    ? const SizedBox(
+                        height: 20,
+                      )
+                    : const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 1,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            "Đang tải",
+                            style: TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+              ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildList() {
+    if (value.items.isEmpty) {
+      return const EmptyWidget();
+    }
     return ListView.separated(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -265,9 +269,9 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
       separatorBuilder: (context, index) =>
           widget.separator ?? const Divider(height: 1),
       itemBuilder: (context, index) {
-        if (index >= 5) {
-          return widget.buttonSeeMore;
-        }
+        // if (index >= 5) {
+        //   return widget.buttonSeeMore;
+        // }
         return SizedBox(
           height: widget.itemHeight,
           child: InkWell(

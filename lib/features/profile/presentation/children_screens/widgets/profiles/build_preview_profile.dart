@@ -1,30 +1,30 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/utilities/loading.dart';
-import 'package:BGP_Retail/core/widgets/avatar_widget.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/core/widgets/base_container.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/identity_card_widget.dart';
-import 'package:BGP_Retail/core/widgets/row_item.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/core/widgets/toast/toast.dart';
-import 'package:BGP_Retail/core/widgets/toast/toast_position.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/loading.dart';
+import 'package:bpg_retail/core/widgets/avatar_widget.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
+import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
+import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
+import 'package:bpg_retail/core/widgets/row_item.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/core/widgets/toast/toast.dart';
+import 'package:bpg_retail/core/widgets/toast/toast_position.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/user_profile_cubit.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/features/profile/data/bloc/user_profile_cubit.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 
 String mapProfileTitle(String field) {
   switch (field) {
@@ -138,17 +138,17 @@ class UserProfileView extends StatelessWidget {
                         const SizedBox(width: 16),
                         GestureDetector(
                           onTap: () {
-                            bloc.currentUser.accountCode.copy;
+                            // bloc.currentUser.accountCode.copy;
                             // copyToClipboard(bloc.currentUser.accountCode ?? '');
                             // Toast.showToast("Đã copy", context,
                             //     toastPosition: ToastPosition.CENTER);
                           },
                           child: Row(
                             children: [
-                              Text(
-                                (bloc.currentUser.accountCode ?? ''),
-                                style: AppTypography.p5,
-                              ),
+                              // Text(
+                              //   (bloc.currentUser.accountCode ?? ''),
+                              //   style: AppTypography.p5,
+                              // ),
                               8.width,
                               const Icon(
                                 Icons.copy,
@@ -161,42 +161,42 @@ class UserProfileView extends StatelessWidget {
                       ],
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Ngày sinh",
                       subtitle: user.birthday.toDateTimeFormat,
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),
                       subStyle: AppTypography.p5,
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Giới tính",
                       subtitle: convertGender(user.gender ?? 0),
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),
                       subStyle: AppTypography.p5,
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Địa chỉ",
                       subtitle: user.address?.addressFull ?? "",
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),
                       subStyle: AppTypography.p5,
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Số CCCD",
                       subtitle: user.identified ?? "",
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),
                       subStyle: AppTypography.p5,
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Ngày cấp",
                       subtitle: user.dateProvided.toDateTimeFormat,
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),
                       subStyle: AppTypography.p5,
                     ),
                     16.height,
-                    RowItem(
+                    BaseRowItem(
                       title: "Nơi cấp",
                       subtitle: user.placeProvided ?? "",
                       titleStyle: s14w500.copyWith(color: AppColors.grey_1),

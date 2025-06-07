@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v2.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model_v3.dart';
-import 'package:BGP_Retail/features/authentication/data/services/authentication_service.dart';
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
+import 'package:bpg_retail/features/authentication/data/services/authentication_service.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/referall_model.dart';
+import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
 
 @LazySingleton()
 class AuthenticationRepository {
@@ -30,7 +30,7 @@ class AuthenticationRepository {
       final res = await _baseDio.post(
         Api.login,
         data: {
-          "phone_number": phoneNumber,
+          "email": phoneNumber,
           "password": password,
         },
       );
@@ -498,7 +498,7 @@ class AuthenticationRepository {
 
   Future<BaseResponseModel<UserModelV3>> getUserData(int id) async {
     try {
-      final res = await _baseDio.get('${Api.getUser}/$id');
+      final res = await _baseDio.get(Api.getUser);
       if (res.data["success"] == true) {
         final user = UserModelV3.fromJson(res.data["data"]);
         return BaseResponseModel(
@@ -512,6 +512,7 @@ class AuthenticationRepository {
         );
       }
     } catch (e) {
+      print('=====getUserModelV3=====$e');
       return BaseResponseModel(
         code: 400,
         message: e.toString(),

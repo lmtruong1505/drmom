@@ -1,14 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/authentication/data/repositories/authentication_repository.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/my_group_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/my_group_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/referall_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/my_group_repository.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
+import 'package:bpg_retail/features/profile/data/bloc/my_group_state.dart';
+import 'package:bpg_retail/features/profile/data/models/my_group_model.dart';
+import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/my_group_repository.dart';
 
 @Injectable()
 class MyGroupCubit extends Cubit<MyGroupState> {
@@ -73,7 +73,7 @@ class MyGroupCubit extends Cubit<MyGroupState> {
 
   void getMyReferrer({MyGroupModel? member}) async {
     emit(state.copyWith(status: CubitStatus.loading));
-    final id = getIt.get<Preferences>().currentUser.user?.id ?? 0;
+    final id = 1;
     try {
       final res = await _repo.getMyReferrer(member?.id ?? id);
       if (res.code == 200) {
@@ -88,7 +88,7 @@ class MyGroupCubit extends Cubit<MyGroupState> {
   }
 
   Future<void> verifyReferralCode(String? code) async {
-    final id = getIt.get<Preferences>().currentUser.user?.id ?? 0;
+    final id = 1;
     try {
       emit(state.copyWith(status: CubitStatus.loading));
       final res = await _authenticationRepository.verifyReferralCode(code ?? "",
@@ -109,7 +109,7 @@ class MyGroupCubit extends Cubit<MyGroupState> {
 
   void updateReferralCode(String code) async {
     emit(state.copyWith(status: CubitStatus.loading));
-    final id = getIt.get<Preferences>().currentUser.user?.id ?? 0;
+    final id = 1;
     try {
       final res = await _repo.updateReferrer(code, id);
       if (res.code == 200) {

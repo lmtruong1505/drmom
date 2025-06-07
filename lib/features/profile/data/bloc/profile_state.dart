@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/authentication/data/models/user_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
 part 'profile_state.freezed.dart';
 

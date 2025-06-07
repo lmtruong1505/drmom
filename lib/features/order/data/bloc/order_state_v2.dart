@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/features/order/data/models/order_asbc_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_count_asbc_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model_v2.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/features/order/data/models/order_asbc_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_count_asbc_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_model_v2.dart';
 
 part 'order_state_v2.freezed.dart';
 

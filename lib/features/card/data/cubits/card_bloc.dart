@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/features/card/data/models/my_card_model.dart';
-import 'package:BGP_Retail/features/card/data/repositories/card_repository.dart';
-import 'package:BGP_Retail/features/wallet/data/cubits/wallet_cubit.dart';
-import 'package:BGP_Retail/features/wallet/data/repositories/wallet_repository.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/features/card/data/models/my_card_model.dart';
+import 'package:bpg_retail/features/card/data/repositories/card_repository.dart';
+import 'package:bpg_retail/features/wallet/data/cubits/wallet_cubit.dart';
+import 'package:bpg_retail/features/wallet/data/repositories/wallet_repository.dart';
 
 import '../../../../core/base/cubit_state.dart';
 import '../../../../core/utilities/enum.dart';

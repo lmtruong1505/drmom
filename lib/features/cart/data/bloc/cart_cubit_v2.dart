@@ -5,29 +5,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/configs/enums/noti_enum.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/dropdown_button.dart';
-import 'package:BGP_Retail/core/widgets/toast/overlay_custom.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/booth/data/repositories/booth_repository.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_state_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/cart_model_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
-import 'package:BGP_Retail/features/cart/data/repositories/cart_repository.dart';
-import 'package:BGP_Retail/features/cart/presentation/widgets/cart_select_booth.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model_v2.dart';
-import 'package:BGP_Retail/features/order/data/models/order_model.dart';
-import 'package:BGP_Retail/features/order/data/repositories/order_repository.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/models/address_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/address_repository.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/configs/enums/noti_enum.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/dropdown_button.dart';
+import 'package:bpg_retail/core/widgets/toast/overlay_custom.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/booth/data/repositories/booth_repository.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_state_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/cart_model_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/repositories/cart_repository.dart';
+import 'package:bpg_retail/features/cart/presentation/widgets/cart_select_booth.dart';
+import 'package:bpg_retail/features/home/data/model/product_model_v2.dart';
+import 'package:bpg_retail/features/order/data/models/order_model.dart';
+import 'package:bpg_retail/features/order/data/repositories/order_repository.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_bloc.dart';
+import 'package:bpg_retail/features/profile/data/models/address_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/address_repository.dart';
 
 import '../models/delivery_price_model.dart';
 
@@ -609,16 +609,16 @@ class CartCubitV2 extends Cubit<CartStateV2> {
         final notificationSettings = FirebaseMessaging.instance;
         final deviceToken = await notificationSettings.getToken();
         if (deviceToken != null) {
-          final id = preferences.currentUser.user?.id ?? 0;
-          final res = await _cartRepository.updateDeviceToken(deviceToken, id);
+          // final id = preferences.currentUser.user?.id ?? 0;
+          final res = await _cartRepository.updateDeviceToken(deviceToken, 1);
           if (res.code == 200) {
             showOverlayToast(
-              title: "BGP_Retail đã xác thực được mã thiết bị",
+              title: "bpg_retail đã xác thực được mã thiết bị",
             );
           }
           // else {
           //   showOverlayToast(
-          //     title: "BGP_Retail không xác định đc mã thiết bị",
+          //     title: "bpg_retail không xác định đc mã thiết bị",
           //     iconColor: AppColors.red_1,
           //   );
           // }
@@ -626,7 +626,7 @@ class CartCubitV2 extends Cubit<CartStateV2> {
       }
     } catch (e) {
       // showOverlayToast(
-      //   title: "BGP_Retail không xác định đc mã thiết bị",
+      //   title: "bpg_retail không xác định đc mã thiết bị",
       //   iconColor: AppColors.red_1,
       // );
       if (kDebugMode) {
@@ -680,7 +680,7 @@ class CartCubitV2 extends Cubit<CartStateV2> {
     if (state.gift != null) {
       emit(state.copyWith(gift: null));
     }
-    final accountId = preferences.currentUser.user?.id ?? 0;
+    final accountId = 1;
     final res = await _boothRepository.getFirstPurchaseGift(
       accountId: accountId,
     );

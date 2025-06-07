@@ -2,25 +2,24 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/data/bloc/app_state.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/configs/firebase_analytics_config.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/utilities/assets.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/appbar_back_button.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/common/base_check_box.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/data/bloc/app_state.dart';
+import 'package:bpg_retail/core/base/base_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/utilities/assets.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/appbar_back_button.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/common/base_check_box.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_bloc.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/notification_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/notification_model.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/presentation/notification/widget.dart/notification_select_all.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_bloc.dart';
+import 'package:bpg_retail/features/profile/data/bloc/notification_state.dart';
+import 'package:bpg_retail/features/profile/data/models/notification_model.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/presentation/notification/widget.dart/notification_select_all.dart';
 
 @RoutePage(name: "NotificationPage")
 class NotificationPage extends StatefulWidget {

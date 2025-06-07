@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/cubit_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_bloc.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_bloc_V2.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
+import 'package:bpg_retail/core/base/cubit_state.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_bloc.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_bloc_V2.dart';
 
 class ActionPrd extends StatelessWidget {
   ActionPrd({super.key});

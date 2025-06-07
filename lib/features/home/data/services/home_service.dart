@@ -1,5 +1,5 @@
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

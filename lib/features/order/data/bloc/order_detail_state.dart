@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_asbc_model.dart';
-import 'package:BGP_Retail/features/profile/data/models/deposit_qr_code_model.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_asbc_model.dart';
+import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.dart';
 
 part 'order_detail_state.freezed.dart';
 

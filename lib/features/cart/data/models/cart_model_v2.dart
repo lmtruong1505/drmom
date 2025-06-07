@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/product/data/models/category_model.dart';
+import 'package:bpg_retail/features/product/data/models/category_model.dart';
 
 part 'cart_model_v2.g.dart';
 part 'cart_model_v2.freezed.dart';

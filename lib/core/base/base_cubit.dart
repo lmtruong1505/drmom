@@ -1,6 +1,6 @@
-import 'package:BGP_Retail/app/data/bloc/app_cubit.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/preferences/preferences.dart';
+import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/preferences/preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class BaseCubit<S> extends BaseCubitDelegate<S> {

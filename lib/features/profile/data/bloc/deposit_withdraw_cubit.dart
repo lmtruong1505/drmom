@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/utilities/debouncer.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/core/widgets/buttons/filter_button.dart';
-import 'package:BGP_Retail/features/profile/data/bloc/deposit_withdraw_state.dart';
-import 'package:BGP_Retail/features/profile/data/models/bank_model.dart';
-import 'package:BGP_Retail/features/profile/data/repositories/payment_repository.dart';
+import 'package:bpg_retail/core/utilities/debouncer.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
+import 'package:bpg_retail/features/profile/data/bloc/deposit_withdraw_state.dart';
+import 'package:bpg_retail/features/profile/data/models/bank_model.dart';
+import 'package:bpg_retail/features/profile/data/repositories/payment_repository.dart';
 
 @Injectable()
 class DepositWithdrawCubit extends Cubit<DepositWithdrawState> {

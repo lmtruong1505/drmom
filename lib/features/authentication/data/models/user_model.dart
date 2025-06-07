@@ -1,4 +1,4 @@
-import 'package:BGP_Retail/features/authentication/data/models/profile_model.dart';
+import 'package:bpg_retail/features/authentication/data/models/profile_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';

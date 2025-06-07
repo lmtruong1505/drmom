@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/toast/toast_position.dart';
+import 'package:bpg_retail/core/widgets/toast/toast_position.dart';
 
 class Toast {
   String? text;

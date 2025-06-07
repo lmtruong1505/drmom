@@ -1,31 +1,26 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:BGP_Retail/app/routes/router.gr.dart';
-import 'package:BGP_Retail/core/base/base_state.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/widgets/buttons/extra_button.dart';
-import 'package:BGP_Retail/core/widgets/buttons/main_button.dart';
-import 'package:BGP_Retail/core/widgets/common/base_check_box.dart';
-import 'package:BGP_Retail/core/widgets/common/title_required.dart';
-import 'package:BGP_Retail/core/widgets/textfield/validate_textfield.dart';
-import 'package:BGP_Retail/features/authentication/data/bloc/authentication_cubit.dart';
-import 'package:BGP_Retail/features/authentication/data/bloc/authentication_state.dart';
-import 'package:BGP_Retail/features/authentication/presentation/widget/header_auth.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/app/data/bloc/localization_cubit.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/localization_helper.dart';
+import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
+import 'package:bpg_retail/core/widgets/common/base_check_box.dart';
+import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:bpg_retail/features/authentication/data/bloc/authentication_cubit.dart';
+import 'package:bpg_retail/features/authentication/data/bloc/authentication_state.dart';
+import 'package:bpg_retail/features/authentication/presentation/widget/header_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/widgets/banner_asbc.dart';
 
 @RoutePage(name: "LoginPage")
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, this.hasAGift});
-  final bool? hasAGift;
+  const LoginPage({
+    super.key,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -36,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     passworkCtrl = TextEditingController();
-    // bloc.checkHasAGift(widget.hasAGift);
   }
 
   final bloc = getIt.get<AuthenticationCubit>();
@@ -45,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final trans = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SingleChildScrollView(
@@ -52,39 +47,50 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const HeaderAuthForm(),
-            _formView(),
+            _formView(trans),
           ],
         ).padding(16.padingHor),
       ),
     );
   }
 
-  Widget _formView() {
+  Form _formView(AppLocalizations trans) {
     return Form(
-      autovalidateMode: AutovalidateMode.disabled,
       key: bloc.formKey,
       child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
         bloc: bloc,
         builder: (context, state) {
-          final useRememberAccount = state.useRememberAccount &&
-              state.phoneNumber != '' &&
-              state.password != '';
           return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               32.height,
-              useRememberAccount
-                  ? _useRememberAccount(state)
-                  : _useDifferAccount(state),
-              16.height,
-              requiredTitle('Mật khẩu'),
-              4.height,
               ValidateTextField(
-                initialValue: state.password,
-                // controller: passworkCtrl,
+                initialValue: state.phoneNumber,
                 margin: EdgeInsets.zero,
                 backgroundColor: AppColors.white,
-                hintText: 'Nhập mật khẩu',
+                hintText: trans.translate('email'),
+                hintStyle: AppTypography.p6.copyWith(
+                  color: AppColors.grey_1,
+                ),
+                maxLines: 1,
+                onChanged: bloc.onChangePhoneNumber,
+                validator: (value) {
+                  if (value?.isEmpty ?? false) {
+                    return trans.translate('pls_email');
+                  }
+                  if (!value.isEmail()) {
+                    return trans.translate('email_not_valid');
+                  }
+
+                  return null;
+                },
+              ),
+              16.height,
+              ValidateTextField(
+                initialValue: state.password,
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: trans.translate('pls_password'),
                 hintStyle: AppTypography.p6.copyWith(
                   color: AppColors.grey_1,
                 ),
@@ -103,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 validator: (value) {
                   if (value?.isEmpty ?? false) {
-                    return 'Hãy nhập mật khẩu';
+                    return trans.translate('pw_not_valid');
                   }
                   return null;
                 },
@@ -114,154 +120,78 @@ class _LoginPageState extends State<LoginPage> {
                   BaseCheckbox(
                     value: state.isRemember,
                     radius: 4,
-                    onChanged: (bool? value) =>
-                        bloc.onRememberAccount(value ?? false),
+                    onChanged: (bool? value) {
+                      bloc.onRememberAccount(value ?? false);
+                    },
                   ),
-                  4.width,
+                  8.height,
                   GestureDetector(
-                    onTap: () => bloc.onRememberAccount(!state.isRemember),
-                    child: Text(
-                      'Ghi nhớ tài khoản',
-                      style: AppTypography.p4.copyWith(
-                        color: AppColors.black,
-                      ),
+                    onTap: () {
+                      bloc.onRememberAccount(!state.isRemember);
+                    },
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 1,
+                        ),
+                        Text(
+                          trans.translate('remember_password'),
+                          style: AppTypography.p4.copyWith(
+                            color: AppColors.grey79,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Spacer(),
+                  // const Spacer(),
                   // GestureDetector(
-                  //   onTap: () => navigator.push(const ForgotPasswordPage()),
-                  //   child:
-                  //       const Text('Quên mật khẩu?', style: AppTypography.p4),
+                  //   onTap: () {
+                  //     navigator.push(const ForgotPasswordPage());
+                  //   },
+                  //   child: Text(
+                  //     'Quên mật khẩu?',
+                  //     style: AppTypography.p4.copyWith(
+                  //       color: AppColors.blue_3,
+                  //     ),
+                  //   ),
                   // ),
                 ],
               ),
-              24.height,
+              const SizedBox(height: 16),
               SizedBox(
                 height: 45,
                 width: double.infinity,
                 child: MainButton(
-                  title: 'Đăng nhập',
-                  onTap: () => bloc.onLoginAsbc(context),
+                  title: trans.translate('log_in'),
+                  onTap: () => bloc.onLogin(context),
                   largeButton: true,
                 ),
               ),
-              24.height,
-              // useRememberAccount ? loginWithDifferAccount() : _createAccount(),
-              loginWithDifferAccount()
+              // const SizedBox(height: 16),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     const Text(
+              //       'Bạn chưa có tài khoản? ',
+              //       style: AppTypography.p6,
+              //     ),
+              //     GestureDetector(
+              //       onTap: () {
+              //         navigator.replace(const RegisterPage());
+              //       },
+              //       child: Text(
+              //         'Đăng ký ngay',
+              //         style: AppTypography.p5.copyWith(
+              //           color: AppColors.blue_3,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           );
         },
       ),
-    );
-  }
-
-  Row _createAccount() {
-    return Row(
-      children: [
-        const Text(
-          'Bạn chưa có tài khoản? ',
-          style: AppTypography.p6,
-        ),
-        GestureDetector(
-          onTap: () => navigator.replace(const RegisterPage()),
-          child: Text(
-            'Đăng ký ngay',
-            style: AppTypography.p5.copyWith(
-              color: AppColors.main,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Column loginWithDifferAccount() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Divider().expanded(),
-            Text(
-              'hoặc',
-              style: s14w400.copyWith(color: AppColors.grey97),
-            ).padding(8.padingHor),
-            const Divider().expanded(),
-          ],
-        ),
-        16.height,
-        SizedBox(
-          width: double.infinity,
-          child: ExtraButton(
-            color: AppColors.grey5B,
-            bgColor: AppColors.border_1,
-            borderColor: AppColors.border_1,
-            title: 'Đăng nhập với tài khoản khác',
-            onTap: () => bloc.useDifferAccount(),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Column _useDifferAccount(AuthenticationState state) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "Chào mừng bạn",
-          textAlign: TextAlign.center,
-          style: s24w700,
-        ),
-        4.height,
-        Text(
-          "Vui lòng đăng nhập để sử dụng dịch vụ!",
-          textAlign: TextAlign.center,
-          style: s14w400.copyWith(color: AppColors.grey80),
-        ),
-        24.height,
-        requiredTitle('Số điện thoại'),
-        4.height,
-        ValidateTextFieldV2(
-          initialValue: state.phoneNumber,
-          margin: EdgeInsets.zero,
-          backgroundColor: AppColors.white,
-          hintText: 'Nhập số điện thoại',
-          hintStyle: AppTypography.p6.copyWith(
-            color: AppColors.grey_1,
-          ),
-          maxLines: 1,
-          onChanged: bloc.onChangePhoneNumber,
-          validator: (value) {
-            final RegExp regex = RegExp(r'^0\d{9,11}$');
-            if (value?.isEmpty ?? false) {
-              return 'Hãy nhập số điện thoại';
-            }
-            if (!regex.hasMatch(value ?? '')) {
-              return "Số điện thoại không đúng định dạng";
-            }
-            return null;
-          },
-        ),
-      ],
-    );
-  }
-
-  Column _useRememberAccount(AuthenticationState state) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Xin chào",
-          textAlign: TextAlign.center,
-          style: s16w500.copyWith(color: AppColors.grey80),
-        ),
-        4.height,
-        Text(
-          state.phoneNumber,
-          style: s24w700,
-        ),
-        24.height,
-      ],
     );
   }
 }

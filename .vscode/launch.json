@@ -5,14 +5,14 @@
     "version": "1.0.0",
     "configurations": [
         {
-            "name": "BGP_Retail(Dev)",
+            "name": "bpg_retail(Dev)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
             "args": []
         },
         {
-            "name": "BGP_Retail(Stg)",
+            "name": "bpg_retail(Stg)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "name": "BGP_Retail(Prod)",
+            "name": "bpg_retail(Prod)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",

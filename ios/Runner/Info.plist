@@ -11,7 +11,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>BGP_Retail</string>
+	<string>BGP Retail</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -19,7 +19,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>idtinc.co.BGP_Retail</string>
+	<string>co.idtinc.bpgRetail</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -48,18 +48,6 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Ứng dụng cần sử dụng camera của bạn để quét mã QR codes</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ứng dụng cần xác định vị trí của bạn để tìm cửa hàng tạp hoá xung quanh bạn gần nhất</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Ứng dụng cần xác định vị trí của bạn để tìm cửa hàng tạp hoá xung quanh bạn gần nhất</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Ứng dụng cần sử dụng micrô quay video cập nhật avatar của bạn</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Ứng dụng cần quyền lưu ảnh vào thư viện</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Ứng dụng cần truy cập vào kho ảnh để lấy ảnh QR code đã được lưu trong kho ảnh của bạn</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

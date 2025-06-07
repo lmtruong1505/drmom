@@ -3,18 +3,18 @@ import 'dart:math';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/base/base_response.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/core/utilities/enum.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_asbc_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_count_asbc_model.dart';
-import 'package:BGP_Retail/features/order/data/models/order_detail_model.dart'
+import 'package:bpg_retail/core/base/base_response.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_asbc_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_count_asbc_model.dart';
+import 'package:bpg_retail/features/order/data/models/order_detail_model.dart'
     as v2;
-import 'package:BGP_Retail/features/order/data/models/order_model_v2.dart';
-import 'package:BGP_Retail/features/order/data/models/total_order_model.dart';
-import 'package:BGP_Retail/features/order/data/services/order_service.dart';
+import 'package:bpg_retail/features/order/data/models/order_model_v2.dart';
+import 'package:bpg_retail/features/order/data/models/total_order_model.dart';
+import 'package:bpg_retail/features/order/data/services/order_service.dart';
 
 @injectable
 class OrderRepository {

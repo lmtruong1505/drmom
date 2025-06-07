@@ -1,4 +1,4 @@
-package com.asbc.asbc_ecommerce
+package co.idtinc.bpg_retail
 
 import io.flutter.embedding.android.FlutterActivity
 

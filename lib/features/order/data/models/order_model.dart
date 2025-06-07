@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:BGP_Retail/features/product/data/models/formula_model.dart';
-import 'package:BGP_Retail/features/product/data/models/unit_price_model.dart';
+import 'package:bpg_retail/features/product/data/models/formula_model.dart';
+import 'package:bpg_retail/features/product/data/models/unit_price_model.dart';
 
 part 'order_model.g.dart';
 

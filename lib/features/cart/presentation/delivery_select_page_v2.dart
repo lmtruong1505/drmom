@@ -1,25 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:BGP_Retail/core/configs/firebase_analytics_config.dart';
-import 'package:BGP_Retail/core/constants/colors.dart';
-import 'package:BGP_Retail/core/constants/spacing.dart';
-import 'package:BGP_Retail/core/constants/typography.dart';
-import 'package:BGP_Retail/core/extension/spacing_extension.dart';
-import 'package:BGP_Retail/core/extension/string_extension.dart';
-import 'package:BGP_Retail/core/injection/injection.dart';
-import 'package:BGP_Retail/core/navigation/navigator.dart';
-import 'package:BGP_Retail/core/utilities/converts.dart';
-import 'package:BGP_Retail/core/utilities/screens.dart';
-import 'package:BGP_Retail/core/widgets/appbar_back_button.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
-import 'package:BGP_Retail/core/widgets/base/scaffold.dart';
-import 'package:BGP_Retail/core/widgets/two_button_box.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_cubit_v2.dart';
-import 'package:BGP_Retail/features/cart/data/bloc/cart_state_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/spacing.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/extension/string_extension.dart';
+import 'package:bpg_retail/core/injection/injection.dart';
+import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:bpg_retail/core/utilities/converts.dart';
+import 'package:bpg_retail/core/utilities/screens.dart';
+import 'package:bpg_retail/core/widgets/appbar_back_button.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/scaffold.dart';
+import 'package:bpg_retail/core/widgets/two_button_box.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_cubit_v2.dart';
+import 'package:bpg_retail/features/cart/data/bloc/cart_state_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
 
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
 
 @RoutePage(name: "DeliverySelectPageV2")
 class DeliverySelectV2Page extends StatefulWidget {

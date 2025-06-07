@@ -4,7 +4,7 @@ extension extDateTime on DateTime? {
   String get toTextDefaulft =>
       this == null ? '' : DateFormat('dd/MM/yyyy').format(this!);
   String get toTextDefaulftV2 =>
-      this == null ? '' : DateFormat('yyyy/MM/dd/').format(this!);
+      this == null ? '' : DateFormat('yyyy/MM/dd').format(this!);
 
   TimeOfDay? get toTime => this == null
       ? null

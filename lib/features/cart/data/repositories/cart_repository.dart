@@ -4,14 +4,14 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
-import 'package:BGP_Retail/core/configs/dio_config.dart';
-import 'package:BGP_Retail/core/constants/api_constants.dart';
-import 'package:BGP_Retail/features/cart/data/models/cart_model_v2.dart';
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/payment_success_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/product_warehouse_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/qr_order_detail_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/wallet_model.dart';
+import 'package:bpg_retail/core/configs/dio_config.dart';
+import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/features/cart/data/models/cart_model_v2.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/cart/data/models/payment_success_model.dart';
+import 'package:bpg_retail/features/cart/data/models/product_warehouse_model.dart';
+import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
+import 'package:bpg_retail/features/cart/data/models/wallet_model.dart';
 
 import '../../../../core/base/base_response.dart';
 

@@ -1,6 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
 import 'package:video_player/video_player.dart';
 
 class FAQVideoPlayer extends StatefulWidget {

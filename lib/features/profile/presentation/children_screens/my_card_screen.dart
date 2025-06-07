@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/base/base_screen.dart';
-import 'package:BGP_Retail/features/card/presentation/components/tab_my_card.dart';
-import 'package:BGP_Retail/features/profile/presentation/children_screens/deposit_history_screen.dart';
+import 'package:bpg_retail/core/widgets/base/base_screen.dart';
+import 'package:bpg_retail/features/card/presentation/components/tab_my_card.dart';
+import 'package:bpg_retail/features/profile/presentation/children_screens/deposit_history_screen.dart';
 
 @RoutePage()
 class MyCardPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/booth/data/models/booth_model.dart';
-import 'package:BGP_Retail/features/home/data/model/product_model.dart';
-import 'package:BGP_Retail/features/product/data/models/formula_model.dart';
+import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
+import 'package:bpg_retail/features/home/data/model/product_model.dart';
+import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 
 part 'favorite_state.freezed.dart';
 

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:BGP_Retail/features/cart/data/models/delivery_model.dart';
-import 'package:BGP_Retail/features/cart/data/models/ghtk_model.dart';
+import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
+import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
 
 import '../../models/delivery_price_model.dart';
 

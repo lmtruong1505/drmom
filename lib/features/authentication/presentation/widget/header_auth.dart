@@ -1,5 +1,5 @@
-import 'package:BGP_Retail/core/extension/init_ext.dart';
-import 'package:BGP_Retail/gen/assets.gen.dart';
+import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:bpg_retail/gen/assets.gen.dart';
 import 'package:flutter/widgets.dart';
 
 class HeaderAuthForm extends StatelessWidget {
@@ -12,14 +12,14 @@ class HeaderAuthForm extends StatelessWidget {
     final paddingTop = MediaQuery.of(context).viewPadding.top;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         paddingTop.height,
-        80.height,
-        // Assets.images.logo.image(
-        //   width: 56,
-        //   height: 56,
-        // ),
+        190.height,
+        Assets.images.logo.image(
+          width: 198,
+          height: 100,
+        ),
       ],
     );
   }

@@ -1,4 +1,4 @@
-import 'package:BGP_Retail/core/utilities/enum.dart';
+import 'package:bpg_retail/core/utilities/enum.dart';
 
 class CubitState {
   CubitStatus status;

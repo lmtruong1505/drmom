@@ -190,10 +190,6 @@ class AppRouter extends $AppRouter {
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: MyGroupScreen.page,
-          transitionsBuilder: TransitionsBuilders.noTransition,
-        ),
-        CustomRoute(
           page: DepositWithdrawScreen.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
@@ -271,6 +267,18 @@ class AppRouter extends $AppRouter {
         ),
         CustomRoute(
           page: ProfileV2Screen.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
+        CustomRoute(
+          page: HomeRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
+        CustomRoute(
+          page: TransectionDetailRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
+        CustomRoute(
+          page: GalleryRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
       ];

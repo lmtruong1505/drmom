@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:BGP_Retail/core/widgets/base/base_loading.dart';
+import 'package:bpg_retail/core/widgets/base/base_loading.dart';
 
 typedef ItemWidgetBuilder<ItemType> = Widget Function(
   BuildContext context,
