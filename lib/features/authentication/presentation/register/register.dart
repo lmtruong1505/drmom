@@ -59,20 +59,21 @@ class _RegisterPageState extends State<RegisterPage> {
       create: (context) => bloc,
       child: Scaffold(
         backgroundColor: AppColors.white,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const HeaderAuthForm(),
-              16.height,
-              const Text(
-                "Đăng ký",
-                style: s24w700,
-              ),
-              44.height,
-              _formView(),
-            ],
-          ).padding(16.pading),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const HeaderAuthForm(
+                  height: 50,
+                  width: 97,
+                  isPaddingTop: 0,
+                ),
+                24.height,
+                _formView(),
+              ],
+            ).padding(16.pading),
+          ),
         ),
       ),
     );
@@ -86,26 +87,168 @@ class _RegisterPageState extends State<RegisterPage> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              requiredTitle("Họ và tên"),
-              const SizedBox(height: 8),
+              requiredTitle("Email đăng nhập"),
+              8.height,
               ValidateTextField(
                 margin: EdgeInsets.zero,
                 backgroundColor: AppColors.white,
-                hintText: 'Nhập họ và tên',
+                hintText: 'Nhập email',
                 hintStyle: AppTypography.p6.copyWith(
                   color: AppColors.grey_1,
                 ),
                 maxLines: 1,
-                onChanged: bloc.onChangeFullname,
+                onChanged: bloc.onChangeEmail,
                 validator: (value) {
                   if (value?.isEmpty ?? false) {
-                    return 'Hãy nhập họ và tên';
+                    return 'Hãy nhập email';
                   }
                   return null;
                 },
               ),
-              16.height,
-              requiredTitle("Số điện thoại"),
+              8.height,
+              // requiredTitle("Họ và tên"),
+              // const SizedBox(height: 8),
+              // ValidateTextField(
+              //   margin: EdgeInsets.zero,
+              //   backgroundColor: AppColors.white,
+              //   hintText: 'Nhập họ và tên',
+              //   hintStyle: AppTypography.p6.copyWith(
+              //     color: AppColors.grey_1,
+              //   ),
+              //   maxLines: 1,
+              //   onChanged: bloc.onChangeFullname,
+              //   validator: (value) {
+              //     if (value?.isEmpty ?? false) {
+              //       return 'Hãy nhập họ và tên';
+              //     }
+              //     return null;
+              //   },
+              // ),
+              // 8.height,
+              requiredTitle("Mật khẩu"),
+              8.height,
+              ValidateTextField(
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: 'Nhập mật khẩu',
+                hintStyle: AppTypography.p6.copyWith(
+                  color: AppColors.grey_1,
+                ),
+                maxLines: 1,
+                onChanged: bloc.onChangePassword,
+                obscureText: !state.showPassword,
+                suffixIcon: GestureDetector(
+                  onTap: bloc.onShowPassword,
+                  child: Icon(
+                    !state.showPassword ? Icons.visibility_off : Icons.visibility,
+                    color: AppColors.grey_1,
+                    size: 20,
+                  ),
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? false) {
+                    return 'Hãy nhập mật khẩu';
+                  }
+                  if (!regexPassword.hasMatch(value ?? '')) {
+                    return "Mật khẩu phải chứa ít nhất một số\nMột ký tự đặc biệt và phải có ít nhất 8 ký tự";
+                  }
+                  return bloc.validateConfirmPassword();
+                },
+              ),
+              8.height,
+              requiredTitle("Xác nhận mật khẩu"),
+              8.height,
+              ValidateTextField(
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: 'Nhập mật khẩu',
+                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
+                maxLines: 1,
+                onChanged: bloc.onChangeConfirmPassword,
+                obscureText: !state.showConfirmPassword,
+                suffixIcon: GestureDetector(
+                  onTap: bloc.onShowConfirmPassword,
+                  child: Icon(
+                    !state.showConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                    color: AppColors.grey_1,
+                    size: 20,
+                  ),
+                ),
+                validator: (value) {
+                  if (value?.isEmpty ?? false) {
+                    return 'Hãy nhập mật khẩu';
+                  }
+                  if (!regexPassword.hasMatch(value ?? '')) {
+                    return "Mật khẩu phải chứa ít nhất một số\nMột ký tự đặc biệt và phải có ít nhất 8 ký tự";
+                  }
+                  return bloc.validateConfirmPassword();
+                },
+              ),
+              24.height,
+              requiredTitle("Tên doanh nghiệp"),
+              const SizedBox(height: 8),
+              ValidateTextField(
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: 'Nhập tên doanh nghiệp',
+                hintStyle: AppTypography.p6.copyWith(
+                  color: AppColors.grey_1,
+                ),
+                maxLines: 1,
+                onChanged: (value) {
+                  bloc.onChangeFullname(value);
+                },
+                validator: (value) {
+                  if (value?.isEmpty ?? false) {
+                    return 'Hãy nhập tên doanh nghiệp';
+                  }
+                  return null;
+                },
+              ),
+              8.height,
+              Text(
+                "Người đại diện",
+                style: AppTypography.p5.copyWith(color: AppColors.blackish),
+              ),
+              const SizedBox(height: 8),
+              ValidateTextField(
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: 'Nhập tên người đại diện',
+                hintStyle: AppTypography.p6.copyWith(
+                  color: AppColors.grey_1,
+                ),
+                maxLines: 1,
+                onChanged: (value) {
+                  bloc.onChangeRepresent(value);
+                },
+                validator: (value) {
+                  return null;
+                },
+              ),
+              8.height,
+              Text(
+                "Mã số thuế",
+                style: AppTypography.p5.copyWith(color: AppColors.blackish),
+              ),
+              const SizedBox(height: 8),
+              ValidateTextField(
+                margin: EdgeInsets.zero,
+                backgroundColor: AppColors.white,
+                hintText: 'Nhập mã số thuế',
+                hintStyle: AppTypography.p6.copyWith(
+                  color: AppColors.grey_1,
+                ),
+                maxLines: 1,
+                onChanged: (value) {
+                  bloc.onChangeTax(value);
+                },
+                validator: (value) {
+                  return null;
+                },
+              ),
+              8.height,
+              requiredTitle("Hotline/Số điện thoại"),
               const SizedBox(height: 8),
               ValidateTextField(
                 margin: EdgeInsets.zero,
@@ -130,150 +273,86 @@ class _RegisterPageState extends State<RegisterPage> {
                   return null;
                 },
               ),
-              16.height,
-              requiredTitle("Mật khẩu"),
-              const SizedBox(height: 8),
-              ValidateTextField(
-                margin: EdgeInsets.zero,
-                backgroundColor: AppColors.white,
-                hintText: 'Nhập mật khẩu',
-                hintStyle: AppTypography.p6.copyWith(
-                  color: AppColors.grey_1,
-                ),
-                maxLines: 1,
-                onChanged: bloc.onChangePassword,
-                obscureText: !state.showPassword,
-                suffixIcon: GestureDetector(
-                  onTap: bloc.onShowPassword,
-                  child: Icon(
-                    !state.showPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                    color: AppColors.grey_1,
-                    size: 20,
-                  ),
-                ),
-                validator: (value) {
-                  if (value?.isEmpty ?? false) {
-                    return 'Hãy nhập mật khẩu';
-                  }
-                  if (!regexPassword.hasMatch(value ?? '')) {
-                    return "Mật khẩu phải chứa ít nhất một số\nMột ký tự đặc biệt và phải có ít nhất 8 ký tự";
-                  }
-                  return bloc.validateConfirmPassword();
-                },
-              ),
-              const SizedBox(height: 16),
-              requiredTitle("Xác nhận mật khẩu"),
-              const SizedBox(height: 8),
-              ValidateTextField(
-                margin: EdgeInsets.zero,
-                backgroundColor: AppColors.white,
-                hintText: 'Nhập mật khẩu',
-                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
-                maxLines: 1,
-                onChanged: bloc.onChangeConfirmPassword,
-                obscureText: !state.showConfirmPassword,
-                suffixIcon: GestureDetector(
-                  onTap: bloc.onShowConfirmPassword,
-                  child: Icon(
-                    !state.showConfirmPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                    color: AppColors.grey_1,
-                    size: 20,
-                  ),
-                ),
-                validator: (value) {
-                  if (value?.isEmpty ?? false) {
-                    return 'Hãy nhập mật khẩu';
-                  }
-                  if (!regexPassword.hasMatch(value ?? '')) {
-                    return "Mật khẩu phải chứa ít nhất một số\nMột ký tự đặc biệt và phải có ít nhất 8 ký tự";
-                  }
-                  return bloc.validateConfirmPassword();
-                },
-              ),
-              16.height,
-              Row(
-                children: [
-                  Text(
-                    'Mã giới thiệu',
-                    style: AppTypography.p5.copyWith(color: AppColors.blackish),
-                  ),
-                  // const Spacer(),
-                  // GestureDetector(
-                  //   onTap: () async {
-                  //     final result =
-                  //         await navigator.push(QRCodeScreen(isScanUser: true));
-                  //     if (result is String) {
-                  //       referralCodeCtrl.text = result.removeAllNonNumeber();
-                  //       validateRefferalCode(state.phoneNumber);
-                  //     }
-                  //   },
-                  //   child: Row(
-                  //     children: [
-                  //       const Icon(
-                  //         Icons.qr_code,
-                  //         size: 14,
-                  //         color: AppColors.blue31,
-                  //       ),
-                  //       Text(
-                  //         'Quét mã QR',
-                  //         style: s14w500.copyWith(color: AppColors.blue31),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              ValidateTextField(
-                controller: referralCodeCtrl,
-                margin: EdgeInsets.zero,
-                backgroundColor: AppColors.white,
-                hintText: 'Nhập mã giới thiệu',
-                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
-                maxLines: 1,
-                onChanged: (value) {
-                  debouncer.run(
-                    () {
-                      referralCodeCtrl.text = value.removeAllNonNumeber();
-                      // validateRefferalCode(state.phoneNumber);
-                    },
-                  );
-                },
-                validator: (p0) {
-                  if (!p0.nullOrEmpty && !state.message.nullOrEmpty) {
-                    return state.message;
-                  }
-                  return null;
-                },
-              ),
-              16.height,
-              Visibility(
-                visible: state.message == null &&
-                    state.userReferralCode != null &&
-                    state.status != CubitStatus.loading,
-                child: Text(
-                  "Mã hợp lệ cho ${state.referralCode?.accountName} (${state.referralCode?.accountCode})",
-                  style: s14w500.copyWith(
-                    color: AppColors.green65,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
+
+              // Row(
+              // children: [
+              // Text(
+              // 'Mã giới thiệu',
+              // style: AppTypography.p5.copyWith(color: AppColors.blackish),
+              // ),
+              // const Spacer(),
+              // GestureDetector(
+              //   onTap: () async {
+              //     final result =
+              //         await navigator.push(QRCodeScreen(isScanUser: true));
+              //     if (result is String) {
+              //       referralCodeCtrl.text = result.removeAllNonNumeber();
+              //       validateRefferalCode(state.phoneNumber);
+              //     }
+              //   },
+              //   child: Row(
+              //     children: [
+              //       const Icon(
+              //         Icons.qr_code,
+              //         size: 14,
+              //         color: AppColors.blue31,
+              //       ),
+              //       Text(
+              //         'Quét mã QR',
+              //         style: s14w500.copyWith(color: AppColors.blue31),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // ],
+              // ),
+              // const SizedBox(height: 8),
+              // ValidateTextField(
+              //   controller: referralCodeCtrl,
+              //   margin: EdgeInsets.zero,
+              //   backgroundColor: AppColors.white,
+              //   hintText: 'Nhập mã giới thiệu',
+              //   hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
+              //   maxLines: 1,
+              //   onChanged: (value) {
+              //     debouncer.run(
+              //       () {
+              //         referralCodeCtrl.text = value.removeAllNonNumeber();
+              //         // validateRefferalCode(state.phoneNumber);
+              //       },
+              //     );
+              //   },
+              //   validator: (p0) {
+              //     if (!p0.nullOrEmpty && !state.message.nullOrEmpty) {
+              //       return state.message;
+              //     }
+              //     return null;
+              //   },
+              // ),
+              // 16.height,
+              // Visibility(
+              //   visible: state.message == null && state.userReferralCode != null && state.status != CubitStatus.loading,
+              //   child: Text(
+              //     "Mã hợp lệ cho ${state.referralCode?.accountName} (${state.referralCode?.accountCode})",
+              //     style: s14w500.copyWith(
+              //       color: AppColors.green65,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 16),
+              24.height,
               SizedBox(
                 height: 45,
                 width: double.infinity,
                 child: MainButton(
-                  title: 'Nhận mã OTP',
+                  title: 'Gửi duyệt',
                   onTap: () => bloc.onRegisterAsbc(),
                   largeButton: true,
                 ),
               ),
               const SizedBox(height: 16),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Đã có tài khoản? ',
@@ -281,10 +360,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigator.replace(LoginPage());
+                      navigator.replace(const LoginPage());
                     },
                     child: Text(
-                      'Trở lại đăng nhập',
+                      'Đăng nhập ngay',
                       style: AppTypography.p5.copyWith(
                         color: AppColors.main,
                       ),

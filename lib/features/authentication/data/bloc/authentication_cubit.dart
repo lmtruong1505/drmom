@@ -21,8 +21,7 @@ import 'authentication_state.dart';
 
 @Injectable()
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  AuthenticationCubit(this._authenticationRepository)
-      : super(const AuthenticationState()) {
+  AuthenticationCubit(this._authenticationRepository) : super(const AuthenticationState()) {
     if (preferences.rememberAccount != null) {
       onChangePhoneNumber(preferences.rememberAccount!.phoneNumber!);
       onChangePassword(preferences.rememberAccount!.password!);
@@ -89,6 +88,18 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void onRememberAccount(bool isRemember) {
     emit(state.copyWith(isRemember: isRemember));
+  }
+
+  void onChangeBusiness(String business) {
+    emit(state.copyWith(business: business));
+  }
+
+  void onChangeRepresent(String represent) {
+    emit(state.copyWith(represent: represent));
+  }
+
+  void onChangeTax(String tax) {
+    emit(state.copyWith(tax: tax));
   }
 
   String? validateConfirmPassword() {
@@ -226,28 +237,34 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       final res = await _authenticationRepository.register(
         fullName: state.fullname,
         password: state.password,
+        email: state.email,
         phoneNumber: state.phoneNumber,
-        referralCode: state.userReferralCode,
+        taxCode: state.tax,
+        rePresentative: state.represent,
+        confirmPassword: state.confirmPassword,
       );
       EasyLoading.dismiss();
       if (res.code == 200) {
         navigator.showSuccessDialog(
           title: 'Đăng ký thành công',
-          mainTitle: 'Đến màn OTP',
-          content:
-              'Chào mừng bạn đến với chúng tôi. Nhập mã OTP để xác nhận tài khoản.',
+          // mainTitle: 'Đến màn OTP',
+          // content: 'Chào mừng bạn đến với chúng tôi. Nhập mã OTP để xác nhận tài khoản.',
+          mainTitle: 'Đến màn Đăng nhập',
+          content: 'Chào mừng bạn đến với chúng tôi. Trở lại màn đăng nhập.',
           hasButtonBack: false,
           accept: () {
             emit(state.copyWith(countTime: 0));
             navigator.pop();
-            navigator.push(
-              VerifyOtpPage(
-                fullName: state.fullname,
-                phoneNumber: state.phoneNumber,
-                password: state.password,
-                referralCode: state.userReferralCode ?? '',
-              ),
-            );
+            navigator.replace(const LoginPage());
+
+            // navigator.push(
+            //   VerifyOtpPage(
+            //     fullName: state.fullname,
+            //     phoneNumber: state.phoneNumber,
+            //     password: state.password,
+            //     referralCode: state.userReferralCode ?? '',
+            //   ),
+            // );
           },
         );
       } else {
@@ -521,8 +538,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
     if (permission == LocationPermission.deniedForever) {
       showOverlayToast(
-        title:
-            "Quyền vị trí bị từ chối vĩnh viễn, chúng tôi không thể yêu cầu quyền",
+        title: "Quyền vị trí bị từ chối vĩnh viễn, chúng tôi không thể yêu cầu quyền",
       );
       return false;
     }
@@ -547,8 +563,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> verifyReferralCode() async {
     try {
       showLoading();
-      final res = await _authenticationRepository
-          .verifyReferralCode(state.userReferralCode ?? "");
+      final res = await _authenticationRepository.verifyReferralCode(state.userReferralCode ?? "");
       EasyLoading.dismiss();
       if (res.code == 200) {
         emit(

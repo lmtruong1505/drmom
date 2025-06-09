@@ -13,6 +13,10 @@ class AuthenticationState with _$AuthenticationState {
     @Default('') String email,
     @Default('') String fullname,
     @Default('') String otp,
+    @Default('') String business,
+    @Default('') String represent,
+    @Default('') String tax,
+
     String? userReferralCode,
     ReferallModel? referralCode,
     @Default(false) bool showPassword,

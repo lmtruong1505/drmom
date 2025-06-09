@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/app/data/bloc/localization_cubit.dart';
+import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
@@ -100,9 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                 suffixIcon: GestureDetector(
                   onTap: bloc.onShowPassword,
                   child: Icon(
-                    !state.showPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
+                    !state.showPassword ? Icons.visibility_off : Icons.visibility,
                     color: AppColors.grey_1,
                     size: 20,
                   ),
@@ -167,27 +166,27 @@ class _LoginPageState extends State<LoginPage> {
                   largeButton: true,
                 ),
               ),
-              // const SizedBox(height: 16),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     const Text(
-              //       'Bạn chưa có tài khoản? ',
-              //       style: AppTypography.p6,
-              //     ),
-              //     GestureDetector(
-              //       onTap: () {
-              //         navigator.replace(const RegisterPage());
-              //       },
-              //       child: Text(
-              //         'Đăng ký ngay',
-              //         style: AppTypography.p5.copyWith(
-              //           color: AppColors.blue_3,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Bạn chưa có tài khoản? ',
+                    style: AppTypography.p6,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigator.replace(const RegisterPage());
+                    },
+                    child: Text(
+                      'Đăng ký ngay',
+                      style: AppTypography.p5.copyWith(
+                        color: AppColors.blue_3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           );
         },

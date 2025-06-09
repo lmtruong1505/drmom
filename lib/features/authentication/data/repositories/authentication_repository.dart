@@ -48,18 +48,24 @@ class AuthenticationRepository {
   }
 
   Future<BaseResponseModel> register({
-    required String phoneNumber,
+    required String email,
     required String password,
     required String fullName,
-    String? referralCode,
+    String? rePresentative,
+    String? taxCode,
+    required String phoneNumber,
+    required String confirmPassword,
   }) async {
     try {
       final data = {
-        'phone_number': phoneNumber,
-        "is_register": true,
-        "type": "PATIENT",
+        "email": email,
+        "password": password,
+        "fullname": fullName,
+        "confirm_password": confirmPassword,
+        "representative": rePresentative,
+        "tax_code": taxCode,
+        "phone_number": phoneNumber,
       };
-
       final res = await _baseDio.post(
         Api.register,
         data: data,
@@ -418,8 +424,7 @@ class AuthenticationRepository {
     try {
       final payload = {"referral_code": code, 'user': id};
       payload.removeWhere((key, value) => value == null);
-      final response =
-          await _baseDio.get(Api.verifyReferralCode, data: payload);
+      final response = await _baseDio.get(Api.verifyReferralCode, data: payload);
       if (response.data["code"] == 200) {
         final referallModel = ReferallModel(
           accountCode: response.data["data"]["phone"],

@@ -83,8 +83,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               const Text('Số điện thoại', style: AppTypography.p5),
               const SizedBox(height: 8),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
-                buildWhen: (previous, current) =>
-                    previous.countTime != current.countTime,
+                buildWhen: (previous, current) => previous.countTime != current.countTime,
                 builder: (context, state) {
                   return Container(
                     padding: const EdgeInsets.symmetric(
@@ -167,12 +166,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                               borderWidth: 1,
                               fieldHeight: 45,
                               fieldWidth: 45,
-                              inactiveColor: state.isOTPVerify == 0
-                                  ? AppColors.red_1
-                                  : AppColors.border_2,
-                              activeColor: state.isOTPVerify == 0
-                                  ? AppColors.red_1
-                                  : AppColors.border_2,
+                              inactiveColor: state.isOTPVerify == 0 ? AppColors.red_1 : AppColors.border_2,
+                              activeColor: state.isOTPVerify == 0 ? AppColors.red_1 : AppColors.border_2,
                             ),
                             errorTextSpace: 20,
                             errorTextMargin: const EdgeInsets.only(left: 0),
@@ -271,7 +266,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigator.replaceAll([const RootRoute(), LoginPage()]);
+                      navigator.replaceAll([const RootRoute(), const LoginPage()]);
                     },
                     child: Text(
                       'Đăng nhập',
