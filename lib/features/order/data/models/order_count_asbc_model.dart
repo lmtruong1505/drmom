@@ -4,7 +4,7 @@ part 'order_count_asbc_model.g.dart';
 part 'order_count_asbc_model.freezed.dart';
 
 @freezed
-class OrderCountAsbcModel with _$OrderCountAsbcModel {
+abstract class OrderCountAsbcModel with _$OrderCountAsbcModel {
   const factory OrderCountAsbcModel({
     final int? id,
     final String? title,

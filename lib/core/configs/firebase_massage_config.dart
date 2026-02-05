@@ -47,8 +47,8 @@ class FirebaseMessageConfig {
       print("======= $routeName");
       print("======= ${message.data}");
     }
-    if (routeName != 'OrderDetailPage') {
-      navigator.push(OrderDetailPage(order: null, code: message.data['code']));
+    if (routeName != OrderDetailRoute.name) {
+      navigator.push(OrderDetailRoute(order: null, code: message.data['code']));
     }
   }
 
@@ -81,10 +81,10 @@ class FirebaseMessageConfig {
           print("======= $routeName");
           print("======= ${message.data}");
         }
-        if (routeName == 'OrderDetailPage') {
+        if (routeName == OrderDetailRoute.name) {
           navigator.pop();
           navigator.push(
-            OrderDetailPage(
+            OrderDetailRoute(
               order: null,
               code: message.data['code'],
             ),
@@ -113,8 +113,8 @@ class FirebaseMessageConfig {
             final res = jsonDecode(details.payload!);
             final navigator = getIt.get<AppNavigator>();
             final routeName = navigator.getCurrentRouteName();
-            if (routeName != 'OrderDetailPage') {
-              navigator.push(OrderDetailPage(code: res['code']));
+            if (routeName != OrderDetailRoute.name) {
+              navigator.push(OrderDetailRoute(code: res['code']));
             }
           } else {
             debugPrint('notification payload');
@@ -137,8 +137,8 @@ class FirebaseMessageConfig {
       print("======= $routeName");
       print("======= ${message.data}");
     }
-    if (routeName != 'OrderDetailPage') {
-      navigator.push(OrderDetailPage(order: null, code: message.data['code']));
+    if (routeName != OrderDetailRoute.name) {
+      navigator.push(OrderDetailRoute(order: null, code: message.data['code']));
     }
   }
 

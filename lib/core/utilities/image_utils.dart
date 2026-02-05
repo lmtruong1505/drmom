@@ -43,21 +43,22 @@ class ImageUtils {
   }) async {
     final CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: path,
-      cropStyle: cropStyle,
+      // cropStyle removed from here as it is not a valid named parameter
+      compressFormat: ImageCompressFormat.jpg,
+      compressQuality: 100,
       aspectRatio: cropStyle == CropStyle.circle
           ? null
           : const CropAspectRatio(ratioX: 16, ratioY: 9),
-      aspectRatioPresets: [
-        CropAspectRatioPreset.ratio16x9,
-      ],
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: 'Chỉnh sửa',
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: false,
+          cropStyle: cropStyle, // Added here
         ),
         IOSUiSettings(
           title: 'Chỉnh sửa',
+          cropStyle: cropStyle, // Added here
         ),
       ],
     );

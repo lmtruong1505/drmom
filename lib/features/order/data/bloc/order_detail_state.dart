@@ -7,7 +7,7 @@ import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.da
 part 'order_detail_state.freezed.dart';
 
 @freezed
-class OrderDetailState with _$OrderDetailState {
+abstract class OrderDetailState with _$OrderDetailState {
   const factory OrderDetailState({
     @Default(null) QrOrderDetailModel? order,
     @Default([]) List<DataModel>? reason,

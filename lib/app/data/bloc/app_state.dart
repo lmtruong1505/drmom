@@ -11,7 +11,7 @@ import 'package:location/location.dart';
 part 'app_state.freezed.dart';
 
 @freezed
-class AppState with _$AppState {
+abstract class AppState with _$AppState {
   const factory AppState({
     @Default(false) bool isLoading,
     @Default(false) bool isLoadingAddress,

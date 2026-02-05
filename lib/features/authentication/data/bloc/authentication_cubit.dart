@@ -21,7 +21,8 @@ import 'authentication_state.dart';
 
 @Injectable()
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  AuthenticationCubit(this._authenticationRepository) : super(const AuthenticationState()) {
+  AuthenticationCubit(this._authenticationRepository)
+      : super(const AuthenticationState()) {
     if (preferences.rememberAccount != null) {
       onChangePhoneNumber(preferences.rememberAccount!.phoneNumber!);
       onChangePassword(preferences.rememberAccount!.password!);
@@ -255,7 +256,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           accept: () {
             emit(state.copyWith(countTime: 0));
             navigator.pop();
-            navigator.replace(const LoginPage());
+            navigator.replace(const LoginRoute());
 
             // navigator.push(
             //   VerifyOtpPage(
@@ -384,7 +385,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           accept: () {
             emit(state.copyWith(countTime: 0));
             navigator.popUntilRoot(useRootNavigator: true);
-            navigator.push(const LoginPage());
+            navigator.push(const LoginRoute());
           },
         );
       } else {
@@ -474,7 +475,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
             hasButtonBack: false,
             accept: () {
               navigator.popUntilRoot(useRootNavigator: true);
-              navigator.push(const LoginPage());
+              navigator.push(const LoginRoute());
             },
           );
         },
@@ -538,7 +539,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
     if (permission == LocationPermission.deniedForever) {
       showOverlayToast(
-        title: "Quyền vị trí bị từ chối vĩnh viễn, chúng tôi không thể yêu cầu quyền",
+        title:
+            "Quyền vị trí bị từ chối vĩnh viễn, chúng tôi không thể yêu cầu quyền",
       );
       return false;
     }
@@ -563,7 +565,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> verifyReferralCode() async {
     try {
       showLoading();
-      final res = await _authenticationRepository.verifyReferralCode(state.userReferralCode ?? "");
+      final res = await _authenticationRepository
+          .verifyReferralCode(state.userReferralCode ?? "");
       EasyLoading.dismiss();
       if (res.code == 200) {
         emit(
@@ -621,10 +624,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         'Đăng xuất thành công',
         duration: const Duration(seconds: 1),
       );
-      navigator.replaceAll([const LoginPage()]);
+      navigator.replaceAll([const LoginRoute()]);
     } catch (e) {
       EasyLoading.dismiss();
-      navigator.replaceAll([const LoginPage()]);
+      navigator.replaceAll([const LoginRoute()]);
     }
   }
 }

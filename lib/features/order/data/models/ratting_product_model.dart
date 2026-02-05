@@ -6,7 +6,7 @@ part 'ratting_product_model.g.dart';
 part 'ratting_product_model.freezed.dart';
 
 @freezed
-class RatingProductModel with _$RatingProductModel {
+abstract class RatingProductModel with _$RatingProductModel {
   const factory RatingProductModel({
     final int? id,
     final num? star,

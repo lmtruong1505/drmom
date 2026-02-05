@@ -9,7 +9,7 @@ import 'package:bpg_retail/gen/assets.gen.dart';
 
 import '../../../core/widgets/base/base_screen.dart';
 
-@RoutePage(name: "ProfilePage")
+@RoutePage()
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 

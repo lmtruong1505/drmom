@@ -4,7 +4,7 @@ import 'package:bpg_retail/features/order/data/models/order_detail_model.dart';
 part 'ratting_order_state.freezed.dart';
 
 @freezed
-class RattingOrderState with _$RattingOrderState {
+abstract class RattingOrderState with _$RattingOrderState {
   const factory RattingOrderState({
     final OrderDetailModel? order,
     @Default(false) final bool? isLoading,

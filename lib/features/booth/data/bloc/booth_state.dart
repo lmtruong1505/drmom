@@ -8,7 +8,7 @@ import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 part 'booth_state.freezed.dart';
 
 @freezed
-class BoothState with _$BoothState {
+abstract class BoothState with _$BoothState {
   const factory BoothState({
     @Default(false) bool isTop,
     @Default(false) bool isLoading,

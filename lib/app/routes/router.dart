@@ -22,147 +22,147 @@ class AppRouter extends $AppRouter {
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('VerifyOtpPage'),
+          page: VerifyOtpRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('ProfilePage'),
+          page: ProfileRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('CartPageV2'),
+          page: CartPrdRouteV2.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('OrderPage'),
+          page: OrderRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('BoothPageV2'),
+          page: BoothScreen.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('LoginPage'),
+          page: LoginRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('RegisterPage'),
+          page: RegisterRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('OtpVerificationPage'),
+          page: OtpVerificationRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('ForgotPasswordPage'),
+          page: ForgotPasswordRoute.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('ProfileInfoPage'),
+          page: ProfileInfoRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
+        // CustomRoute(
+        //   page: UpdatePhoneRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        CustomRoute(
+          page: AddressManagerRoute.page,
           transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
         ),
         CustomRoute(
-          page: const PageInfo('UpdatePhonePage'),
+          page: DetailAddressRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
+        // CustomRoute(
+        //   page: CreateNewAddressRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        CustomRoute(
+          page: ChangePasswordRoute.page,
           transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
         ),
         CustomRoute(
-          page: const PageInfo('AddressManagerPage'),
+          page: NotificationRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
+        // CustomRoute(
+        //   page: FAQRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: FAQNewRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        CustomRoute(
+          page: FavoriteRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
+        // CustomRoute(
+        //   page: PurchasedRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: PolicyRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: PrivacyPolicyRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: ProductDetailRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: BoothDetailRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        CustomRoute(
+          page: OrderDetailRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        ),
+        // CustomRoute(
+        //   page: CartBuyRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: SearchProductRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.noTransition,
+        // ),
+        // CustomRoute(
+        //   page: PointRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: DeliverySelectRoute.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        // CustomRoute(
+        //   page: ProductDetailRouteV2.page,
+        //   transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+        // ),
+        CustomRoute(
+          page: DeliverySelectV2Route.page,
           transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
         ),
         CustomRoute(
-          page: const PageInfo('DetailAddressPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('CreateNewAddressPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('ChangePasswordPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('NotificationPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('FAQPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('FAQNewPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('FavoritePage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('PurchasedPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('PolicyPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('PrivacyPolicyPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('ProductDetailPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('BoothDetailPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('OrderDetailPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('CartBuyPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('SearchProductPage'),
+          page: RatingOrder.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(
-          page: const PageInfo('PointPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('DeliverySelectPage'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('ProductDetailPageV2'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('DeliverySelectPageV2'),
-          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
-        ),
-        CustomRoute(
-          page: const PageInfo('RattingOrder'),
+          page: AddressFullScreenV2.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
+        // CustomRoute(
+        //   page: PromotionScreen.page,
+        //   transitionsBuilder: TransitionsBuilders.noTransition,
+        // ),
+        // CustomRoute(
+        //   page: PromotionDetailScreen.page,
+        //   transitionsBuilder: TransitionsBuilders.noTransition,
+        // ),
         CustomRoute(
-          page: const PageInfo('AddressFullScreenV2'),
-          transitionsBuilder: TransitionsBuilders.noTransition,
-        ),
-        CustomRoute(
-          page: const PageInfo('PromotionScreen'),
-          transitionsBuilder: TransitionsBuilders.noTransition,
-        ),
-        CustomRoute(
-          page: const PageInfo('PromotionDetailScreen'),
-          transitionsBuilder: TransitionsBuilders.noTransition,
-        ),
-        CustomRoute(
-          page: const PageInfo('QRCodeScreen'),
+          page: QrCodeScreen.page,
           transitionsBuilder: TransitionsBuilders.noTransition,
         ),
         CustomRoute(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +12,10 @@ import 'package:bpg_retail/core/base/cubit_state.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
 import 'package:bpg_retail/core/preferences/preferences.dart';
-import 'package:bpg_retail/core/utilities/assets.dart';
 import 'package:bpg_retail/core/utilities/enum.dart';
 import 'package:bpg_retail/core/utilities/loading.dart';
 import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
 import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
 import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
 import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
 import 'package:bpg_retail/features/profile/data/models/address_model.dart';
@@ -165,7 +162,9 @@ class UserProfileCubit extends Cubit<CubitState> {
           emit(state.copyWith(status: CubitStatus.loaded));
         }
       } catch (e) {
-        print(e);
+        if (kDebugMode) {
+          print(e);
+        }
         EasyLoading.dismiss();
       }
     }

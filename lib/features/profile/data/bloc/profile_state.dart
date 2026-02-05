@@ -10,7 +10,7 @@ import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 part 'profile_state.freezed.dart';
 
 @freezed
-class ProfileState with _$ProfileState {
+abstract class ProfileState with _$ProfileState {
   const factory ProfileState({
     @Default(false) bool isEdit,
     @Default(null) UserModel? userEdit,

@@ -121,7 +121,7 @@ class _BtsCheckoutCardState extends State<BtsCheckoutCard>
             style: s18w700,
           ),
           trailing: IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () => context.router.pop(),
             icon: const Icon(
               Icons.close,
               color: AppColors.grey79,
@@ -311,7 +311,7 @@ class _BtsCheckoutCardState extends State<BtsCheckoutCard>
           //   style: s18w700,
           // ),
           trailing: IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () => context.router.pop(),
             icon: const Icon(
               Icons.close,
               color: AppColors.grey79,
@@ -365,7 +365,7 @@ class _BtsCheckoutCardState extends State<BtsCheckoutCard>
               style: s18w700,
             ),
             trailing: IconButton(
-              onPressed: () => context.pop(),
+              onPressed: () => context.router.pop(),
               icon: const Icon(
                 Icons.close,
                 color: AppColors.grey79,

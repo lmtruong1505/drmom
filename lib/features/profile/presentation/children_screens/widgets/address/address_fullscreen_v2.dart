@@ -15,7 +15,7 @@ import 'package:bpg_retail/features/profile/data/bloc/address_state.dart';
 import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 import 'package:location/location.dart';
 
-@RoutePage(name: "AddressFullScreenV2")
+@RoutePage()
 class AddressFullScreenV2 extends StatefulWidget {
   const AddressFullScreenV2({super.key, required this.address});
 

@@ -194,7 +194,7 @@ class _CartQRBuyPageState extends State<CartQRBuyPage> {
                         onTap: () {
                           navigator.popUntilRoot();
                           navigator.push(
-                            OrderDetailPage(code: code),
+                            OrderDetailRoute(code: code),
                           );
                         },
                         largeButton: false,
@@ -282,7 +282,7 @@ class _CartQRBuyPageState extends State<CartQRBuyPage> {
                     );
                   }
                   // } else {
-                  //   navigator.push(LoginPage());
+                  //   navigator.push(const LoginRoute());
                   // }
                 },
               ),
@@ -633,7 +633,7 @@ class DeliverySelectWidget extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onTap: () async {
                   final res = await navigator.push(
-                    DeliverySelectPageV2(
+                    DeliverySelectV2Route(
                       senderAddress: state.boothSelected!.fullAddress ?? "",
                     ),
                   );

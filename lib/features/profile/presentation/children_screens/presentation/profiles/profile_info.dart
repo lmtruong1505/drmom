@@ -7,7 +7,7 @@ import 'package:bpg_retail/features/profile/presentation/children_screens/widget
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage(name: "ProfileInfoPage")
+@RoutePage()
 class ProfileInfoPage extends StatefulWidget {
   const ProfileInfoPage({super.key, this.isEdit = false});
 

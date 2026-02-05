@@ -6,7 +6,7 @@ part 'order_model_v2.g.dart';
 part 'order_model_v2.freezed.dart';
 
 @freezed
-class OrderModelV2 with _$OrderModelV2 {
+abstract class OrderModelV2 with _$OrderModelV2 {
   const factory OrderModelV2({
     final int? id,
     @JsonKey(name: 'total_price') final num? totalPrice,
@@ -24,7 +24,7 @@ class OrderModelV2 with _$OrderModelV2 {
 }
 
 @freezed
-class GroceryModel with _$GroceryModel {
+abstract class GroceryModel with _$GroceryModel {
   const factory GroceryModel({
     final int? id,
     final String? fullname,
@@ -38,7 +38,7 @@ class GroceryModel with _$GroceryModel {
 }
 
 @freezed
-class OrderItem with _$OrderItem {
+abstract class OrderItem with _$OrderItem {
   const factory OrderItem({
     @JsonKey(name: 'price_list_unit_id') final int? priceListUnitId,
     @JsonKey(name: 'product_unit_id') final int? productUnitId,
@@ -52,7 +52,7 @@ class OrderItem with _$OrderItem {
 }
 
 @freezed
-class StatusModel with _$StatusModel {
+abstract class StatusModel with _$StatusModel {
   const factory StatusModel({
     final String? label,
     final String? value,

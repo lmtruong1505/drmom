@@ -302,7 +302,7 @@ class AppCubit extends BaseCubit<AppState> {
           'Đăng xuất thành công',
           duration: const Duration(seconds: 1),
         );
-        navigator.replaceAll([const LoginPage()]);
+        navigator.replaceAll([const LoginRoute()]);
       }
       // emit(
       //   state.copyWith(
@@ -313,11 +313,11 @@ class AppCubit extends BaseCubit<AppState> {
       //     addressList: [],
       //   ),
       // );
-      navigator.replaceAll([const LoginPage()]);
+      navigator.replaceAll([const LoginRoute()]);
       // navigator.popUntilRoot();
     } catch (e) {
       print(e);
-      navigator.replaceAll([const LoginPage()]);
+      navigator.replaceAll([const LoginRoute()]);
       EasyLoading.dismiss();
     }
   }

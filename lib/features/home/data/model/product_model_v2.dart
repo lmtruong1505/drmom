@@ -5,7 +5,7 @@ part 'product_model_v2.g.dart';
 part 'product_model_v2.freezed.dart';
 
 @freezed
-class ProductModelV2 with _$ProductModelV2 {
+abstract class ProductModelV2 with _$ProductModelV2 {
   const factory ProductModelV2({
     final int? id,
     final String? title,
@@ -34,7 +34,7 @@ class ProductModelV2 with _$ProductModelV2 {
 }
 
 @freezed
-class MediaDatumModel with _$MediaDatumModel {
+abstract class MediaDatumModel with _$MediaDatumModel {
   const factory MediaDatumModel({
     final int? id,
     final String? alt,
@@ -46,7 +46,7 @@ class MediaDatumModel with _$MediaDatumModel {
 }
 
 @freezed
-class CompanyDataV2 with _$CompanyDataV2 {
+abstract class CompanyDataV2 with _$CompanyDataV2 {
   const factory CompanyDataV2({
     final int? id,
     final String? title,
@@ -59,7 +59,7 @@ class CompanyDataV2 with _$CompanyDataV2 {
 }
 
 @freezed
-class OptionData with _$OptionData {
+abstract class OptionData with _$OptionData {
   const factory OptionData({
     final int? id,
     final String? title,
@@ -73,7 +73,7 @@ class OptionData with _$OptionData {
 }
 
 @freezed
-class AccountDataModel with _$AccountDataModel {
+abstract class AccountDataModel with _$AccountDataModel {
   const factory AccountDataModel({
     final String? system,
     final Account? account,
@@ -86,7 +86,7 @@ class AccountDataModel with _$AccountDataModel {
 }
 
 @freezed
-class Account with _$Account {
+abstract class Account with _$Account {
   const factory Account({
     final int? id,
     @JsonKey(name: 'full_name') final String? fullName,
@@ -98,7 +98,7 @@ class Account with _$Account {
 }
 
 @freezed
-class CompanyAddressData with _$CompanyAddressData {
+abstract class CompanyAddressData with _$CompanyAddressData {
   const factory CompanyAddressData({
     final int? id,
     final String? title,
@@ -115,7 +115,7 @@ class CompanyAddressData with _$CompanyAddressData {
 }
 
 @freezed
-class ProductShopData with _$ProductShopData {
+abstract class ProductShopData with _$ProductShopData {
   const factory ProductShopData({
     final int? id,
     final String? title,
@@ -128,7 +128,7 @@ class ProductShopData with _$ProductShopData {
 }
 
 @freezed
-class ShopWarehouseData with _$ShopWarehouseData {
+abstract class ShopWarehouseData with _$ShopWarehouseData {
   const factory ShopWarehouseData({
     @JsonKey(name: 'address_data') final AddressData? addressData,
   }) = _ShopWarehouseData;
@@ -138,7 +138,7 @@ class ShopWarehouseData with _$ShopWarehouseData {
 }
 
 @freezed
-class AddressData with _$AddressData {
+abstract class AddressData with _$AddressData {
   const factory AddressData({
     final int? id,
     final String? title,
@@ -155,7 +155,7 @@ class AddressData with _$AddressData {
 }
 
 @freezed
-class DataShop with _$DataShop {
+abstract class DataShop with _$DataShop {
   const factory DataShop({
     final int? id,
     final String? title,
@@ -167,7 +167,7 @@ class DataShop with _$DataShop {
 }
 
 @freezed
-class VariantModel with _$VariantModel {
+abstract class VariantModel with _$VariantModel {
   const factory VariantModel({
     final int? id,
     final String? title,

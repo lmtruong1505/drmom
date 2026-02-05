@@ -26,7 +26,7 @@ import 'package:bpg_retail/features/order/data/models/order_model.dart';
 import 'package:bpg_retail/features/order/presentation/widgets/order_silver_appbar.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
 
-@RoutePage(name: "OrderPage")
+@RoutePage()
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
 
@@ -254,7 +254,7 @@ class _OrderPageState extends State<OrderPage> {
           GestureDetector(
             onTap: () async {
               final result = await navigator
-                  .push(OrderDetailPage(order: item, code: item?.code ?? ""));
+                  .push(OrderDetailRoute(order: item, code: item?.code ?? ""));
               if (result == true) {
                 bloc
                   ..getOrders()

@@ -21,7 +21,7 @@ import 'package:bpg_retail/features/profile/data/bloc/notification_state.dart';
 import 'package:bpg_retail/features/profile/data/models/notification_model.dart';
 import 'package:bpg_retail/features/profile/presentation/children_screens/presentation/notification/widget.dart/notification_select_all.dart';
 
-@RoutePage(name: "NotificationPage")
+@RoutePage()
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
 

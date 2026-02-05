@@ -4,7 +4,7 @@ import 'package:bpg_retail/features/profile/data/models/my_group_model.dart';
 part 'my_group_state.freezed.dart';
 
 @freezed
-class MyGroupState with _$MyGroupState {
+abstract class MyGroupState with _$MyGroupState {
   const factory MyGroupState({
     final List<MyGroupModel>? listGroup,
     final int? total,

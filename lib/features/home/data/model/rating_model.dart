@@ -5,7 +5,7 @@ part 'rating_model.g.dart';
 part 'rating_model.freezed.dart';
 
 @freezed
-class RatingModel with _$RatingModel {
+abstract class RatingModel with _$RatingModel {
   const factory RatingModel({
     final int? id,
     final num? star,
@@ -21,7 +21,7 @@ class RatingModel with _$RatingModel {
 }
 
 @freezed
-class UserCreated with _$UserCreated {
+abstract class UserCreated with _$UserCreated {
   const factory UserCreated({
     final int? id,
     final String? fullname,

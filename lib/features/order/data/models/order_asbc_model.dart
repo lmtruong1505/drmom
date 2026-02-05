@@ -4,7 +4,7 @@ part 'order_asbc_model.g.dart';
 part 'order_asbc_model.freezed.dart';
 
 @freezed
-class OrderAsbcModel with _$OrderAsbcModel {
+abstract class OrderAsbcModel with _$OrderAsbcModel {
   const factory OrderAsbcModel({
     final int? id,
     final String? title,
@@ -28,7 +28,7 @@ class OrderAsbcModel with _$OrderAsbcModel {
 }
 
 @freezed
-class CompanyData with _$CompanyData {
+abstract class CompanyData with _$CompanyData {
   const factory CompanyData({
     final int? id,
     final String? title,
@@ -39,7 +39,7 @@ class CompanyData with _$CompanyData {
 }
 
 @freezed
-class Orderitem with _$Orderitem {
+abstract class Orderitem with _$Orderitem {
   const factory Orderitem({
     final int? id,
     final num? quantity,
@@ -55,7 +55,7 @@ class Orderitem with _$Orderitem {
 }
 
 @freezed
-class VariantData with _$VariantData {
+abstract class VariantData with _$VariantData {
   const factory VariantData({
     final int? id,
     final String? title,
@@ -76,7 +76,7 @@ class VariantData with _$VariantData {
 }
 
 @freezed
-class OptionsDatum with _$OptionsDatum {
+abstract class OptionsDatum with _$OptionsDatum {
   const factory OptionsDatum({
     final int? id,
     final String? title,
@@ -90,7 +90,7 @@ class OptionsDatum with _$OptionsDatum {
 }
 
 @freezed
-class DataModel with _$DataModel {
+abstract class DataModel with _$DataModel {
   const factory DataModel({
     final int? id,
     final String? title,
@@ -102,7 +102,7 @@ class DataModel with _$DataModel {
 }
 
 @freezed
-class UserAtedData with _$UserAtedData {
+abstract class UserAtedData with _$UserAtedData {
   const factory UserAtedData({
     final int? id,
     @JsonKey(name: 'full_name') final String? fullName,
@@ -115,7 +115,7 @@ class UserAtedData with _$UserAtedData {
 }
 
 @freezed
-class ShopData with _$ShopData {
+abstract class ShopData with _$ShopData {
   const factory ShopData({
     final int? id,
     final String? title,
@@ -128,7 +128,7 @@ class ShopData with _$ShopData {
 }
 
 @freezed
-class PaymentMethodModel with _$PaymentMethodModel {
+abstract class PaymentMethodModel with _$PaymentMethodModel {
   const factory PaymentMethodModel({
     final int? id,
     final String? title,

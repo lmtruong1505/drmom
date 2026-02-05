@@ -7,7 +7,7 @@ import 'package:bpg_retail/features/profile/data/models/deposit_qr_code_model.da
 part 'deposit_withdraw_state.freezed.dart';
 
 @freezed
-class DepositWithdrawState with _$DepositWithdrawState {
+abstract class DepositWithdrawState with _$DepositWithdrawState {
   const factory DepositWithdrawState({
     @Default(null) final int? index,
     @Default(false) final bool? isLoading,

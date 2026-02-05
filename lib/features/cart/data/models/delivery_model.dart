@@ -4,7 +4,7 @@ part 'delivery_model.g.dart';
 part 'delivery_model.freezed.dart';
 
 @freezed
-class DeliveryTypeModel with _$DeliveryTypeModel {
+abstract class DeliveryTypeModel with _$DeliveryTypeModel {
   const factory DeliveryTypeModel({
     final DeliveryShipping? deliveryShipping,
     final String? type,

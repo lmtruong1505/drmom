@@ -5,7 +5,7 @@ part 'product_model.freezed.dart';
 part 'product_model.g.dart';
 
 @freezed
-class ProductModel with _$ProductModel {
+abstract class ProductModel with _$ProductModel {
   //  const ProductModel._();
   const factory ProductModel({
     final int? id,
@@ -29,7 +29,7 @@ class ProductModel with _$ProductModel {
 }
 
 @freezed
-class UnitModel with _$UnitModel {
+abstract class UnitModel with _$UnitModel {
   // const UnitModel._();
   const factory UnitModel({
     final int? id,

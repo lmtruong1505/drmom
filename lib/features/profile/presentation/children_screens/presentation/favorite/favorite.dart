@@ -15,7 +15,7 @@ import 'package:bpg_retail/features/home/data/model/product_model.dart';
 import 'package:bpg_retail/features/profile/data/bloc/favorite_cubit.dart';
 import 'package:bpg_retail/features/profile/data/bloc/favorite_state.dart';
 
-@RoutePage(name: "FavoritePage")
+@RoutePage()
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
 

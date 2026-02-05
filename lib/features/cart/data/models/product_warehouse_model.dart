@@ -5,7 +5,7 @@ part 'product_warehouse_model.freezed.dart';
 part 'product_warehouse_model.g.dart';
 
 @freezed
-class ProductWarehouseModel with _$ProductWarehouseModel {
+abstract class ProductWarehouseModel with _$ProductWarehouseModel {
   const factory ProductWarehouseModel({
     @JsonKey(name: 'shop_name') final String? shopName,
     final List<ProductModelV2>? items,

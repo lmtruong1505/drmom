@@ -20,7 +20,7 @@ import 'package:bpg_retail/features/cart/data/models/delivery_model.dart';
 
 import 'package:bpg_retail/features/cart/data/models/ghtk_model.dart';
 
-@RoutePage(name: "DeliverySelectPageV2")
+@RoutePage()
 class DeliverySelectV2Page extends StatefulWidget {
   const DeliverySelectV2Page(this.senderAddress);
 

@@ -6,7 +6,7 @@ import 'package:bpg_retail/features/profile/data/models/payment_model.dart';
 part 'payment_history_state.freezed.dart';
 
 @freezed
-class PaymentHistoryState with _$PaymentHistoryState {
+abstract class PaymentHistoryState with _$PaymentHistoryState {
   const factory PaymentHistoryState({
     @Default([]) List<PaymentModel>? payments,
     @Default(null) PaymentDetailModel? detail,
