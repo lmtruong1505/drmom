@@ -73,6 +73,7 @@ class ValidateTextField extends StatefulWidget {
   final VoidCallback? onClear;
   final List<TextInputFormatter>? inputFormatters;
   final InputDecoration? decoration;
+
   @override
   State<ValidateTextField> createState() => _ValidateTextFieldState();
 }

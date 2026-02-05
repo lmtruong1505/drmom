@@ -77,4 +77,8 @@ class AppColors {
   static const Color grey80 = Color(0xFF808089);
   static const Color grey5B = Color(0xFF5B5B61);
   static const Color grey97 = Color(0xFF97979E);
+
+  static const Color greyColor = Color(0xFFAAAAAA);
+  static const Color greyTextColor = Color.fromARGB(255, 136, 136, 136);
+  static const Color greyFF = Color(0xFFEAECF0);
 }

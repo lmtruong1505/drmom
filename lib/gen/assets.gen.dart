@@ -977,6 +977,78 @@ class $AssetsLangGen {
   List<String> get values => [en, vi];
 }
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/bg_detail.svg
+  SvgGenImage get bgDetail => const SvgGenImage('assets/svg/bg_detail.svg');
+
+  /// File path: assets/svg/calendar_time.svg
+  SvgGenImage get calendarTime =>
+      const SvgGenImage('assets/svg/calendar_time.svg');
+
+  /// File path: assets/svg/circle_info.svg
+  SvgGenImage get circleInfo => const SvgGenImage('assets/svg/circle_info.svg');
+
+  /// File path: assets/svg/close.svg
+  SvgGenImage get close => const SvgGenImage('assets/svg/close.svg');
+
+  /// File path: assets/svg/delete.svg
+  SvgGenImage get delete => const SvgGenImage('assets/svg/delete.svg');
+
+  /// File path: assets/svg/error.svg
+  SvgGenImage get error => const SvgGenImage('assets/svg/error.svg');
+
+  /// File path: assets/svg/file.svg
+  SvgGenImage get file => const SvgGenImage('assets/svg/file.svg');
+
+  /// File path: assets/svg/file_icon.svg
+  SvgGenImage get fileIcon => const SvgGenImage('assets/svg/file_icon.svg');
+
+  /// File path: assets/svg/ic_flash_sale.svg
+  SvgGenImage get icFlashSale =>
+      const SvgGenImage('assets/svg/ic_flash_sale.svg');
+
+  /// File path: assets/svg/person.svg
+  SvgGenImage get person => const SvgGenImage('assets/svg/person.svg');
+
+  /// File path: assets/svg/search_empty.svg
+  SvgGenImage get searchEmpty =>
+      const SvgGenImage('assets/svg/search_empty.svg');
+
+  /// File path: assets/svg/success.svg
+  SvgGenImage get success => const SvgGenImage('assets/svg/success.svg');
+
+  /// File path: assets/svg/warning_outline.svg
+  SvgGenImage get warningOutline =>
+      const SvgGenImage('assets/svg/warning_outline.svg');
+
+  /// File path: assets/svg/zalo.svg
+  SvgGenImage get zalo => const SvgGenImage('assets/svg/zalo.svg');
+
+  /// File path: assets/svg/zalo_oa.svg
+  SvgGenImage get zaloOa => const SvgGenImage('assets/svg/zalo_oa.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        bgDetail,
+        calendarTime,
+        circleInfo,
+        close,
+        delete,
+        error,
+        file,
+        fileIcon,
+        icFlashSale,
+        person,
+        searchEmpty,
+        success,
+        warningOutline,
+        zalo,
+        zaloOa
+      ];
+}
+
 class Assets {
   const Assets._();
 
@@ -984,6 +1056,7 @@ class Assets {
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
   static const $AssetsLangGen lang = $AssetsLangGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {

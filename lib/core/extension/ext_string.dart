@@ -29,43 +29,57 @@ extension extString on String? {
     return true;
   }
 
+
   String? validatorTextField({
     String? msg,
     TextInputType type = TextInputType.text,
     String? textConfirm,
+    int? minLength,
+    int? maxLength,
   }) {
     if (validator.isEmpty) {
-      return msg ?? "Không bỏ trống";
+      return msg ?? 'Không bỏ trống';
+    }
+    if (maxLength != null && validator.length > maxLength) {
+      return msg ?? 'Vui lòng nhập tối đa $maxLength kí tự';
+    }
+    if (minLength != null && validator.length < minLength) {
+      return msg ?? 'Vui lòng nhập tối thiểu $minLength kí tự';
     }
 
     /// check phone
-    int? phone = int.tryParse(validator);
-
-    bool isPhone =
-        validator.length == 10 && phone != null && validator.startsWith("0");
-
-    if (isPhone && type == TextInputType.phone) {
+    final int? phone = int.tryParse(validator);
+    if (phone == null && type == TextInputType.phone) {
+      return msg ?? 'Số điện thoại không đúng định dạng';
+    }
+    if (validator.length != 10 && type == TextInputType.phone) {
+      return msg ?? 'Số điện thoại không đúng định dạng';
+    }
+    if (!validator.startsWith('0') && type == TextInputType.phone) {
       return msg ?? 'Số điện thoại không đúng định dạng';
     }
 
     /// check email
-    var isEmail = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    final isEmail = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
     if (!isEmail.hasMatch(validator) && type == TextInputType.emailAddress) {
-      return msg ?? "Email không đúng định dạng";
+      return msg ?? 'Email không đúng định dạng';
     }
 
     /// check password
-    if (validator.length < 6 && type == TextInputType.visiblePassword) {
-      return msg ?? 'Mật khẩu tối thiểu 6 ký tự';
+    if ((validator.length < 6 || validator.length > 12) &&
+        type == TextInputType.visiblePassword) {
+      return msg ?? 'Mật khẩu phải từ 6 -12 ký tự';
     }
     if (textConfirm != null &&
         this != textConfirm &&
         type == TextInputType.visiblePassword) {
-      return msg ?? "Mật khẩu không khớp";
+      return msg ?? 'Mật khẩu không khớp';
     }
-    return msg;
+    return null;
   }
+
 
   DateTime? get toDate {
     DateTime? date = DateTime.tryParse(validator);
