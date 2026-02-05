@@ -250,7 +250,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
       if (res.code == 200) {
         emit(state.copyWith(status: CubitStatus.sendSuccess));
         navigator.back();
-        navigator.push(OrderDetailPage(code: res.data));
+        navigator.push(OrderDetailRoute(code: res.data));
         showOverlayToast(title: 'Đặt hàng thành công');
         if (isCart == true) {
           cartBloc.getCart();
@@ -320,7 +320,7 @@ class AsbcCartBuyCubit extends Cubit<CubitState> {
       if (res.code == 200) {
         emit(state.copyWith(status: CubitStatus.sendSuccess));
         navigator.back();
-        navigator.push(OrderDetailPage(code: res.data));
+        navigator.push(OrderDetailRoute(code: res.data));
         showOverlayToast(title: 'Đặt hàng thành công');
       } else {
         emit(state.copyWith(status: CubitStatus.sendFaild));

@@ -30,7 +30,7 @@ import 'package:bpg_retail/features/order/presentation/widgets/reason_confirm.da
 import 'package:bpg_retail/features/wallet/data/cubits/wallet_cubit.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
 
-@RoutePage(name: "OrderDetailPage")
+@RoutePage()
 class OrderDetailPage extends StatefulWidget {
   const OrderDetailPage({super.key, this.order, this.code});
 

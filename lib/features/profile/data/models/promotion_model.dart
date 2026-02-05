@@ -5,7 +5,7 @@ part 'promotion_model.g.dart';
 part 'promotion_model.freezed.dart';
 
 @freezed
-class PromotionModel with _$PromotionModel {
+abstract class PromotionModel with _$PromotionModel {
   const factory PromotionModel({
     final PromotionStatus? status,
     @JsonKey(name: 'promotion_name') final String? promotionName,
@@ -22,7 +22,7 @@ class PromotionModel with _$PromotionModel {
 }
 
 @freezed
-class PromotionDetail with _$PromotionDetail {
+abstract class PromotionDetail with _$PromotionDetail {
   const factory PromotionDetail({
     final num? quantity,
     @JsonKey(name: 'product_unit_id') final int? productUnitId,
@@ -37,7 +37,7 @@ class PromotionDetail with _$PromotionDetail {
 }
 
 @freezed
-class PromotionStatus with _$PromotionStatus {
+abstract class PromotionStatus with _$PromotionStatus {
   const factory PromotionStatus({
     final String? label,
     final num? status,

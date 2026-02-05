@@ -4,7 +4,7 @@ part 'total_order_model.freezed.dart';
 part 'total_order_model.g.dart';
 
 @freezed
-class TotalOrderModel with _$TotalOrderModel {
+abstract class TotalOrderModel with _$TotalOrderModel {
   const factory TotalOrderModel({
     @JsonKey(name: 'PICKUP') final num? pickUp,
     @JsonKey(name: 'APPROVED') final num? approved,

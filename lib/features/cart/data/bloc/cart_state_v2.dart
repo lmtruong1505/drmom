@@ -17,7 +17,7 @@ import '../models/delivery_price_model.dart';
 part 'cart_state_v2.freezed.dart';
 
 @freezed
-class CartStateV2 with _$CartStateV2 {
+abstract class CartStateV2 with _$CartStateV2 {
   const factory CartStateV2({
     @Default(null) OrderPayloadModel? orderPayload,
     @Default(null) AddressModel? addressSelected,

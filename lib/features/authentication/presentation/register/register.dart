@@ -18,7 +18,7 @@ import 'package:bpg_retail/features/authentication/presentation/widget/header_au
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage(name: "RegisterPage")
+@RoutePage()
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
@@ -140,7 +140,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 suffixIcon: GestureDetector(
                   onTap: bloc.onShowPassword,
                   child: Icon(
-                    !state.showPassword ? Icons.visibility_off : Icons.visibility,
+                    !state.showPassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                     color: AppColors.grey_1,
                     size: 20,
                   ),
@@ -169,7 +171,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 suffixIcon: GestureDetector(
                   onTap: bloc.onShowConfirmPassword,
                   child: Icon(
-                    !state.showConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                    !state.showConfirmPassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                     color: AppColors.grey_1,
                     size: 20,
                   ),
@@ -360,7 +364,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigator.replace(const LoginPage());
+                      navigator.replace(const LoginRoute());
                     },
                     child: Text(
                       'Đăng nhập ngay',

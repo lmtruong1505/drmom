@@ -340,7 +340,7 @@ class _BoothPageStateV2 extends State<BoothScreen> {
       //   bloc.getASBCListAddress();
       // }
     } else {
-      navigator.push(LoginPage());
+      navigator.push(const LoginRoute());
     }
   }
 }

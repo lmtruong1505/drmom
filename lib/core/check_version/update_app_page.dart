@@ -105,7 +105,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                       title: 'Bỏ qua',
                       bgColor: AppColors.white,
                       onTap: () {
-                        context.pop();
+                        context.router.pop();
                         // final token = AppSharedPreference.instance
                         //     .getValue(PrefKeys.token);
                         // if (token != null) {

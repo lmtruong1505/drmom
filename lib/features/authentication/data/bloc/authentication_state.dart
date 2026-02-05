@@ -5,7 +5,7 @@ import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
 part 'authentication_state.freezed.dart';
 
 @freezed
-class AuthenticationState with _$AuthenticationState {
+abstract class AuthenticationState with _$AuthenticationState {
   const factory AuthenticationState({
     @Default('') String phoneNumber,
     @Default('') String password,

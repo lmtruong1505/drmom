@@ -9,7 +9,7 @@ part 'order_detail_model.g.dart';
 part 'order_detail_model.freezed.dart';
 
 @freezed
-class OrderDetailModel with _$OrderDetailModel {
+abstract class OrderDetailModel with _$OrderDetailModel {
   const factory OrderDetailModel({
     @JsonKey(name: 'order_id') final int? orderId,
     @JsonKey(name: 'order_code') final String? orderCode,
@@ -36,7 +36,7 @@ class OrderDetailModel with _$OrderDetailModel {
 }
 
 @freezed
-class CustomerId with _$CustomerId {
+abstract class CustomerId with _$CustomerId {
   const factory CustomerId({
     final int? id,
     final String? fullname,
@@ -48,7 +48,7 @@ class CustomerId with _$CustomerId {
 }
 
 @freezed
-class CategoryModel with _$CategoryModel {
+abstract class CategoryModel with _$CategoryModel {
   const factory CategoryModel({
     final int? id,
     @JsonKey(name: 'category_name') final String? categoryName,
@@ -59,7 +59,7 @@ class CategoryModel with _$CategoryModel {
 }
 
 @freezed
-class OrderItem with _$OrderItem {
+abstract class OrderItem with _$OrderItem {
   const factory OrderItem({
     @JsonKey(name: 'product_id') final int? productId,
     @JsonKey(name: 'product_name') final String? productName,
@@ -77,7 +77,7 @@ class OrderItem with _$OrderItem {
 }
 
 @freezed
-class ShippingModel with _$ShippingModel {
+abstract class ShippingModel with _$ShippingModel {
   const factory ShippingModel({
     @JsonKey(name: 'transport_order_number') final String? transportOrderNumber,
     @JsonKey(name: 'transport_fee') final num? transportFee,
@@ -92,7 +92,7 @@ class ShippingModel with _$ShippingModel {
 }
 
 @freezed
-class RattingModel with _$RattingModel {
+abstract class RattingModel with _$RattingModel {
   const factory RattingModel({
     final int? id,
     @JsonKey(name: 'product_id') final int? productId,

@@ -11,7 +11,7 @@ import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 import 'package:bpg_retail/features/profile/presentation/children_screens/widgets/address/build_form_address.dart';
 import 'package:flutter/material.dart';
 
-@RoutePage(name: "DetailAddressPage")
+@RoutePage()
 class DetailAddressPage extends StatefulWidget {
   const DetailAddressPage({super.key, required this.address});
 

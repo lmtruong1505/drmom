@@ -4,7 +4,7 @@ part 'delivery_price_model.freezed.dart';
 part 'delivery_price_model.g.dart';
 
 @freezed
-class DeliveryPriceModel with _$DeliveryPriceModel {
+abstract class DeliveryPriceModel with _$DeliveryPriceModel {
   const DeliveryPriceModel._();
 
   const factory DeliveryPriceModel({

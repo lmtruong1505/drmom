@@ -4,7 +4,7 @@ part 'transection_model.g.dart';
 part 'transection_model.freezed.dart';
 
 @freezed
-class TransectionModel with _$TransectionModel {
+abstract class TransectionModel with _$TransectionModel {
   const factory TransectionModel({
     final int? id,
     @JsonKey(name: 'transaction_code') final String? transactionCode,
@@ -25,7 +25,7 @@ class TransectionModel with _$TransectionModel {
 }
 
 @freezed
-class MetaData with _$MetaData {
+abstract class MetaData with _$MetaData {
   const factory MetaData({
     @JsonKey(name: 'open_balance') final num? openBalance,
     final num? money,

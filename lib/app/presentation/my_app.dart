@@ -95,7 +95,7 @@ class _MyAppState extends BaseState<MyApp, AppCubit>
   List<PageRouteInfo> _mapRouteToPageRouteInfo() {
     final token = preferences.accessToken;
     if (token == null || token.isEmpty) {
-      return [const LoginPage()];
+      return [const LoginRoute()];
     } else {
       return [const HomeRoute()];
     }

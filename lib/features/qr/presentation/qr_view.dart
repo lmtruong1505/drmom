@@ -18,7 +18,7 @@ import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
 import '../../../core/constants/colors.dart';
 
-@RoutePage(name: "QRCodeScreen")
+@RoutePage()
 class QrCodeScreen extends StatefulWidget {
   const QrCodeScreen({
     super.key,

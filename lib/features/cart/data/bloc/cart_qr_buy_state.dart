@@ -7,7 +7,7 @@ import 'package:bpg_retail/features/cart/data/models/wallet_model.dart';
 part 'cart_qr_buy_state.freezed.dart';
 
 @freezed
-class CartQrBuyState with _$CartQrBuyState {
+abstract class CartQrBuyState with _$CartQrBuyState {
   const factory CartQrBuyState({
     @Default(false) bool isLoading,
     @Default(null) QrOrderDetailModel? detail,

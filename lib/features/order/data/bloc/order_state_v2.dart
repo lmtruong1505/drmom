@@ -8,7 +8,7 @@ import 'package:bpg_retail/features/order/data/models/order_model_v2.dart';
 part 'order_state_v2.freezed.dart';
 
 @freezed
-class OrderStateV2 with _$OrderStateV2 {
+abstract class OrderStateV2 with _$OrderStateV2 {
   const factory OrderStateV2({
     @Default(false) bool isLoading,
     @Default(true) bool isShowBg,

@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'address_state.freezed.dart';
 
 @freezed
-class AddressState with _$AddressState {
+abstract class AddressState with _$AddressState {
   const factory AddressState({
     @Default([]) List<AddressModel> addressList,
     @Default([]) List<AsbcAddressModel> addressAsbcList,

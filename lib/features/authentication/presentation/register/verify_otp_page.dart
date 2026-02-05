@@ -16,7 +16,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/constants/colors.dart';
 
-@RoutePage(name: "VerifyOtpPage")
+@RoutePage()
 class VerifyOtpPage extends StatefulWidget {
   final String fullName;
   final String phoneNumber;

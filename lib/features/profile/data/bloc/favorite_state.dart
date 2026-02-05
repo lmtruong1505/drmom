@@ -6,7 +6,7 @@ import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 part 'favorite_state.freezed.dart';
 
 @freezed
-class FavoriteState with _$FavoriteState {
+abstract class FavoriteState with _$FavoriteState {
   const factory FavoriteState({
     @Default(0) int tabActive,
     @Default('') String keyword,

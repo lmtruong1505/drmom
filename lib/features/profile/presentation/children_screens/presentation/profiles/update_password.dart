@@ -12,7 +12,7 @@ import 'package:bpg_retail/features/profile/data/bloc/profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage(name: "ChangePasswordPage")
+@RoutePage()
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({super.key});
 

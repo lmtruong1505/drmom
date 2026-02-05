@@ -311,8 +311,8 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   //             accept: () {
   //               navigator.popUntilRoot(useRootNavigator: true);
   //               navigator.pushAll([
-  //                 const ProfilePage(),
-  //                 ProfileInfoPage(isEdit: true),
+  //                 const ProfileRoute(),
+  //                 ProfileInfoRoute(isEdit: true),
   //               ]);
   //             },
   //           );
@@ -406,7 +406,7 @@ class ProfileCubit extends BaseCubit<ProfileState> {
               hasButtonBack: false,
               accept: () {
                 navigator.popUntilRoot(useRootNavigator: true);
-                navigator.push(const ProfilePage());
+                navigator.push(const ProfileRoute());
               },
             );
           },

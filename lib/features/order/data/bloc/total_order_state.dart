@@ -5,7 +5,7 @@ import 'package:bpg_retail/features/order/data/models/order_count_asbc_model.dar
 part 'total_order_state.freezed.dart';
 
 @freezed
-class TotalOrderState with _$TotalOrderState {
+abstract class TotalOrderState with _$TotalOrderState {
   const factory TotalOrderState({
     @Default(CubitStatus.init) CubitStatus status,
     List<OrderCountAsbcModel>? totalOrder,

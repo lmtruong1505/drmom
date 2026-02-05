@@ -142,7 +142,7 @@ class _ProfileInfoTabState extends State<ProfileInfoTab> {
                 icon: Assets.icons.icPerson.svg(),
                 titile: "Thông tin cá nhân",
                 onTap: () async {
-                  final result = await nav.push(ProfileInfoPage());
+                  final result = await nav.push(ProfileInfoRoute());
                   if (result == true) {
                     widget.bloc.onRefesh();
                   }
@@ -232,7 +232,7 @@ class _ProfileInfoTabState extends State<ProfileInfoTab> {
                   size: 20,
                 ),
                 titile: "Đổi mật khẩu",
-                onTap: () => nav.push(const ChangePasswordPage()),
+                onTap: () => nav.push(const ChangePasswordRoute()),
               ),
             ],
           ),

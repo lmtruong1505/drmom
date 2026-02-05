@@ -7,7 +7,7 @@ import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart'
 part 'asbc_both_state.freezed.dart';
 
 @freezed
-class AsbcBothState with _$AsbcBothState {
+abstract class AsbcBothState with _$AsbcBothState {
   const factory AsbcBothState({
     @Default(false) bool isLoading,
     @Default([]) List<HealthCareModel>? listBoths,

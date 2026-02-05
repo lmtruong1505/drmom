@@ -5,7 +5,7 @@ part 'cart_model_v2.g.dart';
 part 'cart_model_v2.freezed.dart';
 
 @freezed
-class CartModelV2 with _$CartModelV2 {
+abstract class CartModelV2 with _$CartModelV2 {
   const factory CartModelV2({
     @Default(0) final num? quantity,
     @JsonKey(name: 'user_created') final num? userCreated,

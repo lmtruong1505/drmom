@@ -7,7 +7,7 @@ import '../../models/delivery_price_model.dart';
 part 'delivery_state.freezed.dart';
 
 @freezed
-class DeliveryState with _$DeliveryState {
+abstract class DeliveryState with _$DeliveryState {
   const factory DeliveryState({
     @Default(true) bool isLoading,
     @Default([]) List<DeliveryPriceModel> list,

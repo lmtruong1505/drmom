@@ -75,7 +75,7 @@ class _AddressFullScreenState
                         initialZoom: 13.5,
                         onPointerDown: (pos, llg) {},
                         onPositionChanged: (mapPosition, isBool) {
-                          final llg = mapPosition.bounds!.center;
+                          final llg = mapPosition.visibleBounds.center;
                           setState(() {
                             latLogNew = [llg.latitude, llg.longitude];
                           });

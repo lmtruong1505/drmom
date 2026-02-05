@@ -5,7 +5,7 @@ import 'package:bpg_retail/features/profile/data/models/notification_model.dart'
 part 'notification_state.freezed.dart';
 
 @freezed
-class NotificationState with _$NotificationState {
+abstract class NotificationState with _$NotificationState {
   const factory NotificationState({
     @Default(false) bool isFilter,
     @Default(false) bool isLoading,

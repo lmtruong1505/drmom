@@ -125,7 +125,7 @@ class NotificationModel {
       // return OrderDetailPage(id: customId);
 
       default:
-        return const NotificationPage();
+        return const NotificationRoute();
     }
   }
 }

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'store_address_selection_state.freezed.dart';
 
 @freezed
-class StoreAddressSelectionState with _$StoreAddressSelectionState {
+abstract class StoreAddressSelectionState with _$StoreAddressSelectionState {
   const factory StoreAddressSelectionState({
     @Default(1) int step,
     @Default(null) String? text,

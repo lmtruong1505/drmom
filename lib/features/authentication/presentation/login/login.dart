@@ -17,7 +17,7 @@ import 'package:bpg_retail/features/authentication/presentation/widget/header_au
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage(name: "LoginPage")
+@RoutePage()
 class LoginPage extends StatefulWidget {
   const LoginPage({
     super.key,
@@ -101,7 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                 suffixIcon: GestureDetector(
                   onTap: bloc.onShowPassword,
                   child: Icon(
-                    !state.showPassword ? Icons.visibility_off : Icons.visibility,
+                    !state.showPassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                     color: AppColors.grey_1,
                     size: 20,
                   ),
@@ -176,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigator.replace(const RegisterPage());
+                      navigator.push(const RegisterRoute());
                     },
                     child: Text(
                       'Đăng ký ngay',

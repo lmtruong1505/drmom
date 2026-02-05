@@ -62,7 +62,7 @@ class ActionPrd extends StatelessWidget {
                   if (isLogin) {
                     context.pushRoute(const CartPrdRouteV2());
                   } else {
-                    context.pushRoute(LoginPage());
+                    context.pushRoute(const LoginRoute());
                   }
                 },
                 // size: const Size(45, 45),

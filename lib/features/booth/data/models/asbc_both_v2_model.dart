@@ -5,7 +5,7 @@ part 'asbc_both_v2_model.g.dart';
 part 'asbc_both_v2_model.freezed.dart';
 
 @freezed
-class AbbcBothV2Model with _$AbbcBothV2Model {
+abstract class AbbcBothV2Model with _$AbbcBothV2Model {
   const factory AbbcBothV2Model({
     final int? id,
     final String? title,
@@ -26,7 +26,7 @@ class AbbcBothV2Model with _$AbbcBothV2Model {
 }
 
 @freezed
-class ProductSellBest with _$ProductSellBest {
+abstract class ProductSellBest with _$ProductSellBest {
   const factory ProductSellBest({
     @JsonKey(name: 'variant_id') final int? variantId,
     @JsonKey(name: 'total_sell') final num? totalSell,
@@ -38,7 +38,7 @@ class ProductSellBest with _$ProductSellBest {
 }
 
 @freezed
-class ProductData with _$ProductData {
+abstract class ProductData with _$ProductData {
   const factory ProductData({
     final int? id,
     final String? title,
@@ -51,7 +51,7 @@ class ProductData with _$ProductData {
 }
 
 @freezed
-class MediaDatum with _$MediaDatum {
+abstract class MediaDatum with _$MediaDatum {
   const factory MediaDatum({
     final int? id,
     final String? alt,
@@ -64,7 +64,7 @@ class MediaDatum with _$MediaDatum {
 }
 
 @freezed
-class UserCreatedData with _$UserCreatedData {
+abstract class UserCreatedData with _$UserCreatedData {
   const factory UserCreatedData({
     @JsonKey(name: 'full_name') final String? fullName,
     final String? phone,
@@ -76,7 +76,7 @@ class UserCreatedData with _$UserCreatedData {
 }
 
 @freezed
-class WarehouseDatum with _$WarehouseDatum {
+abstract class WarehouseDatum with _$WarehouseDatum {
   const factory WarehouseDatum({
     final String? manager,
     final String? phone,

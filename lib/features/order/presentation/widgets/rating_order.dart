@@ -25,7 +25,7 @@ import 'package:bpg_retail/features/order/data/bloc/rating_order_cubit.dart';
 import 'package:bpg_retail/features/order/data/bloc/ratting_order_state.dart';
 import 'package:bpg_retail/features/order/data/models/order_detail_model.dart';
 
-@RoutePage(name: "RattingOrder")
+@RoutePage()
 class RatingOrder extends StatefulWidget {
   const RatingOrder({
     super.key,

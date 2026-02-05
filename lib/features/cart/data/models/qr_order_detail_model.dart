@@ -4,7 +4,7 @@ part 'qr_order_detail_model.g.dart';
 part 'qr_order_detail_model.freezed.dart';
 
 @freezed
-class QrOrderDetailModel with _$QrOrderDetailModel {
+abstract class QrOrderDetailModel with _$QrOrderDetailModel {
   const factory QrOrderDetailModel({
     final int? id,
     final String? title,
@@ -35,7 +35,7 @@ class QrOrderDetailModel with _$QrOrderDetailModel {
 }
 
 @freezed
-class CompanyDataV3 with _$CompanyDataV3 {
+abstract class CompanyDataV3 with _$CompanyDataV3 {
   const factory CompanyDataV3({
     final int? id,
     final String? title,
@@ -53,7 +53,7 @@ class CompanyDataV3 with _$CompanyDataV3 {
 }
 
 @freezed
-class AccountData with _$AccountData {
+abstract class AccountData with _$AccountData {
   const factory AccountData({
     final String? system,
     final UserCreatedData? account,
@@ -66,7 +66,7 @@ class AccountData with _$AccountData {
 }
 
 @freezed
-class UserCreatedData with _$UserCreatedData {
+abstract class UserCreatedData with _$UserCreatedData {
   const factory UserCreatedData({
     final int? id,
     @JsonKey(name: 'full_name') final String? fullName,
@@ -78,7 +78,7 @@ class UserCreatedData with _$UserCreatedData {
 }
 
 @freezed
-class OrderItem with _$OrderItem {
+abstract class OrderItem with _$OrderItem {
   const factory OrderItem({
     final int? id,
     final num? quantity,
@@ -95,7 +95,7 @@ class OrderItem with _$OrderItem {
 }
 
 @freezed
-class VariantData with _$VariantData {
+abstract class VariantData with _$VariantData {
   const factory VariantData({
     final int? id,
     final String? title,
@@ -125,7 +125,7 @@ class VariantData with _$VariantData {
 // }
 
 @freezed
-class StatusData with _$StatusData {
+abstract class StatusData with _$StatusData {
   const factory StatusData({
     final int? id,
     final String? title,
@@ -139,7 +139,7 @@ class StatusData with _$StatusData {
 }
 
 @freezed
-class WarehouseData with _$WarehouseData {
+abstract class WarehouseData with _$WarehouseData {
   const factory WarehouseData({
     final num? address,
     @JsonKey(name: 'address_data') final AddressData? addressData,
@@ -153,7 +153,7 @@ class WarehouseData with _$WarehouseData {
 }
 
 @freezed
-class AddressData with _$AddressData {
+abstract class AddressData with _$AddressData {
   const factory AddressData({
     final int? id,
     final num? ward,
@@ -173,7 +173,7 @@ class AddressData with _$AddressData {
 }
 
 @freezed
-class DistrictData with _$DistrictData {
+abstract class DistrictData with _$DistrictData {
   const factory DistrictData({
     final int? id,
     final String? code,
@@ -187,7 +187,7 @@ class DistrictData with _$DistrictData {
 }
 
 @freezed
-class OptionDataV1 with _$OptionDataV1 {
+abstract class OptionDataV1 with _$OptionDataV1 {
   const factory OptionDataV1({
     final int? id,
     final String? title,
@@ -200,7 +200,7 @@ class OptionDataV1 with _$OptionDataV1 {
 }
 
 @freezed
-class OrderDlo with _$OrderDlo {
+abstract class OrderDlo with _$OrderDlo {
   const factory OrderDlo({
     final int? id,
     @JsonKey(name: 'title_service') final String? titleService,
@@ -220,7 +220,7 @@ class OrderDlo with _$OrderDlo {
 }
 
 @freezed
-class PaymentMethod with _$PaymentMethod {
+abstract class PaymentMethod with _$PaymentMethod {
   const factory PaymentMethod({
     final int? id,
     final String? title,
@@ -239,7 +239,7 @@ class PaymentMethod with _$PaymentMethod {
 }
 
 @freezed
-class WallletData with _$WallletData {
+abstract class WallletData with _$WallletData {
   const factory WallletData({
     final int? id,
     final String? title,
@@ -253,7 +253,7 @@ class WallletData with _$WallletData {
 }
 
 @freezed
-class ReceiverAddressData with _$ReceiverAddressData {
+abstract class ReceiverAddressData with _$ReceiverAddressData {
   const factory ReceiverAddressData({
     final int? id,
     final String? title,
