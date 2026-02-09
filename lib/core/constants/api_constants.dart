@@ -4,7 +4,7 @@ import 'package:bpg_retail/core/env/env.dart';
 @injectable
 class Api {
   static String env = EnvironmentConfig.ENV;
-  static String domain = "http://167.99.78.85:8000";
+  static String domain = "https://kho-benh-vien-be.too.onl";
 
   static String baseURL = "https://api.thachlonghai.co";
   static String baseURLV2 = domain;
@@ -135,7 +135,7 @@ class Api {
   static String checkversion = 'v1/auth/version';
 
   // sskdt
-  static String login = '$baseURLV2/api/v1/auth/login';
+  static String login = '$baseURLV2/api/v1/xac-thuc/dang-nhap';
   static String register = '$baseURLV2/api/v1/auth/register';
   static String verifyOtpPhone = '$baseURLV2/api/v1/auth/patient-register';
   static String healthcare = '$baseURLV2/api/v1/healthcare-entity';

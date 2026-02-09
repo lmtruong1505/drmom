@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
@@ -16,13 +19,15 @@ import 'package:bpg_retail/features/authentication/data/repositories/authenticat
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:android_id/android_id.dart';
 
 import 'authentication_state.dart';
 
 @Injectable()
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit(this._authenticationRepository)
-      : super(const AuthenticationState()) {
+    : super(const AuthenticationState()) {
     if (preferences.rememberAccount != null) {
       onChangePhoneNumber(preferences.rememberAccount!.phoneNumber!);
       onChangePassword(preferences.rememberAccount!.password!);
@@ -130,7 +135,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   FutureOr onLogin(BuildContext context) async {
     if (!formKey.currentState!.validate()) return;
-
+    final deviceId = await getPermanentDeviceId();
     if (state.isRemember) {
       preferences.saveRememberAccount(
         RememberAccount(
@@ -147,6 +152,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       final res = await _authenticationRepository.login(
         state.phoneNumber,
         state.password,
+        deviceId,
       );
 
       if (res.code == 200) {
@@ -171,62 +177,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     } catch (e) {
       print('======$e');
-      EasyLoading.dismiss();
-    }
-  }
-
-  FutureOr onLoginAsbc(BuildContext context) async {
-    if (!formKey.currentState!.validate()) return;
-
-    if (state.isRemember) {
-      preferences.saveRememberAccount(
-        RememberAccount(
-          phoneNumber: state.phoneNumber,
-          password: state.password,
-        ),
-      );
-    } else {
-      preferences.removeRememberAccount();
-    }
-
-    try {
-      showLoading();
-      final res = await _authenticationRepository.login(
-        state.phoneNumber,
-        state.password,
-      );
-      EasyLoading.dismiss();
-      if (res.code == 200) {
-        navigator.showSuccessSnackBar(
-          'Đăng nhập thành công',
-          duration: const Duration(seconds: 2),
-        );
-
-        final user = res.data['data']['user'];
-
-        final loginData = {
-          'phone_number': user['phone_number'],
-          'access_token': res.data['data']['access_token'],
-          'user': {
-            'id': user['id'],
-            // 'point': user['reward_points'],
-            'phone_number': user['phone_number'],
-            'fullname': user['full_name'],
-            'account_code': user['referral_code'],
-            // 'system_data': user['system_data'],
-          },
-        };
-        preferences.saveAccessToken(res.data['data']['access_token'] ?? '');
-        preferences.saveCurrentUser(jsonEncode(loginData));
-        getUserData(user['id']);
-        // appCubit.onAppInitialized();
-      } else {
-        navigator.showAppTopSnackBar(
-          res.message ?? "Tài khoản hoặc mật khẩu không chính xác",
-          type: 'error',
-        );
-      }
-    } catch (e) {
       EasyLoading.dismiss();
     }
   }
@@ -301,18 +251,15 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
     emit(state.copyWith(countTime: countTime));
     const oneSec = Duration(seconds: 1);
-    _timer = Timer.periodic(
-      oneSec,
-      (Timer timer) {
-        if (state.countTime == 0) {
-          _timer!.cancel();
-        } else {
-          int time = state.countTime;
-          time--;
-          emit(state.copyWith(countTime: time));
-        }
-      },
-    );
+    _timer = Timer.periodic(oneSec, (Timer timer) {
+      if (state.countTime == 0) {
+        _timer!.cancel();
+      } else {
+        int time = state.countTime;
+        time--;
+        emit(state.copyWith(countTime: time));
+      }
+    });
   }
 
   void onClose() {
@@ -505,12 +452,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         },
         (r) {
           startTimer();
-          emit(
-            state.copyWith(
-              step: 2,
-              sessionKey: r['data']['session_key'],
-            ),
-          );
+          emit(state.copyWith(step: 2, sessionKey: r['data']['session_key']));
         },
       );
     } catch (e) {
@@ -554,9 +496,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       state.otp,
     );
     if (res.code == 200) {
-      emit(
-        state.copyWith(status: CubitStatus.success, message: res.message),
-      );
+      emit(state.copyWith(status: CubitStatus.success, message: res.message));
     } else {
       emit(state.copyWith(status: CubitStatus.loaded, message: res.message));
     }
@@ -565,8 +505,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> verifyReferralCode() async {
     try {
       showLoading();
-      final res = await _authenticationRepository
-          .verifyReferralCode(state.userReferralCode ?? "");
+      final res = await _authenticationRepository.verifyReferralCode(
+        state.userReferralCode ?? "",
+      );
       EasyLoading.dismiss();
       if (res.code == 200) {
         emit(
@@ -610,11 +551,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   useDifferAccount() {
     emit(
-      state.copyWith(
-        password: '',
-        phoneNumber: '',
-        useRememberAccount: false,
-      ),
+      state.copyWith(password: '', phoneNumber: '', useRememberAccount: false),
     );
   }
 
@@ -629,5 +566,69 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       EasyLoading.dismiss();
       navigator.replaceAll([const LoginRoute()]);
     }
+  }
+
+  static Future<String> getPermanentDeviceId() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // 1. Lấy từ SharedPreferences nếu có
+    final String? savedId = prefs.getString('device_id');
+
+    // 2. Lấy từ phần cứng
+    final String hardwareId = await _getHardwareId();
+
+    // 3. Nếu chưa có savedId → lưu mới
+    if (savedId == null || savedId.isEmpty) {
+      await prefs.setString('device_id', hardwareId);
+      return hardwareId;
+    }
+
+    // 4. Nếu hardware ID thay đổi → cập nhật lại
+    if (savedId != hardwareId) {
+      await prefs.setString('device_id', hardwareId);
+      return hardwareId;
+    }
+
+    // 5. Nếu không thay đổi → dùng bản cũ
+    return savedId;
+  }
+
+  static Future<String> _getHardwareId() async {
+    try {
+      final deviceInfo = DeviceInfoPlugin();
+      if (Platform.isAndroid) {
+        const androidIdPlugin = AndroidId();
+        final androidId = await androidIdPlugin.getId();
+        return androidId ?? 'unknown_android_id';
+      } else if (Platform.isIOS) {
+        final iosInfo = await deviceInfo.iosInfo;
+        return iosInfo.identifierForVendor ?? 'unknown_ios_id';
+      } else if (Platform.isMacOS) {
+        final macInfo = await deviceInfo.macOsInfo;
+        return macInfo.systemGUID ?? 'unknown_macos_id';
+      } else if (Platform.isWindows) {
+        final winInfo = await deviceInfo.windowsInfo;
+        return winInfo.deviceId;
+      } else if (Platform.isLinux) {
+        final linuxInfo = await deviceInfo.linuxInfo;
+        return linuxInfo.machineId ?? 'unknown_linux_id';
+      }
+    } catch (e) {
+      print('Lỗi khi lấy hardware ID: $e');
+    }
+    return 'unknown_device_id';
+  }
+
+  Future<String?> getFcmToken() async {
+    final FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    // Yêu cầu quyền (iOS cần hỏi, Android thì auto)
+    await messaging.requestPermission();
+
+    // Lấy token
+    final String? token = await messaging.getToken();
+    print('FCM Token: $token');
+
+    return token;
   }
 }

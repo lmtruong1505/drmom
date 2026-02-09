@@ -87,6 +87,7 @@ dependencies:
   url_launcher: ^6.3.0
   highlight_text: ^1.8.0
   toastification: ^3.0.3
+  android_id: ^0.5.1
 
 
 dev_dependencies:

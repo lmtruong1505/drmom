@@ -25,13 +25,15 @@ class AuthenticationRepository {
   Future<BaseResponseModel> login(
     String phoneNumber,
     String password,
+    String deviceId,
   ) async {
     try {
       final res = await _baseDio.post(
         Api.login,
         data: {
-          "email": phoneNumber,
-          "password": password,
+          'device_id':deviceId,
+          "tai_khoan": phoneNumber,
+          "mat_khau": password,
         },
       );
       if (res.data['success'] == true) {
