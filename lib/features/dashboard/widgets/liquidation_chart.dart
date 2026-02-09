@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:flutter/material.dart';
 
 class LiquidationChartWidget extends StatelessWidget {
@@ -9,19 +10,16 @@ class LiquidationChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      borderRadius: 16,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
       child: Column(
         children: [
           Row(
@@ -61,14 +59,8 @@ class LiquidationChartWidget extends StatelessWidget {
                   child: CustomPaint(
                     painter: PieChartPainter(
                       sections: [
-                        PieSection(
-                          value: 85,
-                          color: Color(0xFF4C3AE3),
-                        ), // Purple
-                        PieSection(
-                          value: 15,
-                          color: Color(0xFFC4C4F4),
-                        ), // Light Purple
+                        PieSection(value: 85, color: const Color(0xFF4C3AE3)),
+                        PieSection(value: 15, color: const Color(0xFFC4C4F4)),
                       ],
                     ),
                   ),
@@ -82,13 +74,13 @@ class LiquidationChartWidget extends StatelessWidget {
                     _buildLegendItem(
                       "Thanh lý khi còn khấu hao",
                       "2.811 (15%)",
-                      Color(0xFFC4C4F4),
+                      const Color(0xFFC4C4F4),
                     ),
                     12.height,
                     _buildLegendItem(
                       "Thanh lý khi hết khấu hao",
                       "4.123 (75%)",
-                      Color(0xFF4C3AE3),
+                      const Color(0xFF4C3AE3),
                     ),
                   ],
                 ),
@@ -101,16 +93,10 @@ class LiquidationChartWidget extends StatelessWidget {
   }
 
   Widget _buildLegendItem(String title, String value, Color color) {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: const Color(
-          0xFF7E52FF,
-        ), // Purple Dark Background from screenshot 2?
-        // Actually screenshot 2 legend is INSIDE a purple box at the bottom.
-        // My bad. Let's adjust layout.
-        borderRadius: BorderRadius.circular(12),
-      ),
+      borderRadius: 12,
+      color: const Color(0xFF7E52FF),
       child: Column(
         children: [
           Text(

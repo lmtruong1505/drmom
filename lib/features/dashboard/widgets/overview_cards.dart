@@ -1,6 +1,7 @@
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:flutter/material.dart';
 
 class OverviewCards extends StatelessWidget {
@@ -30,7 +31,7 @@ class OverviewCards extends StatelessWidget {
               child: _buildCard(
                 title: "Tổng số lượng",
                 adjust: "789",
-                color: const Color(0xFF6A5AE0), // Custom Purple
+                color: const Color(0xFF6A5AE0),
               ),
             ),
             12.width,
@@ -38,7 +39,7 @@ class OverviewCards extends StatelessWidget {
               child: _buildCard(
                 title: "Tổng nguyên giá",
                 adjust: "234.567.789 đ",
-                color: const Color(0xFF6A5AE0), // Custom Purple
+                color: const Color(0xFF6A5AE0),
               ),
             ),
           ],
@@ -52,19 +53,17 @@ class OverviewCards extends StatelessWidget {
     required String adjust,
     required Color color,
   }) {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: color.withOpacity(0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      borderRadius: 16,
+      color: color,
+      boxShadow: [
+        BoxShadow(
+          color: color.withOpacity(0.3),
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -12,6 +12,7 @@ class BaseContainer extends StatelessWidget {
     this.color,
     this.borderColor,
     this.margin,
+    this.boxShadow,
   });
 
   final Widget child;
@@ -22,6 +23,7 @@ class BaseContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? color;
   final Color? borderColor;
+  final List<BoxShadow>? boxShadow;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,12 @@ class BaseContainer extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
-        border: Border.all(color: borderColor ?? AppColors.border_1, width: 0),
+        border:
+            borderColor != null
+                ? Border.all(color: borderColor!, width: 1)
+                : null,
         color: color ?? AppColors.white,
+        boxShadow: boxShadow,
       ),
       child: child,
     );

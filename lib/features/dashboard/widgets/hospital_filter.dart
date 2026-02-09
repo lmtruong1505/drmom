@@ -1,6 +1,7 @@
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,17 +15,16 @@ class HospitalFilter extends StatelessWidget {
         Assets.images.logo.image(height: 60, width: 60),
         16.height,
         Text(
-          "Bệnh viện đa khoa huyện Quốc Oai\nOai", // Checking line break in screenshot
+          "Bệnh viện đa khoa huyện Quốc Oai\nOai",
           textAlign: TextAlign.center,
           style: AppTypography.h5.copyWith(color: AppColors.black),
         ),
         16.height,
-        Container(
+        BaseContainer(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            border: Border.all(color: AppColors.greyAA), // Using grey border
-            borderRadius: BorderRadius.circular(4),
-          ),
+          borderRadius: 4,
+          borderColor: AppColors.greyAA,
+          color: Colors.transparent,
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,

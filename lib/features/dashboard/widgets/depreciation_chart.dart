@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:flutter/material.dart';
 
 class DepreciationChartWidget extends StatelessWidget {
@@ -9,19 +10,16 @@ class DepreciationChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      borderRadius: 16,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
       child: Column(
         children: [
           Row(
@@ -56,7 +54,7 @@ class DepreciationChartWidget extends StatelessWidget {
             height: 150,
             width: double.infinity,
             child: CustomPaint(
-              painter: GaugeChartPainter(percentage: 0.77), // 77%
+              painter: GaugeChartPainter(percentage: 0.77),
               child: Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
@@ -96,19 +94,18 @@ class GaugeChartPainter extends CustomPainter {
 
     final paintBg =
         Paint()
-          ..color = AppColors.blue_2.withOpacity(0.5) // Light background
+          ..color = AppColors.blue_2.withOpacity(0.5)
           ..style = PaintingStyle.stroke
           ..strokeWidth = strokeWidth
           ..strokeCap = StrokeCap.round;
 
     final paintValue =
         Paint()
-          ..color = Color(0xFF4C3AE3) // Purple
+          ..color = const Color(0xFF4C3AE3)
           ..style = PaintingStyle.stroke
           ..strokeWidth = strokeWidth
           ..strokeCap = StrokeCap.round;
 
-    // Background Arc (180 degrees)
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       pi,
@@ -117,20 +114,9 @@ class GaugeChartPainter extends CustomPainter {
       paintBg,
     );
 
-    // Value Arc (Percentage)
-    // Needs to start from left (pi) and go clockwise
-    // Wait, the screenshot shows Blue (23%) on Left and Light Grey (77%) on right?
-    // Let's look at Screenshot 1.
-    // The gauge is Blue on the LEFT (approx 40%?) and White/Grey on the RIGHT.
-    // Knob is at the end of the Blue arc.
-    // Text says "23%" (Left) and "77%" (Right).
-    // The Blue Arc corresponds to '23%'?
-    // The value 23% looks like it covers about 45 degrees of the 180.
-    // (0.23 * pi) = 0.72 rad.
+    final sweepAngle = pi * 0.23;
 
-    final sweepAngle = pi * 0.23; // 23%
-
-    paintValue.color = Color(0xFF4C3AE3); // Blue-ish Purple
+    paintValue.color = const Color(0xFF4C3AE3);
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
       pi,
@@ -139,17 +125,15 @@ class GaugeChartPainter extends CustomPainter {
       paintValue,
     );
 
-    // Draw Knob (Circle at the end of arc)
     final knobAngle = pi + sweepAngle;
     final knobCenter = Offset(
       center.dx + radius * cos(knobAngle),
       center.dy + radius * sin(knobAngle),
     );
 
-    final knobPaint = Paint()..color = Color(0xFF4C3AE3);
+    final knobPaint = Paint()..color = const Color(0xFF4C3AE3);
     canvas.drawCircle(knobCenter, strokeWidth / 1.5, knobPaint);
 
-    // Internal white dot in knob
     canvas.drawCircle(
       knobCenter,
       strokeWidth / 3,

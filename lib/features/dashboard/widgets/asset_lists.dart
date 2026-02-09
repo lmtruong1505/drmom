@@ -1,6 +1,7 @@
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:flutter/material.dart';
 
 class AssetListsWidget extends StatefulWidget {
@@ -27,20 +28,16 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
   }
 
   Widget _buildAssetQuantitySection() {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
+      borderRadius: 16,
       child: Column(
         children: [
           Text(
             "Số lượng tài sản",
             style: AppTypography.h3.copyWith(color: const Color(0xFF201B51)),
-          ), // Dark Blue Title
+          ),
           16.height,
-          // Custom Tab Bar
           Row(
             children: [
               _buildTabItem(0, "Theo khoa phòng"),
@@ -49,7 +46,6 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
           ),
           const Divider(height: 1, color: AppColors.grey_2),
           16.height,
-          // Header Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -64,7 +60,6 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
             ],
           ),
           const Divider(height: 24, color: AppColors.grey_2),
-          // List Items
           _buildListItem("Khoa Dược"),
           _buildListItem("Khoa Nhi"),
           _buildListItem("Khoa Sản"),
@@ -130,12 +125,9 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
   }
 
   Widget _buildDepreciationRateSection() {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
+      borderRadius: 16,
       child: Column(
         children: [
           Text(
@@ -153,12 +145,9 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
   }
 
   Widget _buildAssetStatusSection() {
-    return Container(
+    return BaseContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
+      borderRadius: 16,
       child: Column(
         children: [
           Text(
@@ -191,21 +180,18 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
                 style: AppTypography.p5.copyWith(
                   color: const Color(0xFF6B6B80),
                 ),
-              ), // Grey-purple text
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("3.456", style: AppTypography.h5), // Or 567
-                  // Badge 85%
-                  Container(
+                  Text("3.456", style: AppTypography.h5),
+                  BaseContainer(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 8,
                       vertical: 2,
                     ),
-                    decoration: BoxDecoration(
-                      color: AppColors.grey_2,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                    borderRadius: 10,
+                    color: AppColors.grey_2,
                     child: Text(
                       "${(percent * 100).toInt()}%",
                       style: AppTypography.p8.copyWith(color: AppColors.grey_1),
@@ -222,7 +208,7 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
               value: percent,
               backgroundColor: AppColors.grey_2,
               valueColor: AlwaysStoppedAnimation<Color>(color),
-              minHeight: 12, // Thicker bar
+              minHeight: 12,
             ),
           ),
         ],

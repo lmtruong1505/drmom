@@ -203,46 +203,61 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
       );
       return provinces;
     }
-    final data = {"page": 0, "search": "", "page_size": 1000};
-    final res = await _baseDio.get(Api.provinceASBC, data: data);
-    emit(
-      state.copyWith(
-        isLoading: false,
-        provinces: res.data['data'],
-        provincesClone: res.data['data'],
-      ),
-    );
-    return res.data['data'];
+    try {
+      final data = {"page": 0, "search": "", "page_size": 1000};
+      final res = await _baseDio.post(Api.provinceASBC, data: data);
+      emit(
+        state.copyWith(
+          isLoading: false,
+          provinces: res.data['data'],
+          provincesClone: res.data['data'],
+        ),
+      );
+      return res.data['data'];
+    } catch (e) {
+      emit(state.copyWith(isLoading: false, provinces: [], provincesClone: []));
+      return [];
+    }
   }
 
   Future getDistricts() async {
     emit(state.copyWith(step: 2, isLoading: true));
-    final data = {
-      "province": state.province['code'],
-      "page": 0,
-      "search": "",
-      "page_size": 1000,
-    };
-    final res = await _baseDio.get(Api.districtASBC, data: data);
-    emit(
-      state.copyWith(
-        districts: res.data['data'],
-        districtsClone: res.data['data'],
-      ),
-    );
+    try {
+      final data = {
+        "province": state.province['code'],
+        "page": 0,
+        "search": "",
+        "page_size": 1000,
+      };
+      final res = await _baseDio.post(Api.districtASBC, data: data);
+      emit(
+        state.copyWith(
+          districts: res.data['data'],
+          districtsClone: res.data['data'],
+        ),
+      );
+    } catch (e) {
+      emit(state.copyWith(districts: [], districtsClone: []));
+    }
     emit(state.copyWith(isLoading: false));
   }
 
   Future getWards() async {
     emit(state.copyWith(step: 3, isLoading: true));
-    final data = {
-      "district": state.district['code'],
-      "page": 0,
-      "search": "",
-      "page_size": 1000,
-    };
-    final res = await _baseDio.get(Api.wardsASBC, data: data);
-    emit(state.copyWith(wards: res.data['data'], wardsClone: res.data['data']));
+    try {
+      final data = {
+        "district": state.district['code'],
+        "page": 0,
+        "search": "",
+        "page_size": 1000,
+      };
+      final res = await _baseDio.post(Api.wardsASBC, data: data);
+      emit(
+        state.copyWith(wards: res.data['data'], wardsClone: res.data['data']),
+      );
+    } catch (e) {
+      emit(state.copyWith(wards: [], wardsClone: []));
+    }
     emit(state.copyWith(isLoading: false));
   }
 }

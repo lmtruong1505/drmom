@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:bpg_retail/core/widgets/buttons/label_button.dart';
 import 'package:bpg_retail/features/dashboard/widgets/dashboard_header.dart';
 import 'package:bpg_retail/features/dashboard/widgets/hospital_filter.dart';
 import 'package:bpg_retail/features/dashboard/widgets/overview_cards.dart';
@@ -18,6 +19,22 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,15 +48,14 @@ class _DashboardPageState extends State<DashboardPage> {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color:
-                      AppColors
-                          .bg_6, // Using grey background to make white cards pop
+                  color: AppColors.bg_6,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
                   ),
                 ),
                 child: SingleChildScrollView(
+                  controller: _scrollController,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 24,
@@ -55,7 +71,24 @@ class _DashboardPageState extends State<DashboardPage> {
                       const LiquidationChartWidget(),
                       24.height,
                       const AssetListsWidget(),
-                      80.height, // Bottom padding for scroll
+                      24.height,
+                      // Scroll to top button
+                      LabelButton(
+                        label: 'Lên đầu',
+                        onPressed: _scrollToTop,
+                        backgroundColor: AppColors.blue_1.withOpacity(0.1),
+                        labelStyle: TextStyle(
+                          color: AppColors.blue_1,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.arrow_upward,
+                          color: AppColors.blue_1,
+                          size: 20,
+                        ),
+                      ),
+                      40.height,
                     ],
                   ),
                 ),
