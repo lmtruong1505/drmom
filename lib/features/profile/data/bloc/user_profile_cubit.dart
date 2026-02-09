@@ -7,7 +7,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:injectable/injectable.dart';
 import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
-import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/base/cubit_state.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
@@ -16,7 +15,7 @@ import 'package:bpg_retail/core/utilities/enum.dart';
 import 'package:bpg_retail/core/utilities/loading.dart';
 import 'package:bpg_retail/core/widgets/buttons/filter_button.dart';
 import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
 import 'package:bpg_retail/features/authentication/data/repositories/authentication_repository.dart';
 import 'package:bpg_retail/features/profile/data/models/address_model.dart';
 
@@ -43,7 +42,7 @@ class UserProfileCubit extends Cubit<CubitState> {
     const FilterButtonModel(title: "Khác", value: 3),
   ];
 
-  UserModelV2 get userData {
+  UserModel get userData {
     return preferences.getUserData;
   }
 
@@ -55,12 +54,13 @@ class UserProfileCubit extends Cubit<CubitState> {
     emit(state.copyWith(status: CubitStatus.loading));
     Map<String, dynamic> addressJson;
     if (userAddress == null) {
-      addressJson = AddressModel(
-        isDefault: false,
-        locations: [],
-        fullname: '',
-        phoneNumber: '',
-      ).toJson();
+      addressJson =
+          AddressModel(
+            isDefault: false,
+            locations: [],
+            fullname: '',
+            phoneNumber: '',
+          ).toJson();
       addressJson['address'] = address;
     } else {
       addressJson = userAddress!.toJson();

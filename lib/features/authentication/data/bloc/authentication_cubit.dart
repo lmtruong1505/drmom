@@ -162,12 +162,13 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         );
         EasyLoading.dismiss();
 
-        final user = res.data['data']['user'];
-        preferences.saveAccessToken(res.data['data']['access_token'] ?? '');
-        preferences.saveCurrentUser(jsonEncode(user));
-        getUserData(user['id']);
-
-        // appCubit.onAppInitialized();
+        final authData = res.data;
+        if (authData != null) {
+          preferences.saveAccessToken(authData.accessToken ?? '');
+          preferences.saveRefreshToken(authData.refreshToken ?? '');
+          preferences.saveUserData(jsonEncode(authData.user?.toJson()));
+          navigator.replaceAll([const RootRoute()]);
+        }
       } else {
         navigator.showAppTopSnackBar(
           res.message ?? "Tài khoản hoặc mật khẩu không chính xác",
@@ -532,7 +533,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       if (res.code == 200) {
         navigator.pop();
         await preferences.saveUserData(jsonEncode(res.data));
-        navigator.replaceAll([const HomeRoute()]);
+        navigator.replaceAll([const DashboardRoute()]);
       } else {
         navigator.pop();
         navigator.showErrorDialog('Đã có lỗi xảy ra');
@@ -541,7 +542,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       print('=====getUserData=====$e');
       navigator.pop();
 
-      navigator.replaceAll([const HomeRoute()]);
+      navigator.replaceAll([const DashboardRoute()]);
     }
   }
 

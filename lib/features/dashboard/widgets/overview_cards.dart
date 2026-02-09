@@ -1,0 +1,84 @@
+import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/constants/typography.dart';
+import 'package:bpg_retail/core/extension/spacing_extension.dart';
+import 'package:flutter/material.dart';
+
+class OverviewCards extends StatelessWidget {
+  const OverviewCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            const Expanded(child: Divider(color: AppColors.grey_2)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                "Tổng quan tài sản",
+                style: AppTypography.p5.copyWith(color: AppColors.grey_1),
+              ),
+            ),
+            const Expanded(child: Divider(color: AppColors.grey_2)),
+          ],
+        ),
+        16.height,
+        Row(
+          children: [
+            Expanded(
+              child: _buildCard(
+                title: "Tổng số lượng",
+                adjust: "789",
+                color: const Color(0xFF6A5AE0), // Custom Purple
+              ),
+            ),
+            12.width,
+            Expanded(
+              child: _buildCard(
+                title: "Tổng nguyên giá",
+                adjust: "234.567.789 đ",
+                color: const Color(0xFF6A5AE0), // Custom Purple
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCard({
+    required String title,
+    required String adjust,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: color.withOpacity(0.3),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: AppTypography.p7.copyWith(color: Colors.white70)),
+          8.height,
+          Text(
+            adjust,
+            style: AppTypography.h5.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

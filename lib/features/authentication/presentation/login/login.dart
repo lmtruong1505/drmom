@@ -19,9 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
-  const LoginPage({
-    super.key,
-  });
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -46,10 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const HeaderAuthForm(),
-            _formView(trans),
-          ],
+          children: [const HeaderAuthForm(), _formView(trans)],
         ).padding(16.padingHor),
       ),
     );
@@ -70,21 +65,19 @@ class _LoginPageState extends State<LoginPage> {
                 margin: EdgeInsets.zero,
                 backgroundColor: AppColors.white,
                 hintText: trans.translate('email'),
-                hintStyle: AppTypography.p6.copyWith(
-                  color: AppColors.grey_1,
-                ),
+                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
                 maxLines: 1,
                 onChanged: bloc.onChangePhoneNumber,
-                validator: (value) {
-                  if (value?.isEmpty ?? false) {
-                    return trans.translate('pls_email');
-                  }
-                  if (!value.isEmail()) {
-                    return trans.translate('email_not_valid');
-                  }
+                // validator: (value) {
+                //   if (value?.isEmpty ?? false) {
+                //     return trans.translate('pls_email');
+                //   }
+                //   if (!value.isEmail()) {
+                //     return trans.translate('email_not_valid');
+                //   }
 
-                  return null;
-                },
+                //   return null;
+                // },
               ),
               16.height,
               ValidateTextField(
@@ -92,9 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 margin: EdgeInsets.zero,
                 backgroundColor: AppColors.white,
                 hintText: trans.translate('pls_password'),
-                hintStyle: AppTypography.p6.copyWith(
-                  color: AppColors.grey_1,
-                ),
+                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
                 maxLines: 1,
                 onChanged: bloc.onChangePassword,
                 obscureText: !state.showPassword,
@@ -132,9 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 1,
-                        ),
+                        const SizedBox(height: 1),
                         Text(
                           trans.translate('remember_password'),
                           style: AppTypography.p4.copyWith(
@@ -182,9 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       'Đăng ký ngay',
-                      style: AppTypography.p5.copyWith(
-                        color: AppColors.blue_3,
-                      ),
+                      style: AppTypography.p5.copyWith(color: AppColors.blue_3),
                     ),
                   ),
                 ],

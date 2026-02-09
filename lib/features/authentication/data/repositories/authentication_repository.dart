@@ -3,26 +3,23 @@ import 'package:dio/dio.dart';
 import 'package:bpg_retail/core/base/base_response.dart';
 import 'package:bpg_retail/core/configs/dio_config.dart';
 import 'package:bpg_retail/core/constants/api_constants.dart';
+import 'package:bpg_retail/features/authentication/data/models/auth_response.dart';
 import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
 import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
 import 'package:bpg_retail/features/authentication/data/services/authentication_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:bpg_retail/features/cart/data/models/qr_order_detail_model.dart';
 import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
 
 @LazySingleton()
 class AuthenticationRepository {
-  AuthenticationRepository(
-    this._authenticationService,
-    this._baseDio,
-  );
+  AuthenticationRepository(this._authenticationService, this._baseDio);
 
   final AuthenticationService _authenticationService;
 
   final BaseDio _baseDio;
 
-  Future<BaseResponseModel> login(
+  Future<BaseResponseModel<AuthResponse>> login(
     String phoneNumber,
     String password,
     String deviceId,
@@ -31,16 +28,17 @@ class AuthenticationRepository {
       final res = await _baseDio.post(
         Api.login,
         data: {
-          'device_id':deviceId,
+          'device_id': deviceId,
           "tai_khoan": phoneNumber,
           "mat_khau": password,
         },
       );
       if (res.data['success'] == true) {
-        return BaseResponseModel(code: 200, data: res.data);
+        final authResponse = AuthResponse.fromJson(res.data['data']);
+        return BaseResponseModel(code: 200, data: authResponse);
       } else {
         return BaseResponseModel(
-          code: res.data['status'],
+          code: res.data['status'] ?? 400,
           message: res.data['message'],
         );
       }
@@ -68,10 +66,7 @@ class AuthenticationRepository {
         "tax_code": taxCode,
         "phone_number": phoneNumber,
       };
-      final res = await _baseDio.post(
-        Api.register,
-        data: data,
-      );
+      final res = await _baseDio.post(Api.register, data: data);
       if (res.data['success'] == true) {
         return BaseResponseModel(code: 200, data: res.data);
       } else {
@@ -85,23 +80,16 @@ class AuthenticationRepository {
     }
   }
 
-  Future<Either<dynamic, dynamic>> sendOTPPhone(
-    String phoneNumber,
-  ) async {
+  Future<Either<dynamic, dynamic>> sendOTPPhone(String phoneNumber) async {
     try {
-      final response = await _authenticationService.sendOTPPhone(
-        phoneNumber,
-      );
+      final response = await _authenticationService.sendOTPPhone(phoneNumber);
       if (response['code'] == 400) {
         return left(response);
       } else {
         return right(response);
       }
     } catch (err) {
-      return left({
-        "message": err.toString(),
-        "code": 400,
-      });
+      return left({"message": err.toString(), "code": 400});
     }
   }
 
@@ -126,10 +114,7 @@ class AuthenticationRepository {
         "otp_code": otp,
       };
 
-      final response = await _baseDio.post(
-        Api.verifyOtpPhone,
-        data: payload,
-      );
+      final response = await _baseDio.post(Api.verifyOtpPhone, data: payload);
       if (response.data['success'] == true) {
         return BaseResponseModel(code: 200, data: response.data);
       } else {
@@ -225,23 +210,16 @@ class AuthenticationRepository {
   //   }
   // }
 
-  Future<Either<dynamic, dynamic>> forgotPassword(
-    String phoneNumber,
-  ) async {
+  Future<Either<dynamic, dynamic>> forgotPassword(String phoneNumber) async {
     try {
-      final response = await _authenticationService.forgotPassword(
-        phoneNumber,
-      );
+      final response = await _authenticationService.forgotPassword(phoneNumber);
       if (response['code'] == 400) {
         return left(response);
       } else {
         return right(response);
       }
     } catch (err) {
-      return left({
-        "message": err.toString(),
-        "code": 400,
-      });
+      return left({"message": err.toString(), "code": 400});
     }
   }
 
@@ -260,10 +238,7 @@ class AuthenticationRepository {
         return right(response);
       }
     } catch (err) {
-      return left({
-        "message": err.toString(),
-        "code": 400,
-      });
+      return left({"message": err.toString(), "code": 400});
     }
   }
 
@@ -282,10 +257,7 @@ class AuthenticationRepository {
         return right(response);
       }
     } catch (err) {
-      return left({
-        "message": err.toString(),
-        "code": 400,
-      });
+      return left({"message": err.toString(), "code": 400});
     }
   }
 
@@ -350,18 +322,13 @@ class AuthenticationRepository {
         return right(response);
       }
     } catch (err) {
-      return left({
-        "message": err.toString(),
-        "code": 400,
-      });
+      return left({"message": err.toString(), "code": 400});
     }
   }
 
   Future<BaseResponseModel> deactive(int? id) async {
     try {
-      final res = await _baseDio.put(
-        '${Api.disableAccount}/$id',
-      );
+      final res = await _baseDio.put('${Api.disableAccount}/$id');
       if (res.data["code"] == 200) {
         return BaseResponseModel(code: 200);
       } else {
@@ -412,10 +379,7 @@ class AuthenticationRepository {
         );
       }
     } catch (err) {
-      return BaseResponseModel(
-        code: 400,
-        message: err.toString(),
-      );
+      return BaseResponseModel(code: 400, message: err.toString());
     }
   }
 
@@ -426,16 +390,16 @@ class AuthenticationRepository {
     try {
       final payload = {"referral_code": code, 'user': id};
       payload.removeWhere((key, value) => value == null);
-      final response = await _baseDio.get(Api.verifyReferralCode, data: payload);
+      final response = await _baseDio.get(
+        Api.verifyReferralCode,
+        data: payload,
+      );
       if (response.data["code"] == 200) {
         final referallModel = ReferallModel(
           accountCode: response.data["data"]["phone"],
           accountName: response.data["data"]["full_name"],
         );
-        return BaseResponseModel(
-          code: 200,
-          data: referallModel,
-        );
+        return BaseResponseModel(code: 200, data: referallModel);
       } else {
         return BaseResponseModel(
           code: response.data["code"],
@@ -443,17 +407,11 @@ class AuthenticationRepository {
         );
       }
     } catch (err) {
-      return BaseResponseModel(
-        code: 400,
-        message: err.toString(),
-      );
+      return BaseResponseModel(code: 400, message: err.toString());
     }
   }
 
-  Future<BaseResponseModel> verifyBankAccout(
-    String phone,
-    String otp,
-  ) async {
+  Future<BaseResponseModel> verifyBankAccout(String phone, String otp) async {
     try {
       final payload = {"phone": phone, "otp": otp};
       final response = await _baseDio.post(Api.verifyBankAccout, data: payload);
@@ -469,10 +427,7 @@ class AuthenticationRepository {
         );
       }
     } catch (err) {
-      return BaseResponseModel(
-        code: 400,
-        message: err.toString(),
-      );
+      return BaseResponseModel(code: 400, message: err.toString());
     }
   }
 
@@ -481,10 +436,7 @@ class AuthenticationRepository {
     int id,
   ) async {
     try {
-      final res = await _baseDio.post(
-        Api.asbcProfile,
-        data: formData,
-      );
+      final res = await _baseDio.post(Api.asbcProfile, data: formData);
       if (res.data["code"] == 200) {
         final user = UserModelV2.fromJson(res.data["data"]);
         return BaseResponseModel(code: 200, data: user);
@@ -496,10 +448,7 @@ class AuthenticationRepository {
       }
     } catch (e) {
       print(e);
-      return BaseResponseModel(
-        code: 400,
-        message: e.toString(),
-      );
+      return BaseResponseModel(code: 400, message: e.toString());
     }
   }
 
@@ -508,10 +457,7 @@ class AuthenticationRepository {
       final res = await _baseDio.get(Api.getUser);
       if (res.data["success"] == true) {
         final user = UserModelV3.fromJson(res.data["data"]);
-        return BaseResponseModel(
-          code: 200,
-          data: user,
-        );
+        return BaseResponseModel(code: 200, data: user);
       } else {
         return BaseResponseModel(
           code: res.data["code"],
@@ -520,10 +466,7 @@ class AuthenticationRepository {
       }
     } catch (e) {
       print('=====getUserModelV3=====$e');
-      return BaseResponseModel(
-        code: 400,
-        message: e.toString(),
-      );
+      return BaseResponseModel(code: 400, message: e.toString());
     }
   }
 
@@ -539,10 +482,7 @@ class AuthenticationRepository {
         );
       }
     } catch (e) {
-      return BaseResponseModel(
-        code: 400,
-        message: e.toString(),
-      );
+      return BaseResponseModel(code: 400, message: e.toString());
     }
   }
 }

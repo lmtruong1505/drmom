@@ -61,26 +61,17 @@ class _ConfirmOtpBankAccountState extends State<ConfirmOtpBankAccount>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     18.width,
-                    const Text(
-                      "Xác thực thông tin thanh toán",
-                      style: s16w700,
-                    ),
+                    const Text("Xác thực thông tin thanh toán", style: s16w700),
                     GestureDetector(
                       onTap: () => nav.pop(),
-                      child: const Icon(
-                        Icons.close,
-                        size: 18,
-                      ),
+                      child: const Icon(Icons.close, size: 18),
                     ),
                   ],
                 ),
                 16.height,
                 IndexedStack(
-                  children: [
-                    PhoneView(bloc: bloc),
-                    EmailView(bloc: bloc),
-                  ],
-                )
+                  children: [PhoneView(bloc: bloc), EmailView(bloc: bloc)],
+                ),
                 // TabBarView(
                 //   physics: const NeverScrollableScrollPhysics(),
                 //   controller: tabCtrl,
@@ -145,6 +136,7 @@ class _EmailViewState extends State<EmailView> {
                 textAlign: TextAlign.center,
               ),
             ),
+
             // Visibility(
             //   visible: bloc.isEmailCount,
             //   child: Column(
@@ -157,13 +149,13 @@ class _EmailViewState extends State<EmailView> {
             //     ],
             //   ),
             // ),
-
             8.height,
             MainButton(
               isDisable: email == null || bloc.isEmailCount,
-              title: !bloc.isEmailCount
-                  ? "Gửi OTP"
-                  : (bloc.countTime > 0)
+              title:
+                  !bloc.isEmailCount
+                      ? "Gửi OTP"
+                      : (bloc.countTime > 0)
                       ? formatMinute(bloc.countTime)
                       : "Gửi lại OTP",
               onTap: () {
@@ -297,7 +289,7 @@ class _PhoneViewState extends State<PhoneView> {
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Visibility(
-              visible: phone != null,
+              visible: phone.isNotEmpty,
               child: Column(
                 children: [
                   RichText(
@@ -306,9 +298,9 @@ class _PhoneViewState extends State<PhoneView> {
                       style: s14w400.copyWith(color: AppColors.black),
                       children: [
                         TextSpan(
-                          text: phone ?? "",
+                          text: phone,
                           style: s14w500.copyWith(color: AppColors.blue31),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -323,6 +315,7 @@ class _PhoneViewState extends State<PhoneView> {
                 ],
               ),
             ),
+
             // Visibility(
             //   visible: bloc.isPhoneCount,
             //   child: Column(
@@ -399,7 +392,6 @@ class _PhoneViewState extends State<PhoneView> {
             //     return null;
             //   },
             // ),
-
             16.height,
             const Align(
               alignment: Alignment.centerLeft,
@@ -449,7 +441,7 @@ class _PhoneViewState extends State<PhoneView> {
                   bloc.setDisable(true);
                 } else {
                   bloc.setDisable(false);
-                  bloc.verifyBankAccout(phone ?? '', otpPhone.text);
+                  bloc.verifyBankAccout(phone, otpPhone.text);
                 }
               },
             ),
@@ -459,7 +451,7 @@ class _PhoneViewState extends State<PhoneView> {
                 "Mã OTP không đúng",
                 style: s16w500.copyWith(color: AppColors.red_1),
               ),
-            )
+            ),
             // const Spacer(),
             // 16.height,
             // Container(

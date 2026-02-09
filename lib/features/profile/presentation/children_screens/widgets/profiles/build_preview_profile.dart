@@ -38,10 +38,7 @@ String mapProfileTitle(String field) {
 }
 
 class UserProfileView extends StatelessWidget {
-  UserProfileView({
-    super.key,
-    required this.bloc,
-  });
+  UserProfileView({super.key, required this.bloc});
   final UserProfileCubit bloc;
   final navigator = getIt.get<AppNavigator>();
   final preferences = getIt.get<Preferences>();
@@ -70,21 +67,21 @@ class UserProfileView extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    AvatarWidget(url: user.avatar ?? '', size: 80)
-                        .padding(16.padingBottom),
+                    AvatarWidget(
+                      url: user.avatar,
+                      size: 80,
+                    ).padding(16.padingBottom),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Tên",
-                          style: AppTypography.p5
-                              .copyWith(color: AppColors.grey_1),
+                          style: AppTypography.p5.copyWith(
+                            color: AppColors.grey_1,
+                          ),
                         ),
                         const SizedBox(width: 16),
-                        Text(
-                          user.fullName ?? '_',
-                          style: AppTypography.p5,
-                        ),
+                        Text(user.fullName, style: AppTypography.p5),
                       ],
                     ),
                     16.height,
@@ -93,47 +90,45 @@ class UserProfileView extends StatelessWidget {
                       children: [
                         Text(
                           "Số điện thoại",
-                          style: AppTypography.p5
-                              .copyWith(color: AppColors.grey_1),
+                          style: AppTypography.p5.copyWith(
+                            color: AppColors.grey_1,
+                          ),
                         ),
                         const SizedBox(width: 16),
-                        Text(
-                          user.phone ?? '_',
-                          style: AppTypography.p5,
-                        ),
+                        Text(user.phone, style: AppTypography.p5),
                       ],
                     ),
                     const SizedBox(height: 16),
                     Visibility(
-                        visible: true,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Email",
-                                  style: AppTypography.p5
-                                      .copyWith(color: AppColors.grey_1),
+                      visible: true,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Email",
+                                style: AppTypography.p5.copyWith(
+                                  color: AppColors.grey_1,
                                 ),
-                                const SizedBox(width: 16),
-                                Text(
-                                  user.email ?? '_',
-                                  style: AppTypography.p5,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                          ],
-                        )),
+                              ),
+                              const SizedBox(width: 16),
+                              Text(user.email ?? '_', style: AppTypography.p5),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Mã giới thiệu",
-                          style: AppTypography.p5
-                              .copyWith(color: AppColors.grey_1),
+                          style: AppTypography.p5.copyWith(
+                            color: AppColors.grey_1,
+                          ),
                         ),
                         const SizedBox(width: 16),
                         GestureDetector(
@@ -157,7 +152,7 @@ class UserProfileView extends StatelessWidget {
                               ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                     16.height,
@@ -205,18 +200,8 @@ class UserProfileView extends StatelessWidget {
                     16.height,
                     const Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            "Mặt trước",
-                            style: s14w500,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "Mặt sau",
-                            style: s14w500,
-                          ),
-                        ),
+                        Expanded(child: Text("Mặt trước", style: s14w500)),
+                        Expanded(child: Text("Mặt sau", style: s14w500)),
                       ],
                     ),
                     8.height,
@@ -236,7 +221,7 @@ class UserProfileView extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 24),

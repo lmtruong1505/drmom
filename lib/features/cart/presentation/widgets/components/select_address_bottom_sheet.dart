@@ -54,10 +54,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
             children: [
               Row(
                 children: [
-                  const Text(
-                    "Chọn địa chỉ nhận hàng",
-                    style: s18w700,
-                  ),
+                  const Text("Chọn địa chỉ nhận hàng", style: s18w700),
                   const Spacer(),
                   GestureDetector(
                     onTap: () => navigator.back(),
@@ -185,9 +182,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
                     ),
                     child: Text(
                       "Mặc định",
-                      style: AppTypography.p5.copyWith(
-                        color: AppColors.blue_1,
-                      ),
+                      style: AppTypography.p5.copyWith(color: AppColors.blue_1),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -203,7 +198,7 @@ class _SelectAddressBottomSheetState extends State<SelectAddressBottomSheet> {
             // ),
             const SizedBox(height: 8),
             Text(
-              address?.addressFull ?? '',
+              address!.addressFull ?? '',
               style: AppTypography.p6,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,

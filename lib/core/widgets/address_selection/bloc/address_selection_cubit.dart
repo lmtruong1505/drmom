@@ -34,11 +34,14 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
     }
 
     if (keyword.isNotEmpty) {
-      final searchs = dataClone.where((e) {
-        final name = removeVietnameseTones((e['name'] as String).toLowerCase());
-        final keywordRemoveTones = removeVietnameseTones(keyword);
-        return name.contains(keywordRemoveTones);
-      }).toList();
+      final searchs =
+          dataClone.where((e) {
+            final name = removeVietnameseTones(
+              (e['name'] as String).toLowerCase(),
+            );
+            final keywordRemoveTones = removeVietnameseTones(keyword);
+            return name.contains(keywordRemoveTones);
+          }).toList();
 
       if (state.step == 1) {
         emit(state.copyWith(provinces: searchs));
@@ -119,12 +122,7 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
 
     final newText = text.join(", ");
 
-    emit(
-      state.copyWith(
-        address: address,
-        text: newText,
-      ),
-    );
+    emit(state.copyWith(address: address, text: newText));
   }
 
   void onChangeDistrict(dynamic district) {
@@ -141,12 +139,7 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
     final newText = text.join(", ");
 
     emit(
-      state.copyWith(
-        district: district,
-        step: 3,
-        ward: null,
-        text: newText,
-      ),
+      state.copyWith(district: district, step: 3, ward: null, text: newText),
     );
     getWards();
   }
@@ -210,11 +203,7 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
       );
       return provinces;
     }
-    final data = {
-      "page": 0,
-      "search": "",
-      "page_size": 1000,
-    };
+    final data = {"page": 0, "search": "", "page_size": 1000};
     final res = await _baseDio.get(Api.provinceASBC, data: data);
     emit(
       state.copyWith(
@@ -234,7 +223,7 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
       "search": "",
       "page_size": 1000,
     };
-    final res = await _baseDio.get(Api.provinceASBC, data: data);
+    final res = await _baseDio.get(Api.districtASBC, data: data);
     emit(
       state.copyWith(
         districts: res.data['data'],
@@ -246,9 +235,13 @@ class AddressSelectionCubit extends BaseCubit<AddressSelectionState> {
 
   Future getWards() async {
     emit(state.copyWith(step: 3, isLoading: true));
-    final res = await _baseDio.get(
-      "${Api.district}/${state.district['code']}/ward",
-    );
+    final data = {
+      "district": state.district['code'],
+      "page": 0,
+      "search": "",
+      "page_size": 1000,
+    };
+    final res = await _baseDio.get(Api.wardsASBC, data: data);
     emit(state.copyWith(wards: res.data['data'], wardsClone: res.data['data']));
     emit(state.copyWith(isLoading: false));
   }

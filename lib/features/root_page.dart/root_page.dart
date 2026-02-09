@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:bpg_retail/features/dashboard/dashboard_page.dart';
 import 'package:bpg_retail/features/home/presentation/home_page.dart';
 import 'package:bpg_retail/features/profile/presentation/profile_v2.dart';
 import 'package:flutter/material.dart';
@@ -84,12 +85,8 @@ class _RootPageState extends State<RootPage>
             }
           },
         ),
-        BlocListener<WalletCubit, CubitState>(
-          listener: (context, state) {},
-        ),
-        BlocListener<CartBloc, CubitState>(
-          listener: (context, state) {},
-        ),
+        BlocListener<WalletCubit, CubitState>(listener: (context, state) {}),
+        BlocListener<CartBloc, CubitState>(listener: (context, state) {}),
       ],
       child: BlocConsumer<AppCubit, AppState>(
         listener: (BuildContext context, AppState state) {
@@ -104,7 +101,7 @@ class _RootPageState extends State<RootPage>
               controller: _tabController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                const HomePage(),
+                const DashboardPage(),
                 Container(
                   color: AppColors.bg_6,
                   child: const Center(
@@ -153,27 +150,11 @@ class _RootPageState extends State<RootPage>
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _iconBtn(
-                    icon: 'ic_home',
-                    index: 0,
-                    title: 'Trang chủ',
-                  ),
-                  _iconBtn(
-                    icon: 'ic_group',
-                    index: 1,
-                    title: 'Cộng đồng',
-                  ),
+                  _iconBtn(icon: 'ic_home', index: 0, title: 'Trang chủ'),
+                  _iconBtn(icon: 'ic_group', index: 1, title: 'Cộng đồng'),
                   // _qrBtn(),
-                  _iconBtn(
-                    icon: 'ic_noti',
-                    index: 2,
-                    title: 'Thông báo',
-                  ),
-                  _iconBtn(
-                    icon: 'ic_user',
-                    index: 3,
-                    title: 'Tài khoản',
-                  ),
+                  _iconBtn(icon: 'ic_noti', index: 2, title: 'Thông báo'),
+                  _iconBtn(icon: 'ic_user', index: 3, title: 'Tài khoản'),
                 ],
               ),
               10.height,
@@ -218,9 +199,10 @@ class _RootPageState extends State<RootPage>
             Text(
               title,
               style: s12w400.copyWith(
-                color: index == indexCubit.state
-                    ? AppColors.main
-                    : AppColors.grey79,
+                color:
+                    index == indexCubit.state
+                        ? AppColors.main
+                        : AppColors.grey79,
               ),
             ),
             10.height,

@@ -44,7 +44,8 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   // }
 
   UserModelV2 get userData {
-    return preferences.getUserData;
+    // return preferences.getUserData;
+    return UserModelV2();
   }
 
   // ProfileModel? get avatar {

@@ -142,10 +142,10 @@ class _ProfileInfoTabState extends State<ProfileInfoTab> {
                 icon: Assets.icons.icPerson.svg(),
                 titile: "Thông tin cá nhân",
                 onTap: () async {
-                  final result = await nav.push(ProfileInfoRoute());
-                  if (result == true) {
-                    widget.bloc.onRefesh();
-                  }
+                  // final result = await nav.push(ProfileInfoRoute());
+                  // if (result == true) {
+                  //   widget.bloc.onRefesh();
+                  // }
                 },
               ),
             ],

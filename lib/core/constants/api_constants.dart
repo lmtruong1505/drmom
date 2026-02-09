@@ -41,9 +41,9 @@ class Api {
 
   static String district = '$subdivisions/district';
 
-  static String provinceASBC = '$baseURLV2/api/v1/locations/provinces/';
-  static String districtASBC = '$baseURLV2/api/v1/locations/districts/';
-  static String wardsASBC = '$baseURLV2/api/v1/locations/wards/';
+  static String provinceASBC = '$baseURLV2/api/v1/locations/provinces';
+  static String districtASBC = '$baseURLV2/api/v1/locations/districts';
+  static String wardsASBC = '$baseURLV2/api/v1/locations/wards';
   static String opendShop = '$baseURLV2/api/v1/shops/request-open-shop/';
   static String checkOpendShop = '$baseURLV2/api/v1/shops/my-shop/';
   static String generateQR = '$baseURLV2/api/v1/wallets/vietqr/generate-qr/';

@@ -1,43 +1,80 @@
-import 'package:bpg_retail/features/authentication/data/models/profile_model.dart';
+import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class UserModel {
   final int? id;
-  final int? point;
-  @JsonKey(name: 'phone_number')
-  final String? phoneNumber;
-  final String? fullname;
+  @JsonKey(name: 'ma_tai_khoan')
+  final String? maTaiKhoan;
+  @JsonKey(name: 'tai_khoan')
+  final String? taiKhoan;
+  @JsonKey(name: 'ho_va_ten')
+  final String? hoVaTen;
+  @JsonKey(name: 'dien_thoai')
+  final String? dienThoai;
   final String? email;
-  @JsonKey(name: 'account_code')
-  final String? accountCode;
-  final List<ProfileModel>? profiles;
+  @JsonKey(name: 'ma_so_thue')
+  final String? maSoThue;
+  @JsonKey(name: 'dia_chi')
+  final String? diaChi;
+  @JsonKey(name: 'hinh_anh')
+  final String? hinhAnh;
+  @JsonKey(name: 'ngay_sinh')
   final String? birthday;
-  final int? gender;
+  @JsonKey(name: 'gioi_tinh')
+  final ValueLabelModel? gioiTinh;
+  @JsonKey(name: 'so_cccd')
   final String? identified;
-  @JsonKey(name: 'date_provided')
+  @JsonKey(name: 'ngay_cap_cccd')
   final String? dateProvided;
-  @JsonKey(name: 'place_provided')
+  @JsonKey(name: 'noi_cap_cccd')
   final String? placeProvided;
-  final UserAddressModel? address;
+  @JsonKey(name: 'image_front')
+  final String? imageFront;
+  @JsonKey(name: 'image_back')
+  final String? imageBack;
+  final List<dynamic>? warehouses;
+  @JsonKey(name: 'date_period')
+  final List<dynamic>? datePeriod;
+  @JsonKey(name: 'trang_thai')
+  final ValueLabelModel? trangThai;
+  @JsonKey(name: 'created_by')
+  final CreatedByModel? createdBy;
 
   UserModel({
     this.id,
-    this.point,
-    this.phoneNumber,
-    this.fullname,
+    this.maTaiKhoan,
+    this.taiKhoan,
+    this.hoVaTen,
+    this.dienThoai,
     this.email,
-    this.accountCode,
-    this.profiles,
+    this.maSoThue,
+    this.diaChi,
+    this.hinhAnh,
+    this.trangThai,
+    this.gioiTinh,
+    this.createdBy,
     this.birthday,
-    this.gender,
     this.identified,
     this.dateProvided,
-    this.address,
     this.placeProvided,
+    this.imageFront,
+    this.imageBack,
+    this.warehouses,
+    this.datePeriod,
   });
+
+  // Getters for compatibility
+  String get fullName => hoVaTen ?? '';
+  String get phone => dienThoai ?? '';
+  AddressData? get address => AddressData(addressFull: diaChi ?? '');
+  String get avatar => hinhAnh ?? '';
+  int? get gender =>
+      gioiTinh?.value is int
+          ? gioiTinh?.value
+          : (gioiTinh?.value is String ? int.tryParse(gioiTinh?.value) : null);
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
@@ -46,25 +83,28 @@ class UserModel {
 }
 
 @JsonSerializable()
-class UserAddressModel {
-  final int? province;
-  final int? district;
-  final int? ward;
-  final String? title;
-  final double? lat;
-  final double? long;
+class ValueLabelModel {
+  final String? label;
+  final dynamic value;
 
-  UserAddressModel({
-    this.province,
-    this.district,
-    this.ward,
-    this.title,
-    this.lat,
-    this.long,
-  });
+  ValueLabelModel({this.label, this.value});
 
-  factory UserAddressModel.fromJson(Map<String, dynamic> json) =>
-      _$UserAddressModelFromJson(json);
+  factory ValueLabelModel.fromJson(Map<String, dynamic> json) =>
+      _$ValueLabelModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ValueLabelModelToJson(this);
+}
 
-  Map<String, dynamic> toJson() => _$UserAddressModelToJson(this);
+@JsonSerializable()
+class CreatedByModel {
+  final int? id;
+  @JsonKey(name: 'ho_va_ten')
+  final String? hoVaTen;
+  @JsonKey(name: 'ma_tai_khoan')
+  final String? maTaiKhoan;
+
+  CreatedByModel({this.id, this.hoVaTen, this.maTaiKhoan});
+
+  factory CreatedByModel.fromJson(Map<String, dynamic> json) =>
+      _$CreatedByModelFromJson(json);
+  Map<String, dynamic> toJson() => _$CreatedByModelToJson(this);
 }

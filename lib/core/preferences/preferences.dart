@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:bpg_retail/core/constants/preference_keys.dart';
 import 'package:bpg_retail/features/authentication/data/models/login_model.dart';
 import 'package:bpg_retail/features/authentication/data/models/remember_account.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
+import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
 import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
 import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
 import 'package:bpg_retail/features/cart/data/models/cart_model.dart';
@@ -40,9 +40,13 @@ class Preferences {
     return LoginModel.fromJson(jsonDecode(user));
   }
 
-  UserModelV2 get getUserData {
+  UserModel get getUserData {
     final user = _preferences.getString(PrefKeys.userData) ?? '{}';
-    return UserModelV2.fromJson(jsonDecode(user));
+    try {
+      return UserModel.fromJson(jsonDecode(user));
+    } catch (e) {
+      return UserModel();
+    }
   }
 
   UserModelV3 get getUserDataV3 {
@@ -115,14 +119,12 @@ class Preferences {
   }
 
   Future<void> removeCurrentUser() async {
-    await Future.wait(
-      [
-        _preferences.remove(PrefKeys.currentUser),
-        _preferences.remove(PrefKeys.accessToken),
-        _preferences.remove(PrefKeys.refreshToken),
-        _preferences.remove(PrefKeys.userData),
-      ],
-    );
+    await Future.wait([
+      _preferences.remove(PrefKeys.currentUser),
+      _preferences.remove(PrefKeys.accessToken),
+      _preferences.remove(PrefKeys.refreshToken),
+      _preferences.remove(PrefKeys.userData),
+    ]);
   }
 
   Future<bool> saveRememberAccount(RememberAccount account) {
@@ -137,20 +139,14 @@ class Preferences {
   }
 
   Future<bool> saveAccessToken(String token) async {
-    final success = await _preferences.setString(
-      PrefKeys.accessToken,
-      token,
-    );
+    final success = await _preferences.setString(PrefKeys.accessToken, token);
     print(token);
 
     return success;
   }
 
   Future<bool> saveRefreshToken(String token) async {
-    final success = await _preferences.setString(
-      PrefKeys.refreshToken,
-      token,
-    );
+    final success = await _preferences.setString(PrefKeys.refreshToken, token);
     return success;
   }
 
@@ -179,18 +175,12 @@ class Preferences {
   }
 
   Future<bool> saveCarts(String carts) async {
-    final success = await _preferences.setString(
-      PrefKeys.cart,
-      carts,
-    );
+    final success = await _preferences.setString(PrefKeys.cart, carts);
     return success;
   }
 
   Future<bool> saveLocation(String location) async {
-    final success = await _preferences.setString(
-      PrefKeys.location,
-      location,
-    );
+    final success = await _preferences.setString(PrefKeys.location, location);
     return success;
   }
 
@@ -227,10 +217,7 @@ class Preferences {
   }
 
   Future<bool> saveLanguage(String value) async {
-    final success = await _preferences.setString(
-      PrefKeys.language,
-      value,
-    );
+    final success = await _preferences.setString(PrefKeys.language, value);
     return success;
   }
 }
