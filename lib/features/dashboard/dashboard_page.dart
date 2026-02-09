@@ -38,7 +38,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.brand,
+      backgroundColor: AppColors.main,
       body: SafeArea(
         bottom: false,
         child: Column(

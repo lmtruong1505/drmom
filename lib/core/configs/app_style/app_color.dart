@@ -2,7 +2,7 @@ part of 'init_app_style.dart';
 
 class AppColors {
   AppColors._();
-  static const Color brand = Color(0xFF00897B);
+  static const Color main = Color(0xFF6F68A8);
   static const Color backgroundDefault = Color(0xFF00897B);
   static const Color btBackgroundDefault = Color(0xFF00897B);
 
@@ -133,23 +133,23 @@ class AppColors {
   static const Color green90 = Color(0xFF04592C);
   static const Color green100 = Color(0xFF03401F);
 
-  static Color greenAlpha10 = brand.withOpacity(0.1);
-  static Color greenAlpha20 = brand.withOpacity(0.2);
-  static Color greenAlpha30 = brand.withOpacity(0.3);
-  static Color greenAlpha40 = brand.withOpacity(0.4);
-  static Color greenAlpha50 = brand.withOpacity(0.5);
-  static Color greenAlpha60 = brand.withOpacity(0.6);
-  static Color greenAlpha70 = brand.withOpacity(0.7);
-  static Color greenAlpha80 = brand.withOpacity(0.8);
-  static Color greenAlpha90 = brand.withOpacity(0.9);
+  static Color greenAlpha10 = main.withOpacity(0.1);
+  static Color greenAlpha20 = main.withOpacity(0.2);
+  static Color greenAlpha30 = main.withOpacity(0.3);
+  static Color greenAlpha40 = main.withOpacity(0.4);
+  static Color greenAlpha50 = main.withOpacity(0.5);
+  static Color greenAlpha60 = main.withOpacity(0.6);
+  static Color greenAlpha70 = main.withOpacity(0.7);
+  static Color greenAlpha80 = main.withOpacity(0.8);
+  static Color greenAlpha90 = main.withOpacity(0.9);
 
-  static Color greenAlpha5 = brand.withOpacity(0.05);
-  static Color greenAlpha15 = brand.withOpacity(0.15);
-  static Color greenAlpha25 = brand.withOpacity(0.25);
-  static Color greenAlpha35 = brand.withOpacity(0.35);
-  static Color greenAlpha45 = brand.withOpacity(0.45);
-  static Color greenAlpha55 = brand.withOpacity(0.55);
-  static Color greenAlpha65 = brand.withOpacity(0.65);
+  static Color greenAlpha5 = main.withOpacity(0.05);
+  static Color greenAlpha15 = main.withOpacity(0.15);
+  static Color greenAlpha25 = main.withOpacity(0.25);
+  static Color greenAlpha35 = main.withOpacity(0.35);
+  static Color greenAlpha45 = main.withOpacity(0.45);
+  static Color greenAlpha55 = main.withOpacity(0.55);
+  static Color greenAlpha65 = main.withOpacity(0.65);
 
   //red
   static const Color red10 = Color(0xFFFFF0F1);
@@ -257,7 +257,7 @@ class AppColors {
   static const text_primary_onBrand = grey30;
   static const text_secondary_onBrand = grey30;
   static const text_tertiary_onBrand = grey50;
-  static const text_brand_primary_variant1 = brand;
+  static const text_brand_primary_variant1 = main;
   static const text_brand_primary_variant2 = orange60;
   static const text_brand_secondary_variant1 = green40;
   static const text_brand_secondary_variant2 = orange40;
@@ -270,10 +270,10 @@ class AppColors {
   static const text_white = white;
   static const text_black = grey100;
   static const text_disable = Color(0xffAFAFB5);
-  static const text_positive = brand;
+  static const text_positive = main;
   static const text_negative = red60;
   static const text_warning = orange60;
-  static const text_hyperlink_hyperlink = brand;
+  static const text_hyperlink_hyperlink = main;
   static const fg_primary = grey100;
   static const fg_secondary = grey80;
   static const fg_tertiary = grey60;
@@ -281,14 +281,14 @@ class AppColors {
   static const fg_white = white;
   static const fg_black = grey100;
   static const fg_disable = grey40;
-  static const fg_positive = brand;
+  static const fg_positive = main;
   static const fg_negative = red60;
   static const fg_warning = orange60;
-  static const fg_hyperlink = brand;
+  static const fg_hyperlink = main;
   static const fg_primary_onBrand = grey10;
   static const fg_secondary_onBrand = grey30;
   static const fg_tertiary_onBrand = grey50;
-  static const fg_brand_primary_variant1 = brand;
+  static const fg_brand_primary_variant1 = main;
   static const fg_brand_primary_variant2 = orange60;
   static const fg_brand_secondary_variant1 = green40;
   static const fg_brand_secondary_variant2 = orange40;
@@ -310,7 +310,7 @@ class AppColors {
   static final bg_brandPrimary_variant1_hover = greenAlpha15;
   static final bg_brandPrimary_variant1_active = greenAlpha20;
   static final bg_brandPrimary_variant1_disabled = greenAlpha30;
-  static const bg_brandSolid_variant1 = brand;
+  static const bg_brandSolid_variant1 = main;
   static const bg_brandSolid_variant2 = orange60;
   static const bg_brandSolid_variant1_hover = green50;
   static const bg_brandSolid_variant1_active = green40;
@@ -324,7 +324,7 @@ class AppColors {
   static const ultility_brand_10 = green10;
   static const ultility_brand_20 = green20;
   static const ultility_brand_40 = green40;
-  static const ultility_brand_60 = brand;
+  static const ultility_brand_60 = main;
   static const ultility_gray_10 = grey10;
   static const ultility_gray_20 = Color(0xFFE1E1E3);
   static const ultility_gray_40 = grey40;
@@ -336,11 +336,11 @@ class AppColors {
   static const ultility_positive_10 = green10;
   static const ultility_positive_20 = green20;
   static const ultility_positive_40 = green40;
-  static const ultility_positive_60 = brand;
+  static const ultility_positive_60 = main;
   static const border_secondary = grey40;
   static const border_tertiary = Color(0xFFE1E1E3);
   static const border_disabled = grey40;
-  static const border_brandSolid = brand;
+  static const border_brandSolid = main;
   static const border_primary_onBrand = grey30;
   static const border_primary_hover = grey20;
   static const border_primary_active = grey10;
@@ -349,7 +349,7 @@ class AppColors {
   static final border_brandSolid_variant1_active = greenAlpha60;
   static final border_brandSolid_variant1_disabled = greenAlpha30;
   static final bg_positivePrimary = greenAlpha10;
-  static const bg_positiveSolid = brand;
+  static const bg_positiveSolid = main;
   static final bg_negativePrimary = redAlpha10;
   static const bg_negativeSolid = red60;
   static final bg_warningPrimary = orangeAlpha10;
@@ -367,7 +367,7 @@ class AppColors {
   static const border_negative_subtle = red50;
   static const border_warning = orange60;
   static const text_hyperlink_hover = green40;
-  static const text_hyperlink_active = brand;
+  static const text_hyperlink_active = main;
   static const text_hyperlink_visited = purple90;
   static const text_hyperlink = blue60;
   static const ultility_carrot_10 = carrot10;

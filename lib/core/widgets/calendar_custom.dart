@@ -145,7 +145,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
                   border: Border.all(
                     color:
                         monthSelect.month == index + 1
-                            ? AppColors.brand
+                            ? AppColors.main
                             : Colors.transparent,
                     width: 2,
                   ),
@@ -398,7 +398,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
               color: isChoose ? AppColors.text_primary : Colors.transparent,
               border: Border.all(
                 color:
-                    isToday && !isChoose ? AppColors.brand : Colors.transparent,
+                    isToday && !isChoose ? AppColors.main : Colors.transparent,
                 width: 2,
               ),
             ),

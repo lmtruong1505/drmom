@@ -22,7 +22,7 @@ class LabelButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.border,
-    this.backgroundColor = AppColors.brand,
+    this.backgroundColor = AppColors.main,
     this.radius,
     this.isBorder = true,
     this.suffixIcon,
@@ -67,7 +67,8 @@ class LabelButton extends StatelessWidget {
             child: Text(
               label,
               overflow: TextOverflow.ellipsis,
-              style: labelStyle?.copyWith(height: 1) ??
+              style:
+                  labelStyle?.copyWith(height: 1) ??
                   s14w500.copyWith(color: AppColors.white, height: 1),
               textAlign: labelAlign,
             ),
@@ -108,7 +109,7 @@ class ColumnLabelButton extends StatelessWidget {
     this.isRequire,
     this.onPressed,
     this.border,
-    this.backgroundColor = AppColors.brand,
+    this.backgroundColor = AppColors.main,
     this.radius,
     this.isBorder = true,
     this.suffixIcon,
@@ -130,9 +131,7 @@ class ColumnLabelButton extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: title,
-            style: AppStyle.bodyBsMedium.copyWith(
-              color: AppColors.input_label,
-            ),
+            style: AppStyle.bodyBsMedium.copyWith(color: AppColors.input_label),
             children: [
               if (isRequire ?? false)
                 TextSpan(
@@ -153,7 +152,8 @@ class ColumnLabelButton extends StatelessWidget {
               borderRadius: radius ?? BorderRadius.circular(20),
               side: isBorder && border != null ? border! : BorderSide.none,
             ),
-            padding: padding ??
+            padding:
+                padding ??
                 const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             fixedSize: fixedSize,
             disabledBackgroundColor:
