@@ -203,6 +203,10 @@ class $AssetsIconsGen {
   SvgGenImage get icIncreaseBox =>
       const SvgGenImage('assets/icons/ic_increase_box.svg');
 
+  /// File path: assets/icons/ic_laptop_medical_active.svg
+  SvgGenImage get icLaptopMedicalActive =>
+      const SvgGenImage('assets/icons/ic_laptop_medical_active.svg');
+
   /// File path: assets/icons/ic_lh.svg
   SvgGenImage get icLh => const SvgGenImage('assets/icons/ic_lh.svg');
 
@@ -543,6 +547,7 @@ class $AssetsIconsGen {
         icHomeActive,
         icHososuckhoe,
         icIncreaseBox,
+        icLaptopMedicalActive,
         icLh,
         icLichkhamdinhki,
         icLichsu,

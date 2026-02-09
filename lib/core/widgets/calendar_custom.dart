@@ -1,20 +1,16 @@
 import 'dart:async';
 
-import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/widgets/buttons/icon_btn.dart';
 import 'package:bpg_retail/core/widgets/divider_custom.dart';
 import 'package:flutter/material.dart';
 
-
+import '../configs/app_style/init_app_style.dart';
 
 class CalendarEventCount {
   DateTime date;
   int count;
-  CalendarEventCount({
-    required this.date,
-    required this.count,
-  });
+  CalendarEventCount({required this.date, required this.count});
 }
 
 class CalendarCustom extends StatefulWidget {
@@ -77,9 +73,10 @@ class _CalendarCustomState extends State<CalendarCustom> {
         month: isBack ? monthSelect.month - 1 : monthSelect.month + 1,
       );
     } else {
-      monthSelect = isBack
-          ? datesGrid.first.subtract(const Duration(days: 1))
-          : datesGrid.last.add(const Duration(days: 1));
+      monthSelect =
+          isBack
+              ? datesGrid.first.subtract(const Duration(days: 1))
+              : datesGrid.last.add(const Duration(days: 1));
     }
     widget.onMonthChanged?.call(monthSelect);
     datesGrid = _generateDatesGrid(monthSelect);
@@ -107,9 +104,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
               DividerCustom(space: 12),
               Text(
                 !isViewDate ? 'Tháng này' : 'Hôm nay',
-                style: AppStyle.bodyBsMedium.copyWith(
-                  color: AppColors.brand,
-                ),
+                style: AppStyle.bodyBsMedium.copyWith(color: Colors.black),
               ).padding(12.pading),
             ],
           ],
@@ -148,9 +143,10 @@ class _CalendarCustomState extends State<CalendarCustom> {
                 decoration: BoxDecoration(
                   borderRadius: 12.radius,
                   border: Border.all(
-                    color: monthSelect.month == index + 1
-                        ? AppColors.brand
-                        : Colors.transparent,
+                    color:
+                        monthSelect.month == index + 1
+                            ? AppColors.brand
+                            : Colors.transparent,
                     width: 2,
                   ),
                 ),
@@ -177,12 +173,9 @@ class _CalendarCustomState extends State<CalendarCustom> {
           },
           size: const Size(26, 26),
           padding: 0.pading,
-          backgroundColor: AppColors.bg_primary,
+          backgroundColor: AppColors.blue10,
           boxShadow: AppShadows.elevator0,
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 12,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded, size: 12),
         ),
         16.width,
         Text(
@@ -197,12 +190,9 @@ class _CalendarCustomState extends State<CalendarCustom> {
           },
           size: const Size(26, 26),
           padding: 0.pading,
-          backgroundColor: AppColors.bg_primary,
+          backgroundColor: AppColors.blue10,
           boxShadow: AppShadows.elevator0,
-          icon: const Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 12,
-          ),
+          icon: const Icon(Icons.arrow_forward_ios_rounded, size: 12),
         ),
       ],
     );
@@ -230,7 +220,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
               child: Text(
                 weekName[index],
                 style: AppStyle.bodyBsSemiBold.copyWith(
-                  color: AppColors.text_quaternary,
+                  color: AppColors.text_tertiary,
                 ),
               ),
             );
@@ -279,12 +269,9 @@ class _CalendarCustomState extends State<CalendarCustom> {
           },
           size: const Size(26, 26),
           padding: 0.pading,
-          backgroundColor: AppColors.bg_primary,
+          backgroundColor: AppColors.blue10,
           boxShadow: AppShadows.elevator0,
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-            size: 12,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded, size: 12),
         ),
         16.width,
         IconBtn(
@@ -293,12 +280,9 @@ class _CalendarCustomState extends State<CalendarCustom> {
           },
           size: const Size(26, 26),
           padding: 0.pading,
-          backgroundColor: AppColors.bg_primary,
+          backgroundColor: AppColors.blue10,
           boxShadow: AppShadows.elevator0,
-          icon: const Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 12,
-          ),
+          icon: const Icon(Icons.arrow_forward_ios_rounded, size: 12),
         ),
         const Spacer(),
         if (widget.isAction) _buildAction(),
@@ -312,9 +296,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
         Container(
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            border: Border.all(
-              color: AppColors.border_tertiary,
-            ),
+            border: Border.all(color: AppColors.border_tertiary),
             borderRadius: 35.radius,
           ),
           child: Row(
@@ -328,9 +310,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
                 child: Container(
                   width: 60,
                   height: 26,
-                  color: isMonth
-                      ? AppColors.bg_primary_active
-                      : Colors.transparent,
+                  color: isMonth ? AppColors.blue10 : Colors.transparent,
                   alignment: Alignment.center,
                   child: Text(
                     'Tháng',
@@ -350,9 +330,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
                   width: 60,
                   height: 26,
                   alignment: Alignment.center,
-                  color: !isMonth
-                      ? AppColors.bg_primary_active
-                      : Colors.transparent,
+                  color: !isMonth ? AppColors.blue10 : Colors.transparent,
                   child: Text(
                     'Tuần',
                     textAlign: TextAlign.center,
@@ -387,7 +365,8 @@ class _CalendarCustomState extends State<CalendarCustom> {
     // final bool isActive = (date.year == now.year && date.month >= now.month) ||
     //     date.year > now.year;
 
-    final bool isChoose = (date.year == selectDate?.year &&
+    final bool isChoose =
+        (date.year == selectDate?.year &&
             date.month == selectDate?.month &&
             date.day == selectDate?.day) &&
         widget.isChoose;
@@ -416,7 +395,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isChoose ? AppColors.bg_black : Colors.transparent,
+              color: isChoose ? AppColors.text_primary : Colors.transparent,
               border: Border.all(
                 color:
                     isToday && !isChoose ? AppColors.brand : Colors.transparent,
@@ -426,13 +405,14 @@ class _CalendarCustomState extends State<CalendarCustom> {
             child: Center(
               child: Text(
                 date.day.toString(),
-                style: isToday || isChoose
-                    ? AppStyle.bodyBsSemiBold.copyWith(
-                        color: isChoose ? AppColors.text_white : null,
-                      )
-                    : AppStyle.bodyBsRegular.copyWith(
-                        color: !isActive ? AppColors.text_disable : null,
-                      ),
+                style:
+                    isToday || isChoose
+                        ? AppStyle.bodyBsSemiBold.copyWith(
+                          color: isChoose ? AppColors.white : null,
+                        )
+                        : AppStyle.bodyBsRegular.copyWith(
+                          color: !isActive ? AppColors.text_tertiary : null,
+                        ),
               ),
             ),
           ),
@@ -442,8 +422,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
               child: Container(
                 padding: 2.pading,
                 decoration: BoxDecoration(
-                  color:
-                      isChoose ? AppColors.bg_primary : AppColors.ultility_blue,
+                  color: isChoose ? AppColors.blue10 : AppColors.blue20,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 // child: events.first.count > 0
@@ -468,11 +447,7 @@ class _CalendarCustomState extends State<CalendarCustom> {
       final mondayWeek = month.subtract(Duration(days: month.weekday - 1));
 
       for (int i = 0; i < 7; i++) {
-        dates.add(
-          mondayWeek.copyWith(
-            day: mondayWeek.day + i,
-          ),
-        );
+        dates.add(mondayWeek.copyWith(day: mondayWeek.day + i));
       }
       print(month);
       print(mondayWeek);
@@ -506,9 +481,10 @@ class _CalendarCustomState extends State<CalendarCustom> {
     final int countRow = (dates.length / 7).ceil();
 
     // Fill next month's dates
-    final int remainingBoxes = countRow > 5
-        ? 42 - dates.length
-        : 35 - dates.length; // 6 weeks * 7 days
+    final int remainingBoxes =
+        countRow > 5
+            ? 42 - dates.length
+            : 35 - dates.length; // 6 weeks * 7 days
     for (int day = 1; day <= remainingBoxes; day++) {
       dates.add(DateTime(month.year, month.month + 1, day));
     }

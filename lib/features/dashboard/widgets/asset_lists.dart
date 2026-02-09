@@ -1,4 +1,4 @@
-import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -44,7 +44,7 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
               _buildTabItem(1, "Theo loại tài sản"),
             ],
           ),
-          const Divider(height: 1, color: AppColors.grey_2),
+          const Divider(height: 1, color: AppColors.grey20),
           16.height,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +59,7 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
               ),
             ],
           ),
-          const Divider(height: 24, color: AppColors.grey_2),
+          const Divider(height: 24, color: AppColors.grey20),
           _buildListItem("Khoa Dược"),
           _buildListItem("Khoa Nhi"),
           _buildListItem("Khoa Sản"),
@@ -90,7 +90,7 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
             style:
                 isSelected
                     ? AppTypography.p5.copyWith(fontWeight: FontWeight.bold)
-                    : AppTypography.p5.copyWith(color: AppColors.grey79),
+                    : AppTypography.p5.copyWith(color: AppColors.text_tertiary),
           ),
         ),
       ),
@@ -115,7 +115,9 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
               ),
               Text(
                 "Còn lại 123.456 đ",
-                style: AppTypography.p7.copyWith(color: AppColors.grey79),
+                style: AppTypography.p7.copyWith(
+                  color: AppColors.text_tertiary,
+                ),
               ),
             ],
           ),
@@ -135,10 +137,10 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
             style: AppTypography.h3.copyWith(color: const Color(0xFF201B51)),
           ),
           24.height,
-          _buildProgressBar("Hao mòn 0-30%", AppColors.green_1, 0.85),
-          _buildProgressBar("Hao mòn 31-60%", AppColors.blue_1, 0.85),
-          _buildProgressBar("Hao mòn 61-80%", AppColors.accent_5, 0.85),
-          _buildProgressBar("Hao mòn 81-100%", AppColors.red, 0.85),
+          _buildProgressBar("Hao mòn 0-30%", AppColors.green60, 0.85),
+          _buildProgressBar("Hao mòn 31-60%", AppColors.blue60, 0.85),
+          _buildProgressBar("Hao mòn 61-80%", AppColors.orange60, 0.85),
+          _buildProgressBar("Hao mòn 81-100%", AppColors.red60, 0.85),
         ],
       ),
     );
@@ -191,10 +193,12 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
                       vertical: 2,
                     ),
                     borderRadius: 10,
-                    color: AppColors.grey_2,
+                    color: AppColors.grey20,
                     child: Text(
                       "${(percent * 100).toInt()}%",
-                      style: AppTypography.p8.copyWith(color: AppColors.grey_1),
+                      style: AppTypography.p8.copyWith(
+                        color: AppColors.text_tertiary,
+                      ),
                     ),
                   ),
                 ],
@@ -206,7 +210,7 @@ class _AssetListsWidgetState extends State<AssetListsWidget> {
             borderRadius: BorderRadius.circular(4),
             child: LinearProgressIndicator(
               value: percent,
-              backgroundColor: AppColors.grey_2,
+              backgroundColor: AppColors.grey20,
               valueColor: AlwaysStoppedAnimation<Color>(color),
               minHeight: 12,
             ),

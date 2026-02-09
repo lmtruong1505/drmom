@@ -21,7 +21,7 @@ Widget FaIcon({
     String.fromCharCode(int.parse(iconCode, radix: 16)),
     style: TextStyle(
       fontFamily: 'FontAwesome',
-      color: color ?? AppColors.fg_tertiary,
+      color: color ?? AppColors.text_tertiary,
       fontSize: size,
       fontWeight: type.weight,
     ),

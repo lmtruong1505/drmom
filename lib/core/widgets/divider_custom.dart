@@ -3,13 +3,21 @@ import 'package:bpg_retail/core/constants/spacing.dart';
 import 'package:flutter/material.dart';
 
 Widget DividerCustom({
-  Color? color = AppColors.border_tertiary,
+  Color? color,
   bool isVertival = false,
   double space = 0,
 }) {
   return !isVertival
-      ? Divider(height: space, thickness: 1, color: color)
-      : VerticalDivider(width: space, thickness: 1, color: color);
+      ? Divider(
+        height: space,
+        thickness: 1,
+        color: color ?? AppColors.border_tertiary,
+      )
+      : VerticalDivider(
+        width: space,
+        thickness: 1,
+        color: color ?? AppColors.border_tertiary,
+      );
 }
 
 Widget get dottedDivider {
@@ -19,7 +27,7 @@ Widget get dottedDivider {
       (index) => Expanded(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: sp12),
-          color: index % 2 == 0 ? Colors.transparent : AppColors.grey30,
+          color: index % 2 == 0 ? Colors.transparent : AppColors.text_tertiary,
           height: 1,
         ),
       ),

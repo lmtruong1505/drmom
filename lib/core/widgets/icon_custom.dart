@@ -3,17 +3,12 @@ import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget IconCustom({
-  required Widget icon,
-  required Color color,
-}) {
+Widget IconCustom({required Widget icon, required Color color}) {
   return Container(
     padding: 8.pading,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      border: Border.all(
-        color: color.withOpacity(0.05),
-      ),
+      border: Border.all(color: color.withOpacity(0.05)),
     ),
     child: Container(
       padding: 8.pading,
@@ -24,16 +19,13 @@ Widget IconCustom({
       child: Container(
         padding: 6.pading,
         decoration: BoxDecoration(
-          color: AppColors.bg_primary,
+          color: AppColors.blue10,
           shape: BoxShape.circle,
           boxShadow: AppShadows.elevator1,
         ),
         child: Container(
           padding: 6.pading,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
           child: icon,
         ),
       ),
@@ -41,10 +33,7 @@ Widget IconCustom({
   );
 }
 
-Widget IconBorderCustom({
-  required Widget icon,
-  required Color color,
-}) {
+Widget IconBorderCustom({required Widget icon, required Color color}) {
   return Container(
     padding: 8.pading,
     decoration: BoxDecoration(
@@ -61,10 +50,7 @@ Widget IconBorderCustom({
         padding: 6.pading,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(
-            color: color.withOpacity(0.2),
-            width: 2,
-          ),
+          border: Border.all(color: color.withOpacity(0.2), width: 2),
         ),
         child: icon,
       ),
@@ -83,7 +69,7 @@ Widget IconSpecial({
     decoration: BoxDecoration(
       shape: BoxShape.circle,
       border: Border.all(
-        color: (color ?? AppColors.border_primary).withOpacity(0.05),
+        color: (color ?? AppColors.border_tertiary).withOpacity(0.05),
       ),
     ),
     child: Container(
@@ -91,7 +77,7 @@ Widget IconSpecial({
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: (color ?? AppColors.border_primary).withOpacity(0.1),
+          color: (color ?? AppColors.border_tertiary).withOpacity(0.1),
           width: 2,
         ),
       ),
@@ -99,12 +85,13 @@ Widget IconSpecial({
         padding: 12.pading,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: (color ?? AppColors.fg_tertiary).withOpacity(0.15),
+          color: (color ?? AppColors.blue10).withOpacity(0.15),
         ),
-        child: icon ??
+        child:
+            icon ??
             SvgPicture.asset(
               svgPath,
-              color: colorSvg ?? AppColors.fg_tertiary,
+              color: colorSvg ?? AppColors.blue10,
               height: 32,
               width: 32,
             ),

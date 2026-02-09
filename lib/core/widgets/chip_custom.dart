@@ -1,0 +1,54 @@
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
+import 'package:bpg_retail/core/core.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/material.dart';
+
+Widget ChipCustomBadge({
+  required Color color,
+  required String title,
+  EdgeInsets? padding,
+  Function()? onTap,
+  bool isActive = false,
+  Widget? suffixIcon,
+  Widget? perfixIcon,
+  TextStyle? titleStyle,
+  bool isBorder = true,
+  BorderRadius? borderRadius,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: onTap != null ? 3.pading : 0.pading,
+      decoration:
+          onTap != null
+              ? BoxDecoration(
+                borderRadius: 30.radius,
+                border: Border.all(
+                  color: isActive ? color : Colors.transparent,
+                ),
+              )
+              : null,
+      child: Container(
+        padding: padding ?? (6.padingHor + 2.5.padingVer),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+          border: isBorder ? Border.all(color: color.withOpacity(0.2)) : null,
+          borderRadius: borderRadius ?? 20.radius,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (perfixIcon != null) ...[perfixIcon, 4.width],
+            Text(
+              title,
+              style:
+                  titleStyle?.copyWith(color: color,) ??
+                  AppStyle.bodyXsBold.copyWith(color: color, height: 1),
+            ).flexible(),
+            if (suffixIcon != null) ...[4.width, suffixIcon],
+          ],
+        ),
+      ),
+    ),
+  );
+}

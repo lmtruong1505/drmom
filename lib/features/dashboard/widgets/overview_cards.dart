@@ -1,4 +1,4 @@
-import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -13,15 +13,17 @@ class OverviewCards extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Expanded(child: Divider(color: AppColors.grey_2)),
+            Expanded(child: Divider(color: AppColors.grey20)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 "Tổng quan tài sản",
-                style: AppTypography.p5.copyWith(color: AppColors.grey_1),
+                style: AppTypography.p5.copyWith(
+                  color: AppColors.text_tertiary,
+                ),
               ),
             ),
-            const Expanded(child: Divider(color: AppColors.grey_2)),
+            Expanded(child: Divider(color: AppColors.grey20)),
           ],
         ),
         16.height,

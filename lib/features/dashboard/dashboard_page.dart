@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/buttons/label_button.dart';
 import 'package:bpg_retail/features/dashboard/widgets/dashboard_header.dart';
@@ -38,7 +38,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.purple_1,
+      backgroundColor: AppColors.brand,
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -48,7 +48,7 @@ class _DashboardPageState extends State<DashboardPage> {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(
-                  color: AppColors.bg_6,
+                  color: AppColors.bg_secondary_subtle,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
@@ -76,15 +76,15 @@ class _DashboardPageState extends State<DashboardPage> {
                       LabelButton(
                         label: 'Lên đầu',
                         onPressed: _scrollToTop,
-                        backgroundColor: AppColors.blue_1.withOpacity(0.1),
+                        backgroundColor: AppColors.blue50.withOpacity(0.1),
                         labelStyle: TextStyle(
-                          color: AppColors.blue_1,
+                          color: AppColors.blue50,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                         prefixIcon: Icon(
                           Icons.arrow_upward,
-                          color: AppColors.blue_1,
+                          color: AppColors.blue50,
                           size: 20,
                         ),
                       ),

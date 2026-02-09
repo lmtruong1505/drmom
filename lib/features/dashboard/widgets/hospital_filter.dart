@@ -1,4 +1,4 @@
-import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -17,13 +17,13 @@ class HospitalFilter extends StatelessWidget {
         Text(
           "Bệnh viện đa khoa huyện Quốc Oai\nOai",
           textAlign: TextAlign.center,
-          style: AppTypography.h5.copyWith(color: AppColors.black),
+          style: AppTypography.h5.copyWith(color: AppColors.text_primary),
         ),
         16.height,
         BaseContainer(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           borderRadius: 4,
-          borderColor: AppColors.greyAA,
+          borderColor: AppColors.grey40,
           color: Colors.transparent,
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
@@ -34,7 +34,7 @@ class HospitalFilter extends StatelessWidget {
                       .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                       .toList(),
               onChanged: (_) {},
-              style: AppTypography.p5.copyWith(color: AppColors.black),
+              style: AppTypography.p5.copyWith(color: AppColors.text_primary),
             ),
           ),
         ),

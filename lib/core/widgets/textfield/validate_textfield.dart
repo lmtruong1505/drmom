@@ -133,7 +133,8 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
       inputFormatters: widget.inputFormatters,
       // scrollPadding: EdgeInsets.zero,
       readOnly: widget.readOnly,
-      decoration: widget.decoration ??
+      decoration:
+          widget.decoration ??
           InputDecoration(
             errorStyle: AppTypography.p7,
             filled: true,
@@ -141,9 +142,10 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
-                color: widget.border == true
-                    ? AppColors.border_2
-                    : Colors.transparent,
+                color:
+                    widget.border == true
+                        ? AppColors.border_2
+                        : Colors.transparent,
                 width: widget.border == true ? 1 : 0,
               ),
             ),
@@ -160,35 +162,35 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
               padding: Spacing.l12,
               child: widget.leadingIcon,
             ),
-            suffixIcon: widget.suffixIcon != null
-                ? Padding(
-                    padding: Spacing.r12,
-                    child: widget.suffixIcon,
-                  )
-                : (_controller.text.isNotEmpty
-                    ? Padding(
-                        padding: Spacing.r12,
-                        child: widget.isClear == true &&
-                                _controller.text != widget.defaultValue
-                            ? GestureDetector(
-                                onTap: () {
-                                  _controller.clear();
-                                  widget.onClear?.call();
-                                  setState(() {});
-                                },
-                                child: const Icon(
-                                  Icons.close,
-                                  size: 18,
-                                  color: AppColors.grey_1,
-                                ),
-                              )
-                            : widget.emptySuffixIcon,
-                      )
-                    : Padding(
-                        padding: Spacing.r12,
-                        child:
-                            (widget.emptySuffixIcon ?? const SizedBox.shrink()),
-                      )),
+            suffixIcon:
+                widget.suffixIcon != null
+                    ? Padding(padding: Spacing.r12, child: widget.suffixIcon)
+                    : (_controller.text.isNotEmpty
+                        ? Padding(
+                          padding: Spacing.r12,
+                          child:
+                              widget.isClear == true &&
+                                      _controller.text != widget.defaultValue
+                                  ? GestureDetector(
+                                    onTap: () {
+                                      _controller.clear();
+                                      widget.onClear?.call();
+                                      setState(() {});
+                                    },
+                                    child: const Icon(
+                                      Icons.close,
+                                      size: 18,
+                                      color: AppColors.grey_1,
+                                    ),
+                                  )
+                                  : widget.emptySuffixIcon,
+                        )
+                        : Padding(
+                          padding: Spacing.r12,
+                          child:
+                              (widget.emptySuffixIcon ??
+                                  const SizedBox.shrink()),
+                        )),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
@@ -200,40 +202,45 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
-                color: widget.border == true
-                    ? AppColors.border_2
-                    : Colors.transparent,
+                color:
+                    widget.border == true
+                        ? AppColors.border_2
+                        : Colors.transparent,
                 width: widget.border == true ? 1.2 : 0,
               ),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
-                color: widget.border == true
-                    ? AppColors.red_1
-                    : Colors.transparent,
+                color:
+                    widget.border == true
+                        ? AppColors.red_1
+                        : Colors.transparent,
                 width: widget.border == true ? 1.2 : 0,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
-                color: widget.border == true
-                    ? AppColors.red_1
-                    : Colors.transparent,
+                color:
+                    widget.border == true
+                        ? AppColors.red_1
+                        : Colors.transparent,
                 width: widget.border == true ? 1.2 : 0,
               ),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 8),
               borderSide: BorderSide(
-                color: widget.border == true
-                    ? AppColors.border_2
-                    : Colors.transparent,
+                color:
+                    widget.border == true
+                        ? AppColors.border_2
+                        : Colors.transparent,
                 width: widget.border == true ? 1.2 : 0,
               ),
             ),
-            contentPadding: widget.padding ??
+            contentPadding:
+                widget.padding ??
                 const EdgeInsets.only(
                   left: 0,
                   right: 0,
@@ -242,15 +249,15 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
                 ),
             isCollapsed: true,
             hintText: widget.hintText ?? '',
-            hintStyle: widget.hintStyle ??
-                AppTypography.p6.copyWith(
-                  color: AppColors.grey_1,
-                ),
+            hintStyle:
+                widget.hintStyle ??
+                AppTypography.p6.copyWith(color: AppColors.grey_1),
           ),
       cursorColor: widget.cursorColor ?? AppColors.bg_5,
       cursorWidth: 1,
-      style: (widget.textStyle ?? AppTypography.p6)
-          .copyWith(overflow: TextOverflow.ellipsis),
+      style: (widget.textStyle ?? AppTypography.p6).copyWith(
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }
@@ -387,47 +394,38 @@ class _ValidateTextFieldV2State extends State<ValidateTextFieldV2> {
             width: widget.border == true ? 1 : 0,
           ),
         ),
-        prefixIconConstraints: const BoxConstraints(
-          minWidth: 5,
-          minHeight: 5,
-        ),
+        prefixIconConstraints: const BoxConstraints(minWidth: 5, minHeight: 5),
         isDense: true,
-        suffixIconConstraints: const BoxConstraints(
-          minWidth: 5,
-          minHeight: 5,
-        ),
-        prefixIcon: Padding(
-          padding: Spacing.l12,
-          child: widget.leadingIcon,
-        ),
-        suffixIcon: widget.suffixIcon != null
-            ? Padding(
-                padding: Spacing.r12,
-                child: widget.suffixIcon,
-              )
-            : (_controller.text.isNotEmpty
-                ? Padding(
-                    padding: Spacing.r12,
-                    child: widget.isClear == true &&
-                            _controller.text != widget.defaultValue
-                        ? GestureDetector(
-                            onTap: () {
-                              _controller.clear();
-                              widget.onClear?.call();
-                              setState(() {});
-                            },
-                            child: const Icon(
-                              Icons.close,
-                              size: 18,
-                              color: AppColors.grey_1,
-                            ),
-                          )
-                        : widget.emptySuffixIcon,
-                  )
-                : Padding(
-                    padding: Spacing.r12,
-                    child: (widget.emptySuffixIcon ?? const SizedBox.shrink()),
-                  )),
+        suffixIconConstraints: const BoxConstraints(minWidth: 5, minHeight: 5),
+        prefixIcon: Padding(padding: Spacing.l12, child: widget.leadingIcon),
+        suffixIcon:
+            widget.suffixIcon != null
+                ? Padding(padding: Spacing.r12, child: widget.suffixIcon)
+                : (_controller.text.isNotEmpty
+                    ? Padding(
+                      padding: Spacing.r12,
+                      child:
+                          widget.isClear == true &&
+                                  _controller.text != widget.defaultValue
+                              ? GestureDetector(
+                                onTap: () {
+                                  _controller.clear();
+                                  widget.onClear?.call();
+                                  setState(() {});
+                                },
+                                child: const Icon(
+                                  Icons.close,
+                                  size: 18,
+                                  color: AppColors.grey_1,
+                                ),
+                              )
+                              : widget.emptySuffixIcon,
+                    )
+                    : Padding(
+                      padding: Spacing.r12,
+                      child:
+                          (widget.emptySuffixIcon ?? const SizedBox.shrink()),
+                    )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius ?? 8),
           borderSide: BorderSide(
@@ -465,19 +463,14 @@ class _ValidateTextFieldV2State extends State<ValidateTextFieldV2> {
             width: widget.border == true ? 1.2 : 0,
           ),
         ),
-        contentPadding: widget.padding ??
-            const EdgeInsets.only(
-              left: 0,
-              right: 0,
-              bottom: 15.5,
-              top: 16.5,
-            ),
+        contentPadding:
+            widget.padding ??
+            const EdgeInsets.only(left: 0, right: 0, bottom: 15.5, top: 16.5),
         isCollapsed: true,
         hintText: widget.hintText ?? '',
-        hintStyle: widget.hintStyle ??
-            AppTypography.p6.copyWith(
-              color: AppColors.grey_1,
-            ),
+        hintStyle:
+            widget.hintStyle ??
+            AppTypography.p6.copyWith(color: AppColors.grey_1),
       ),
       cursorColor: widget.cursorColor ?? AppColors.bg_5,
       cursorWidth: 1,

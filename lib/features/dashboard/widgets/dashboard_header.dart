@@ -1,4 +1,4 @@
-import 'package:bpg_retail/core/constants/colors.dart';
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/widgets/avatar_widget.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,9 @@ class DashboardHeader extends StatelessWidget {
             children: [
               Text(
                 "Xin chào,",
-                style: AppTypography.p6.copyWith(color: AppColors.grey_1),
+                style: AppTypography.p6.copyWith(
+                  color: AppColors.text_tertiary,
+                ),
               ),
               Text(
                 "Hoàng Tiến Thành", // Replace with dynamic data

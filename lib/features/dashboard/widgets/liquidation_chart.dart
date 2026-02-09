@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:bpg_retail/core/constants/colors.dart';
+
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -30,7 +31,9 @@ class LiquidationChartWidget extends StatelessWidget {
                 children: [
                   Text(
                     "Số lượng đã thanh lý",
-                    style: AppTypography.p7.copyWith(color: AppColors.grey79),
+                    style: AppTypography.p7.copyWith(
+                      color: AppColors.text_tertiary,
+                    ),
                   ),
                   4.height,
                   Text("567", style: AppTypography.h5),
@@ -41,7 +44,9 @@ class LiquidationChartWidget extends StatelessWidget {
                 children: [
                   Text(
                     "Giá trị thanh lý",
-                    style: AppTypography.p7.copyWith(color: AppColors.grey79),
+                    style: AppTypography.p7.copyWith(
+                      color: AppColors.text_tertiary,
+                    ),
                   ),
                   4.height,
                   Text("229.293.236 đ", style: AppTypography.h5),

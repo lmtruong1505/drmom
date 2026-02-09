@@ -103,7 +103,7 @@ class _MyAppState extends BaseState<MyApp, AppCubit>
     if (token == null || token.isEmpty) {
       return [const LoginRoute()];
     } else {
-      return [const HomeRoute()];
+      return [const RootRoute()];
     }
   }
 }

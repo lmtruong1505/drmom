@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:bpg_retail/core/constants/colors.dart';
+
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -30,7 +31,9 @@ class DepreciationChartWidget extends StatelessWidget {
                 children: [
                   Text(
                     "Tổng hao mòn",
-                    style: AppTypography.p7.copyWith(color: AppColors.grey79),
+                    style: AppTypography.p7.copyWith(
+                      color: AppColors.text_tertiary,
+                    ),
                   ),
                   4.height,
                   Text("136.458.123 đ", style: AppTypography.h5),
@@ -41,7 +44,7 @@ class DepreciationChartWidget extends StatelessWidget {
                 children: [
                   Text(
                     "Còn lại",
-                    style: AppTypography.p7.copyWith(color: AppColors.red),
+                    style: AppTypography.p7.copyWith(color: AppColors.red60),
                   ),
                   4.height,
                   Text("229.293.236 đ", style: AppTypography.h5),
@@ -68,7 +71,9 @@ class DepreciationChartWidget extends StatelessWidget {
                     bottom: 20,
                     child: Text(
                       "77%",
-                      style: AppTypography.h2.copyWith(color: AppColors.grey_1),
+                      style: AppTypography.h2.copyWith(
+                        color: AppColors.text_tertiary,
+                      ),
                     ),
                   ),
                 ],
@@ -94,7 +99,7 @@ class GaugeChartPainter extends CustomPainter {
 
     final paintBg =
         Paint()
-          ..color = AppColors.blue_2.withOpacity(0.5)
+          ..color = AppColors.blue20.withOpacity(0.5)
           ..style = PaintingStyle.stroke
           ..strokeWidth = strokeWidth
           ..strokeCap = StrokeCap.round;

@@ -533,7 +533,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       if (res.code == 200) {
         navigator.pop();
         await preferences.saveUserData(jsonEncode(res.data));
-        navigator.replaceAll([const DashboardRoute()]);
+        navigator.replaceAll([const RootRoute()]);
       } else {
         navigator.pop();
         navigator.showErrorDialog('Đã có lỗi xảy ra');
@@ -542,7 +542,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       print('=====getUserData=====$e');
       navigator.pop();
 
-      navigator.replaceAll([const DashboardRoute()]);
+      navigator.replaceAll([const RootRoute()]);
     }
   }
 
