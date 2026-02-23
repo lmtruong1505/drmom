@@ -1,4 +1,3 @@
-import 'package:bpg_retail/features/profile/data/models/address_asbc_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
@@ -69,7 +68,6 @@ class UserModel {
   // Getters for compatibility
   String get fullName => hoVaTen ?? '';
   String get phone => dienThoai ?? '';
-  AddressData? get address => AddressData(addressFull: diaChi ?? '');
   String get avatar => hinhAnh ?? '';
   int? get gender =>
       gioiTinh?.value is int

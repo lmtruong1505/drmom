@@ -1,8 +1,6 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_cropper/image_cropper.dart';
@@ -110,8 +108,6 @@ class ImageUtils {
   static Future<bool> saveImage(String? url, BuildContext context) async {
     try {
       print(url);
-      const link =
-          'https://img.vietqr.io/image/mbbank-6218189999-qr_only.jpg?amount=10000000&addInfo=3.250215171930+LOC+NGUYEN+DUC&accountName=CTCP+TV+PHAT+TRIEN+KD+DONG+NAM+A';
       // 1. Yêu cầu quyền lưu trữ
       PermissionStatus? status;
       if (Platform.isAndroid) {
@@ -140,18 +136,6 @@ class ImageUtils {
         return false;
       }
 
-      // 2. Tải ảnh từ URL bằng Dio
-      final Dio dio = Dio();
-      final response = await dio.get(
-        url ?? '',
-        options: Options(responseType: ResponseType.bytes),
-      );
-
-      // 3. Chuyển dữ liệu ảnh thành Uint8List
-      final Uint8List imageData = Uint8List.fromList(response.data);
-
-      // 4. Lưu ảnh vào thư viện ảnh
-      // await ImageGallerySaver.saveImage(imageData);
       Toast.showToast('Ảnh đã được lưu', context);
 
       return true;

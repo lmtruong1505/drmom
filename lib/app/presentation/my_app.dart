@@ -6,9 +6,7 @@ import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/base/base_state.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/utilities/localization_helper.dart';
-import 'package:bpg_retail/features/card/data/cubits/card_bloc.dart';
-import 'package:bpg_retail/features/cart/data/bloc/cart_bloc.dart';
-import 'package:bpg_retail/features/wallet/data/cubits/wallet_cubit.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -54,9 +52,6 @@ class _MyAppState extends BaseState<MyApp, AppCubit>
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => localizationBloc),
-          BlocProvider(create: (context) => CardBloc()),
-          BlocProvider(create: (context) => WalletCubit()),
-          BlocProvider(create: (context) => CartBloc()),
         ],
         child: BlocBuilder<LocalizationCubit, Locale>(
           builder: (context, state) {

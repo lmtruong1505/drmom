@@ -40,7 +40,6 @@ enum OrderEnum {
   COMPLAINT(code: 'COMPLAINT'),
   CANCEL(code: 'CANCEL');
 
-  const OrderEnum({this.title, this.code});
-  final String? title;
+  const OrderEnum({this.code});
   final String? code;
 }

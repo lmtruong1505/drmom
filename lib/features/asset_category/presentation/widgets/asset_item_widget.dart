@@ -47,7 +47,7 @@ class AssetItemWidget extends StatelessWidget {
                           ),
                         ),
                         // Status Badge
-                        ChipCustomBadge(
+                        chipCustomBadge(
                           color: AppColors.blue50,
                           title: "Đang sử dụng",
                           titleStyle: AppTypography.p7.copyWith(

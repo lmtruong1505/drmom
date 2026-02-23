@@ -2,20 +2,11 @@ import 'dart:async';
 
 import 'package:bpg_retail/core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
-import 'package:bpg_retail/core/extension/init_ext.dart';
 
-import '../../constants/colors.dart';
-import '../../utilities/debouncer.dart';
-
-typedef ItemOverlayBuilder<ItemType> = Widget Function(
-  BuildContext context,
-  ItemType item,
-  int index,
-);
-typedef LoadDataOverlay<ItemType> = Future<List<ItemType>> Function(
-  bool isMore,
-);
+typedef ItemOverlayBuilder<ItemType> =
+    Widget Function(BuildContext context, ItemType item, int index);
+typedef LoadDataOverlay<ItemType> =
+    Future<List<ItemType>> Function(bool isMore);
 
 class OverlayInput<T> extends StatefulWidget {
   final Function(T)? onChanged;
@@ -74,21 +65,18 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
   final StreamController<OverlayItemsValue<T>> _streamController =
       StreamController.broadcast();
   final value = OverlayItemsValue<T>(items: []);
-  final _debouncer = Debouncer();
   @override
   void initState() {
     super.initState();
     _scroll.addListener(onMore);
     newData();
-    widget.focusNode?.addListener(
-      () {
-        if (widget.focusNode?.hasFocus == true) {
-          _insertOverlay();
-        } else {
-          _closeOverlay();
-        }
-      },
-    );
+    widget.focusNode?.addListener(() {
+      if (widget.focusNode?.hasFocus == true) {
+        _insertOverlay();
+      } else {
+        _closeOverlay();
+      }
+    });
   }
 
   void newData() async {
@@ -143,9 +131,10 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
     final Size screenSize = MediaQuery.of(context).size;
     final hightDefault =
         screenSize.height * 0.3 - MediaQuery.of(context).viewInsets.bottom;
-    final heightOverlay = value.items.isEmpty
-        ? hightDefault
-        : widget.itemHeight * value.items.length > hightDefault
+    final heightOverlay =
+        value.items.isEmpty
+            ? hightDefault
+            : widget.itemHeight * value.items.length > hightDefault
             ? hightDefault
             : widget.itemHeight * value.items.length;
     return heightOverlay;
@@ -205,9 +194,7 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
     if (value.isLoad == true) {
       return SizedBox(
         height: height,
-        child: const Center(
-          child: CircularProgressIndicator(),
-        ),
+        child: const Center(child: CircularProgressIndicator()),
       );
     }
     // return _buildList();
@@ -219,9 +206,10 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
       child: SingleChildScrollView(
         padding: widget.padding ?? EdgeInsets.zero,
         controller: _scroll,
-        physics: value.items.length > 3
-            ? const ScrollPhysics()
-            : const NeverScrollableScrollPhysics(),
+        physics:
+            value.items.length > 3
+                ? const ScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -229,27 +217,21 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
             if (value.items.length > 5)
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: value.isMore != true
-                    ? const SizedBox(
-                        height: 20,
-                      )
-                    : const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 1,
+                child:
+                    value.isMore != true
+                        ? const SizedBox(height: 20)
+                        : const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(strokeWidth: 1),
                             ),
-                          ),
-                          SizedBox(width: 5),
-                          Text(
-                            "Đang tải",
-                            style: TextStyle(fontSize: 12),
-                          )
-                        ],
-                      ),
+                            SizedBox(width: 5),
+                            Text("Đang tải", style: TextStyle(fontSize: 12)),
+                          ],
+                        ),
               ),
           ],
         ),
@@ -266,8 +248,8 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       itemCount: value.items.length > 5 ? 6 : value.items.length,
-      separatorBuilder: (context, index) =>
-          widget.separator ?? const Divider(height: 1),
+      separatorBuilder:
+          (context, index) => widget.separator ?? const Divider(height: 1),
       itemBuilder: (context, index) {
         // if (index >= 5) {
         //   return widget.buttonSeeMore;
@@ -288,24 +270,18 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
 
   InputDecoration get theme {
     return InputDecoration(
-      label: widget.label == null
-          ? null
-          : RichText(
-              text: TextSpan(
-                text: widget.label,
-                style: const TextStyle(color: Colors.black),
-                children: [
-                  if (widget.isRequired)
-                    const TextSpan(
-                      text: "*",
-                    ),
-                ],
+      label:
+          widget.label == null
+              ? null
+              : RichText(
+                text: TextSpan(
+                  text: widget.label,
+                  style: const TextStyle(color: Colors.black),
+                  children: [if (widget.isRequired) const TextSpan(text: "*")],
+                ),
               ),
-            ),
       hintText: widget.hintText ?? "Nhập từ khoá",
-      hintStyle: s14w400.copyWith(
-        color: AppColors.grey79,
-      ),
+      hintStyle: s14w400.copyWith(color: AppColors.grey79),
       contentPadding:
           widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 16),
       border: border,
@@ -315,9 +291,7 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
         borderSide: BorderSide(color: widget.focusedBorderColor),
       ),
       focusedErrorBorder: border.copyWith(
-        borderSide: BorderSide(
-          color: widget.focusedBorderColor,
-        ),
+        borderSide: BorderSide(color: widget.focusedBorderColor),
       ),
       errorBorder: border.copyWith(
         borderSide: const BorderSide(color: Colors.red),
@@ -327,9 +301,9 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
   }
 
   OutlineInputBorder get border => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-        borderSide: BorderSide(color: widget.enabledBorderColor),
-      );
+    borderRadius: BorderRadius.circular(widget.borderRadius),
+    borderSide: BorderSide(color: widget.enabledBorderColor),
+  );
 }
 
 class OverlayItemsValue<T> {

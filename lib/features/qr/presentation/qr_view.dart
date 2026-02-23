@@ -90,8 +90,9 @@ class _QrCodeScreenState extends State<QrCodeScreen>
               color: AppColors.white,
               title: "Chọn ảnh từ bộ sưu tập",
               onTap: () async {
-                final res =
-                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                final res = await ImagePicker().pickImage(
+                  source: ImageSource.gallery,
+                );
 
                 if (res is XFile) {
                   final data = await v2.QRCodeDartScanDecoder(
@@ -113,15 +114,10 @@ class _QrCodeScreenState extends State<QrCodeScreen>
                     controller?.pauseCamera();
                     if (widget.isScanUser == true) {
                       nav.pop(result: data.text);
-                    } else {
-                      nav.push(CartQRBuyRoute(code: data.text));
-                    }
+                    } else {}
                   } else {
                     controller?.resumeCamera();
-                    Toast.showToast(
-                      'Mã QR không hợp lệ',
-                      context,
-                    );
+                    Toast.showToast('Mã QR không hợp lệ', context);
                   }
                 }
               },
@@ -136,9 +132,7 @@ class _QrCodeScreenState extends State<QrCodeScreen>
               child: const Icon(
                 Icons.arrow_back_ios,
                 // color: AppColors.white,
-              ).padding(
-                topPadding.padingTop + 32.padingLeft,
-              ),
+              ).padding(topPadding.padingTop + 32.padingLeft),
             ),
           ),
       ],
@@ -162,14 +156,12 @@ class _QrCodeScreenState extends State<QrCodeScreen>
                 ScaffoldMessenger.of(context).clearMaterialBanners();
                 final status = await Permission.camera.status;
                 if (status.isDenied) {
-                  openAppSettings().then(
-                    (value) async {
-                      final per = await Permission.camera.status;
-                      if (per.isGranted) {
-                        ScaffoldMessenger.of(context).clearMaterialBanners();
-                      }
-                    },
-                  );
+                  openAppSettings().then((value) async {
+                    final per = await Permission.camera.status;
+                    if (per.isGranted) {
+                      ScaffoldMessenger.of(context).clearMaterialBanners();
+                    }
+                  });
                 }
               },
             ),
@@ -191,10 +183,6 @@ class _QrCodeScreenState extends State<QrCodeScreen>
         nav.pop(result: scanData.code);
       } else {
         final code = jsonDecode(scanData.code ?? "");
-        nav.push(CartQRBuyRoute(code: code["code"])).then((value) {
-          print('=======resumed');
-          controller.resumeCamera();
-        });
       }
     });
   }

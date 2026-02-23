@@ -4,12 +4,8 @@ import 'package:bpg_retail/core/base/base_response.dart';
 import 'package:bpg_retail/core/configs/dio_config.dart';
 import 'package:bpg_retail/core/constants/api_constants.dart';
 import 'package:bpg_retail/features/authentication/data/models/auth_response.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model_v2.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
 import 'package:bpg_retail/features/authentication/data/services/authentication_service.dart';
 import 'package:injectable/injectable.dart';
-import 'package:bpg_retail/features/booth/data/models/asbc_both_v2_model.dart';
-import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
 
 @LazySingleton()
 class AuthenticationRepository {
@@ -342,23 +338,6 @@ class AuthenticationRepository {
     }
   }
 
-  Future<BaseResponseModel<AbbcBothV2Model>> checkOpenShop() async {
-    try {
-      final res = await _baseDio.get(Api.checkOpendShop);
-      if (res.data["data"] != null) {
-        final data = AbbcBothV2Model.fromJson(res.data["data"]);
-        return BaseResponseModel(code: 200, data: data);
-      } else {
-        return BaseResponseModel(
-          code: res.data["code"],
-          message: res.data["message"],
-        );
-      }
-    } catch (e) {
-      print(e);
-      return BaseResponseModel(code: 400, message: "Đã có lỗi xảy ra");
-    }
-  }
 
   Future<BaseResponseModel> sendRequestChangeToken(
     String token,
@@ -383,33 +362,6 @@ class AuthenticationRepository {
     }
   }
 
-  Future<BaseResponseModel<ReferallModel>> verifyReferralCode(
-    String code, {
-    int? id,
-  }) async {
-    try {
-      final payload = {"referral_code": code, 'user': id};
-      payload.removeWhere((key, value) => value == null);
-      final response = await _baseDio.get(
-        Api.verifyReferralCode,
-        data: payload,
-      );
-      if (response.data["code"] == 200) {
-        final referallModel = ReferallModel(
-          accountCode: response.data["data"]["phone"],
-          accountName: response.data["data"]["full_name"],
-        );
-        return BaseResponseModel(code: 200, data: referallModel);
-      } else {
-        return BaseResponseModel(
-          code: response.data["code"],
-          message: response.data["message"],
-        );
-      }
-    } catch (err) {
-      return BaseResponseModel(code: 400, message: err.toString());
-    }
-  }
 
   Future<BaseResponseModel> verifyBankAccout(String phone, String otp) async {
     try {
@@ -430,46 +382,6 @@ class AuthenticationRepository {
       return BaseResponseModel(code: 400, message: err.toString());
     }
   }
-
-  Future<BaseResponseModel<UserModelV2>> onAsbcUpdate(
-    FormData formData,
-    int id,
-  ) async {
-    try {
-      final res = await _baseDio.post(Api.asbcProfile, data: formData);
-      if (res.data["code"] == 200) {
-        final user = UserModelV2.fromJson(res.data["data"]);
-        return BaseResponseModel(code: 200, data: user);
-      } else {
-        return BaseResponseModel(
-          code: res.data["code"],
-          message: res.data["message"],
-        );
-      }
-    } catch (e) {
-      print(e);
-      return BaseResponseModel(code: 400, message: e.toString());
-    }
-  }
-
-  Future<BaseResponseModel<UserModelV3>> getUserData(int id) async {
-    try {
-      final res = await _baseDio.get(Api.getUser);
-      if (res.data["success"] == true) {
-        final user = UserModelV3.fromJson(res.data["data"]);
-        return BaseResponseModel(code: 200, data: user);
-      } else {
-        return BaseResponseModel(
-          code: res.data["code"],
-          message: res.data["message"],
-        );
-      }
-    } catch (e) {
-      print('=====getUserModelV3=====$e');
-      return BaseResponseModel(code: 400, message: e.toString());
-    }
-  }
-
   Future<BaseResponseModel> logOut() async {
     try {
       final res = await _baseDio.get(Api.logOut);

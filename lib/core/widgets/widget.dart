@@ -12,7 +12,6 @@ export 'dropdown_buttom_widget.dart';
 export 'dropdown_button.dart';
 export 'empty_widget.dart';
 export 'expanded_section.dart';
-export 'grid_view_custom.dart';
 export 'identity_card_widget.dart';
 export 'image_default.dart';
 export 'infinity_scroll.dart';

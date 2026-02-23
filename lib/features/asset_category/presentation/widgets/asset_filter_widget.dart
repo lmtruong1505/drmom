@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class AssetFilterWidget extends StatelessWidget {
   final VoidCallback? onFilterTap;
+  final ValueChanged<String>? onSearchChanged;
 
-  const AssetFilterWidget({super.key, this.onFilterTap});
+  const AssetFilterWidget({super.key, this.onFilterTap, this.onSearchChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,9 @@ class AssetFilterWidget extends StatelessWidget {
                 child: const Icon(Icons.search, size: 22),
               ),
               maxLines: 1,
-              onChanged: (value) {},
+              onChanged: (value) {
+                onSearchChanged?.call(value);
+              },
             ),
           ),
           12.width,
@@ -36,7 +39,7 @@ class AssetFilterWidget extends StatelessWidget {
             onTap: onFilterTap,
             child: BaseContainer(
               width: 48,
-              height: 48, // Match text field height roughly
+              height: 48,
               isCircle: true,
               color: AppColors.greyE2.withOpacity(0.5),
               child: const Center(

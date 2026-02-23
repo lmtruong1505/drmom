@@ -2,18 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/rendering.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/features/home/data/model/product_model.dart';
 
-List<UnitModel> sortUnitPrice(List<UnitModel>? unitPrice) {
-  final validUnits =
-      unitPrice?.where((element) => (element.retailPrice ?? 0) > 0).toList();
-  if (validUnits?.isNotEmpty == true) {
-    validUnits!
-        .sort((a, b) => (a.retailPrice ?? 0).compareTo(b.retailPrice ?? 0));
-    return validUnits;
-  }
-  return [];
-}
 
 bool areListsEqual(List<int>? list1, List<int>? list2) {
   if (list1 == null || list2 == null) return false;

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/string_extension.dart';
-import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
 
 import 'base/base_loading.dart';
@@ -219,7 +218,7 @@ class CacheNetworkImageV3 extends StatelessWidget {
   }
 }
 
-Widget ImageNetWork({
+Widget imageNetWork({
   required String path,
   double? width,
   double? height,

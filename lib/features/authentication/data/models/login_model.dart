@@ -1,4 +1,3 @@
-import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_model.g.dart';

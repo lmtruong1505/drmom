@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bpg_retail/core/utilities/enum.dart';
-import 'package:bpg_retail/features/profile/data/models/referall_model.dart';
+
 
 part 'authentication_state.freezed.dart';
 
@@ -18,8 +18,7 @@ abstract class AuthenticationState with _$AuthenticationState {
     @Default('') String tax,
 
     String? userReferralCode,
-    ReferallModel? referralCode,
-    @Default(false) bool showPassword,
+       @Default(false) bool showPassword,
     @Default(false) bool showConfirmPassword,
     @Default(false) bool isRemember,
     @Default(0) int countTime,

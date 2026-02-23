@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
 
@@ -47,9 +46,7 @@ class FirebaseMessageConfig {
       print("======= $routeName");
       print("======= ${message.data}");
     }
-    if (routeName != OrderDetailRoute.name) {
-      navigator.push(OrderDetailRoute(order: null, code: message.data['code']));
-    }
+  
   }
 
   Future iniPushNotification(BuildContext context) async {
@@ -81,15 +78,7 @@ class FirebaseMessageConfig {
           print("======= $routeName");
           print("======= ${message.data}");
         }
-        if (routeName == OrderDetailRoute.name) {
-          navigator.pop();
-          navigator.push(
-            OrderDetailRoute(
-              order: null,
-              code: message.data['code'],
-            ),
-          );
-        }
+       
         final RemoteNotification? notification = message.notification;
         if (notification == null) {
           return;
@@ -110,12 +99,10 @@ class FirebaseMessageConfig {
         settings,
         onDidReceiveNotificationResponse: (details) {
           if (details.payload != null) {
-            final res = jsonDecode(details.payload!);
+            jsonDecode(details.payload!);
             final navigator = getIt.get<AppNavigator>();
-            final routeName = navigator.getCurrentRouteName();
-            if (routeName != OrderDetailRoute.name) {
-              navigator.push(OrderDetailRoute(code: res['code']));
-            }
+            navigator.getCurrentRouteName();
+          
           } else {
             debugPrint('notification payload');
           }
@@ -136,9 +123,6 @@ class FirebaseMessageConfig {
     if (kDebugMode) {
       print("======= $routeName");
       print("======= ${message.data}");
-    }
-    if (routeName != OrderDetailRoute.name) {
-      navigator.push(OrderDetailRoute(order: null, code: message.data['code']));
     }
   }
 

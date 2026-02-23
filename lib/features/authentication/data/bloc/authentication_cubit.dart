@@ -6,7 +6,6 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
 import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
@@ -45,11 +44,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   void onChangeEmail(String email) {
     emit(state.copyWith(email: email));
-  }
-
-  void onChangeUserRefferalCode(String code) {
-    emit(state.copyWith(userReferralCode: code, message: null));
-    verifyReferralCode();
   }
 
   void onChangeTypeOTP(ForgotPasswordType type) {
@@ -503,48 +497,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  Future<void> verifyReferralCode() async {
-    try {
-      showLoading();
-      final res = await _authenticationRepository.verifyReferralCode(
-        state.userReferralCode ?? "",
-      );
-      EasyLoading.dismiss();
-      if (res.code == 200) {
-        emit(
-          state.copyWith(
-            status: CubitStatus.success,
-            message: null,
-            referralCode: res.data,
-          ),
-        );
-      } else {
-        emit(state.copyWith(status: CubitStatus.loaded, message: res.message));
-      }
-    } catch (e) {
-      EasyLoading.dismiss();
-    }
-  }
-
-  void getUserData(int id) async {
-    try {
-      navigator.showLoadingDialog('Đang tải dữ liệu');
-      final res = await _authenticationRepository.getUserData(id);
-      if (res.code == 200) {
-        navigator.pop();
-        await preferences.saveUserData(jsonEncode(res.data));
-        navigator.replaceAll([const RootRoute()]);
-      } else {
-        navigator.pop();
-        navigator.showErrorDialog('Đã có lỗi xảy ra');
-      }
-    } catch (e) {
-      print('=====getUserData=====$e');
-      navigator.pop();
-
-      navigator.replaceAll([const RootRoute()]);
-    }
-  }
 
   void setWarningMessage() {
     emit(state.copyWith(message: 'Không thể nhập mã của chính mình!'));

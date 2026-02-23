@@ -1,13 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:bpg_retail/core/check_version/check_vesion.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/utilities/launch_url.dart';
 import "package:bpg_retail/core/widgets/buttons/main_button.dart";
-import 'package:bpg_retail/gen/assets.gen.dart';
 
 class UpdateAppDialog extends StatelessWidget {
   final ModelVersion version;

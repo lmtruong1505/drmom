@@ -382,13 +382,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void validateRefferalCode(String phone) {
-    final code = referralCodeCtrl.text;
-    print("======$code======$phone");
-    if (code == phone && !code.isEmptyOrNull) {
-      bloc.setWarningMessage();
-    } else {
-      bloc.onChangeUserRefferalCode(code);
-    }
-  }
 }

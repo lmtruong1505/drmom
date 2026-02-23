@@ -150,7 +150,6 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
                 onCompleted: (value) {
                   bloc.onChangeFullname(widget.fullName);
                   bloc.onChangePhoneNumber(widget.phoneNumber);
-                  bloc.onChangeUserRefferalCode(widget.referralCode);
                   bloc.onChangePassword(widget.password);
                   bloc.verifyOtp();
                 },

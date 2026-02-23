@@ -8,7 +8,6 @@ import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
 import 'package:bpg_retail/core/utilities/image_utils.dart';
-import 'package:bpg_retail/core/widgets/base/scaffold.dart';
 import 'package:bpg_retail/core/widgets/camera_float_button.dart';
 import 'package:bpg_retail/core/widgets/identity_card_widget.dart';
 import 'package:bpg_retail/core/widgets/kyc_camera_preview.dart';

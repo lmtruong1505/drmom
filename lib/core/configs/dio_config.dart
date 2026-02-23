@@ -1,11 +1,6 @@
-// import 'package:alice/alice.dart';
-// import 'package:alice/model/alice_configuration.dart';
-// import 'package:alice/model/alice_http_call.dart';
-// import 'package:alice/model/alice_http_request.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
-import 'package:bpg_retail/core/configs/logger.dart';
 import 'package:bpg_retail/core/constants/api_constants.dart';
 import 'package:bpg_retail/core/env/env.dart';
 import 'package:bpg_retail/core/extension/string_extension.dart';
@@ -26,18 +21,7 @@ class BaseDio {
     _instance = _createDioInstance();
     return _instance!;
   }
-
-  // final alice = Alice(
-  //   configuration: AliceConfiguration(
-  //     showNotification: true,
-  //     // navigatorKey: alice.getNavigatorKey(),
-  //     showInspectorOnShake: true,
-  //   ),
-  // );
-
-  // final isLog = kReleaseMode ? false : true;
   final isLog = false;
-
   final preferences = getIt.get<Preferences>();
   final navigator = getIt.get<AppNavigator>();
   final appCubit = getIt.get<AppCubit>();
@@ -79,21 +63,6 @@ class BaseDio {
             return handler.next(options);
           },
           onResponse: (response, handler) async {
-            // logApi(
-            //   response.requestOptions.uri.toString(),
-            //   response.requestOptions.method,
-            //   response.requestOptions.data,
-            //   response.data,
-            // );
-            // alice.addLog(
-            //   AliceLog(
-            //     level: DiagnosticLevel.info,
-            //     timestamp: DateTime.now(),
-            //     message: 'Error log',
-            //     error: response,
-            //     // stackTrace: stacktrace,
-            //   ),
-            // );
             final statusCode = response.data['status'];
             if (statusCode == 401 || statusCode == 403) {
               await appCubit.onForceLogout(isMessage: false);
@@ -101,24 +70,10 @@ class BaseDio {
             return handler.next(response);
           },
           onError: (error, handler) async {
-            // logApi(
-            //   error.requestOptions.uri.toString(),
-            //   error.requestOptions.method,
-            //   error.requestOptions.data,
-            //   "Error: ${error.message}",
-            // );
+       
             final statusCode = error.response?.statusCode;
-            // final totenNotValid= error.response?["detail"].contains("token not valid") ;
             if (statusCode == 401 || statusCode == 403) {
               await appCubit.onForceLogout(isMessage: false);
-              // navigator.replaceAll(
-              //   [
-              //     const ProfilePage(),
-              //     LoginPage(),
-              //   ],
-              // );
-              // Tạo và add call vào Alice
-
               handler.next(error);
             } else {
               handler.next(error);

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:bpg_retail/features/asset_category/presentation/asset_category_page.dart';
 import 'package:bpg_retail/features/dashboard/dashboard_page.dart';
+import 'package:bpg_retail/features/profile/presentation/personal_info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bpg_retail/app/data/bloc/app_state.dart';
@@ -11,14 +12,10 @@ import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/utilities/assets.dart';
-import 'package:bpg_retail/features/cart/data/bloc/cart_bloc_V2.dart';
 
 import '../../app/data/bloc/app_cubit.dart';
 import '../../core/base/cubit_state.dart';
 import '../../core/utilities/enum.dart';
-import '../card/data/cubits/card_bloc.dart';
-import '../cart/data/bloc/cart_bloc.dart';
-import '../wallet/data/cubits/wallet_cubit.dart';
 
 @RoutePage()
 class RootPage extends StatefulWidget {
@@ -36,7 +33,7 @@ class _RootPageState extends State<RootPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -44,13 +41,6 @@ class _RootPageState extends State<RootPage>
     _tabController.dispose();
     super.dispose();
   }
-
-  void initializeData() {
-    context.read<WalletCubit>().getWallets();
-    context.read<CardBloc>().getMyCard();
-  }
-
-  final cartBloc = getIt.get<CartV2Bloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,19 +52,10 @@ class _RootPageState extends State<RootPage>
             _tabController.animateTo(state, duration: 300.milliseconds);
           },
         ),
-        BlocListener<CardBloc, CubitState>(
-          listener: (context, state) {
-            if (state.status == CubitStatus.success) {}
-          },
-        ),
-        BlocListener<WalletCubit, CubitState>(listener: (context, state) {}),
-        BlocListener<CartBloc, CubitState>(listener: (context, state) {}),
       ],
       child: BlocConsumer<AppCubit, AppState>(
         listener: (BuildContext context, AppState state) {
-          if (state.isLoggedIn) {
-            cartBloc.getCart();
-          }
+          if (state.isLoggedIn) {}
         },
         builder: (context, state) {
           return Scaffold(
@@ -84,7 +65,7 @@ class _RootPageState extends State<RootPage>
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 const DashboardPage(),
-                const AssetCategoryPage(),
+                AssetCategoryPage(),
                 Container(
                   color: AppColors.bg_6,
                   child: const Center(
@@ -103,6 +84,7 @@ class _RootPageState extends State<RootPage>
                     ),
                   ),
                 ),
+                const PersonalInfoPage(),
               ],
             ),
           );
@@ -134,7 +116,7 @@ class _RootPageState extends State<RootPage>
                 _iconBtn(icon: 'ic_laptop_medical', index: 1),
                 _qrBtn(),
                 _iconBtn(icon: 'ic_noti', index: 2),
-                _iconBtn(icon: 'ic_bars', index: 3),
+                _iconBtn(icon: 'ic_bars', index: 4),
               ],
             ),
           ),

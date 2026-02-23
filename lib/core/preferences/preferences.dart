@@ -4,11 +4,6 @@ import 'package:bpg_retail/core/constants/preference_keys.dart';
 import 'package:bpg_retail/features/authentication/data/models/login_model.dart';
 import 'package:bpg_retail/features/authentication/data/models/remember_account.dart';
 import 'package:bpg_retail/features/authentication/data/models/user_model.dart';
-import 'package:bpg_retail/features/authentication/data/models/user_model_v3.dart';
-import 'package:bpg_retail/features/booth/data/models/booth_model.dart';
-import 'package:bpg_retail/features/cart/data/models/cart_model.dart';
-import 'package:bpg_retail/features/home/data/model/product_model.dart';
-import 'package:bpg_retail/features/product/data/models/formula_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:injectable/injectable.dart';
 
@@ -48,56 +43,10 @@ class Preferences {
       return UserModel();
     }
   }
-
-  UserModelV3 get getUserDataV3 {
-    try {
-      final user =
-          _preferences.getString(PrefKeys.userData) ?? UserModelV3().toString();
-      return UserModelV3.fromJson(jsonDecode(user));
-    } catch (e) {
-      print(e);
-      return UserModelV3();
-    }
-  }
-
-  List<FormulaModel> get productFavorite {
-    final products = _preferences.getString(PrefKeys.productFavorite) ?? '[]';
-    return (jsonDecode(products) as List)
-        .map((e) => FormulaModel.fromJson(e))
-        .toList();
-  }
-
-  List<ProductModel> get productFavoriteV2 {
-    final products = _preferences.getString(PrefKeys.productFavoriteV2) ?? '[]';
-    return (jsonDecode(products) as List)
-        .map((e) => ProductModel.fromJson(e))
-        .toList();
-  }
-
-  List<BoothModel> get boothFavorite {
-    final booths = _preferences.getString(PrefKeys.boothFavorite) ?? '[]';
-    return (jsonDecode(booths) as List)
-        .map((e) => BoothModel.fromJson(e))
-        .toList();
-  }
-
-  List<CartModel> get carts {
-    final carts = _preferences.getString(PrefKeys.cart) ?? '[]';
-    return (jsonDecode(carts) as List)
-        .map((e) => CartModel.fromJson(e))
-        .toList();
-  }
-
+ 
   String get cartPrds {
     final data = _preferences.getString(PrefKeys.cart) ?? '[]';
     return data;
-  }
-
-  List<BoothModel> get viewedBooths {
-    final viewed = _preferences.getString(PrefKeys.viewedBooths) ?? '[]';
-    return (jsonDecode(viewed) as List)
-        .map((e) => BoothModel.fromJson(e))
-        .toList();
   }
 
   List get locations {

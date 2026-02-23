@@ -5,9 +5,7 @@ extension ModuleEnumExtension on ModuleEnum {
     switch (this) {
       case ModuleEnum.TM_ORDER:
         return ModuleEnum.TM_ORDER;
-      default:
-        return ModuleEnum.TM_ORDER;
-    }
+      }
   }
 
   String get title {
@@ -15,9 +13,7 @@ extension ModuleEnumExtension on ModuleEnum {
       case ModuleEnum.TM_ORDER:
         return "TM_ORDER";
 
-      default:
-        return "TM_ORDER";
-    }
+      }
   }
 }
 

@@ -1,9 +1,8 @@
 import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/core.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-Widget ChipCustomBadge({
+Widget chipCustomBadge({
   required Color color,
   required String title,
   EdgeInsets? padding,
@@ -31,8 +30,8 @@ Widget ChipCustomBadge({
       child: Container(
         padding: padding ?? (6.padingHor + 2.5.padingVer),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
-          border: isBorder ? Border.all(color: color.withOpacity(0.2)) : null,
+          color: color.withValues(alpha: 0.1),
+          border: isBorder ? Border.all(color: color.withValues(alpha: 0.2)) : null,
           borderRadius: borderRadius ?? 20.radius,
         ),
         child: Row(

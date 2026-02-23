@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/constants/colors.dart';
 import 'package:bpg_retail/core/constants/typography.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/widgets/base/appbar.dart';
 import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
 import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
 
@@ -31,7 +30,6 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {},
       child: Scaffold(
         backgroundColor: AppColors.border_1,
         appBar: AppBar(
@@ -52,7 +50,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                   color: AppColors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.black.withOpacity(0.3),
+                      color: AppColors.black.withValues(alpha: 0.3),
                       blurRadius: sp4,
                       offset: const Offset(0, 0),
                     ),
@@ -105,7 +103,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                       title: 'Bỏ qua',
                       bgColor: AppColors.white,
                       onTap: () {
-                        context.router.pop();
+                        context.router.back();
                         // final token = AppSharedPreference.instance
                         //     .getValue(PrefKeys.token);
                         // if (token != null) {
