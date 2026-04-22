@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:bpg_retail/core/base/base_response.dart';
 import 'package:bpg_retail/core/configs/dio_config.dart';
 import 'package:bpg_retail/core/constants/api_constants.dart';
@@ -97,11 +96,6 @@ class AuthenticationRepository {
     required String password,
   }) async {
     try {
-      // final response = await _authenticationService.verifyOTPPhone(
-      //   otp,
-      //   phoneNumber,
-      //   fullName,
-      // );
       final payload = {
         'phone_number': phoneNumber,
         'full_name': fullName,
@@ -123,88 +117,6 @@ class AuthenticationRepository {
       return BaseResponseModel(code: 400, message: err.toString());
     }
   }
-
-  // Future<Either<dynamic, dynamic>> sendOTP(
-  //   String email,
-  //   String phoneNumber,
-  //   int type,
-  // ) async {
-  //   try {
-  //     final response = await _authenticationService.sendOTP(
-  //       email,
-  //       phoneNumber,
-  //       type,
-  //     );
-  //     if (response['code'] == 400) {
-  //       return left(response);
-  //     } else {
-  //       return right(response);
-  //     }
-  //   } catch (err) {
-  //     return left({
-  //       "message": err.toString(),
-  //       "code": 400,
-  //     });
-  //   }
-  // }
-
-  // Future<Either<dynamic, dynamic>> sendOTPSubject(
-  //   bool isForgot,
-  //   String? email,
-  //   String subject,
-  //   String message,
-  //   String? phoneNumber,
-  //   int? id,
-  //   int sendOtpCode,
-  // ) async {
-  //   try {
-  //     final response = await _authenticationService.sendOTPSubject(
-  //       isForgot = isForgot,
-  //       email = email,
-  //       subject = subject,
-  //       message = message,
-  //       phoneNumber = phoneNumber,
-  //       id = id,
-  //       sendOtpCode,
-  //     );
-  //     if (response['code'] == 400) {
-  //       return left(response);
-  //     } else {
-  //       return right(response);
-  //     }
-  //   } catch (err) {
-  //     return left({
-  //       "message": err.toString(),
-  //       "code": 400,
-  //     });
-  //   }
-  // }
-
-  // Future<Either<dynamic, dynamic>> verifyOTP(
-  //   String otp,
-  //   int optCode,
-  //   String? email,
-  //   String? phoneNumber,
-  // ) async {
-  //   try {
-  //     final response = await _authenticationService.verifyOTP(
-  //       otp,
-  //       optCode,
-  //       email,
-  //       phoneNumber,
-  //     );
-  //     if (response['code'] == 400) {
-  //       return left(response);
-  //     } else {
-  //       return right(response);
-  //     }
-  //   } catch (err) {
-  //     return left({
-  //       "message": err.toString(),
-  //       "code": 400,
-  //     });
-  //   }
-  // }
 
   Future<Either<dynamic, dynamic>> forgotPassword(String phoneNumber) async {
     try {
@@ -257,52 +169,6 @@ class AuthenticationRepository {
     }
   }
 
-  // Future<Either<dynamic, dynamic>> updatePhoneNumber(
-  //   String otp,
-  //   String phoneNumber,
-  //   int id,
-  // ) async {
-  //   try {
-  //     final response = await _authenticationService.updatePhoneNumber(
-  //       otp,
-  //       phoneNumber,
-  //       id,
-  //     );
-  //     if (response['code'] == 400) {
-  //       return left(response);
-  //     } else {
-  //       return right(response);
-  //     }
-  //   } catch (err) {
-  //     return left({
-  //       "message": err.toString(),
-  //       "code": 400,
-  //     });
-  //   }
-  // }
-
-  // Future<Either<dynamic, dynamic>> updateProfile(
-  //   int id,
-  //   FormData formData,
-  // ) async {
-  //   try {
-  //     final response = await _authenticationService.updateProfile(
-  //       id,
-  //       formData,
-  //     );
-  //     if (response['code'] == 400) {
-  //       return left(response);
-  //     } else {
-  //       return right(response);
-  //     }
-  //   } catch (err) {
-  //     return left({
-  //       "message": err.toString(),
-  //       "code": 400,
-  //     });
-  //   }
-  // }
-
   Future<Either<dynamic, dynamic>> changePassword(
     String oldPassword,
     String password,
@@ -338,7 +204,6 @@ class AuthenticationRepository {
     }
   }
 
-
   Future<BaseResponseModel> sendRequestChangeToken(
     String token,
     String otp,
@@ -362,7 +227,6 @@ class AuthenticationRepository {
     }
   }
 
-
   Future<BaseResponseModel> verifyBankAccout(String phone, String otp) async {
     try {
       final payload = {"phone": phone, "otp": otp};
@@ -382,6 +246,7 @@ class AuthenticationRepository {
       return BaseResponseModel(code: 400, message: err.toString());
     }
   }
+
   Future<BaseResponseModel> logOut() async {
     try {
       final res = await _baseDio.get(Api.logOut);

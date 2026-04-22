@@ -15,12 +15,7 @@ class AuthenticationService {
     String password,
   ) async {
     final res = await _baseDio.post(
-      //Api.login,
       Api.loginV2,
-      // data: {
-      //   'phone_number': phoneNumber,
-      //   'password': password,
-      // },
       data: {
         "phone": phoneNumber,
         "password": password,
@@ -70,7 +65,6 @@ class AuthenticationService {
   ) async {
     final payload = {
       'phone': phoneNumber,
-      //'full_name': fullName,
       'otp': otp,
     };
 
@@ -80,76 +74,6 @@ class AuthenticationService {
     );
     return res.data;
   }
-
-  // Future<dynamic> sendOTP(
-  //   String email,
-  //   String phoneNumber,
-  //   int type,
-  // ) async {
-  //   final payload = {
-  //     'phone_number': phoneNumber,
-  //     'email': email,
-  //     "type_otp": type,
-  //   };
-  //   payload.removeWhere((key, value) => value == "");
-
-  //   final res = await _baseDio.post(
-  //     Api.sendEmailOTP,
-  //     data: payload,
-  //   );
-  //   return res.data;
-  // }
-
-  // Future<dynamic> sendOTPSubject(
-  //   bool isForgot,
-  //   String? email,
-  //   String subject,
-  //   String message,
-  //   String? phoneNumber,
-  //   int? id,
-  //   int sendOtpCode,
-  // ) async {
-  //   final payload = {
-  //     'is_forgot': isForgot,
-  //     'message': message,
-  //     'subject': subject,
-  //     'email': email,
-  //     'object_account_id': id,
-  //     'phone_number': phoneNumber ?? '',
-  //     "type_otp": sendOtpCode,
-  //   };
-  //   if (sendOtpCode == 1) {
-  //     payload.removeWhere((key, value) => key == "phone_number");
-  //   } else {
-  //     payload.removeWhere((key, value) => key == "email");
-  //   }
-  //   payload.removeWhere((key, value) => value == null || value == "");
-  //   final res = await _baseDio.post(
-  //     Api.sendEmailOTP,
-  //     data: payload,
-  //   );
-  //   return res.data;
-  // }
-
-  // Future<dynamic> verifyOTP(
-  //   String otp,
-  //   int optCode,
-  //   String? email,
-  //   String? phoneNumber,
-  // ) async {
-  //   final payload = {
-  //     'email': email,
-  //     'phone_number': phoneNumber,
-  //     'type_otp': optCode,
-  //     'otp': otp,
-  //   };
-
-  //   final res = await _baseDio.post(
-  //     Api.verifyOTP,
-  //     data: payload,
-  //   );
-  //   return res.data;
-  // }
 
   Future<dynamic> forgotPassword(
     String phoneNumber,
@@ -191,32 +115,6 @@ class AuthenticationService {
     );
     return res.data;
   }
-
-  // Future<dynamic> updatePhoneNumber(
-  //   String otp,
-  //   String phoneNumber,
-  //   int id,
-  // ) async {
-  //   final res = await _baseDio.put(
-  //     "${Api.updatePhoneNumber}/$id",
-  //     data: {
-  //       'phone_number': phoneNumber,
-  //       'otp': otp,
-  //     },
-  //   );
-  //   return res.data;
-  // }
-
-  // Future<dynamic> updateProfile(
-  //   id,
-  //   formData,
-  // ) async {
-  //   final res = await _baseDio.put(
-  //     "${Api.updateProfile}/$id",
-  //     data: formData,
-  //   );
-  //   return res.data;
-  // }
 
   Future<dynamic> changePassword(
     String oldPassword,

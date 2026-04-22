@@ -37,7 +37,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthenticationRepository _authenticationRepository;
   final navigator = getIt.get<AppNavigator>();
   final preferences = getIt.get<Preferences>();
-  // final appCubit = getIt.get<AppCubit>();
   final formKey = GlobalKey<FormState>();
   Timer? _timer;
   int countTime = 120;
@@ -53,10 +52,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   void onChangeFullname(String fullname) {
     emit(state.copyWith(fullname: fullname));
   }
-
-  // void onChangeReferralCode(String? code) {
-  //   // emit(state.copyWith(referralCode: code));
-  // }
 
   void onChangePhoneNumber(String phoneNumber) {
     emit(state.copyWith(phoneNumber: phoneNumber));
@@ -225,21 +220,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  // void onVerification() {
-  //   if (!formKey.currentState!.validate()) return;
-
-  //   navigator.push(
-  //     OtpVerificationPage(
-  //       email: state.email,
-  //       password: state.password,
-  //       fullname: state.fullname,
-  //       phoneNumber: state.phoneNumber,
-  //       referralCode: state.referralCode?.accountCode,
-  //       userReferralCode: state.userReferralCode,
-  //     ),
-  //   );
-  // }
-
   void startTimer() {
     if (_timer != null) {
       _timer!.cancel();
@@ -299,10 +279,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(state.copyWith(isDisable: isDisable));
   }
 
-  // void setDisableV2(bool isDisable) {
-  //   emit(state.copyWith(isDisableV2: isDisable));
-  // }
-
   Future<void> verifyOtp() async {
     if (!formKey.currentState!.validate()) return;
 
@@ -336,29 +312,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           type: 'error',
         );
       }
-      // res.fold(
-      //   (l) {
-      //     navigator.showAppTopSnackBar(
-      //       "Mã xác nhận không chính xác",
-      //       type: 'error',
-      //     );
-      //   },
-      //   (r) {
-      //     emit(state.copyWith(step: 2, countTime: 0));
-      //     navigator.showSuccessDialog(
-      //       title: 'Đăng ký thành công',
-      //       mainTitle: 'Đóng',
-      //       content:
-      //           'Chào mừng bạn đến với chúng tôi. Nhập mã OTP để xác nhận tài khoản.',
-      //       hasButtonBack: false,
-      //       accept: () {
-      //         emit(state.copyWith(countTime: 0));
-      //         navigator.popUntilRoot(useRootNavigator: true);
-      //         navigator.push(LoginPage(hasAGift: false));
-      //       },
-      //     );
-      //   },
-      // );
     } catch (e) {
       EasyLoading.dismiss();
     }
