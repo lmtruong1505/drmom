@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 
 class ExtraButton extends StatefulWidget {

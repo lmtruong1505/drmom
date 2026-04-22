@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bpg_retail/app/data/bloc/app_state.dart';
 import 'package:bpg_retail/core/base/index_cubit.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/utilities/assets.dart';
@@ -71,7 +71,7 @@ class _RootPageState extends State<RootPage>
                   child: const Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
-                      style: s16w500,
+                      style: AppTypography.p3,
                     ),
                   ),
                 ),
@@ -80,7 +80,7 @@ class _RootPageState extends State<RootPage>
                   child: const Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
-                      style: s16w500,
+                      style: AppTypography.p3,
                     ),
                   ),
                 ),
@@ -139,7 +139,7 @@ class _RootPageState extends State<RootPage>
             width: 24,
             height: 24,
             colorFilter: ColorFilter.mode(
-              index == indexCubit.state ? AppColors.main : AppColors.grey79,
+              index == indexCubit.state ? AppColors.main : AppColors.grey_79,
               BlendMode.srcIn,
             ),
           ),
@@ -153,7 +153,7 @@ class _RootPageState extends State<RootPage>
       width: 56,
       height: 56,
       isCircle: true,
-      borderColor: AppColors.greyE2,
+      borderColor: AppColors.grey_e2,
       borderWidth: 2,
       color: Colors.transparent,
       child: Center(

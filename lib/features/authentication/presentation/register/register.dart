@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/app/routes/router.gr.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/extension/string_extension.dart';
@@ -299,11 +299,11 @@ class _RegisterPageState extends State<RegisterPage> {
               //       const Icon(
               //         Icons.qr_code,
               //         size: 14,
-              //         color: AppColors.blue31,
+              //         color: AppColors.blue_1,
               //       ),
               //       Text(
               //         'Quét mã QR',
-              //         style: s14w500.copyWith(color: AppColors.blue31),
+              //         style: AppTypography.p5.copyWith(color: AppColors.blue_1),
               //       ),
               //     ],
               //   ),
@@ -338,8 +338,8 @@ class _RegisterPageState extends State<RegisterPage> {
               //   visible: state.message == null && state.userReferralCode != null && state.status != CubitStatus.loading,
               //   child: Text(
               //     "Mã hợp lệ cho ${state.referralCode?.accountName} (${state.referralCode?.accountCode})",
-              //     style: s14w500.copyWith(
-              //       color: AppColors.green65,
+              //     style: AppTypography.p5.copyWith(
+              //       color: AppColors.green_65,
               //     ),
               //   ),
               // ),

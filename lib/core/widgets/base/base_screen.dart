@@ -3,7 +3,7 @@ import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/widgets/text_title.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
 
-import '../../constants/colors.dart';
+import '../../configs/app_style/init_app_style.dart';
 import '../buttons/extra_button.dart';
 
 class BaseScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/app/routes/router.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/utilities/dialog_utils.dart';
 import 'package:bpg_retail/core/utilities/log_utils.dart';
 import 'package:bpg_retail/core/utilities/snackbar_utils.dart';
@@ -120,8 +120,8 @@ class AppNavigatorImpl extends AppNavigator {
       LogUtils.e('pop with result = $result, useRootNav = $useRootNavigator');
     }
     return useRootNavigator
-        ? _appRouter.pop<T>(result)
-        : _currentTabRouterOrRootRouter.pop<T>(result);
+        ? _appRouter.maybePop<T>(result)
+        : _currentTabRouterOrRootRouter.maybePop<T>(result);
   }
 
   @override

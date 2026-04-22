@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
@@ -47,7 +47,7 @@ class _KycCameraIdentityScreenState extends State<KycCameraIdentityScreen> {
         title: Text(
           widget.type == ImageIdentityTypeEnum.front ? 'Mặt trước' : 'Mặt sau',
           // "Chụp ảnh",
-          style: s16w500.copyWith(color: AppColors.white),
+          style: AppTypography.p3.copyWith(color: AppColors.white),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -117,7 +117,7 @@ class _KycCameraIdentityScreenState extends State<KycCameraIdentityScreen> {
           child: Text(
             'Đưa Căn cước/ Hộ chiếu hiển thị vừa trong khung mẫu rồi nhấn chụp',
             textAlign: TextAlign.center,
-            style: s14w400.copyWith(color: AppColors.white),
+            style: AppTypography.p6.copyWith(color: AppColors.white),
           ),
         ),
         Column(

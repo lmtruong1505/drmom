@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/spacing.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 
 class ValidateTextField extends StatefulWidget {
   const ValidateTextField({
@@ -159,15 +159,15 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
               minHeight: 5,
             ),
             prefixIcon: Padding(
-              padding: Spacing.l12,
+              padding: AppSpacing.l12,
               child: widget.leadingIcon,
             ),
             suffixIcon:
                 widget.suffixIcon != null
-                    ? Padding(padding: Spacing.r12, child: widget.suffixIcon)
+                    ? Padding(padding: AppSpacing.r12, child: widget.suffixIcon)
                     : (_controller.text.isNotEmpty
                         ? Padding(
-                          padding: Spacing.r12,
+                          padding: AppSpacing.r12,
                           child:
                               widget.isClear == true &&
                                       _controller.text != widget.defaultValue
@@ -186,7 +186,7 @@ class _ValidateTextFieldState extends State<ValidateTextField> {
                                   : widget.emptySuffixIcon,
                         )
                         : Padding(
-                          padding: Spacing.r12,
+                          padding: AppSpacing.r12,
                           child:
                               (widget.emptySuffixIcon ??
                                   const SizedBox.shrink()),
@@ -397,13 +397,13 @@ class _ValidateTextFieldV2State extends State<ValidateTextFieldV2> {
         prefixIconConstraints: const BoxConstraints(minWidth: 5, minHeight: 5),
         isDense: true,
         suffixIconConstraints: const BoxConstraints(minWidth: 5, minHeight: 5),
-        prefixIcon: Padding(padding: Spacing.l12, child: widget.leadingIcon),
+        prefixIcon: Padding(padding: AppSpacing.l12, child: widget.leadingIcon),
         suffixIcon:
             widget.suffixIcon != null
-                ? Padding(padding: Spacing.r12, child: widget.suffixIcon)
+                ? Padding(padding: AppSpacing.r12, child: widget.suffixIcon)
                 : (_controller.text.isNotEmpty
                     ? Padding(
-                      padding: Spacing.r12,
+                      padding: AppSpacing.r12,
                       child:
                           widget.isClear == true &&
                                   _controller.text != widget.defaultValue
@@ -422,7 +422,7 @@ class _ValidateTextFieldV2State extends State<ValidateTextFieldV2> {
                               : widget.emptySuffixIcon,
                     )
                     : Padding(
-                      padding: Spacing.r12,
+                      padding: AppSpacing.r12,
                       child:
                           (widget.emptySuffixIcon ?? const SizedBox.shrink()),
                     )),

@@ -1,83 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/string_extension.dart';
 import 'package:bpg_retail/gen/assets.gen.dart';
-
 import 'base/base_loading.dart';
 
-class CacheNetworkImageWidget extends StatelessWidget {
-  final String? url;
-  final double? width;
-  final double? height;
-  final double? borderRadius;
-  final BoxFit? fit;
-
-  const CacheNetworkImageWidget({
-    super.key,
-    this.url,
-    this.width,
-    this.height,
-    this.borderRadius,
-    this.fit,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius ?? 0),
-      child: url.nullOrEmpty
-          ? Assets.images.logo.image(
-              width: width ?? 61,
-              height: height ?? 61,
-              fit: BoxFit.contain,
-            )
-          : CachedNetworkImage(
-              imageUrl: url ?? "",
-              width: width ?? 61,
-              height: height ?? 61,
-              fit: fit ?? BoxFit.cover,
-              placeholder: (context, url) => Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Assets.images.placeHolderImage.image(
-                      width: width ?? 61,
-                      height: height ?? 61,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  const Center(
-                    child: CupertinoActivityIndicator(),
-                  ),
-                ],
-              ),
-              errorWidget: (context, url, error) => Assets.images.logo.image(
-                width: width ?? 61,
-                height: height ?? 61,
-                fit: BoxFit.contain,
-              ),
-            ),
-    );
-  }
-}
-
-class CacheNetworkImageV2 extends StatelessWidget {
+class AppNetworkImage extends StatelessWidget {
   final String? url;
   final double? width;
   final double? height;
   final double? borderRadius;
   final BoxFit? fit;
   final Widget? errorWidget;
+  final Widget? placeholder;
   final bool showLoad;
-  // final bool? showBorder;
+  final bool useCard;
 
-  const CacheNetworkImageV2({
+  const AppNetworkImage({
     super.key,
     this.url,
     this.width,
@@ -85,138 +26,79 @@ class CacheNetworkImageV2 extends StatelessWidget {
     this.borderRadius,
     this.fit,
     this.errorWidget,
+    this.placeholder,
     this.showLoad = false,
-    // this.showBorder = false,
+    this.useCard = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: (borderRadius ?? 8).radius,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius ?? 8),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius ?? 8),
-            // border: Border.all(
-            //   color: showBorder == true ? AppColors.grey_1 : AppColors.white,
-            //   width: showBorder == true ? 1 : 0,
-            // ),
-          ),
-          child: url.nullOrEmpty
-              ? Assets.images.logo.image(
-                  width: width ?? 61,
-                  height: height ?? 61,
-                  fit: BoxFit.contain,
-                )
-              : ClipRRect(
-                  borderRadius: (borderRadius ?? 8).radius,
-                  child: CachedNetworkImage(
-                    imageUrl: url ?? "",
-                    width: width ?? 61,
-                    height: height ?? 61,
-                    fit: fit ?? BoxFit.cover,
-                    placeholder: (context, url) => Stack(
-                      children: [
-                        Visibility(
-                          visible: !showLoad,
-                          child: Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            child: Assets.images.logo.image(
-                              width: width ?? 61,
-                              height: height ?? 61,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: showLoad
-                              ? SizedBox(
-                                  width: width,
-                                  height: width,
-                                  child: const CircularProgressIndicator(
-                                    color: AppColors.main,
-                                  ),
-                                )
-                              : const CupertinoActivityIndicator(),
-                        ),
-                      ],
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(borderRadius ?? 8),
-                        border: Border.all(color: AppColors.border_1),
-                      ),
-                      child: errorWidget ??
-                          Assets.images.logo.image(
-                            width: width ?? 61,
-                            height: height ?? 61,
-                            fit: BoxFit.contain,
-                          ),
-                    ),
+    final defaultWidth = width ?? 61;
+    final defaultHeight = height ?? 61;
+    final defaultRadius = borderRadius ?? 0;
+
+    Widget image = CachedNetworkImage(
+      imageUrl: url ?? "",
+      width: width,
+      height: height,
+      fit: fit ?? BoxFit.cover,
+      placeholder: (context, url) =>
+          placeholder ??
+          Stack(
+            children: [
+              if (!showLoad)
+                Positioned.fill(
+                  child: Assets.images.logo.image(
+                    fit: BoxFit.contain,
                   ),
                 ),
-        ),
-      ),
+              Center(
+                child: showLoad
+                    ? const BaseLoading()
+                    : const CupertinoActivityIndicator(),
+              ),
+            ],
+          ),
+      errorWidget: (context, url, error) =>
+          errorWidget ??
+          Assets.images.logo.image(
+            width: defaultWidth,
+            height: defaultHeight,
+            fit: BoxFit.contain,
+          ),
     );
+
+    if (url.nullOrEmpty) {
+      image = Assets.images.logo.image(
+        width: defaultWidth,
+        height: defaultHeight,
+        fit: BoxFit.contain,
+      );
+    }
+
+    Widget content = ClipRRect(
+      borderRadius: BorderRadius.circular(defaultRadius),
+      child: image,
+    );
+
+    if (useCard) {
+      return Card(
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: defaultRadius.radius,
+        ),
+        child: content,
+      );
+    }
+
+    return content;
   }
 }
 
-class CacheNetworkImageV3 extends StatelessWidget {
-  final String? url;
-
-  const CacheNetworkImageV3({
-    super.key,
-    this.url,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return url.nullOrEmpty
-        ? Assets.images.logo.image(
-            height: 60,
-            width: 60,
-            fit: BoxFit.contain,
-          )
-        : CachedNetworkImage(
-            imageUrl: url ?? "",
-            width: 120,
-            fit: BoxFit.contain,
-            placeholder: (context, url) => const Center(
-              child: CupertinoActivityIndicator(),
-            ),
-            // Stack(
-            //   children: [
-            //     Positioned(
-            //       top: 0,
-            //       left: 0,
-            //       right: 0,
-            //       bottom: 0,
-            //       child: Assets.images.logo.image(
-            //         height: 60,
-            //         width: 60,
-            //         fit: BoxFit.cover,
-            //       ),
-            //     ),
-            //     const Center(
-            //       child: CupertinoActivityIndicator(),
-            //     ),
-            //   ],
-            // ),
-            errorWidget: (context, url, error) => Assets.images.logo.image(
-              height: 60,
-              width: 60,
-              fit: BoxFit.contain,
-            ),
-          );
-  }
-}
+// Deprecated: For compatibility during migration
+typedef CacheNetworkImageWidget = AppNetworkImage;
+typedef CacheNetworkImageV2 = AppNetworkImage;
+typedef CacheNetworkImageV3 = AppNetworkImage;
 
 Widget imageNetWork({
   required String path,
@@ -228,26 +110,13 @@ Widget imageNetWork({
   Widget? errorWidget,
   Widget? placeholder,
 }) {
-  return CachedNetworkImage(
-    imageUrl: path,
-    height: height,
+  return AppNetworkImage(
+    url: path,
     width: width,
-    color: color,
+    height: height,
     fit: fit,
-    placeholder: (context, url) =>
-        placeholder ??
-        const Center(
-          child: BaseLoading(),
-        ),
-    errorWidget: (context, url, error) =>
-        errorWidget ??
-        const ColoredBox(
-          color: AppColors.white,
-          child: Center(
-            child: Icon(
-              Icons.hide_image_outlined,
-            ),
-          ),
-        ),
-  ).radius(radius);
+    borderRadius: radius.bottomLeft.x, // Extracting radius from BorderRadius
+    errorWidget: errorWidget,
+    placeholder: placeholder,
+  );
 }

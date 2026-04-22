@@ -1,5 +1,5 @@
 import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/widgets/base/appbar.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -85,7 +85,7 @@ class AssetCategoryPage extends StatelessWidget {
             width: 80,
             height: 80,
             isCircle: true,
-            color: AppColors.grey80.withValues(alpha: 0.5),
+            color: AppColors.grey_80.withValues(alpha: 0.5),
             child: Center(
               child: BaseContainer(
                 width: 48,
@@ -113,13 +113,13 @@ class AssetCategoryPage extends StatelessWidget {
             child: Text(
               "Không có dữ liệu khả dụng liên quan đến chức năng bạn truy cập",
               textAlign: TextAlign.center,
-              style: AppTypography.p5.copyWith(color: AppColors.grey80),
+              style: AppTypography.p5.copyWith(color: AppColors.grey_80),
             ),
           ),
           24.height,
           BaseContainer(
             isDotted: true,
-            borderColor: AppColors.grey80,
+            borderColor: AppColors.grey_80,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             borderRadius: 24,
             child: Row(
@@ -128,12 +128,12 @@ class AssetCategoryPage extends StatelessWidget {
                 Text(
                   "Tạo mới tài sản",
                   style: AppTypography.p5.copyWith(
-                    color: AppColors.grey80,
+                    color: AppColors.grey_80,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 8.width,
-                const Icon(Icons.add, color: AppColors.grey80, size: 20),
+                const Icon(Icons.add, color: AppColors.grey_80, size: 20),
               ],
             ),
           ),

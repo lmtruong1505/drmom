@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:bpg_retail/core/core.dart';
+import "package:bpg_retail/core/core.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:flutter/material.dart';
 
 typedef ItemOverlayBuilder<ItemType> =
@@ -281,7 +282,7 @@ class _OverlayInputState<T> extends State<OverlayInput<T>> {
                 ),
               ),
       hintText: widget.hintText ?? "Nhập từ khoá",
-      hintStyle: s14w400.copyWith(color: AppColors.grey79),
+      hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_79),
       contentPadding:
           widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 16),
       border: border,

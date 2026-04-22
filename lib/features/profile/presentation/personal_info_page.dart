@@ -1,6 +1,6 @@
 import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
@@ -36,9 +36,9 @@ class PersonalInfoPage extends StatelessWidget {
                 width: 80,
                 height: 80,
                 isCircle: true,
-                color: AppColors.greyE2,
+                color: AppColors.grey_e2,
                 child: const Center(
-                  child: Icon(Icons.person, size: 40, color: AppColors.grey79),
+                  child: Icon(Icons.person, size: 40, color: AppColors.grey_79),
                 ),
               ),
             ),
@@ -91,7 +91,7 @@ class PersonalInfoPage extends StatelessWidget {
                             child: Text(
                               "Hủy",
                               style: AppTypography.p5.copyWith(
-                                color: AppColors.grey79,
+                                color: AppColors.grey_79,
                               ),
                             ),
                           ),
@@ -132,7 +132,7 @@ class PersonalInfoPage extends StatelessWidget {
         borderRadius: 12,
         child: Row(
           children: [
-            Icon(icon, size: 22, color: AppColors.grey79),
+            Icon(icon, size: 22, color: AppColors.grey_79),
             16.width,
             Expanded(
               child: Column(
@@ -140,7 +140,7 @@ class PersonalInfoPage extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTypography.p6.copyWith(color: AppColors.grey79),
+                    style: AppTypography.p6.copyWith(color: AppColors.grey_79),
                   ),
                   4.height,
                   Text(

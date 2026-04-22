@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/app/data/bloc/localization_cubit.dart';
 import 'package:bpg_retail/app/routes/router.gr.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart'; 
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                         Text(
                           trans.translate('remember_password'),
                           style: AppTypography.p4.copyWith(
-                            color: AppColors.grey79,
+                            color: AppColors.grey_79,
                           ),
                         ),
                       ],

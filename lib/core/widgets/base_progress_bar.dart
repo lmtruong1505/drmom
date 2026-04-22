@@ -1,4 +1,4 @@
-import 'package:bpg_retail/core/constants/colors.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:flutter/material.dart';
 
 class BaseProgressBar extends StatelessWidget {
@@ -10,7 +10,7 @@ class BaseProgressBar extends StatelessWidget {
     super.key,
     required this.value,
     this.height = 6,
-    this.backgroundColor = AppColors.greyE2,
+    this.backgroundColor = AppColors.grey_e2,
   });
 
   Color _getColor(double value) {

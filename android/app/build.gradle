@@ -16,9 +16,6 @@ if (localPropertiesFile.exists()) {
 }
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-    // keystorePropertiesFile.withreader('utf-8') { reader ->
-    //     keystoreProperties.load(reader)
-    // }
 }
 else {
   throw  GradleException("Missing key.properties for release signing")
@@ -38,7 +35,7 @@ if (flutterVersionName == null) {
 android {
     namespace "co.idtinc.bpg_retail"
     compileSdk 36
-    ndkVersion flutter.ndkVersion
+    ndkVersion "27.0.12077973"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -66,7 +63,7 @@ android {
         applicationId "co.idtinc.bpg_retail"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk 23
+        minSdkVersion flutter.minSdkVersion
         targetSdk 36
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

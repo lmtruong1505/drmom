@@ -4,54 +4,41 @@ import 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 @singleton
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
   @override
-  List<CustomRoute> get routes => [
-    CustomRoute(
+  List<AutoRoute> get routes => [
+    AutoRoute(
       page: RootRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: VerifyOtpRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-
-    CustomRoute(
+    AutoRoute(
       page: LoginRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: RegisterRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: OtpVerificationRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: ForgotPasswordRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: QrCodeScreen.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-
-    CustomRoute(
+    AutoRoute(
       page: KycCameraIdentityScreen.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: KycCameraPreview.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: KycCameraPortraitScreen.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
-    CustomRoute(
+    AutoRoute(
       page: DashboardRoute.page,
-      transitionsBuilder: TransitionsBuilders.noTransition,
     ),
   ];
 }

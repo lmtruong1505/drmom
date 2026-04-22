@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 
-import '../../constants/colors.dart';
-import '../../constants/typography.dart';
+import '../../configs/app_style/init_app_style.dart';
+import '../../configs/app_style/init_app_style.dart';
 
 Widget TabButton({
   required String title,
@@ -22,7 +22,7 @@ Widget TabButton({
         title,
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
-        style: s14w500,
+        style: AppTypography.p5,
       ),
     ),
   );

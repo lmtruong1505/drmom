@@ -2,15 +2,13 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
 import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants/spacing.dart';
 import 'check_vesion.dart';
 
 @RoutePage()
@@ -35,7 +33,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
         appBar: AppBar(
           title: const Text(
             'Cập nhật phiên bản',
-            style: s16w500,
+            style: AppTypography.p3,
           ),
         ),
         body: SingleChildScrollView(
@@ -61,17 +59,17 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                   children: [
                     const Text(
                       'Đã có phiên bản mới',
-                      style: s16w500,
+                      style: AppTypography.p3,
                     ),
                     const SizedBox(height: sp16),
                     RichText(
                       text: TextSpan(
                         text: 'Phiên bản mới: ',
-                        style: s14w400.copyWith(color: AppColors.bg_2),
+                        style: AppTypography.p6.copyWith(color: AppColors.bg_2),
                         children: [
                           TextSpan(
                             text: '${widget.modelVersion.version} (có sẵn)',
-                            style: s14w500,
+                            style: AppTypography.p5,
                           ),
                         ],
                       ),
@@ -80,11 +78,11 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                     RichText(
                       text: TextSpan(
                         text: 'Phiên bản đang sử dụng: ',
-                        style: s14w400.copyWith(color: AppColors.bg_2),
+                        style: AppTypography.p6.copyWith(color: AppColors.bg_2),
                         children: [
                           TextSpan(
                             text: widget.modelVersion.localVersion,
-                            style: s14w500,
+                            style: AppTypography.p5,
                           ),
                         ],
                       ),
@@ -104,13 +102,6 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                       bgColor: AppColors.white,
                       onTap: () {
                         context.router.back();
-                        // final token = AppSharedPreference.instance
-                        //     .getValue(PrefKeys.token);
-                        // if (token != null) {
-                        //   context.router.replaceAll([const WorkSpaceRoute()]);
-                        // } else {
-                        //   context.router.replaceAll([const LoginRoute()]);
-                        // }
                       },
                       icon: const Icon(
                         Icons.navigate_next,
@@ -125,7 +116,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
               const SizedBox(height: sp24),
               Text(
                 'Phiên bản mới có gì',
-                style: s14w500.copyWith(color: AppColors.grey79),
+                style: AppTypography.p5.copyWith(color: AppColors.grey_79),
               ),
               context.padding.bottom.height,
               50.height,

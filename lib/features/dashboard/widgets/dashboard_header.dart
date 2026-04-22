@@ -1,5 +1,5 @@
 import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/widgets/avatar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';

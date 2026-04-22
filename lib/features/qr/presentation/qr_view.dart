@@ -5,7 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:bpg_retail/app/routes/router.gr.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
@@ -16,7 +16,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_dart_scan/qr_code_dart_scan.dart' as v2;
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
-import '../../../core/constants/colors.dart';
+import '../../../core/configs/app_style/init_app_style.dart';
 
 @RoutePage()
 class QrCodeScreen extends StatefulWidget {
@@ -146,7 +146,7 @@ class _QrCodeScreenState extends State<QrCodeScreen>
         MaterialBanner(
           content: const Text(
             'Vui lòng cho phép quyền sử dụng Camera để sử dụng chức năng',
-            style: s14w400,
+            style: AppTypography.p6,
           ),
           actions: [
             MainButton(

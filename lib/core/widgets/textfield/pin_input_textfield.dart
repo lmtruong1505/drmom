@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 
 class PinInputField extends StatefulWidget {
   final Function(String)? onDone;
@@ -30,7 +30,7 @@ class PinInputFieldState extends State<PinInputField> {
       maxLength: 6, // Giới hạn 6 ký tự
       textAlign: TextAlign.center, // Canh giữa chữ
       obscureText: _obscureText, // Ẩn ký tự nhập vào
-      style: s16w500.copyWith(
+      style: AppTypography.p3.copyWith(
         color: AppColors.black,
       ), // Kích thước chữ và khoảng cách
       keyboardType: TextInputType.number,
@@ -49,7 +49,7 @@ class PinInputFieldState extends State<PinInputField> {
         fillColor: AppColors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(color: AppColors.grey79),
+          borderSide: const BorderSide(color: AppColors.grey_79),
         ),
         suffixIcon: IconButton(
           icon: Icon(

@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/rendering.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 
 bool areListsEqual(List<int>? list1, List<int>? list2) {
   if (list1 == null || list2 == null) return false;
@@ -13,58 +12,30 @@ bool areListsEqual(List<int>? list1, List<int>? list2) {
   return set1.difference(set2).isEmpty && set2.difference(set1).isEmpty;
 }
 
-// String convertStatus(String statusCode) {
-//   if (statusCode == "PENDING") {
-//     return "Chờ phê duyệt";
-//   }
-//   if (statusCode == "PICKUP") {
-//     return "Chờ lấy hàng";
-//   }
-//   if (statusCode == "APPROVED") {
-//     return "Đã xác nhận";
-//   }
-//   if (statusCode == "SHIPPING") {
-//     return "Đang giao hàng";
-//   }
-//   if (statusCode == "DELIVERED") {
-//     return "Đã giao hàng";
-//   }
-//   if (statusCode == "DONE") {
-//     return "Hoàn thành";
-//   }
-//   if (statusCode == "RETURN") {
-//     return "Hoàn hàng";
-//   }
-//   if (statusCode == "CANCEL") {
-//     return "Đã hủy";
-//   }
-//   return "Chờ phê duyệt";
-// }
-
 Color getColorStatusV0(int statusCode) {
   if (statusCode == 1) {
-    return AppColors.yellowF0;
+    return AppColors.yellow_f0;
   }
 
   if (statusCode == 2) {
-    return AppColors.blue31;
+    return AppColors.blue_1;
   }
 
   if (statusCode == 3) {
-    return AppColors.blue31;
+    return AppColors.blue_1;
   }
   if (statusCode == 4) {
-    return AppColors.yellowF0;
+    return AppColors.yellow_f0;
   }
 
   if (statusCode == 5) {
-    return AppColors.blue31;
+    return AppColors.blue_1;
   }
 
   if (statusCode == 6) {
     return AppColors.red;
   }
-  return AppColors.yellowF0;
+  return AppColors.yellow_f0;
 }
 
 Color getColorStatusBackgroundV0(String statusCode) {

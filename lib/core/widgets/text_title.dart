@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 
-import '../constants/colors.dart';
-import '../constants/typography.dart';
+import '../configs/app_style/init_app_style.dart';
+import '../configs/app_style/init_app_style.dart';
 
 Row TextTitel({required String title}) {
   return Row(
@@ -18,7 +18,7 @@ Row TextTitel({required String title}) {
       8.width,
       Text(
         title,
-        style: s18w700,
+        style: AppTypography.h4,
         overflow: TextOverflow.ellipsis,
       ).expanded(),
     ],

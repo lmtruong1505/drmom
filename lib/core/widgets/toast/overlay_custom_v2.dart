@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/utilities/debouncer.dart';
 import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
@@ -51,7 +51,7 @@ class OverlayInputV2<T> extends StatefulWidget {
     this.borderRadius = 5,
     this.elevation = 5,
     this.focusedBorderColor = AppColors.red_1,
-    this.enabledBorderColor = AppColors.grey79,
+    this.enabledBorderColor = AppColors.grey_79,
     this.hintText,
     this.label,
     this.isRequired = false,
@@ -174,7 +174,7 @@ class _OverlayInputV2State<T> extends State<OverlayInputV2<T>> {
                   color: widget.backgroundColor,
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(
-                      color: AppColors.grey79,
+                      color: AppColors.grey_79,
                     ),
                     borderRadius: BorderRadius.circular(8),
                   ),

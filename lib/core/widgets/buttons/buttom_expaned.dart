@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 
-import '../../constants/typography.dart';
+import '../../configs/app_style/init_app_style.dart';
 import '../expanded_section.dart';
 
 class ButtomExpaned extends StatefulWidget {
@@ -44,7 +44,7 @@ class _ButtomExpanedState extends State<ButtomExpaned> {
               children: [
                 Text(
                   widget.title,
-                  style: !isSelected ? s16w400 : s16w500,
+                  style: !isSelected ? AppTypography.p4 : AppTypography.p3,
                 ).expanded(),
                 16.width,
                 Icon(

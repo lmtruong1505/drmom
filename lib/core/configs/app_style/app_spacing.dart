@@ -1,8 +1,6 @@
-// ignore_for_file: constant_identifier_names
+part of 'init_app_style.dart';
 
-import 'package:flutter/material.dart';
-
-class Spacing {
+class AppSpacing {
   static const EdgeInsetsGeometry a4 = EdgeInsets.all(4);
   static const EdgeInsetsGeometry t4 = EdgeInsets.only(top: 4);
   static const EdgeInsetsGeometry b4 = EdgeInsets.only(bottom: 4);
@@ -60,7 +58,6 @@ class Spacing {
   static const EdgeInsetsGeometry h32 = EdgeInsets.symmetric(horizontal: 32);
 }
 
-const double sp0 = 0;
 const double sp2 = 2;
 const double sp4 = 4;
 const double sp6 = 6;
@@ -81,13 +78,13 @@ const double sp80 = 80;
 const double sp124 = 124;
 
 Widget gapWidth(double value) {
-  return SizedBox(width: value,);
+  return SizedBox(width: value);
 }
 
 Widget gapHeight(double value) {
-  return SizedBox(height: value,);
+  return SizedBox(height: value);
 }
 
 Widget gap(double width, double height) {
-  return SizedBox(height: height, width: width,);
+  return SizedBox(height: height, width: width);
 }

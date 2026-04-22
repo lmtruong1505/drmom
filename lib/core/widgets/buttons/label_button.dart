@@ -69,7 +69,7 @@ class LabelButton extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style:
                   labelStyle?.copyWith(height: 1) ??
-                  s14w500.copyWith(color: AppColors.white, height: 1),
+                  AppTypography.p5.copyWith(color: AppColors.white, height: 1),
               textAlign: labelAlign,
             ),
           ),

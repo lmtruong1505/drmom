@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/check_version/check_vesion.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/utilities/launch_url.dart';
 import "package:bpg_retail/core/widgets/buttons/main_button.dart";
@@ -49,19 +49,19 @@ class UpdateAppDialog extends StatelessWidget {
             16.height,
             Text(
               'Cập nhật ứng dụng?',
-              style: s16w400.copyWith(fontSize: 20),
+              style: AppTypography.p4.copyWith(fontSize: 20),
             ),
             2.height,
             Text(
               'Phiên bản mới đã hoàn thiện.\n'
               'Phiên bản mới ${version.version ?? "1.0.0"}.\n'
               'Phiên bản hiện tại của bạn ${version.localVersion ?? "1.0.0"}',
-              style: s16w500.copyWith(fontSize: 16, color: AppColors.border_2),
+              style: AppTypography.p3.copyWith(fontSize: 16, color: AppColors.border_2),
             ),
             24.height,
             Text(
               'Ghi chú cập nhật:',
-              style: s16w400.copyWith(fontSize: 16, color: AppColors.border_2),
+              style: AppTypography.p4.copyWith(fontSize: 16, color: AppColors.border_2),
             ),
             if (version.notes.validator.isNotEmpty)
               ...List.generate(
@@ -69,14 +69,14 @@ class UpdateAppDialog extends StatelessWidget {
                 (index) => Text(
                   '${index + 1}. ${version.notes![index]}',
                   style:
-                      s16w500.copyWith(fontSize: 16, color: AppColors.border_2),
+                      AppTypography.p3.copyWith(fontSize: 16, color: AppColors.border_2),
                 ),
               )
             else
               Text(
                 'Nâng cấp hiệu năng và sữa lỗi ứng dụng',
                 style:
-                    s16w500.copyWith(fontSize: 16, color: AppColors.border_2),
+                    AppTypography.p3.copyWith(fontSize: 16, color: AppColors.border_2),
               ),
             16.height,
             MainButton(

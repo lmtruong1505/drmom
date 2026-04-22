@@ -1,5 +1,5 @@
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/widgets/base_container.dart';
 import 'package:bpg_retail/core/widgets/buttons/common_button.dart';
@@ -103,7 +103,7 @@ class AssetFilterBottomSheet extends StatelessWidget {
                                 color:
                                     isSelected
                                         ? AppColors.main
-                                        : AppColors.grey79,
+                                        : AppColors.grey_79,
                                 onTap: () {
                                   cubit.selectStatus(status);
                                 },
@@ -186,7 +186,7 @@ class AssetFilterBottomSheet extends StatelessWidget {
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: AppTypography.p5.copyWith(color: AppColors.grey79),
+      style: AppTypography.p5.copyWith(color: AppColors.grey_79),
     );
   }
 }

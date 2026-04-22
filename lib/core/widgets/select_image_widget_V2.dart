@@ -3,8 +3,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
 import 'package:bpg_retail/core/utilities/image_utils.dart';
@@ -33,7 +33,7 @@ class SelectImageWidgetV2 extends StatelessWidget {
     return CupertinoActionSheet(
       title: const Text(
         'Thêm ảnh',
-        style: s14w500,
+        style: AppTypography.p5,
       ),
       actions: <Widget>[
         CupertinoActionSheetAction(
@@ -50,21 +50,21 @@ class SelectImageWidgetV2 extends StatelessWidget {
           },
           child: Text(
             'Chọn từ thư viện',
-            style: s16w700.copyWith(color: AppColors.main),
+            style: AppTypography.h5.copyWith(color: AppColors.main),
           ),
         ),
         CupertinoActionSheetAction(
           isDestructiveAction: true,
           onPressed: onTapCamera,
           child:
-              Text("Chụp ảnh", style: s16w700.copyWith(color: AppColors.main)),
+              Text("Chụp ảnh", style: AppTypography.h5.copyWith(color: AppColors.main)),
         ),
       ],
       cancelButton: CupertinoActionSheetAction(
         onPressed: navigator.pop,
         child: Text(
           'Hủy',
-          style: s16w700.copyWith(color: AppColors.red_1),
+          style: AppTypography.h5.copyWith(color: AppColors.red_1),
         ),
       ),
     );
@@ -138,7 +138,7 @@ class SelectImageWidget extends StatelessWidget {
           },
           child: const Text(
             'Chọn từ thư viện',
-            style: s18w700,
+            style: AppTypography.h4,
           ),
         ),
         CupertinoActionSheetAction(
@@ -151,14 +151,14 @@ class SelectImageWidget extends StatelessWidget {
           },
           child: Text(
             isVideo == false ? 'Chụp ảnh' : 'Quay video',
-            style: s18w700,
+            style: AppTypography.h4,
           ),
         ),
       ],
       cancelButton: CupertinoActionSheetAction(
         child: Text(
           'Hủy',
-          style: s18w700.copyWith(color: AppColors.main),
+          style: AppTypography.h4.copyWith(color: AppColors.main),
         ),
         onPressed: () {
           navigator.pop();

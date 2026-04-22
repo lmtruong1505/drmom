@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
@@ -58,7 +58,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
           const Text(
             "Quên mật khẩu",
             textAlign: TextAlign.left,
-            style: s24w700,
+            style: AppTypography.h2,
           ),
           if (bloc.state.step == 1) step1(),
           if (bloc.state.step == 2) step2(),
@@ -168,8 +168,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
         Text(
           "Nhập mã OTP được gửi về Zalo theo số điện thoại của bạn để xác nhận thông tin",
           textAlign: TextAlign.left,
-          style: s14w400.copyWith(
-            color: AppColors.grey79,
+          style: AppTypography.p6.copyWith(
+            color: AppColors.grey_79,
           ),
         ),
         24.height,

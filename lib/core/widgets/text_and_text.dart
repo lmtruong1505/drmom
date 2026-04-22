@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 
-import '../constants/colors.dart';
-import '../constants/typography.dart';
+import '../configs/app_style/init_app_style.dart';
+import '../configs/app_style/init_app_style.dart';
 
 Widget TextAndText({
   required String title,
@@ -19,20 +19,20 @@ Widget TextAndText({
     children: [
       Text(
         title,
-        style: s14w400.copyWith(
-          color: AppColors.grey79,
+        style: AppTypography.p6.copyWith(
+          color: AppColors.grey_79,
         ),
       ),
       8.width,
       isExpanded
           ? Text(
               subtitle,
-              style: style ?? s14w400,
+              style: style ?? AppTypography.p6,
               textAlign: textAlign,
             ).expanded()
           : Text(
               subtitle,
-              style: style ?? s14w400,
+              style: style ?? AppTypography.p6,
               textAlign: textAlign,
             ).flexible(),
       if (icon != null) icon,

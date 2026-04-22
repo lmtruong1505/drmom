@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:bpg_retail/core/constants/constanst.dart';
 
+import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/utilities/assets.dart';
 import 'package:bpg_retail/core/utilities/screens.dart';
@@ -290,7 +290,7 @@ class DialogUtils {
                 const SizedBox(height: 12),
                 Text(
                   description,
-                  style: s16w400.copyWith(color: AppColors.blackish),
+                  style: AppTypography.p4.copyWith(color: AppColors.blackish),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
@@ -327,31 +327,6 @@ class DialogUtils {
                     ),
                   ],
                 ),
-                // TwoButtonBox(
-                //   leftTitle: leftTitle ?? "Huỷ",
-                //   rightTitle: rightTitle ?? "Đồng ý",
-                //   rightOnTap: ontap,
-                // ),
-                // GestureDetector(
-                //   onTap: () {
-                //     action?.call();
-                //   },
-                //   child: Container(
-                //     width: double.infinity,
-                //     padding: const EdgeInsets.symmetric(
-                //       vertical: 16,
-                //     ),
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(8),
-                //       color: AppColors.main,
-                //     ),
-                //     child: Text(
-                //       actionTitle ?? 'Quay lại',
-                //       style: AppTypography.h6.copyWith(color: AppColors.white),
-                //       textAlign: TextAlign.center,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

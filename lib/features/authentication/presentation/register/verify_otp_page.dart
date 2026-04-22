@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bpg_retail/core/base/base_state.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
@@ -14,7 +14,7 @@ import 'package:bpg_retail/features/authentication/data/bloc/authentication_cubi
 import 'package:bpg_retail/features/authentication/data/bloc/authentication_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../core/constants/colors.dart';
+import '../../../../core/configs/app_style/init_app_style.dart';
 
 @RoutePage()
 class VerifyOtpPage extends StatefulWidget {
@@ -96,19 +96,19 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
               const Text(
                 "Xác thực OTP",
                 textAlign: TextAlign.left,
-                style: s24w700,
+                style: AppTypography.h2,
               ),
               8.height,
               Text(
                 "Mã OTP đã được gửi về Zalo ",
                 textAlign: TextAlign.left,
-                style: s14w400.copyWith(color: AppColors.grey79),
+                style: AppTypography.p6.copyWith(color: AppColors.grey_79),
               ),
               4.height,
               Text(
                 // widget.phoneNumber ??
                 '091 234 5678',
-                style: s20w700.copyWith(color: AppColors.black),
+                style: AppTypography.h3.copyWith(color: AppColors.black),
               ),
               16.height,
               PinCodeTextField(

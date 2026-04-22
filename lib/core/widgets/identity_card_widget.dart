@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/extension/string_extension.dart';
 import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
@@ -122,7 +122,7 @@ class _Card extends StatelessWidget {
               6.height,
               Text(
                 type == ImageIdentityTypeEnum.front ? "Mặt trước" : "Mặt sau",
-                style: s16w500.copyWith(
+                style: AppTypography.p3.copyWith(
                   color: AppColors.main,
                 ),
               ),

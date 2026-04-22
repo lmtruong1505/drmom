@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 
 class EmptyWidget extends StatelessWidget {
   const EmptyWidget({
@@ -13,7 +13,7 @@ class EmptyWidget extends StatelessWidget {
     return Center(
       child: Text(
         title ?? "Chưa có sản phẩm",
-        style: s16w500,
+        style: AppTypography.p3,
       ),
     );
   }

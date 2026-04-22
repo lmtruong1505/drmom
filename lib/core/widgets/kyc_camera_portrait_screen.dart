@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/init_ext.dart';
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
@@ -45,7 +45,7 @@ class _KycCameraPortraitScreenState extends State<KycCameraPortraitScreen> {
         elevation: 0,
         title: Text(
           'Chân dung',
-          style: s18w700.copyWith(color: AppColors.white),
+          style: AppTypography.h4.copyWith(color: AppColors.white),
         ),
         leading: IconButton(
           icon: const Icon(
@@ -111,7 +111,7 @@ class _KycCameraPortraitScreenState extends State<KycCameraPortraitScreen> {
               child: DottedBorder(
                 borderType: BorderType.Circle,
                 dashPattern: const [5],
-                color: AppColors.grey79,
+                color: AppColors.grey_79,
                 child: SizedBox(
                   width: ImageUtils.kycPortraitSize(context.width.toInt())
                           .toDouble() +
@@ -129,7 +129,7 @@ class _KycCameraPortraitScreenState extends State<KycCameraPortraitScreen> {
         //   child: Text(
         //     'Đưa khuôn mặt của bạn vừa với vòng tròn và nhấn chụp',
         //     textAlign: TextAlign.center,
-        //     style: AppTextStyles.s14w400,
+        //     style: AppTextStyles.AppTypography.p6,
         //   ),
         // ),
         Positioned(bottom: 0, right: 0, left: 0, child: _buildBottom()),

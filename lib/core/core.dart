@@ -1,5 +1,5 @@
 export 'widgets/widget.dart';
-export 'constants/constanst.dart';
+export 'configs/app_style/init_app_style.dart';
 export 'extension/init_ext.dart';
 export 'preferences/preferences.dart';
 export 'navigation/navigator.dart';

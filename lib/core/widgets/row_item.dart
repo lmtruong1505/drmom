@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/extension/spacing_extension.dart';
 
 class BaseRowItem extends StatelessWidget {
@@ -23,14 +23,14 @@ class BaseRowItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: titleStyle ?? s12w400),
+        Text(title, style: titleStyle ?? AppTypography.p9),
         12.width,
         Expanded(
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
               subtitle,
-              style: subStyle ?? s12w400,
+              style: subStyle ?? AppTypography.p9,
               textAlign: TextAlign.right,
               maxLines: maxLines,
               overflow: TextOverflow.ellipsis,

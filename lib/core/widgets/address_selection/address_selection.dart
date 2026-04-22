@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bpg_retail/core/base/base_state.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/spacing.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/utilities/screens.dart';
 import 'package:bpg_retail/core/widgets/address_selection/bloc/address_selection_cubit.dart';
 import 'package:bpg_retail/core/widgets/address_selection/bloc/address_selection_state.dart';
@@ -390,7 +390,7 @@ class _AddressSelectionState
                   BlocBuilder<AddressSelectionCubit, AddressSelectionState>(
                     builder: (context, state) {
                       return Container(
-                        padding: Spacing.h16,
+                        padding: AppSpacing.h16,
                         width: double.infinity,
                         child: SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
@@ -419,7 +419,7 @@ class _AddressSelectionState
                           children: [
                             const SizedBox(height: 16),
                             Padding(
-                              padding: Spacing.h16,
+                              padding: AppSpacing.h16,
                               child: ValidateTextField(
                                 margin: EdgeInsets.zero,
                                 backgroundColor: AppColors.white,

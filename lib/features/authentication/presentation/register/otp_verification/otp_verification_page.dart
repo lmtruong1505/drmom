@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bpg_retail/app/routes/router.gr.dart';
 import 'package:bpg_retail/core/base/base_state.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/spacing.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 import 'package:bpg_retail/core/injection/injection.dart';
 import 'package:bpg_retail/core/navigation/navigator.dart';
 import 'package:bpg_retail/core/utilities/converts.dart';
@@ -47,7 +47,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
       create: (context) => bloc,
       child: BaseScaffold(
         body: Container(
-          padding: Spacing.a16,
+          padding: AppSpacing.a16,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

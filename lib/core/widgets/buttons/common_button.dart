@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/constants/colors.dart';
-import 'package:bpg_retail/core/constants/spacing.dart';
-import 'package:bpg_retail/core/constants/typography.dart';
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
 
 class CommonButton extends StatelessWidget {
   final String title;
@@ -28,7 +28,7 @@ class CommonButton extends StatelessWidget {
         onTap?.call();
       },
       child: Container(
-        padding: padding ?? Spacing.a16,
+        padding: padding ?? AppSpacing.a16,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           color: buttonColor ?? AppColors.main,
