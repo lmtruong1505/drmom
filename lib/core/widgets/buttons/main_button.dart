@@ -25,7 +25,12 @@ class MainButton extends StatefulWidget {
     this.isDisable = false,
     this.isLoad = false,
     this.loadColor,
+    this.backgroundColor,
+    this.color,
   }) : super(key: key);
+
+  final Color? backgroundColor;
+  final Color? color;
 
   @override
   State<MainButton> createState() => _MainButtonState();
@@ -39,8 +44,10 @@ class _MainButtonState extends State<MainButton> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 0,
-        backgroundColor:
-            widget.isDisable ? AppColors.main.withOpacity(0.6) : AppColors.main,
+        backgroundColor: widget.backgroundColor ??
+            (widget.isDisable
+                ? AppColors.main.withOpacity(0.6)
+                : AppColors.main),
         padding: widget.padding ??
             const EdgeInsets.symmetric(
               horizontal: 16,
@@ -77,7 +84,7 @@ class _MainButtonState extends State<MainButton> {
                       style: (widget.largeButton
                               ? AppTypography.h6
                               : AppTypography.p5)
-                          .copyWith(color: AppColors.white),
+                          .copyWith(color: widget.color ?? AppColors.white),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

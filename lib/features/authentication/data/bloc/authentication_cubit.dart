@@ -124,7 +124,6 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
 
   FutureOr onLogin(BuildContext context) async {
     if (!formKey.currentState!.validate()) return;
-    final deviceId = await getPermanentDeviceId();
     if (state.isRemember) {
       preferences.saveRememberAccount(
         RememberAccount(
@@ -141,10 +140,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       final res = await _authenticationRepository.login(
         state.phoneNumber,
         state.password,
-        deviceId,
       );
 
-      if (res.code == 200) {
+      if (res.status == 200 || res.success == true) {
         navigator.showSuccessSnackBar(
           'Đăng nhập thành công',
           duration: const Duration(seconds: 2),
@@ -185,7 +183,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         confirmPassword: state.confirmPassword,
       );
       EasyLoading.dismiss();
-      if (res.code == 200) {
+      if (res.status == 200) {
         navigator.showSuccessDialog(
           title: 'Đăng ký thành công',
           // mainTitle: 'Đến màn OTP',
@@ -293,7 +291,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         referralCode: state.userReferralCode ?? '',
       );
       EasyLoading.dismiss();
-      if (res.code == 200) {
+      if (res.status == 200) {
         emit(state.copyWith(step: 2, countTime: 0));
         navigator.showSuccessDialog(
           title: 'Đăng ký thành công',
@@ -443,7 +441,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       token,
       state.otp,
     );
-    if (res.code == 200) {
+    if (res.status == 200) {
       emit(state.copyWith(status: CubitStatus.success, message: res.message));
     } else {
       emit(state.copyWith(status: CubitStatus.loaded, message: res.message));

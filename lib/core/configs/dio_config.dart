@@ -21,7 +21,7 @@ class BaseDio {
     _instance = _createDioInstance();
     return _instance!;
   }
-  final isLog = false;
+  final isLog = true;
   final preferences = getIt.get<Preferences>();
   final navigator = getIt.get<AppNavigator>();
   final appCubit = getIt.get<AppCubit>();

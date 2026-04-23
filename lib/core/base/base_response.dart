@@ -7,43 +7,49 @@ String baseResponseModelToJson(BaseResponseModel data) =>
     json.encode(data.toJson());
 
 class BaseResponseModel<T> {
-  final int? code;
+  final int? status;
+  final bool? success;
   final String? message;
   final T? data;
-  final dynamic extra;
+  final dynamic metadata;
 
   BaseResponseModel({
-    this.code,
+    this.status,
+    this.success,
     this.message,
     this.data,
-    this.extra,
+    this.metadata,
   });
 
   BaseResponseModel<T> copyWith({
-    int? code,
+    int? status,
+    bool? success,
     String? message,
     T? data,
-    dynamic extra,
+    dynamic metadata,
   }) =>
       BaseResponseModel(
-        code: code ?? this.code,
+        status: status ?? this.status,
+        success: success ?? this.success,
         message: message ?? this.message,
         data: data ?? this.data,
-        extra: extra ?? this.extra,
+        metadata: metadata ?? this.metadata,
       );
 
   factory BaseResponseModel.fromJson(Map<String, dynamic> json) =>
       BaseResponseModel(
-        code: json['code'],
+        status: json['status'],
+        success: json['success'],
         message: json['message'],
-        data: json['details'],
-        extra: json['extra'],
+        data: json['data'],
+        metadata: json['metadata'],
       );
 
   Map<String, dynamic> toJson() => {
-        'code': code,
+        'status': status,
+        'success': success,
         'message': message,
         'data': data,
-        'extra': extra,
+        'metadata': metadata,
       };
 }

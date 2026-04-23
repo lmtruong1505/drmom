@@ -3,6 +3,7 @@ import 'package:drmom/core/base/base_response.dart';
 import 'package:drmom/core/configs/dio_config.dart';
 import 'package:drmom/core/constants/api_constants.dart';
 import 'package:drmom/features/authentication/data/models/auth_response.dart';
+import 'package:drmom/features/authentication/data/models/user_model.dart';
 import 'package:drmom/features/authentication/data/services/authentication_service.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,30 +16,38 @@ class AuthenticationRepository {
   final BaseDio _baseDio;
 
   Future<BaseResponseModel<AuthResponse>> login(
-    String phoneNumber,
+    String username,
     String password,
-    String deviceId,
   ) async {
     try {
       final res = await _baseDio.post(
         Api.login,
         data: {
-          'device_id': deviceId,
-          "tai_khoan": phoneNumber,
-          "mat_khau": password,
+          "username": username,
+          "password": password,
         },
       );
-      if (res.data['success'] == true) {
-        final authResponse = AuthResponse.fromJson(res.data['data']);
-        return BaseResponseModel(code: 200, data: authResponse);
-      } else {
-        return BaseResponseModel(
-          code: res.data['status'] ?? 400,
-          message: res.data['message'],
-        );
+      
+      final status = res.data['status'];
+      final success = res.data['success'];
+      final message = res.data['message'];
+      final metadata = res.data['metadata'];
+      
+      AuthResponse? authData;
+      if (res.data['data'] != null) {
+        authData = AuthResponse.fromJson(res.data['data']);
       }
+      
+      return BaseResponseModel<AuthResponse>(
+        status: status,
+        success: success,
+        message: message,
+        data: authData,
+        metadata: metadata,
+      );
     } catch (err) {
-      return BaseResponseModel(code: 400, message: 'Đã có lỗi xảy ra');
+      print('Login Error: $err');
+      return BaseResponseModel(status: 400, message: 'Đã có lỗi xảy ra');
     }
   }
 
@@ -63,15 +72,15 @@ class AuthenticationRepository {
       };
       final res = await _baseDio.post(Api.register, data: data);
       if (res.data['success'] == true) {
-        return BaseResponseModel(code: 200, data: res.data);
+        return BaseResponseModel(status: 200, data: res.data);
       } else {
         return BaseResponseModel(
-          code: res.data['status'],
+          status: res.data['status'],
           message: res.data['message'],
         );
       }
     } catch (err) {
-      return BaseResponseModel(code: 400, message: 'Đã có lỗi xảy ra');
+      return BaseResponseModel(status: 400, message: 'Đã có lỗi xảy ra');
     }
   }
 
@@ -106,15 +115,15 @@ class AuthenticationRepository {
 
       final response = await _baseDio.post(Api.verifyOtpPhone, data: payload);
       if (response.data['success'] == true) {
-        return BaseResponseModel(code: 200, data: response.data);
+        return BaseResponseModel(status: 200, data: response.data);
       } else {
         return BaseResponseModel(
-          code: response.data['status'],
+          status: response.data['status'],
           message: response.data['message'],
         );
       }
     } catch (err) {
-      return BaseResponseModel(code: 400, message: err.toString());
+      return BaseResponseModel(status: 400, message: err.toString());
     }
   }
 
@@ -191,16 +200,16 @@ class AuthenticationRepository {
   Future<BaseResponseModel> deactive(int? id) async {
     try {
       final res = await _baseDio.put('${Api.disableAccount}/$id');
-      if (res.data["code"] == 200) {
-        return BaseResponseModel(code: 200);
+      if (res.data["status"] == 200) {
+        return BaseResponseModel(status: 200);
       } else {
         return BaseResponseModel(
-          code: res.data["code"],
+          status: res.data["status"],
           message: res.data["message"],
         );
       }
     } catch (e) {
-      return BaseResponseModel(code: 400, message: "Đã có lỗi xảy ra");
+      return BaseResponseModel(status: 400, message: "Đã có lỗi xảy ra");
     }
   }
 
@@ -211,19 +220,19 @@ class AuthenticationRepository {
     try {
       final payload = {"session": token, "otp": otp};
       final response = await _baseDio.post(Api.verifySoftToken, data: payload);
-      if (response.data["code"] == 200) {
+      if (response.data["status"] == 200) {
         return BaseResponseModel(
-          code: 200,
+          status: 200,
           message: "Tạo yêu cầu đổi mã token thành công",
         );
       } else {
         return BaseResponseModel(
-          code: response.data["code"],
+          status: response.data["status"],
           message: response.data["message"],
         );
       }
     } catch (err) {
-      return BaseResponseModel(code: 400, message: err.toString());
+      return BaseResponseModel(status: 400, message: err.toString());
     }
   }
 
@@ -231,19 +240,19 @@ class AuthenticationRepository {
     try {
       final payload = {"phone": phone, "otp": otp};
       final response = await _baseDio.post(Api.verifyBankAccout, data: payload);
-      if (response.data["code"] == 200) {
+      if (response.data["status"] == 200) {
         return BaseResponseModel(
-          code: 200,
+          status: 200,
           message: "Tạo yêu cầu đổi mã token thành công",
         );
       } else {
         return BaseResponseModel(
-          code: response.data["code"],
+          status: response.data["status"],
           message: response.data["message"],
         );
       }
     } catch (err) {
-      return BaseResponseModel(code: 400, message: err.toString());
+      return BaseResponseModel(status: 400, message: err.toString());
     }
   }
 
@@ -251,15 +260,15 @@ class AuthenticationRepository {
     try {
       final res = await _baseDio.get(Api.logOut);
       if (res.data["success"] == true) {
-        return BaseResponseModel(code: 200);
+        return BaseResponseModel(status: 200);
       } else {
         return BaseResponseModel(
-          code: res.data["code"],
+          status: res.data["status"],
           message: res.data["message"],
         );
       }
     } catch (e) {
-      return BaseResponseModel(code: 400, message: e.toString());
+      return BaseResponseModel(status: 400, message: e.toString());
     }
   }
 }

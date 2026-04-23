@@ -1,15 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:drmom/app/data/bloc/localization_cubit.dart';
 import 'package:drmom/app/routes/router.gr.dart';
 import "package:drmom/core/configs/app_style/init_app_style.dart";
-import "package:drmom/core/configs/app_style/init_app_style.dart";
-import 'package:drmom/core/extension/init_ext.dart'; 
-import 'package:drmom/core/extension/spacing_extension.dart';
+import 'package:drmom/core/extension/init_ext.dart';
 import 'package:drmom/core/injection/injection.dart';
 import 'package:drmom/core/navigation/navigator.dart';
 import 'package:drmom/core/utilities/localization_helper.dart';
 import 'package:drmom/core/widgets/buttons/main_button.dart';
-import 'package:drmom/core/widgets/common/base_check_box.dart';
 import 'package:drmom/core/widgets/textfield/validate_textfield.dart';
 import 'package:drmom/features/authentication/data/bloc/authentication_cubit.dart';
 import 'package:drmom/features/authentication/data/bloc/authentication_state.dart';
@@ -17,7 +13,7 @@ import 'package:drmom/features/authentication/presentation/widget/header_auth.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@RoutePage()  
+@RoutePage()
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -41,11 +37,20 @@ class _LoginPageState extends State<LoginPage> {
     final trans = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [const HeaderAuthForm(), _formView(trans)],
-        ).padding(16.padingHor),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const HeaderAuthForm(isPaddingTop: 0),
+                _formView(trans),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -59,123 +64,128 @@ class _LoginPageState extends State<LoginPage> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              32.height,
-              ValidateTextField(
-                initialValue: state.phoneNumber,
-                margin: EdgeInsets.zero,
-                backgroundColor: AppColors.white,
-                hintText: trans.translate('email'),
-                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
-                maxLines: 1,
-                onChanged: bloc.onChangePhoneNumber,
-                // validator: (value) {
-                //   if (value?.isEmpty ?? false) {
-                //     return trans.translate('pls_email');
-                //   }
-                //   if (!value.isEmail()) {
-                //     return trans.translate('email_not_valid');
-                //   }
-
-                //   return null;
-                // },
-              ),
-              16.height,
-              ValidateTextField(
-                initialValue: state.password,
-                margin: EdgeInsets.zero,
-                backgroundColor: AppColors.white,
-                hintText: trans.translate('pls_password'),
-                hintStyle: AppTypography.p6.copyWith(color: AppColors.grey_1),
-                maxLines: 1,
-                onChanged: bloc.onChangePassword,
-                obscureText: !state.showPassword,
-                suffixIcon: GestureDetector(
-                  onTap: bloc.onShowPassword,
-                  child: Icon(
-                    !state.showPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                    color: AppColors.grey_1,
-                    size: 20,
-                  ),
+              48.height,
+              Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: AppShadows.soft,
                 ),
-                validator: (value) {
-                  if (value?.isEmpty ?? false) {
-                    return trans.translate('pw_not_valid');
-                  }
-                  return null;
-                },
-              ),
-              16.height,
-              Row(
-                children: [
-                  BaseCheckbox(
-                    value: state.isRemember,
-                    radius: 4,
-                    onChanged: (bool? value) {
-                      bloc.onRememberAccount(value ?? false);
-                    },
-                  ),
-                  8.height,
-                  GestureDetector(
-                    onTap: () {
-                      bloc.onRememberAccount(!state.isRemember);
-                    },
-                    child: Column(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Đăng nhập',
+                      style: AppTypography.h3.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    ValidateTextField(
+                      label: 'Tài khoản',
+                      initialValue: state.phoneNumber,
+                      margin: EdgeInsets.zero,
+                      hintText: 'Nhập số điện thoại hoặc email',
+                      hintStyle: AppTypography.p6.copyWith(
+                        color: const Color(0xFF98A2B3),
+                      ),
+                      leadingIcon: const Icon(
+                        Icons.mail_outline,
+                        color: Color(0xFF98A2B3),
+                        size: 20,
+                      ),
+                      maxLines: 1,
+                      onChanged: bloc.onChangePhoneNumber,
+                    ),
+                    const SizedBox(height: 16),
+                    ValidateTextField(
+                      label: 'Mật khẩu',
+                      initialValue: state.password,
+                      margin: EdgeInsets.zero,
+                      hintText: '********',
+                      hintStyle: AppTypography.p6.copyWith(
+                        color: const Color(0xFF98A2B3),
+                      ),
+                      leadingIcon: const Icon(
+                        Icons.lock_outline,
+                        color: Color(0xFF98A2B3),
+                        size: 20,
+                      ),
+                      maxLines: 1,
+                      onChanged: bloc.onChangePassword,
+                      obscureText: !state.showPassword,
+                      suffixIcon: GestureDetector(
+                        onTap: bloc.onShowPassword,
+                        child: Icon(
+                          !state.showPassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                          color: const Color(0xFF98A2B3),
+                          size: 20,
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value?.isEmpty ?? false) {
+                          return trans.translate('pw_not_valid');
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 32),
+                    SizedBox(
+                      height: 52,
+                      width: double.infinity,
+                      child: MainButton(
+                        backgroundColor: AppColors.main,
+                        title: trans.translate('log_in'),
+                        onTap: () => bloc.onLogin(context),
+                        largeButton: true,
+                        radius: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 1),
                         Text(
-                          trans.translate('remember_password'),
-                          style: AppTypography.p4.copyWith(
-                            color: AppColors.grey_79,
+                          'Chưa có tài khoản? ',
+                          style: AppTypography.p6.copyWith(
+                            color: AppColors.text_secondary,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            navigator.push(const RegisterRoute());
+                          },
+                          child: Text(
+                            'Đăng ký ngay',
+                            style: AppTypography.p6.copyWith(
+                              color: AppColors.blue60,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  // const Spacer(),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     navigator.push(const ForgotPasswordPage());
-                  //   },
-                  //   child: Text(
-                  //     'Quên mật khẩu?',
-                  //     style: AppTypography.p4.copyWith(
-                  //       color: AppColors.blue_3,
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              SizedBox(
-                height: 45,
-                width: double.infinity,
-                child: MainButton(
-                  title: trans.translate('log_in'),
-                  onTap: () => bloc.onLogin(context),
-                  largeButton: true,
+                  ],
                 ),
               ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Text(
-                    'Bạn chưa có tài khoản? ',
-                    style: AppTypography.p6,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      navigator.push(const RegisterRoute());
-                    },
-                    child: Text(
-                      'Đăng ký ngay',
-                      style: AppTypography.p5.copyWith(color: AppColors.blue_3),
+              const SizedBox(height: 48),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    'Bằng việc đăng nhập, bạn đồng ý với điều khoản sử dụng',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.p7.copyWith(
+                      color: AppColors.text_tertiary,
+                      height: 1.5,
                     ),
                   ),
-                ],
+                ),
               ),
+              const SizedBox(height: 24),
             ],
           );
         },
