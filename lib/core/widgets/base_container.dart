@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
 
 class BaseContainer extends StatelessWidget {
   const BaseContainer({

@@ -1,7 +1,7 @@
-import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/style_app/color_app.dart';
-import 'package:bpg_retail/core/widgets/fa_icon.dart';
+import 'package:drmom/core/configs/app_style/init_app_style.dart';
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/style_app/color_app.dart';
+import 'package:drmom/core/widgets/fa_icon.dart';
 import 'package:flutter/material.dart';
 import 'label_button.dart';
 

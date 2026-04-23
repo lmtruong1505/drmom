@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/init_ext.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/init_ext.dart';
 
 import '../../configs/app_style/init_app_style.dart';
 import '../expanded_section.dart';

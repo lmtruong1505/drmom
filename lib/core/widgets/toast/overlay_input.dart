@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import "package:bpg_retail/core/core.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/core.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
 import 'package:flutter/material.dart';
 
 typedef ItemOverlayBuilder<ItemType> =

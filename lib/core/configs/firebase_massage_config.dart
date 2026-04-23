@@ -4,8 +4,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:bpg_retail/core/injection/injection.dart';
-import 'package:bpg_retail/core/navigation/navigator.dart';
+import 'package:drmom/core/injection/injection.dart';
+import 'package:drmom/core/navigation/navigator.dart';
 
 class FirebaseMessageConfig {
   final notificationSettings = FirebaseMessaging.instance;

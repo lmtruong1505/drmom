@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
 
 class CameraFloatButton extends StatelessWidget {
   final Function() onPressed;

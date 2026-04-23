@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/utilities/assets.dart';
-import 'package:bpg_retail/core/utilities/screens.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/utilities/assets.dart';
+import 'package:drmom/core/utilities/screens.dart';
 import 'package:flutter/material.dart';
 
 class BaseScaffold extends StatelessWidget {

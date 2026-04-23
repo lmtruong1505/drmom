@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bpg_retail/core/base/base_state.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/utilities/screens.dart';
-import 'package:bpg_retail/core/widgets/address_selection/bloc/address_selection_cubit.dart';
-import 'package:bpg_retail/core/widgets/address_selection/bloc/address_selection_state.dart';
-import 'package:bpg_retail/core/widgets/address_selection/models/address_selection_model.dart';
-import 'package:bpg_retail/core/widgets/base/base_loading.dart';
-import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
-import 'package:bpg_retail/core/widgets/textfield/validate_textfield.dart';
+import 'package:drmom/core/base/base_state.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/utilities/screens.dart';
+import 'package:drmom/core/widgets/address_selection/bloc/address_selection_cubit.dart';
+import 'package:drmom/core/widgets/address_selection/bloc/address_selection_state.dart';
+import 'package:drmom/core/widgets/address_selection/models/address_selection_model.dart';
+import 'package:drmom/core/widgets/base/base_loading.dart';
+import 'package:drmom/core/widgets/buttons/extra_button.dart';
+import 'package:drmom/core/widgets/textfield/validate_textfield.dart';
 
 class AddressSelection extends StatefulWidget {
   const AddressSelection({

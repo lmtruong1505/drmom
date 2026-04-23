@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/widgets/buttons/extra_button.dart';
-import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/widgets/buttons/extra_button.dart';
+import 'package:drmom/core/widgets/buttons/main_button.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 

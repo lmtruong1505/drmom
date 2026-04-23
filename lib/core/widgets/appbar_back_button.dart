@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/injection/injection.dart';
-import 'package:bpg_retail/core/navigation/navigator.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/injection/injection.dart';
+import 'package:drmom/core/navigation/navigator.dart';
 
 class AppBarBackButton extends StatelessWidget {
   AppBarBackButton({this.onTap});

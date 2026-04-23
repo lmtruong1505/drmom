@@ -1,7 +1,7 @@
-import 'package:bpg_retail/app/data/bloc/app_cubit.dart';
-import 'package:bpg_retail/core/injection/injection.dart';
-import 'package:bpg_retail/core/navigation/navigator.dart';
-import 'package:bpg_retail/core/preferences/preferences.dart';
+import 'package:drmom/app/data/bloc/app_cubit.dart';
+import 'package:drmom/core/injection/injection.dart';
+import 'package:drmom/core/navigation/navigator.dart';
+import 'package:drmom/core/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';

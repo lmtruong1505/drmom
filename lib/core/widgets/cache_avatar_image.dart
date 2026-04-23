@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/string_extension.dart';
-import 'package:bpg_retail/core/widgets/base_container.dart';
-import 'package:bpg_retail/gen/assets.gen.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/string_extension.dart';
+import 'package:drmom/core/widgets/base_container.dart';
+import 'package:drmom/gen/assets.gen.dart';
 
 class CacheAvatarImage extends StatelessWidget {
   final String? url;

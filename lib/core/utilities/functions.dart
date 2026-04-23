@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/rendering.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
 
 bool areListsEqual(List<int>? list1, List<int>? list2) {
   if (list1 == null || list2 == null) return false;

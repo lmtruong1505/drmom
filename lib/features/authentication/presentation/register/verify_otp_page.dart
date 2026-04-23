@@ -1,17 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bpg_retail/gen/assets.gen.dart';
+import 'package:drmom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bpg_retail/core/base/base_state.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/extension/spacing_extension.dart';
-import 'package:bpg_retail/core/injection/injection.dart';
-import 'package:bpg_retail/core/navigation/navigator.dart';
-import 'package:bpg_retail/core/widgets/buttons/main_button.dart';
-import 'package:bpg_retail/features/authentication/data/bloc/authentication_cubit.dart';
-import 'package:bpg_retail/features/authentication/data/bloc/authentication_state.dart';
+import 'package:drmom/core/base/base_state.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/extension/spacing_extension.dart';
+import 'package:drmom/core/injection/injection.dart';
+import 'package:drmom/core/navigation/navigator.dart';
+import 'package:drmom/core/widgets/buttons/main_button.dart';
+import 'package:drmom/features/authentication/data/bloc/authentication_cubit.dart';
+import 'package:drmom/features/authentication/data/bloc/authentication_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/configs/app_style/init_app_style.dart';

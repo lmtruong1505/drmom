@@ -1,11 +1,11 @@
-import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/toast/toast_custom.dart';
-import 'package:bpg_retail/core/widgets/buttons/double_button.dart';
-import 'package:bpg_retail/core/widgets/buttons/icon_btn.dart';
-import 'package:bpg_retail/core/widgets/calendar_custom.dart';
-import 'package:bpg_retail/core/widgets/divider_custom.dart';
-import 'package:bpg_retail/gen/assets.gen.dart';
+import 'package:drmom/core/configs/app_style/init_app_style.dart';
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/toast/toast_custom.dart';
+import 'package:drmom/core/widgets/buttons/double_button.dart';
+import 'package:drmom/core/widgets/buttons/icon_btn.dart';
+import 'package:drmom/core/widgets/calendar_custom.dart';
+import 'package:drmom/core/widgets/divider_custom.dart';
+import 'package:drmom/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:bpg_retail/core/extension/init_ext.dart';
+import 'package:drmom/core/extension/init_ext.dart';
 
 import '../../gen/assets.gen.dart';
 

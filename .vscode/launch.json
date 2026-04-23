@@ -5,14 +5,14 @@
     "version": "1.0.0",
     "configurations": [
         {
-            "name": "bpg_retail(Dev)",
+            "name": "drmom(Dev)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
             "args": []
         },
         {
-            "name": "bpg_retail(Stg)",
+            "name": "drmom(Stg)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "name": "bpg_retail(Prod)",
+            "name": "drmom(Prod)",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",

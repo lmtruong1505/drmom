@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:bpg_retail/core/base/base_response.dart';
-import 'package:bpg_retail/core/configs/dio_config.dart';
-import 'package:bpg_retail/core/constants/api_constants.dart';
-import 'package:bpg_retail/features/authentication/data/models/auth_response.dart';
-import 'package:bpg_retail/features/authentication/data/services/authentication_service.dart';
+import 'package:drmom/core/base/base_response.dart';
+import 'package:drmom/core/configs/dio_config.dart';
+import 'package:drmom/core/constants/api_constants.dart';
+import 'package:drmom/features/authentication/data/models/auth_response.dart';
+import 'package:drmom/features/authentication/data/services/authentication_service.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton()

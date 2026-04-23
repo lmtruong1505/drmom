@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bpg_retail/core/configs/app_style/init_app_style.dart';
-import 'package:bpg_retail/core/extension/spacing_extension.dart';
-import 'package:bpg_retail/core/widgets/buttons/label_button.dart';
-import 'package:bpg_retail/features/dashboard/widgets/dashboard_header.dart';
-import 'package:bpg_retail/features/dashboard/widgets/hospital_filter.dart';
-import 'package:bpg_retail/features/dashboard/widgets/overview_cards.dart';
-import 'package:bpg_retail/features/dashboard/widgets/depreciation_chart.dart';
-import 'package:bpg_retail/features/dashboard/widgets/liquidation_chart.dart';
-import 'package:bpg_retail/features/dashboard/widgets/asset_lists.dart';
+import 'package:drmom/core/configs/app_style/init_app_style.dart';
+import 'package:drmom/core/extension/spacing_extension.dart';
+import 'package:drmom/core/widgets/buttons/label_button.dart';
+import 'package:drmom/features/dashboard/widgets/dashboard_header.dart';
+import 'package:drmom/features/dashboard/widgets/hospital_filter.dart';
+import 'package:drmom/features/dashboard/widgets/overview_cards.dart';
+import 'package:drmom/features/dashboard/widgets/depreciation_chart.dart';
+import 'package:drmom/features/dashboard/widgets/liquidation_chart.dart';
+import 'package:drmom/features/dashboard/widgets/asset_lists.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()

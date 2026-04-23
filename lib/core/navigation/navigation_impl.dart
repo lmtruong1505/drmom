@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
-import 'package:bpg_retail/app/routes/router.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/utilities/dialog_utils.dart';
-import 'package:bpg_retail/core/utilities/log_utils.dart';
-import 'package:bpg_retail/core/utilities/snackbar_utils.dart';
+import 'package:drmom/app/routes/router.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/utilities/dialog_utils.dart';
+import 'package:drmom/core/utilities/log_utils.dart';
+import 'package:drmom/core/utilities/snackbar_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' as m;
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:bpg_retail/core/widgets/toast/toast.dart';
+import 'package:drmom/core/widgets/toast/toast.dart';
 import 'navigator.dart';
 
 @LazySingleton(as: AppNavigator)

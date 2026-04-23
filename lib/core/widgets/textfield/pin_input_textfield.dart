@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
 
 class PinInputField extends StatefulWidget {
   final Function(String)? onDone;

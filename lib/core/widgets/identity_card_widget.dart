@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/extension/string_extension.dart';
-import 'package:bpg_retail/core/widgets/cache_image_network_widget.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/extension/string_extension.dart';
+import 'package:drmom/core/widgets/cache_image_network_widget.dart';
 
 class IdentityCardWidget extends StatelessWidget {
   final ImageIdentityTypeEnum type;

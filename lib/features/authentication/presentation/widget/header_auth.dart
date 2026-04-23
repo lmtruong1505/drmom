@@ -1,5 +1,5 @@
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/gen/assets.gen.dart';
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/gen/assets.gen.dart';
 import 'package:flutter/widgets.dart';
 
 class HeaderAuthForm extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:bpg_retail/core/check_version/check_vesion.dart';
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import "package:bpg_retail/core/configs/app_style/init_app_style.dart";
-import 'package:bpg_retail/core/extension/init_ext.dart';
-import 'package:bpg_retail/core/utilities/launch_url.dart';
-import "package:bpg_retail/core/widgets/buttons/main_button.dart";
+import 'package:drmom/core/check_version/check_vesion.dart';
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import "package:drmom/core/configs/app_style/init_app_style.dart";
+import 'package:drmom/core/extension/init_ext.dart';
+import 'package:drmom/core/utilities/launch_url.dart';
+import "package:drmom/core/widgets/buttons/main_button.dart";
 
 class UpdateAppDialog extends StatelessWidget {
   final ModelVersion version;
