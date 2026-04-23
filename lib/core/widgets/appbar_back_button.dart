@@ -51,7 +51,7 @@ class AppBarBackButtonV2 extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: AppColors.bg_3),
         ),
-        child: const Row(
+        child:  Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(

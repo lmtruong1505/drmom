@@ -2,8 +2,10 @@ part of 'init_app_style.dart';
 
 class AppColors {
   AppColors._();
-  static const Color main = Color(0xFF6F68A8);
-  static const Color backgroundDefault = Color(0xFF00897B);
+  static const Color main = Color(0xFF6B3729);
+  static const Color primary = Color(0xFF6B3729);
+  static const Color secondary = Color(0xFFF09000);
+  static const Color scaffoldBackground = Color(0xFFF9F9F9);
   static const Color btBackgroundDefault = Color(0xFF00897B);
 
   static const Color backgroundHover = Color(0xFFB3D9C5);

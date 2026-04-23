@@ -161,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                   Text(
                     'Bạn chưa có tài khoản? ',
                     style: AppTypography.p6,
                   ),

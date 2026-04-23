@@ -1,14 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:drmom/app/routes/router.gr.dart';
 import "package:drmom/core/configs/app_style/init_app_style.dart";
-import "package:drmom/core/configs/app_style/init_app_style.dart";
 import 'package:drmom/core/extension/init_ext.dart';
 import 'package:drmom/core/extension/spacing_extension.dart';
-import 'package:drmom/core/extension/string_extension.dart';
 import 'package:drmom/core/injection/injection.dart';
 import 'package:drmom/core/navigation/navigator.dart';
 import 'package:drmom/core/utilities/debouncer.dart';
-import 'package:drmom/core/utilities/enum.dart';
 import 'package:drmom/core/widgets/buttons/main_button.dart';
 import 'package:drmom/core/widgets/common/title_required.dart';
 import 'package:drmom/core/widgets/textfield/validate_textfield.dart';
@@ -358,7 +355,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                   Text(
                     'Đã có tài khoản? ',
                     style: AppTypography.p6,
                   ),

@@ -640,190 +640,20 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/Frame 1000014072.png
-  AssetGenImage get frame1000014072 =>
-      const AssetGenImage('assets/images/Frame 1000014072.png');
-
-  /// File path: assets/images/avatar_user.jpeg
-  AssetGenImage get avatarUser =>
-      const AssetGenImage('assets/images/avatar_user.jpeg');
-
-  /// File path: assets/images/background.png
-  AssetGenImage get backgroundPng =>
-      const AssetGenImage('assets/images/background.png');
-
-  /// File path: assets/images/background.svg
-  SvgGenImage get backgroundSvg =>
-      const SvgGenImage('assets/images/background.svg');
-
   /// File path: assets/images/background_1.png
   AssetGenImage get background1 =>
       const AssetGenImage('assets/images/background_1.png');
 
-  /// File path: assets/images/background_2.png
-  AssetGenImage get background2 =>
-      const AssetGenImage('assets/images/background_2.png');
-
-  /// File path: assets/images/background_gradient.png
-  AssetGenImage get backgroundGradient =>
-      const AssetGenImage('assets/images/background_gradient.png');
-
   /// File path: assets/images/banner.png
   AssetGenImage get banner => const AssetGenImage('assets/images/banner.png');
-
-  /// File path: assets/images/banner1_home_v2.png
-  AssetGenImage get banner1HomeV2 =>
-      const AssetGenImage('assets/images/banner1_home_v2.png');
-
-  /// File path: assets/images/banner2_home_v2.png
-  AssetGenImage get banner2HomeV2 =>
-      const AssetGenImage('assets/images/banner2_home_v2.png');
-
-  /// File path: assets/images/banner3_home_v2.png
-  AssetGenImage get banner3HomeV2 =>
-      const AssetGenImage('assets/images/banner3_home_v2.png');
 
   /// File path: assets/images/banner_asbc.png
   AssetGenImage get bannerAsbc =>
       const AssetGenImage('assets/images/banner_asbc.png');
 
-  /// File path: assets/images/banner_body.png
-  AssetGenImage get bannerBody =>
-      const AssetGenImage('assets/images/banner_body.png');
-
-  /// File path: assets/images/banner_cat.png
-  AssetGenImage get bannerCat =>
-      const AssetGenImage('assets/images/banner_cat.png');
-
-  /// File path: assets/images/banner_home.png
-  AssetGenImage get bannerHome =>
-      const AssetGenImage('assets/images/banner_home.png');
-
-  /// File path: assets/images/banner_home_1.png
-  AssetGenImage get bannerHome1 =>
-      const AssetGenImage('assets/images/banner_home_1.png');
-
-  /// File path: assets/images/banner_home_2.png
-  AssetGenImage get bannerHome2 =>
-      const AssetGenImage('assets/images/banner_home_2.png');
-
-  /// File path: assets/images/bg_category_1.png
-  AssetGenImage get bgCategory1 =>
-      const AssetGenImage('assets/images/bg_category_1.png');
-
-  /// File path: assets/images/bg_category_2.png
-  AssetGenImage get bgCategory2 =>
-      const AssetGenImage('assets/images/bg_category_2.png');
-
-  /// File path: assets/images/bg_category_3.png
-  AssetGenImage get bgCategory3 =>
-      const AssetGenImage('assets/images/bg_category_3.png');
-
-  /// File path: assets/images/bg_product.png
-  AssetGenImage get bgProduct =>
-      const AssetGenImage('assets/images/bg_product.png');
-
   /// File path: assets/images/bg_screen.png
   AssetGenImage get bgScreen =>
       const AssetGenImage('assets/images/bg_screen.png');
-
-  /// File path: assets/images/bg_star.png
-  AssetGenImage get bgStar => const AssetGenImage('assets/images/bg_star.png');
-
-  /// File path: assets/images/booth_banner_1.png
-  AssetGenImage get boothBanner1 =>
-      const AssetGenImage('assets/images/booth_banner_1.png');
-
-  /// File path: assets/images/booth_banner_2.png
-  AssetGenImage get boothBanner2 =>
-      const AssetGenImage('assets/images/booth_banner_2.png');
-
-  /// File path: assets/images/booth_banner_3.png
-  AssetGenImage get boothBanner3 =>
-      const AssetGenImage('assets/images/booth_banner_3.png');
-
-  /// File path: assets/images/booth_banner_4.png
-  AssetGenImage get boothBanner4 =>
-      const AssetGenImage('assets/images/booth_banner_4.png');
-
-  /// File path: assets/images/box_error.png
-  AssetGenImage get boxError =>
-      const AssetGenImage('assets/images/box_error.png');
-
-  /// File path: assets/images/card_bank.png
-  AssetGenImage get cardBank =>
-      const AssetGenImage('assets/images/card_bank.png');
-
-  /// File path: assets/images/cart_banner.png
-  AssetGenImage get cartBanner =>
-      const AssetGenImage('assets/images/cart_banner.png');
-
-  /// File path: assets/images/default_map.png
-  AssetGenImage get defaultMap =>
-      const AssetGenImage('assets/images/default_map.png');
-
-  /// File path: assets/images/empty_notify.png
-  AssetGenImage get emptyNotify =>
-      const AssetGenImage('assets/images/empty_notify.png');
-
-  /// File path: assets/images/home_banner.png
-  AssetGenImage get homeBanner =>
-      const AssetGenImage('assets/images/home_banner.png');
-
-  /// File path: assets/images/ic_order_shop.png
-  AssetGenImage get icOrderShopPng =>
-      const AssetGenImage('assets/images/ic_order_shop.png');
-
-  /// File path: assets/images/ic_order_shop.svg
-  SvgGenImage get icOrderShopSvg =>
-      const SvgGenImage('assets/images/ic_order_shop.svg');
-
-  /// File path: assets/images/im_bank_tranfer.svg
-  SvgGenImage get imBankTranfer =>
-      const SvgGenImage('assets/images/im_bank_tranfer.svg');
-
-  /// File path: assets/images/im_both_banner.png
-  AssetGenImage get imBothBanner =>
-      const AssetGenImage('assets/images/im_both_banner.png');
-
-  /// File path: assets/images/im_credit_card.svg
-  SvgGenImage get imCreditCard =>
-      const SvgGenImage('assets/images/im_credit_card.svg');
-
-  /// File path: assets/images/im_logistics_delivery.svg
-  SvgGenImage get imLogisticsDelivery =>
-      const SvgGenImage('assets/images/im_logistics_delivery.svg');
-
-  /// File path: assets/images/im_order.png
-  AssetGenImage get imOrder =>
-      const AssetGenImage('assets/images/im_order.png');
-
-  /// File path: assets/images/image_home.png
-  AssetGenImage get imageHome =>
-      const AssetGenImage('assets/images/image_home.png');
-
-  /// File path: assets/images/image_register_store.png
-  AssetGenImage get imageRegisterStore =>
-      const AssetGenImage('assets/images/image_register_store.png');
-
-  /// File path: assets/images/img_ghtk.png
-  AssetGenImage get imgGhtk =>
-      const AssetGenImage('assets/images/img_ghtk.png');
-
-  /// File path: assets/images/img_order_shop.png
-  AssetGenImage get imgOrderShop =>
-      const AssetGenImage('assets/images/img_order_shop.png');
-
-  /// File path: assets/images/img_store.png
-  AssetGenImage get imgStore =>
-      const AssetGenImage('assets/images/img_store.png');
-
-  /// File path: assets/images/img_viettel_post.png
-  AssetGenImage get imgViettelPost =>
-      const AssetGenImage('assets/images/img_viettel_post.png');
-
-  /// File path: assets/images/lh_logo.png
-  AssetGenImage get lhLogo => const AssetGenImage('assets/images/lh_logo.png');
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
@@ -832,134 +662,14 @@ class $AssetsImagesGen {
   AssetGenImage get logoAbsc =>
       const AssetGenImage('assets/images/logo_absc.png');
 
-  /// File path: assets/images/logo_absc_1.png
-  AssetGenImage get logoAbsc1 =>
-      const AssetGenImage('assets/images/logo_absc_1.png');
-
-  /// File path: assets/images/nuoc-rau-cau.png
-  AssetGenImage get nuocRauCau =>
-      const AssetGenImage('assets/images/nuoc-rau-cau.png');
-
-  /// File path: assets/images/place_holder_image.png
-  AssetGenImage get placeHolderImage =>
-      const AssetGenImage('assets/images/place_holder_image.png');
-
-  /// File path: assets/images/rank_0.png
-  AssetGenImage get rank0 => const AssetGenImage('assets/images/rank_0.png');
-
-  /// File path: assets/images/rank_1.png
-  AssetGenImage get rank1 => const AssetGenImage('assets/images/rank_1.png');
-
-  /// File path: assets/images/rank_2.png
-  AssetGenImage get rank2 => const AssetGenImage('assets/images/rank_2.png');
-
-  /// File path: assets/images/store_avatar.png
-  AssetGenImage get storeAvatar =>
-      const AssetGenImage('assets/images/store_avatar.png');
-
-  /// File path: assets/images/tang-luc-pullup.png
-  AssetGenImage get tangLucPullup =>
-      const AssetGenImage('assets/images/tang-luc-pullup.png');
-
-  /// File path: assets/images/thach-caramel.png
-  AssetGenImage get thachCaramel =>
-      const AssetGenImage('assets/images/thach-caramel.png');
-
-  /// File path: assets/images/thach-chanh-leo.png
-  AssetGenImage get thachChanhLeo =>
-      const AssetGenImage('assets/images/thach-chanh-leo.png');
-
-  /// File path: assets/images/thach-excite.png
-  AssetGenImage get thachExcite =>
-      const AssetGenImage('assets/images/thach-excite.png');
-
-  /// File path: assets/images/thach-kimiko.png
-  AssetGenImage get thachKimiko =>
-      const AssetGenImage('assets/images/thach-kimiko.png');
-
-  /// File path: assets/images/thach-marry.png
-  AssetGenImage get thachMarry =>
-      const AssetGenImage('assets/images/thach-marry.png');
-
-  /// File path: assets/images/thach-natty.png
-  AssetGenImage get thachNatty =>
-      const AssetGenImage('assets/images/thach-natty.png');
-
-  /// File path: assets/images/thach-rau-cau.png
-  AssetGenImage get thachRauCau =>
-      const AssetGenImage('assets/images/thach-rau-cau.png');
-
-  /// File path: assets/images/the-thao-pullup.png
-  AssetGenImage get theThaoPullup =>
-      const AssetGenImage('assets/images/the-thao-pullup.png');
-
   /// List of all assets
-  List<dynamic> get values => [
-    frame1000014072,
-    avatarUser,
-    backgroundPng,
-    backgroundSvg,
+  List<AssetGenImage> get values => [
     background1,
-    background2,
-    backgroundGradient,
     banner,
-    banner1HomeV2,
-    banner2HomeV2,
-    banner3HomeV2,
     bannerAsbc,
-    bannerBody,
-    bannerCat,
-    bannerHome,
-    bannerHome1,
-    bannerHome2,
-    bgCategory1,
-    bgCategory2,
-    bgCategory3,
-    bgProduct,
     bgScreen,
-    bgStar,
-    boothBanner1,
-    boothBanner2,
-    boothBanner3,
-    boothBanner4,
-    boxError,
-    cardBank,
-    cartBanner,
-    defaultMap,
-    emptyNotify,
-    homeBanner,
-    icOrderShopPng,
-    icOrderShopSvg,
-    imBankTranfer,
-    imBothBanner,
-    imCreditCard,
-    imLogisticsDelivery,
-    imOrder,
-    imageHome,
-    imageRegisterStore,
-    imgGhtk,
-    imgOrderShop,
-    imgStore,
-    imgViettelPost,
-    lhLogo,
     logo,
     logoAbsc,
-    logoAbsc1,
-    nuocRauCau,
-    placeHolderImage,
-    rank0,
-    rank1,
-    rank2,
-    storeAvatar,
-    tangLucPullup,
-    thachCaramel,
-    thachChanhLeo,
-    thachExcite,
-    thachKimiko,
-    thachMarry,
-    thachNatty,
-    thachRauCau,
-    theThaoPullup,
   ];
 }
 

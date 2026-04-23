@@ -31,7 +31,7 @@ class SelectImageWidgetV2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoActionSheet(
-      title: const Text(
+      title:  Text(
         'Thêm ảnh',
         style: AppTypography.p5,
       ),
@@ -136,7 +136,7 @@ class SelectImageWidget extends StatelessWidget {
               callback.call(res);
             }
           },
-          child: const Text(
+          child:  Text(
             'Chọn từ thư viện',
             style: AppTypography.h4,
           ),

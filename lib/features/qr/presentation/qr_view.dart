@@ -144,7 +144,7 @@ class _QrCodeScreenState extends State<QrCodeScreen>
       isSnackbar = false;
       ScaffoldMessenger.of(context).showMaterialBanner(
         MaterialBanner(
-          content: const Text(
+          content:  Text(
             'Vui lòng cho phép quyền sử dụng Camera để sử dụng chức năng',
             style: AppTypography.p6,
           ),

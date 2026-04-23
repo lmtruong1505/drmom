@@ -75,12 +75,12 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
+               Text(
                 'Xác nhận OTP',
                 style: AppTypography.h4,
               ),
               const SizedBox(height: 16),
-              const Text('Số điện thoại', style: AppTypography.p5),
+               Text('Số điện thoại', style: AppTypography.p5),
               const SizedBox(height: 8),
               BlocBuilder<AuthenticationCubit, AuthenticationState>(
                 buildWhen: (previous, current) =>
@@ -144,7 +144,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                       "Mã xác thực được gửi đến SĐT ${widget.phoneNumber}",
                                       style: AppTypography.p5,
                                     ),
-                                    const Text(
+                                     Text(
                                       "Vui lòng nhập mã OTP để xác thực.",
                                       style: AppTypography.p5,
                                     ),
@@ -154,7 +154,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             },
                           ),
                           const SizedBox(height: 16),
-                          const Text('Mã OTP', style: AppTypography.p5),
+                           Text('Mã OTP', style: AppTypography.p5),
                           const SizedBox(height: 8),
                           PinCodeTextField(
                             appContext: context,
@@ -205,7 +205,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                     style: AppTypography.p5,
                                   ),
                                 if (state.countTime < 1)
-                                  const Text(
+                                   Text(
                                     "Bạn chưa nhận được mã. ",
                                     style: AppTypography.p5,
                                   ),
@@ -265,7 +265,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                   Text(
                     'Đã có tài khoản? ',
                     style: AppTypography.p6,
                   ),

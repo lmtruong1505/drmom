@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import "package:drmom/core/configs/app_style/init_app_style.dart";
-import "package:drmom/core/configs/app_style/init_app_style.dart";
 import 'package:drmom/core/extension/init_ext.dart';
 import 'package:drmom/core/extension/spacing_extension.dart';
 import 'package:drmom/core/injection/injection.dart';
@@ -55,7 +54,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+           Text(
             "Quên mật khẩu",
             textAlign: TextAlign.left,
             style: AppTypography.h2,

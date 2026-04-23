@@ -123,7 +123,7 @@ class DialogUtils {
                   child: Assets.icon(assetName: 'ic_error.svg'),
                 ),
                 const SizedBox(height: 24),
-                const Text('Thông báo', style: AppTypography.h3),
+                 Text('Thông báo', style: AppTypography.h3),
                 const SizedBox(height: 12),
                 Text(
                   content,
@@ -177,7 +177,7 @@ class DialogUtils {
                   child: Assets.icon(assetName: 'ic_warning.svg'),
                 ),
                 const SizedBox(height: 24),
-                const Text('Thông báo', style: AppTypography.h3),
+                 Text('Thông báo', style: AppTypography.h3),
                 const SizedBox(height: 12),
                 Text(
                   content,
@@ -239,7 +239,7 @@ class DialogUtils {
               children: [
                 const BaseLoading(),
                 const SizedBox(height: 24),
-                const Text('Thông báo', style: AppTypography.h3),
+                 Text('Thông báo', style: AppTypography.h3),
                 const SizedBox(height: 12),
                 Text(
                   message,

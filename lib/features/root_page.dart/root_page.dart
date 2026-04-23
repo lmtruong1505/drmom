@@ -68,7 +68,7 @@ class _RootPageState extends State<RootPage>
                 AssetCategoryPage(),
                 Container(
                   color: AppColors.bg_6,
-                  child: const Center(
+                  child:  Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
                       style: AppTypography.p3,
@@ -77,7 +77,7 @@ class _RootPageState extends State<RootPage>
                 ),
                 Container(
                   color: AppColors.bg_6,
-                  child: const Center(
+                  child:  Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
                       style: AppTypography.p3,

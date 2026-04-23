@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:drmom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:drmom/core/base/base_state.dart';
 import "package:drmom/core/configs/app_style/init_app_style.dart";
 import 'package:drmom/core/extension/init_ext.dart';
 import 'package:drmom/core/extension/spacing_extension.dart';
@@ -13,8 +11,6 @@ import 'package:drmom/core/widgets/buttons/main_button.dart';
 import 'package:drmom/features/authentication/data/bloc/authentication_cubit.dart';
 import 'package:drmom/features/authentication/data/bloc/authentication_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import '../../../../core/configs/app_style/init_app_style.dart';
 
 @RoutePage()
 class VerifyOtpPage extends StatefulWidget {
@@ -56,9 +52,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
     return BlocProvider(
       create: (context) => bloc,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.white,
-        ),
+        appBar: AppBar(backgroundColor: AppColors.white),
         backgroundColor: AppColors.white,
         body: SingleChildScrollView(
           child: Column(
@@ -93,7 +87,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
           return Column(
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
+              Text(
                 "Xác thực OTP",
                 textAlign: TextAlign.left,
                 style: AppTypography.h2,

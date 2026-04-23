@@ -31,7 +31,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
       child: Scaffold(
         backgroundColor: AppColors.border_1,
         appBar: AppBar(
-          title: const Text(
+          title:  Text(
             'Cập nhật phiên bản',
             style: AppTypography.p3,
           ),
@@ -57,7 +57,7 @@ class _UpdateAppPageState extends State<UpdateAppPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
+                     Text(
                       'Đã có phiên bản mới',
                       style: AppTypography.p3,
                     ),
