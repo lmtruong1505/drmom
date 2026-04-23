@@ -672,4 +672,24 @@ class AppColors {
   static const Color grey_97 = Color(0xFF97979E);
   static const Color grey_text_color = Color.fromARGB(255, 136, 136, 136);
   static const Color grey_ff = Color(0xFFEAECF0);
+
+  // Brand Colors
+  static const Color brand_main = Color(0xFFC67C4E);
+  static const Color brand_dark = Color(0xFF7A4B3A);
+  static const Color brand_tan = Color(0xFFA15533);
+  
+  // Subtle Accents
+  static const Color yellow_subtle = Color(0xFFFEF0C7);
+  static const Color red_subtle = Color(0xFFFEE4E2);
+  static const Color green_subtle = Color(0xFFD1FADF);
+  static const Color blue_subtle = Color(0xFFE0F2FE);
+  static const Color pink_subtle = Color(0xFFFFE4E8);
+  static const Color orange_subtle = Color(0xFFFFE5D0);
+
+  // Functional Colors
+  static const Color bg_surface_subtle = Color(0xFFF9FAFB);
+  static const Color bg_pill_grey = Color(0xFFF2F4F7);
+  static const Color border_subtle = Color(0xFFEAECF0);
+  static const Color error_red = Color(0xFFD42620);
+  static const Color search_hint = Color(0xFF98A2B3);
 }

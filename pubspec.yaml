@@ -95,6 +95,20 @@ dev_dependencies:
   auto_route_generator: ^10.5.0
   build_runner: ^2.14.0
   flutter_gen_runner: ^5.14.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/images/logo.png"
+  android_12:
+    image: "assets/images/logo.png"
+    color: "#ffffff"
 
 flutter_gen:
   output: lib/gen/

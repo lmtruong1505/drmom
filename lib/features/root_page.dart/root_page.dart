@@ -97,27 +97,31 @@ class _RootPageState extends State<RootPage>
     return BlocBuilder<IndexCubit, int>(
       bloc: indexCubit,
       builder: (context, state) {
-        return BaseContainer(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          borderRadius: 0,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, -2),
-            ),
-          ],
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.04),
+                blurRadius: 10,
+                offset: const Offset(0, -2),
+              ),
+            ],
+          ),
           child: SafeArea(
             top: false,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _iconBtn(icon: 'ic_home', index: 0),
-                _iconBtn(icon: 'ic_laptop_medical', index: 1),
-                _qrBtn(),
-                _iconBtn(icon: 'ic_noti', index: 2),
-                _iconBtn(icon: 'ic_bars', index: 4),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _navItem(label: 'Home', icon: Icons.home_outlined, index: 0, activeIcon: Icons.home),
+                  _navItem(label: 'Sức khỏe', icon: Icons.favorite_outline, index: 1, activeIcon: Icons.favorite),
+                  _navItem(label: 'Cộng đồng', icon: Icons.groups_outlined, index: 2, activeIcon: Icons.groups),
+                  _navItem(label: 'Dịch vụ', icon: Icons.business_center_outlined, index: 3, activeIcon: Icons.business_center),
+                  _navItem(label: 'Shop', icon: Icons.shopping_bag_outlined, index: 4, activeIcon: Icons.shopping_bag),
+                ],
+              ),
             ),
           ),
         );
@@ -125,55 +129,35 @@ class _RootPageState extends State<RootPage>
     );
   }
 
-  Widget _iconBtn({required String icon, required int index}) {
-    return InkWell(
-      onTap: () {
-        indexCubit.set(index);
-      },
-      child: SizedBox(
-        width: 50,
-        height: 50,
-        child: Center(
-          child: Assets.icon(
-            assetName: "${icon}_active.svg",
-            width: 24,
-            height: 24,
-            colorFilter: ColorFilter.mode(
-              index == indexCubit.state ? AppColors.main : AppColors.grey_79,
-              BlendMode.srcIn,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  Widget _navItem({
+    required String label,
+    required IconData icon,
+    required int index,
+    required IconData activeIcon,
+  }) {
+    final isActive = indexCubit.state == index;
+    final color = isActive ? const Color(0xFFC67C4E) : const Color(0xFF98A2B3);
 
-  Widget _qrBtn() {
-    return BaseContainer(
-      width: 56,
-      height: 56,
-      isCircle: true,
-      borderColor: AppColors.grey_e2,
-      borderWidth: 2,
-      color: Colors.transparent,
-      child: Center(
-        child: BaseContainer(
-          width: 44,
-          height: 44,
-          isCircle: true,
-          color: AppColors.main,
-          child: Center(
-            child: Assets.icon(
-              assetName: "ic_qrcode.svg",
-              width: 24,
-              height: 24,
-              colorFilter: const ColorFilter.mode(
-                Colors.white,
-                BlendMode.srcIn,
-              ),
+    return InkWell(
+      onTap: () => indexCubit.set(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            isActive ? activeIcon : icon,
+            color: color,
+            size: 24,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: AppTypography.p8.copyWith(
+              color: color,
+              fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
+              fontSize: 10,
             ),
           ),
-        ),
+        ],
       ),
     );
   }
