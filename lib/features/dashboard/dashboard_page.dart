@@ -4,7 +4,6 @@ import 'package:drmom/features/dashboard/widgets/community_section.dart';
 import 'package:drmom/features/dashboard/widgets/featured_posts_section.dart';
 import 'package:drmom/features/dashboard/widgets/header_section.dart';
 import 'package:drmom/features/dashboard/widgets/hero_banner_section.dart';
-import 'package:drmom/features/dashboard/widgets/quick_menu_section.dart';
 import 'package:drmom/features/dashboard/widgets/services_shop_section.dart';
 import 'package:drmom/features/dashboard/widgets/trending_topics_section.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +28,8 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             const HeaderSection(),
             const HeroBannerSection(),
-            8.height,
-            const QuickMenuSection(),
+            // 8.height,
+            // const QuickMenuSection(),
             16.height,
             const TrendingTopicsSection(),
             16.height,

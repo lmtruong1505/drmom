@@ -30,7 +30,10 @@ class QuickMenuSection extends StatelessWidget {
                 ),
                 child: Icon(
                   item['icon'],
-                  color: (item['color'] as Color).withRed(100).withGreen(100).withBlue(100),
+                  color: (item['color'] as Color)
+                      .withRed(100)
+                      .withGreen(100)
+                      .withBlue(100),
                   size: 26,
                 ),
               ),

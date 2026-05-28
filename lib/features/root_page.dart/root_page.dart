@@ -2,6 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:drmom/core/widgets/base_container.dart';
 import 'package:drmom/features/asset_category/presentation/asset_category_page.dart';
 import 'package:drmom/features/dashboard/dashboard_page.dart';
+import 'package:drmom/features/dashboard/data/bloc/hashtag_cubit.dart';
+import 'package:drmom/features/dashboard/data/bloc/post_cubit.dart';
+import 'package:drmom/features/dashboard/data/bloc/community_post_cubit.dart';
 import 'package:drmom/features/profile/presentation/personal_info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -139,7 +142,14 @@ class _RootPageState extends State<RootPage>
     final color = isActive ? const Color(0xFFC67C4E) : const Color(0xFF98A2B3);
 
     return InkWell(
-      onTap: () => indexCubit.set(index),
+      onTap: () {
+        if (index == 0) {
+          getIt.get<HashtagCubit>().fetchHashtags(force: true);
+          getIt.get<PostCubit>().fetchFeaturedPosts(force: true);
+          getIt.get<CommunityPostCubit>().fetchCommunityPosts(force: true);
+        }
+        indexCubit.set(index);
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

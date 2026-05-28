@@ -34,4 +34,8 @@ class Api {
   static String register = '$baseURLV2/api/v1/auth/register';
   static String verifyOtpPhone = '$baseURLV2/api/v1/auth/patient-register';
   static String logOut = '$baseURLV2/api/v1/auth/logout';
+  static String hashtag = '$baseURLV2/api/v1/hashtag';
+  static String newsPost = '$baseURLV2/api/v1/news-post';
+  static String posts = '$baseURLV2/api/v1/posts';
 }
+
