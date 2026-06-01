@@ -40,5 +40,8 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: DashboardRoute.page,
     ),
+    AutoRoute(
+      page: HealthRoute.page,
+    ),
   ];
 }

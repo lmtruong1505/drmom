@@ -1,24 +1,20 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:drmom/core/widgets/base_container.dart';
-import 'package:drmom/features/asset_category/presentation/asset_category_page.dart';
-import 'package:drmom/features/dashboard/dashboard_page.dart';
-import 'package:drmom/features/dashboard/data/bloc/hashtag_cubit.dart';
-import 'package:drmom/features/dashboard/data/bloc/post_cubit.dart';
-import 'package:drmom/features/dashboard/data/bloc/community_post_cubit.dart';
-import 'package:drmom/features/profile/presentation/personal_info_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:drmom/app/data/bloc/app_state.dart';
 import 'package:drmom/core/base/index_cubit.dart';
 import "package:drmom/core/configs/app_style/init_app_style.dart";
-import "package:drmom/core/configs/app_style/init_app_style.dart";
 import 'package:drmom/core/extension/init_ext.dart';
 import 'package:drmom/core/injection/injection.dart';
-import 'package:drmom/core/utilities/assets.dart';
+import 'package:drmom/features/dashboard/dashboard_page.dart';
+import 'package:drmom/features/dashboard/data/bloc/community_post_cubit.dart';
+import 'package:drmom/features/dashboard/data/bloc/hashtag_cubit.dart';
+import 'package:drmom/features/dashboard/data/bloc/post_cubit.dart';
+import 'package:drmom/features/health/data/bloc/health_cubit.dart';
+import 'package:drmom/features/health/presentation/health_page.dart';
+import 'package:drmom/features/profile/presentation/personal_info_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../app/data/bloc/app_cubit.dart';
-import '../../core/base/cubit_state.dart';
-import '../../core/utilities/enum.dart';
 
 @RoutePage()
 class RootPage extends StatefulWidget {
@@ -68,10 +64,10 @@ class _RootPageState extends State<RootPage>
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 const DashboardPage(),
-                AssetCategoryPage(),
+                const HealthPage(),
                 Container(
                   color: AppColors.bg_6,
-                  child:  Center(
+                  child: Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
                       style: AppTypography.p3,
@@ -80,7 +76,7 @@ class _RootPageState extends State<RootPage>
                 ),
                 Container(
                   color: AppColors.bg_6,
-                  child:  Center(
+                  child: Center(
                     child: Text(
                       'Tính năng này đang được phát triển',
                       style: AppTypography.p3,
@@ -118,11 +114,36 @@ class _RootPageState extends State<RootPage>
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _navItem(label: 'Home', icon: Icons.home_outlined, index: 0, activeIcon: Icons.home),
-                  _navItem(label: 'Sức khỏe', icon: Icons.favorite_outline, index: 1, activeIcon: Icons.favorite),
-                  _navItem(label: 'Cộng đồng', icon: Icons.groups_outlined, index: 2, activeIcon: Icons.groups),
-                  _navItem(label: 'Dịch vụ', icon: Icons.business_center_outlined, index: 3, activeIcon: Icons.business_center),
-                  _navItem(label: 'Shop', icon: Icons.shopping_bag_outlined, index: 4, activeIcon: Icons.shopping_bag),
+                  _navItem(
+                    label: 'Home',
+                    icon: Icons.home_outlined,
+                    index: 0,
+                    activeIcon: Icons.home,
+                  ),
+                  _navItem(
+                    label: 'Sức khỏe',
+                    icon: Icons.favorite_outline,
+                    index: 1,
+                    activeIcon: Icons.favorite,
+                  ),
+                  _navItem(
+                    label: 'Cộng đồng',
+                    icon: Icons.groups_outlined,
+                    index: 2,
+                    activeIcon: Icons.groups,
+                  ),
+                  _navItem(
+                    label: 'Dịch vụ',
+                    icon: Icons.business_center_outlined,
+                    index: 3,
+                    activeIcon: Icons.business_center,
+                  ),
+                  _navItem(
+                    label: 'Shop',
+                    icon: Icons.shopping_bag_outlined,
+                    index: 4,
+                    activeIcon: Icons.shopping_bag,
+                  ),
                 ],
               ),
             ),
@@ -147,17 +168,15 @@ class _RootPageState extends State<RootPage>
           getIt.get<HashtagCubit>().fetchHashtags(force: true);
           getIt.get<PostCubit>().fetchFeaturedPosts(force: true);
           getIt.get<CommunityPostCubit>().fetchCommunityPosts(force: true);
+        } else if (index == 1) {
+          getIt.get<HealthCubit>().fetchHealthPosts(force: true);
         }
         indexCubit.set(index);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            isActive ? activeIcon : icon,
-            color: color,
-            size: 24,
-          ),
+          Icon(isActive ? activeIcon : icon, color: color, size: 24),
           const SizedBox(height: 4),
           Text(
             label,
